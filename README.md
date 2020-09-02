@@ -13,24 +13,24 @@ El alfabeto sobre el que se trabajará es: Σ = { a, b, c, d, e, f, g, ... z, 0,
 ## 2º avance (Viernes 9 Octubre)==>():
 Se agregará un nuevo botón "Construir AFN", el cual, al darle clic, de manera interna y en base al algoritmo de McNaughton - Yamada - Thompson, se construirá el Autómata Finito No Determinista. En pantalla se mostrará la Tabla de Transiciones.
 ### Ejemplo de interfaz:
-<img src="https://github.com/Pedejeca135/Compiladores_A-Shakespares-/tree/master/assets/Entrega2.pdf" alt="Entrega1.pdf"  width="700px" height="700px">
+<img src="https://github.com/Pedejeca135/Compiladores_A-Shakespares-/tree/master/assets/Entrega2.pdf" alt="Entrega2.pdf"  width="700px" height="700px">
 
 ## 3º avance (Viernes 23 Octubre)==>():
 Se agregará un nuevo botón "Construir AFD", el cual, al darle clic, de manera interna y en base al algoritmo de construcción de subconjuntos, se construirá el Autómata Finito Determinista. En pantalla se mostrará la Tabla de Transiciones.
 ### Ejemplo de interfaz:
-<img src="https://github.com/Pedejeca135/Compiladores_A-Shakespares-/tree/master/assets/Entrega3.pdf" alt="Entrega1.pdf"  width="700px" height="700px">
+<img src="https://github.com/Pedejeca135/Compiladores_A-Shakespares-/tree/master/assets/Entrega3.pdf" alt="Entrega3.pdf"  width="700px" height="700px">
 
 ## 4º avance (Viernes 6 Noviembre)==>():
 Se agregará una nueva entrada de texto (para lexema) y un nuevo botón "Validar". Al darle clic, de manera interna se realizará un recorrido sobre el AFD para determinar si pertenece o no al lenguaje de la expresión regular.
 ### Ejemplo de interfaz:
-<img src="https://github.com/Pedejeca135/Compiladores_A-Shakespares-/tree/master/assets/Entrega4.pdf" alt="Entrega1.pdf"  width="700px" height="700px">
+<img src="https://github.com/Pedejeca135/Compiladores_A-Shakespares-/tree/master/assets/Entrega4.pdf" alt="Entrega4.pdf"  width="700px" height="700px">
 
 ## 5º avance (Viernes 19 Noviembre)==>():
 Se tendrán 2 entradas de texto, una para la expresión regular de identificador y otra para la de número.
 Se agregará una nueva entrada de texto multilínea para captura de programa en lenguaje TINY y, un botón "Clasifica tokens". Al dar clic sobre el botón, realizará la clasificación de tokens del programa capturado por el usuario. Dicha clasificación se mostrará en una tabla.
 
 ### Ejemplo de interfaz:
-<img src="https://github.com/Pedejeca135/Compiladores_A-Shakespares-/tree/master/assets/Entrega5.pdf" alt="Entrega1.pdf"  width="700px" height="700px">
+<img src="https://github.com/Pedejeca135/Compiladores_A-Shakespares-/tree/master/assets/Entrega5.pdf" alt="Entrega5.pdf"  width="700px" height="700px">
 
 Si en el proceso se detecta uno o mas tokens que no son válidos, se deberá mostrar en pantalla que existe error léxico y cuál(es) son.
 ### Nota:
