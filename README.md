@@ -15,6 +15,8 @@ El alfabeto sobre el que se trabajará es: Σ = { a, b, c, d, e, f, g, ... z, 0,
     </embed>
 </object>
 
+<a href="https://github.com/Pedejeca135/Compiladores_A-Shakespares-/tree/master/assets/Entrega1.pdf" class='pdf'><img src="https://github.com/Pedejeca135/Compiladores_A-Shakespares-/tree/master/assets/Entrega1.pdf" alt="Entrega1.pdf"  width='500'></a>
+
 ## 2º avance (Viernes 9 Octubre)==>():
 Se agregará un nuevo botón "Construir AFN", el cual, al darle clic, de manera interna y en base al algoritmo de McNaughton - Yamada - Thompson, se construirá el Autómata Finito No Determinista. En pantalla se mostrará la Tabla de Transiciones.
 ### Ejemplo de interfaz:
