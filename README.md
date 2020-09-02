@@ -9,9 +9,9 @@ En una entrada de texto el usuario podrá capturar una expresión regular. Al da
 El alfabeto sobre el que se trabajará es: Σ = { a, b, c, d, e, f, g, ... z, 0, 1, 2, 3, ... 9 }
 ### Ejemplo de interfaz:
 # AQUI VA UNA IMAGEN
-<object data="/assets/Entrega1.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="/assets/Entrega1.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/Pedejeca135/Compiladores_A-Shakespares-/assets/Entrega1.pdf">Download PDF</a>.</p>
+<object data="https://github.com/Pedejeca135/Compiladores_A-Shakespares-/tree/master/assets" type="application/pdf" width="700px" height="700px">
+    <embed src="https://github.com/Pedejeca135/Compiladores_A-Shakespares-/tree/master/assets">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/Pedejeca135/Compiladores_A-Shakespares-/tree/master/assets">Download PDF</a>.</p>
     </embed>
 </object>
 
