@@ -37,6 +37,37 @@ Si en el proceso se detecta uno o mas tokens que no son válidos, se deberá mos
 Un programa TINY tiene una estructura muy simple: es simplemente una secuencia de sentencias separadas mediante signos de punto y coma en una sintaxis semejante a la de ADA o Pascal. No hay procedimientos ni declaraciones. Todas las variables son variables enteras, y las variables son declaradas simplemente al asignar valores a las mismas.
 
 Es importante recordar los tokens del lenguaje TINY:
+|Palabras reservadas   |Simbolos especiales   |Otros  |
+|---|---|---|
+|if  | +  | numero( 1 o más digitos)   |
+|then  | -   |identificador(1 o mas letras)   |
+|else   | *  | **En nuestro caso dependendera de las expresiones regulares que asignemos   |
+|end   | /  |   |
+|repeat   | =   |   |
+|until   | <   |   |
+|read   | >   |   |
+|write   | (  |   |
+|   | )   |   |
+|   | ; |   |
+|   | := |   |
+
+### Gramatica del lenguaje TINY:
++ programa -> secuencia-sent
++ secuencia-sent -> secuencia-sent ; sentencia | sentencia
++ sentencia -> sent-if | sent-repeat | sent-assign | sent-read | sent-write
++ sent-if -> if exp then secuencia-sent end | if exp then secuencia-sent else secuencia-sent end
++ sent-repeat -> repeat secuencia-sent until exp
++ sent-assign -> identificador := exp
++ sent-read -> read identificador
++ sent-write -> write exp
++ exp -> exp-simple op-comp exp-simple | exp-simple
++ op-comp -> < | > | =
++ exp-simple -> exp-simple opsuma term | term
++ opsuma -> + | -
++ term -> term opmult factor | factor
++ opmult -> * | /
++ factor -> ( exp ) | numero | identificador
+
 
 ## 6º avance (Viernes 4 Diciembre)==>():
 
