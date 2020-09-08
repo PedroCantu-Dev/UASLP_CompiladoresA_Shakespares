@@ -13,18 +13,28 @@ namespace proyectoCompiladoresA.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public JsonResult sumar(int o1, int o2)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            int res = o1 + o2;
+            return Json(res);
         }
 
-        public ActionResult Contact()
+        public JsonResult operaciones(int o1, int o2)
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            int sumar = o1 + o2;
+            int restar = o1 - o2;
+            return Json(new { suma = sumar, resta = restar });
         }
+
+
+        public ActionResult tablaDatos()
+        {
+            List<string> cadenas = new List<string> { "hola", "mundo" };
+            ViewBag.nombre = "Eré";
+            ViewBag.apellido = "Avalos";
+            ViewBag.edad = 20;
+            return PartialView(cadenas);
+        }
+
     }
 }
