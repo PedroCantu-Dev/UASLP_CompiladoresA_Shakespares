@@ -1,7 +1,7 @@
 # Compiladores_A-Shakespares
 
 
-## Preparacion del proyecto(viernes 11 Septiembre)==>():
+## Preparacion del proyecto(viernes 11 Septiembre)==>(*):
 Permitir que el usuario, a través de un control de carga de archivo (FileUpload, <input type="file">, etc.), seleccione un archivo  de texto (*.txt) e internamente procesarlo para finalmente mostrar el contenido en un control de entrada de texto (TextBox, <input type="text">, etc.).
 
 ## 1º avance (Jueves 24 Septiembre)==>():

@@ -1,0 +1,133 @@
+﻿namespace ProyectoCompiladores
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// Variable del diseñador necesaria.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Limpiar los recursos que se estén usando.
+        /// </summary>
+        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Código generado por el Diseñador de Windows Forms
+
+        /// <summary>
+        /// Método necesario para admitir el Diseñador. No se puede modificar
+        /// el contenido de este método con el editor de código.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.BT_SubirArchivoPrep = new System.Windows.Forms.Button();
+            this.TB_SubirArchivo = new System.Windows.Forms.TextBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.BT_LimpiarTXPrep = new System.Windows.Forms.Button();
+            this.tabPage1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.textBox1.Location = new System.Drawing.Point(16, 13);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(1177, 87);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "Compiladores e Intérpretes A - Equipo Shakespares\r\nPedro de Jesús Cantú Olivares\r" +
+    "\nAxel López Rodríguez";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage1.Controls.Add(this.BT_LimpiarTXPrep);
+            this.tabPage1.Controls.Add(this.TB_SubirArchivo);
+            this.tabPage1.Controls.Add(this.BT_SubirArchivoPrep);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1177, 485);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Preparación del Proyecto";
+            // 
+            // BT_SubirArchivoPrep
+            // 
+            this.BT_SubirArchivoPrep.Location = new System.Drawing.Point(6, 6);
+            this.BT_SubirArchivoPrep.Name = "BT_SubirArchivoPrep";
+            this.BT_SubirArchivoPrep.Size = new System.Drawing.Size(109, 40);
+            this.BT_SubirArchivoPrep.TabIndex = 0;
+            this.BT_SubirArchivoPrep.Text = "Subir Archivo";
+            this.BT_SubirArchivoPrep.UseVisualStyleBackColor = true;
+            this.BT_SubirArchivoPrep.Click += new System.EventHandler(this.BT_SubirArchivoPrep_Click);
+            // 
+            // TB_SubirArchivo
+            // 
+            this.TB_SubirArchivo.Location = new System.Drawing.Point(6, 52);
+            this.TB_SubirArchivo.Multiline = true;
+            this.TB_SubirArchivo.Name = "TB_SubirArchivo";
+            this.TB_SubirArchivo.ReadOnly = true;
+            this.TB_SubirArchivo.Size = new System.Drawing.Size(1165, 427);
+            this.TB_SubirArchivo.TabIndex = 1;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Location = new System.Drawing.Point(12, 106);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1185, 511);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // BT_LimpiarTXPrep
+            // 
+            this.BT_LimpiarTXPrep.Location = new System.Drawing.Point(121, 6);
+            this.BT_LimpiarTXPrep.Name = "BT_LimpiarTXPrep";
+            this.BT_LimpiarTXPrep.Size = new System.Drawing.Size(109, 40);
+            this.BT_LimpiarTXPrep.TabIndex = 2;
+            this.BT_LimpiarTXPrep.Text = "Limpiar Texto";
+            this.BT_LimpiarTXPrep.UseVisualStyleBackColor = true;
+            this.BT_LimpiarTXPrep.Click += new System.EventHandler(this.BT_LimpiarTXPrep_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1202, 629);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tabControl1);
+            this.Name = "Form1";
+            this.Text = "ProyectoCompiladores";
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TextBox TB_SubirArchivo;
+        private System.Windows.Forms.Button BT_SubirArchivoPrep;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Button BT_LimpiarTXPrep;
+    }
+}
+
