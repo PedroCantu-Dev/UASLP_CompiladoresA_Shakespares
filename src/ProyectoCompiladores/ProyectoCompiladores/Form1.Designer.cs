@@ -30,12 +30,17 @@
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.BT_SubirArchivoPrep = new System.Windows.Forms.Button();
-            this.TB_SubirArchivo = new System.Windows.Forms.TextBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.BT_LimpiarTXPrep = new System.Windows.Forms.Button();
+            this.TB_SubirArchivo = new System.Windows.Forms.TextBox();
+            this.BT_SubirArchivoPrep = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.inFijaTextBox = new System.Windows.Forms.TextBox();
+            this.posFijaTextBox = new System.Windows.Forms.TextBox();
+            this.InToPosBoton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -56,6 +61,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.BT_LimpiarTXPrep);
             this.tabPage1.Controls.Add(this.TB_SubirArchivo);
             this.tabPage1.Controls.Add(this.BT_SubirArchivoPrep);
@@ -65,6 +71,25 @@
             this.tabPage1.Size = new System.Drawing.Size(1177, 485);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Preparación del Proyecto";
+            // 
+            // BT_LimpiarTXPrep
+            // 
+            this.BT_LimpiarTXPrep.Location = new System.Drawing.Point(121, 6);
+            this.BT_LimpiarTXPrep.Name = "BT_LimpiarTXPrep";
+            this.BT_LimpiarTXPrep.Size = new System.Drawing.Size(109, 40);
+            this.BT_LimpiarTXPrep.TabIndex = 2;
+            this.BT_LimpiarTXPrep.Text = "Limpiar Texto";
+            this.BT_LimpiarTXPrep.UseVisualStyleBackColor = true;
+            this.BT_LimpiarTXPrep.Click += new System.EventHandler(this.BT_LimpiarTXPrep_Click);
+            // 
+            // TB_SubirArchivo
+            // 
+            this.TB_SubirArchivo.Location = new System.Drawing.Point(6, 52);
+            this.TB_SubirArchivo.Multiline = true;
+            this.TB_SubirArchivo.Name = "TB_SubirArchivo";
+            this.TB_SubirArchivo.ReadOnly = true;
+            this.TB_SubirArchivo.Size = new System.Drawing.Size(224, 111);
+            this.TB_SubirArchivo.TabIndex = 1;
             // 
             // BT_SubirArchivoPrep
             // 
@@ -76,15 +101,6 @@
             this.BT_SubirArchivoPrep.UseVisualStyleBackColor = true;
             this.BT_SubirArchivoPrep.Click += new System.EventHandler(this.BT_SubirArchivoPrep_Click);
             // 
-            // TB_SubirArchivo
-            // 
-            this.TB_SubirArchivo.Location = new System.Drawing.Point(6, 52);
-            this.TB_SubirArchivo.Multiline = true;
-            this.TB_SubirArchivo.Name = "TB_SubirArchivo";
-            this.TB_SubirArchivo.ReadOnly = true;
-            this.TB_SubirArchivo.Size = new System.Drawing.Size(1165, 427);
-            this.TB_SubirArchivo.TabIndex = 1;
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -94,15 +110,44 @@
             this.tabControl1.Size = new System.Drawing.Size(1185, 511);
             this.tabControl1.TabIndex = 0;
             // 
-            // BT_LimpiarTXPrep
+            // inFijaTextBox
             // 
-            this.BT_LimpiarTXPrep.Location = new System.Drawing.Point(121, 6);
-            this.BT_LimpiarTXPrep.Name = "BT_LimpiarTXPrep";
-            this.BT_LimpiarTXPrep.Size = new System.Drawing.Size(109, 40);
-            this.BT_LimpiarTXPrep.TabIndex = 2;
-            this.BT_LimpiarTXPrep.Text = "Limpiar Texto";
-            this.BT_LimpiarTXPrep.UseVisualStyleBackColor = true;
-            this.BT_LimpiarTXPrep.Click += new System.EventHandler(this.BT_LimpiarTXPrep_Click);
+            this.inFijaTextBox.Location = new System.Drawing.Point(0, 19);
+            this.inFijaTextBox.Multiline = true;
+            this.inFijaTextBox.Name = "inFijaTextBox";
+            this.inFijaTextBox.Size = new System.Drawing.Size(462, 49);
+            this.inFijaTextBox.TabIndex = 3;
+            // 
+            // posFijaTextBox
+            // 
+            this.posFijaTextBox.Location = new System.Drawing.Point(0, 171);
+            this.posFijaTextBox.Multiline = true;
+            this.posFijaTextBox.Name = "posFijaTextBox";
+            this.posFijaTextBox.Size = new System.Drawing.Size(462, 53);
+            this.posFijaTextBox.TabIndex = 4;
+            // 
+            // InToPosBoton
+            // 
+            this.InToPosBoton.Location = new System.Drawing.Point(347, 83);
+            this.InToPosBoton.Name = "InToPosBoton";
+            this.InToPosBoton.Size = new System.Drawing.Size(115, 38);
+            this.InToPosBoton.TabIndex = 5;
+            this.InToPosBoton.Text = "Convertir a posfija";
+            this.InToPosBoton.UseVisualStyleBackColor = true;
+            this.InToPosBoton.Click += new System.EventHandler(this.InToPosBoton_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.inFijaTextBox);
+            this.groupBox1.Controls.Add(this.InToPosBoton);
+            this.groupBox1.Controls.Add(this.posFijaTextBox);
+            this.groupBox1.Location = new System.Drawing.Point(297, 16);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(475, 304);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Análisis Léxico";
+            //this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // Form1
             // 
@@ -116,6 +161,8 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,6 +175,10 @@
         private System.Windows.Forms.Button BT_SubirArchivoPrep;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button BT_LimpiarTXPrep;
+        private System.Windows.Forms.Button InToPosBoton;
+        private System.Windows.Forms.TextBox posFijaTextBox;
+        private System.Windows.Forms.TextBox inFijaTextBox;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
