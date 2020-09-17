@@ -139,7 +139,7 @@ namespace ProyectoCompiladores
                 error = true;
             }
 
-            while (!error && contadorInfija <= infija.Length)
+            while (!error && contadorInfija < infija.Length)
             {
                 //char caracter = infija.Substring(contadorInfija, 1);
                 char caracter = infija[contadorInfija];
