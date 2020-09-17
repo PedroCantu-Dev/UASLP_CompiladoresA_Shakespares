@@ -28,20 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.TabPage tabPage2;
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BT_LimpiarTX1 = new System.Windows.Forms.Button();
+            this.BT_SubirArchivo1 = new System.Windows.Forms.Button();
+            this.inFijaTextBox = new System.Windows.Forms.TextBox();
+            this.InToPosBoton = new System.Windows.Forms.Button();
+            this.posFijaTextBox = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.BT_LimpiarTXPrep = new System.Windows.Forms.Button();
             this.TB_SubirArchivo = new System.Windows.Forms.TextBox();
             this.BT_SubirArchivoPrep = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.inFijaTextBox = new System.Windows.Forms.TextBox();
-            this.posFijaTextBox = new System.Windows.Forms.TextBox();
-            this.InToPosBoton = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            tabPage2 = new System.Windows.Forms.TabPage();
+            tabPage2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(this.groupBox1);
+            tabPage2.Location = new System.Drawing.Point(4, 22);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            tabPage2.Size = new System.Drawing.Size(1177, 485);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "1º avance";
+            tabPage2.UseVisualStyleBackColor = true;
+            tabPage2.Click += new System.EventHandler(this.InToPosBoton_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.BT_LimpiarTX1);
+            this.groupBox1.Controls.Add(this.BT_SubirArchivo1);
+            this.groupBox1.Controls.Add(this.inFijaTextBox);
+            this.groupBox1.Controls.Add(this.InToPosBoton);
+            this.groupBox1.Controls.Add(this.posFijaTextBox);
+            this.groupBox1.Location = new System.Drawing.Point(15, 19);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(475, 304);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Análisis Léxico";
+            // 
+            // BT_LimpiarTX1
+            // 
+            this.BT_LimpiarTX1.Location = new System.Drawing.Point(115, 82);
+            this.BT_LimpiarTX1.Name = "BT_LimpiarTX1";
+            this.BT_LimpiarTX1.Size = new System.Drawing.Size(109, 40);
+            this.BT_LimpiarTX1.TabIndex = 7;
+            this.BT_LimpiarTX1.Text = "Limpiar Texto";
+            this.BT_LimpiarTX1.UseVisualStyleBackColor = true;
+            this.BT_LimpiarTX1.Click += new System.EventHandler(this.BT_LimpiarTX1_Click);
+            // 
+            // BT_SubirArchivo1
+            // 
+            this.BT_SubirArchivo1.Location = new System.Drawing.Point(0, 81);
+            this.BT_SubirArchivo1.Name = "BT_SubirArchivo1";
+            this.BT_SubirArchivo1.Size = new System.Drawing.Size(109, 40);
+            this.BT_SubirArchivo1.TabIndex = 6;
+            this.BT_SubirArchivo1.Text = "Subir Archivo";
+            this.BT_SubirArchivo1.UseVisualStyleBackColor = true;
+            this.BT_SubirArchivo1.Click += new System.EventHandler(this.BT_SubirArchivo1_Click);
+            // 
+            // inFijaTextBox
+            // 
+            this.inFijaTextBox.Location = new System.Drawing.Point(0, 19);
+            this.inFijaTextBox.Multiline = true;
+            this.inFijaTextBox.Name = "inFijaTextBox";
+            this.inFijaTextBox.Size = new System.Drawing.Size(462, 49);
+            this.inFijaTextBox.TabIndex = 3;
+            // 
+            // InToPosBoton
+            // 
+            this.InToPosBoton.Location = new System.Drawing.Point(347, 83);
+            this.InToPosBoton.Name = "InToPosBoton";
+            this.InToPosBoton.Size = new System.Drawing.Size(115, 38);
+            this.InToPosBoton.TabIndex = 5;
+            this.InToPosBoton.Text = "Convertir a posfija";
+            this.InToPosBoton.UseVisualStyleBackColor = true;
+            this.InToPosBoton.Click += new System.EventHandler(this.InToPosBoton_Click);
+            // 
+            // posFijaTextBox
+            // 
+            this.posFijaTextBox.Location = new System.Drawing.Point(0, 171);
+            this.posFijaTextBox.Multiline = true;
+            this.posFijaTextBox.Name = "posFijaTextBox";
+            this.posFijaTextBox.Size = new System.Drawing.Size(462, 53);
+            this.posFijaTextBox.TabIndex = 4;
             // 
             // textBox1
             // 
@@ -61,7 +138,6 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.BT_LimpiarTXPrep);
             this.tabPage1.Controls.Add(this.TB_SubirArchivo);
             this.tabPage1.Controls.Add(this.BT_SubirArchivoPrep);
@@ -104,50 +180,12 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(12, 106);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1185, 511);
             this.tabControl1.TabIndex = 0;
-            // 
-            // inFijaTextBox
-            // 
-            this.inFijaTextBox.Location = new System.Drawing.Point(0, 19);
-            this.inFijaTextBox.Multiline = true;
-            this.inFijaTextBox.Name = "inFijaTextBox";
-            this.inFijaTextBox.Size = new System.Drawing.Size(462, 49);
-            this.inFijaTextBox.TabIndex = 3;
-            // 
-            // posFijaTextBox
-            // 
-            this.posFijaTextBox.Location = new System.Drawing.Point(0, 171);
-            this.posFijaTextBox.Multiline = true;
-            this.posFijaTextBox.Name = "posFijaTextBox";
-            this.posFijaTextBox.Size = new System.Drawing.Size(462, 53);
-            this.posFijaTextBox.TabIndex = 4;
-            // 
-            // InToPosBoton
-            // 
-            this.InToPosBoton.Location = new System.Drawing.Point(347, 83);
-            this.InToPosBoton.Name = "InToPosBoton";
-            this.InToPosBoton.Size = new System.Drawing.Size(115, 38);
-            this.InToPosBoton.TabIndex = 5;
-            this.InToPosBoton.Text = "Convertir a posfija";
-            this.InToPosBoton.UseVisualStyleBackColor = true;
-            this.InToPosBoton.Click += new System.EventHandler(this.InToPosBoton_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.inFijaTextBox);
-            this.groupBox1.Controls.Add(this.InToPosBoton);
-            this.groupBox1.Controls.Add(this.posFijaTextBox);
-            this.groupBox1.Location = new System.Drawing.Point(297, 16);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(475, 304);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Análisis Léxico";
-            //this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // Form1
             // 
@@ -158,11 +196,12 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "ProyectoCompiladores";
+            tabPage2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,10 +214,12 @@
         private System.Windows.Forms.Button BT_SubirArchivoPrep;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button BT_LimpiarTXPrep;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox inFijaTextBox;
         private System.Windows.Forms.Button InToPosBoton;
         private System.Windows.Forms.TextBox posFijaTextBox;
-        private System.Windows.Forms.TextBox inFijaTextBox;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button BT_SubirArchivo1;
+        private System.Windows.Forms.Button BT_LimpiarTX1;
     }
 }
 

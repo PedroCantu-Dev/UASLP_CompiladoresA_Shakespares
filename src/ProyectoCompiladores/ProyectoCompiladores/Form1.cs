@@ -18,6 +18,7 @@ namespace ProyectoCompiladores
             InitializeComponent();
         }
 
+        #region tab_PreparacionDelProyecto
         private void BT_SubirArchivoPrep_Click(object sender, EventArgs e)
         {
             OpenFileDialog VentanaCargaArchivo = new OpenFileDialog();
@@ -43,44 +44,10 @@ namespace ProyectoCompiladores
         {
             TB_SubirArchivo.Text = "";
         }
+        #endregion
 
-        /* * *
-         while ( no ocurra un error && no sea fin de la expresión infija )
-        {
-         switch ( carácter )
-         {
-            Paréntesis izquierdo:
-                Insertar en la pila;
-            break;
-            Paréntesis derecho:
-                Extraer de la pila y desplegar en posfija hasta encontrar “paréntesis izquierdo” (no desplegarlo);
-            break;
-            Operando:
-                Desplegar en posfija.
-            break;
-            Operador:
-            band = true;
-            while ( band )
-            {
-                if ( la pila está vacía || el tope de la pila es un “paréntesis izquierdo” ||
-                el operador tiene mayor prioridad que el tope de la pila )
-                {
-                    Insertar el operador en la pila.
-                    band = false;
-                }
-                else
-                {
-                    Extraer el tope de la pila y desplegar en posfija.
-                }
-                break;
-            }
-            Apuntar al siguiente carácter de la expresión infija.
-            }
-            Extraer y desplegar en posfija los elementos de la pila hasta que se vacíe.
-        }
-        */
-
-        /**************************
+        #region tab_1Avance
+/*
 
         EVALUACIÓN DE EXPRESIONES EN NOTACIÓN POSFIJA.
 
@@ -110,14 +77,40 @@ namespace ProyectoCompiladores
             }
             Apuntar al siguiente carácter de la expresión posfija.
         }
-
-                 * */
+*/
 
         static String alfabeto = "abcdefghijklmnñopqrstuvxyz0123456789";
         static String op_Presedecia1 = "*+?";//jerarquia 1
         static String op_Presedecia2 = "&";//jerarquia 2
         static String op_Presedecia3 = "|";//jerarquia 3
         static String op = op_Presedecia1 + op_Presedecia2 + op_Presedecia3;
+
+        private void BT_SubirArchivo1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog VentanaCargaArchivo = new OpenFileDialog();
+            VentanaCargaArchivo.InitialDirectory = "c:\\";
+            VentanaCargaArchivo.Filter = "Archivo de Texto (*.txt)|*.txt";
+            if (VentanaCargaArchivo.ShowDialog() == DialogResult.OK)
+            {
+                string CadenaAux = "";
+                string CadenaTextBox = "";
+                string RutaArchivo = VentanaCargaArchivo.FileName;
+                MessageBox.Show("Ruta Archivo :" + RutaArchivo);
+                StreamReader LectorArchivo = new StreamReader(RutaArchivo);
+                while ((CadenaAux = LectorArchivo.ReadLine()) != null)
+                {
+                    CadenaAux += "\n";
+                    CadenaTextBox += CadenaAux;
+                }
+                inFijaTextBox.Text = CadenaTextBox;
+            }
+        }
+        private void BT_LimpiarTX1_Click(object sender, EventArgs e)
+        {
+            inFijaTextBox.Text = "";
+        }
+
+
 
         private void InToPosBoton_Click(object sender, EventArgs e)
         {
@@ -146,10 +139,25 @@ namespace ProyectoCompiladores
 
                 switch (caracter)
                 {
-                    case '(':
+                    case ' '://en caso de ser un espacio.
+                        break;
+                    case '\n':
+                        while(pila.Any())
+                        {
+                            if (pila.Peek() != '(' && pila.Peek() != ')')
+                            {
+                                posFija += pila.Pop();
+                            }
+                            else
+                            {
+                                pila.Pop();
+                            }
+                        }
+                        break;
+                    case '('://parentesis izquierdo.
                         pila.Push(caracter);
                         break;
-                    case ')':
+                    case ')'://parentesis derecho.
                         while (pila.Peek() != '(')
                         {
                             posFija += pila.Pop(); ;//despliega en posFija
@@ -211,6 +219,7 @@ namespace ProyectoCompiladores
             return false;
         }
 
+        
         /*
         private String desglosaCorchetes(String infija)
         {
@@ -236,5 +245,20 @@ namespace ProyectoCompiladores
 
         }
         */
+        #endregion
+
+        #region tab_3avance
+        #endregion
+
+        #region tab_4avance
+        #endregion
+
+        #region tab_5avance
+        #endregion
+
+        #region tab_6avance
+        #endregion
+
+
     }//Forms END
 }//namespace END
