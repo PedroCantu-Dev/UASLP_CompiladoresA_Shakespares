@@ -43,78 +43,93 @@ namespace ProyectoCompiladores
         {
             TB_SubirArchivo.Text = "";
         }
-        /*
-         * 
-         * while ( no ocurra un error && no sea fin de la expresión infija )
+        
+/* * *
+ while ( no ocurra un error && no sea fin de la expresión infija )
 {
  switch ( carácter )
  {
- Paréntesis izquierdo:
- Insertar en la pila;
- break;
- Paréntesis derecho:
- Extraer de la pila y desplegar en posfija hasta encontrar “paréntesis izquierdo” (no desplegarlo);
- break;
- Operando:
- Desplegar en posfija.
- break;
- Operador:
- band = true;
- while ( band )
- {
- if ( la pila está vacía ||
- el tope de la pila es un “paréntesis izquierdo” ||
- el operador tiene mayor prioridad que el tope de la pila )
- {
- Insertar el operador en la pila.
- band = false;
- }
- else
- Extraer el tope de la pila y desplegar en posfija.
+    Paréntesis izquierdo:
+        Insertar en la pila;
+    break;
+    Paréntesis derecho:
+        Extraer de la pila y desplegar en posfija hasta encontrar “paréntesis izquierdo” (no desplegarlo);
+    break;
+    Operando:
+        Desplegar en posfija.
+    break;
+    Operador:
+    band = true;
+    while ( band )
+    {
+        if ( la pila está vacía || el tope de la pila es un “paréntesis izquierdo” ||
+        el operador tiene mayor prioridad que el tope de la pila )
+        {
+            Insertar el operador en la pila.
+            band = false;
+        }
+        else
+        {
+            Extraer el tope de la pila y desplegar en posfija.
+        }
+        break;
+    }
+    Apuntar al siguiente carácter de la expresión infija.
+    }
+    Extraer y desplegar en posfija los elementos de la pila hasta que se vacíe.
 }
- break;
- }
- Apuntar al siguiente carácter de la expresión infija.
-}
-Extraer y desplegar en posfija los elementos de la pila hasta que se vacíe.
+*/
+
+/**************************
+
 EVALUACIÓN DE EXPRESIONES EN NOTACIÓN POSFIJA.
+
 1. Inicializar una pila.
 2. Apuntar al primer carácter de la expresión posfija.
 while ( no ocurra un error && no sea fin de la expresión posfija )
 {
- switch ( carácter )
- {
- Operando:
- Insertar en la pila;
- break;
- Operador:
- if ( si es “unario”)
- {
- Extraer el valor del tope de la pila y aplicar el operador.
- (Se produce un error en caso de no tener valor).
- Insertar el resultado en el nuevo tope de la pila.
- }
- else ( si es “binario”)
- {
- Extraer los 2 valores del tope de la pila y aplicar el operador.
- (Se produce un error en caso de no tener los 2 valores).
- Insertar el resultado en el nuevo tope de la pila.
-}
- break;
- }
- Apuntar al siguiente carácter de la expresión posfija.
+    switch ( carácter )
+    {
+        Operando:
+        Insertar en la pila;
+        break;
+        Operador:
+        if ( si es “unario”)
+        {
+            Extraer el valor del tope de la pila y aplicar el operador.
+            (Se produce un error en caso de no tener valor).
+            Insertar el resultado en el nuevo tope de la pila.
+        }
+        else ( si es “binario”)
+        {
+            Extraer los 2 valores del tope de la pila y aplicar el operador.
+            (Se produce un error en caso de no tener los 2 valores).
+            Insertar el resultado en el nuevo tope de la pila.
+        }
+        break;
+    }
+    Apuntar al siguiente carácter de la expresión posfija.
 }
 
          * */
         private void InToPosBoton_Click(object sender, EventArgs e)
         {
             String alfabeto = "abcdefghijklmnñopqrstuvxyz0123456789";
-            String operadoresUnarios = "*"
-            String operadoresBinarios = "|&"
+            op_Presedecia1 = "*+?";//jerarquia 1
+            op_Presedecia2 = "&";//jerarquia 2
+            op_Presedecia3 = "|";//jerarquia 3
+
             String infija = inFijaTextBox.Text;
+            infija = desglosaCorchetes(infija);
+
             //variables de control para el primer while
             Boolean error = false;
             int contadorInfija = 0;
+
+            if(infija = "")
+            {
+                error = true;
+            }
 
             while (!error && contadorInfija <= infija.Length)
             {
@@ -136,19 +151,39 @@ while ( no ocurra un error && no sea fin de la expresión posfija )
                         {
                             error = true;
                         }
-                        break;
-                   
-
+                        break;                  
                 }
                 Boolean bandera = true
                 while(bandera)
                 {
 
-                }
-                    
+                }                  
 
             }
         }
 
-    }
-}
+        private String desglosaCorchetes(String infija)
+        {
+            String res;
+
+            List<int> corchetesIniciales = List<int>();
+            List<int> corchetesFinales = List<int>();
+
+            Boolean salir = false;
+            for (int i = s.IndexOf('['); i > -1; i = s.IndexOf('[', i + 1))
+            {
+                    corchetesIniciales.Add(i);
+            }
+            for (int i = s.IndexOf(']'); i > -1; i = s.IndexOf(']', i + 1))
+            {
+                    corchetesFinales.Add(i);
+            }
+            
+            if(corchetesFinales.Count() != corchetesFinales.Count())
+            {
+                return "";
+            }            
+        
+        }
+    }//Forms END
+}//namespace END
