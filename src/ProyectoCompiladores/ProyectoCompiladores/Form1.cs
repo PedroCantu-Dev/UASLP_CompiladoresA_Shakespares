@@ -47,42 +47,45 @@ namespace ProyectoCompiladores
         #endregion
 
         #region tab_1Avance
-/*
+        /*
 
-        EVALUACIÓN DE EXPRESIONES EN NOTACIÓN POSFIJA.
+                EVALUACIÓN DE EXPRESIONES EN NOTACIÓN POSFIJA.
 
-        1. Inicializar una pila.
-        2. Apuntar al primer carácter de la expresión posfija.
-        while ( no ocurra un error && no sea fin de la expresión posfija )
-        {
-            switch ( carácter )
-            {
-                Operando:
-                Insertar en la pila;
-                break;
-                Operador:
-                if ( si es “unario”)
+                1. Inicializar una pila.
+                2. Apuntar al primer carácter de la expresión posfija.
+                while ( no ocurra un error && no sea fin de la expresión posfija )
                 {
-                    Extraer el valor del tope de la pila y aplicar el operador.
-                    (Se produce un error en caso de no tener valor).
-                    Insertar el resultado en el nuevo tope de la pila.
+                    switch ( carácter )
+                    {
+                        Operando:
+                        Insertar en la pila;
+                        break;
+                        Operador:
+                        if ( si es “unario”)
+                        {
+                            Extraer el valor del tope de la pila y aplicar el operador.
+                            (Se produce un error en caso de no tener valor).
+                            Insertar el resultado en el nuevo tope de la pila.
+                        }
+                        else ( si es “binario”)
+                        {
+                            Extraer los 2 valores del tope de la pila y aplicar el operador.
+                            (Se produce un error en caso de no tener los 2 valores).
+                            Insertar el resultado en el nuevo tope de la pila.
+                        }
+                        break;
+                    }
+                    Apuntar al siguiente carácter de la expresión posfija.
                 }
-                else ( si es “binario”)
-                {
-                    Extraer los 2 valores del tope de la pila y aplicar el operador.
-                    (Se produce un error en caso de no tener los 2 valores).
-                    Insertar el resultado en el nuevo tope de la pila.
-                }
-                break;
-            }
-            Apuntar al siguiente carácter de la expresión posfija.
-        }
-*/
+        */
 
         static String alfabeto = "abcdefghijklmnñopqrstuvxyz0123456789";
         static String op_Presedecia1 = "*+?";//jerarquia 1
         static String op_Presedecia2 = "&";//jerarquia 2
         static String op_Presedecia3 = "|";//jerarquia 3
+
+       // static List<String> operadores = new List<String>(op_Presedecia1,op_Presedecia2,op_Presedecia3);
+
         static String op = op_Presedecia1 + op_Presedecia2 + op_Presedecia3;
 
         private void BT_SubirArchivo1_Click(object sender, EventArgs e)
@@ -159,9 +162,10 @@ namespace ProyectoCompiladores
                         break;
                     case ')'://parentesis derecho.
                         while (pila.Peek() != '(')
-                        {
+                        {                            
                             posFija += pila.Pop(); ;//despliega en posFija
                         }
+                        pila.Pop();//saca el parentesis izquierdo sin desplegarlo.
                         break;
                     default:
                         if (alfabeto.Contains(caracter))//es un operando.
