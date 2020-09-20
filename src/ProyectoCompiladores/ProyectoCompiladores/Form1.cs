@@ -223,7 +223,8 @@ namespace ProyectoCompiladores
             return false;
         }
 
-        
+
+
         /*
         private String desglosaCorchetes(String infija)
         {
@@ -263,6 +264,14 @@ namespace ProyectoCompiladores
         #region tab_6avance
         #endregion
 
+        private void label1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }//Forms END
 }//namespace END
