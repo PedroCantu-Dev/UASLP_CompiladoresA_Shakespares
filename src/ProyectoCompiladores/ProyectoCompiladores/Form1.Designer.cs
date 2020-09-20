@@ -41,6 +41,9 @@
             this.TB_SubirArchivo = new System.Windows.Forms.TextBox();
             this.BT_SubirArchivoPrep = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.TB_ExpresionRegularExplicita = new System.Windows.Forms.TextBox();
+            this.LB_ExRExplicita = new System.Windows.Forms.Label();
+            this.LB_Posfija = new System.Windows.Forms.Label();
             tabPage2 = new System.Windows.Forms.TabPage();
             tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -62,6 +65,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.LB_Posfija);
+            this.groupBox1.Controls.Add(this.LB_ExRExplicita);
+            this.groupBox1.Controls.Add(this.TB_ExpresionRegularExplicita);
             this.groupBox1.Controls.Add(this.BT_LimpiarTX1);
             this.groupBox1.Controls.Add(this.BT_SubirArchivo1);
             this.groupBox1.Controls.Add(this.inFijaTextBox);
@@ -104,7 +110,7 @@
             // 
             // InToPosBoton
             // 
-            this.InToPosBoton.Location = new System.Drawing.Point(347, 83);
+            this.InToPosBoton.Location = new System.Drawing.Point(347, 81);
             this.InToPosBoton.Name = "InToPosBoton";
             this.InToPosBoton.Size = new System.Drawing.Size(115, 38);
             this.InToPosBoton.TabIndex = 5;
@@ -114,9 +120,11 @@
             // 
             // posFijaTextBox
             // 
-            this.posFijaTextBox.Location = new System.Drawing.Point(0, 171);
+            this.posFijaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.posFijaTextBox.Location = new System.Drawing.Point(7, 245);
             this.posFijaTextBox.Multiline = true;
             this.posFijaTextBox.Name = "posFijaTextBox";
+            this.posFijaTextBox.ReadOnly = true;
             this.posFijaTextBox.Size = new System.Drawing.Size(462, 53);
             this.posFijaTextBox.TabIndex = 4;
             // 
@@ -187,6 +195,34 @@
             this.tabControl1.Size = new System.Drawing.Size(1185, 511);
             this.tabControl1.TabIndex = 0;
             // 
+            // TB_ExpresionRegularExplicita
+            // 
+            this.TB_ExpresionRegularExplicita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_ExpresionRegularExplicita.Location = new System.Drawing.Point(7, 163);
+            this.TB_ExpresionRegularExplicita.Multiline = true;
+            this.TB_ExpresionRegularExplicita.Name = "TB_ExpresionRegularExplicita";
+            this.TB_ExpresionRegularExplicita.ReadOnly = true;
+            this.TB_ExpresionRegularExplicita.Size = new System.Drawing.Size(462, 53);
+            this.TB_ExpresionRegularExplicita.TabIndex = 8;
+            // 
+            // LB_ExRExplicita
+            // 
+            this.LB_ExRExplicita.AutoSize = true;
+            this.LB_ExRExplicita.Location = new System.Drawing.Point(7, 144);
+            this.LB_ExRExplicita.Name = "LB_ExRExplicita";
+            this.LB_ExRExplicita.Size = new System.Drawing.Size(135, 13);
+            this.LB_ExRExplicita.TabIndex = 9;
+            this.LB_ExRExplicita.Text = "Expresión Regular Explicita";
+            // 
+            // LB_Posfija
+            // 
+            this.LB_Posfija.AutoSize = true;
+            this.LB_Posfija.Location = new System.Drawing.Point(7, 229);
+            this.LB_Posfija.Name = "LB_Posfija";
+            this.LB_Posfija.Size = new System.Drawing.Size(137, 13);
+            this.LB_Posfija.TabIndex = 10;
+            this.LB_Posfija.Text = "Expresión regular en Posfija";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,6 +256,9 @@
         private System.Windows.Forms.TextBox posFijaTextBox;
         private System.Windows.Forms.Button BT_SubirArchivo1;
         private System.Windows.Forms.Button BT_LimpiarTX1;
+        private System.Windows.Forms.Label LB_Posfija;
+        private System.Windows.Forms.Label LB_ExRExplicita;
+        private System.Windows.Forms.TextBox TB_ExpresionRegularExplicita;
     }
 }
 
