@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.TabPage tabPage2;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BT_LimpiarTX1 = new System.Windows.Forms.Button();
@@ -692,6 +693,7 @@
             this.ClientSize = new System.Drawing.Size(1202, 629);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "ProyectoCompiladores";
             tabPage2.ResumeLayout(false);
