@@ -116,8 +116,6 @@ namespace ProyectoCompiladores
             posFijaTextBox.Text = "";
         }
 
-
-
         private void InToPosBoton_Click(object sender, EventArgs e)
         {
             String posFija = "";

@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.TabPage tabPage2;
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.BT_LimpiarTX1 = new System.Windows.Forms.Button();
             this.BT_SubirArchivo1 = new System.Windows.Forms.Button();
             this.inFijaTextBox = new System.Windows.Forms.TextBox();
@@ -41,16 +42,10 @@
             this.TB_SubirArchivo = new System.Windows.Forms.TextBox();
             this.BT_SubirArchivoPrep = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-/*<<<<<<< Form-DEV-Axel
-            this.TB_ExpresionRegularExplicita = new System.Windows.Forms.TextBox();
-            this.LB_ExRExplicita = new System.Windows.Forms.Label();
-            this.LB_Posfija = new System.Windows.Forms.Label();
-=======
-  */
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button4 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -58,10 +53,10 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dataGrid_AFD = new System.Windows.Forms.DataGridView();
+            this.button_AFD = new System.Windows.Forms.Button();
             this.dataGrid_AFN = new System.Windows.Forms.DataGridView();
             this.button_AFN = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -71,10 +66,11 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button_AFD = new System.Windows.Forms.Button();
-            this.dataGrid_AFD = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
@@ -86,10 +82,9 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.button12 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.button13 = new System.Windows.Forms.Button();
-/*>>>>>>> Forms-DEV*/
+            this.LB_ExRExplicita = new System.Windows.Forms.Label();
+            this.TB_ExpresionRegularExplicita = new System.Windows.Forms.TextBox();
+            this.LB_Posfija = new System.Windows.Forms.Label();
             tabPage2 = new System.Windows.Forms.TabPage();
             tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -100,8 +95,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFN)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -122,14 +117,10 @@
             // 
             // groupBox1
             // 
-/*<<<<<<< Form-DEV-Axel
             this.groupBox1.Controls.Add(this.LB_Posfija);
-            this.groupBox1.Controls.Add(this.LB_ExRExplicita);
             this.groupBox1.Controls.Add(this.TB_ExpresionRegularExplicita);
-=======*/
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.LB_ExRExplicita);
             this.groupBox1.Controls.Add(this.label1);
-//>>>>>>> Forms-DEV
             this.groupBox1.Controls.Add(this.BT_LimpiarTX1);
             this.groupBox1.Controls.Add(this.BT_SubirArchivo1);
             this.groupBox1.Controls.Add(this.inFijaTextBox);
@@ -137,10 +128,21 @@
             this.groupBox1.Controls.Add(this.posFijaTextBox);
             this.groupBox1.Location = new System.Drawing.Point(15, 19);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(475, 304);
+            this.groupBox1.Size = new System.Drawing.Size(475, 370);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Análisis Léxico";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(109, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Expresión regular:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // BT_LimpiarTX1
             // 
@@ -172,11 +174,7 @@
             // 
             // InToPosBoton
             // 
-/*<<<<<<< Form-DEV-Axel
-            this.InToPosBoton.Location = new System.Drawing.Point(347, 81);
-=======*/
             this.InToPosBoton.Location = new System.Drawing.Point(347, 98);
-//>>>>>>> Forms-DEV
             this.InToPosBoton.Name = "InToPosBoton";
             this.InToPosBoton.Size = new System.Drawing.Size(115, 38);
             this.InToPosBoton.TabIndex = 5;
@@ -186,12 +184,7 @@
             // 
             // posFijaTextBox
             // 
-/*<<<<<<< Form-DEV-Axel
-            this.posFijaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.posFijaTextBox.Location = new System.Drawing.Point(7, 245);
-=======*/
-            this.posFijaTextBox.Location = new System.Drawing.Point(0, 223);
-//>>>>>>> Forms-DEV
+            this.posFijaTextBox.Location = new System.Drawing.Point(0, 300);
             this.posFijaTextBox.Multiline = true;
             this.posFijaTextBox.Name = "posFijaTextBox";
             this.posFijaTextBox.ReadOnly = true;
@@ -268,35 +261,6 @@
             this.tabControl1.Size = new System.Drawing.Size(1185, 511);
             this.tabControl1.TabIndex = 0;
             // 
-/*<<<<<<< Form-DEV-Axel
-            // TB_ExpresionRegularExplicita
-            // 
-            this.TB_ExpresionRegularExplicita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_ExpresionRegularExplicita.Location = new System.Drawing.Point(7, 163);
-            this.TB_ExpresionRegularExplicita.Multiline = true;
-            this.TB_ExpresionRegularExplicita.Name = "TB_ExpresionRegularExplicita";
-            this.TB_ExpresionRegularExplicita.ReadOnly = true;
-            this.TB_ExpresionRegularExplicita.Size = new System.Drawing.Size(462, 53);
-            this.TB_ExpresionRegularExplicita.TabIndex = 8;
-            // 
-            // LB_ExRExplicita
-            // 
-            this.LB_ExRExplicita.AutoSize = true;
-            this.LB_ExRExplicita.Location = new System.Drawing.Point(7, 144);
-            this.LB_ExRExplicita.Name = "LB_ExRExplicita";
-            this.LB_ExRExplicita.Size = new System.Drawing.Size(135, 13);
-            this.LB_ExRExplicita.TabIndex = 9;
-            this.LB_ExRExplicita.Text = "Expresión Regular Explicita";
-            // 
-            // LB_Posfija
-            // 
-            this.LB_Posfija.AutoSize = true;
-            this.LB_Posfija.Location = new System.Drawing.Point(7, 229);
-            this.LB_Posfija.Name = "LB_Posfija";
-            this.LB_Posfija.Size = new System.Drawing.Size(137, 13);
-            this.LB_Posfija.TabIndex = 10;
-            this.LB_Posfija.Text = "Expresión regular en Posfija";
-=======*/
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.groupBox2);
@@ -307,27 +271,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "2º avance";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Expresión regular:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 207);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Posfija:";
             // 
             // groupBox2
             // 
@@ -346,6 +289,23 @@
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Análisis Léxico";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 272);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(221, 195);
+            this.dataGridView1.TabIndex = 11;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(3, 232);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(176, 24);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "Construir AFN";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -411,23 +371,6 @@
             this.textBox3.Size = new System.Drawing.Size(462, 57);
             this.textBox3.TabIndex = 4;
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(3, 232);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(176, 24);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Construir AFN";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 272);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(221, 195);
-            this.dataGridView1.TabIndex = 11;
-            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.groupBox3);
@@ -458,6 +401,23 @@
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Análisis Léxico";
+            // 
+            // dataGrid_AFD
+            // 
+            this.dataGrid_AFD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_AFD.Location = new System.Drawing.Point(244, 272);
+            this.dataGrid_AFD.Name = "dataGrid_AFD";
+            this.dataGrid_AFD.Size = new System.Drawing.Size(221, 195);
+            this.dataGrid_AFD.TabIndex = 13;
+            // 
+            // button_AFD
+            // 
+            this.button_AFD.Location = new System.Drawing.Point(244, 232);
+            this.button_AFD.Name = "button_AFD";
+            this.button_AFD.Size = new System.Drawing.Size(176, 24);
+            this.button_AFD.TabIndex = 12;
+            this.button_AFD.Text = "Construir AFD";
+            this.button_AFD.UseVisualStyleBackColor = true;
             // 
             // dataGrid_AFN
             // 
@@ -539,23 +499,6 @@
             this.textBox5.Size = new System.Drawing.Size(462, 57);
             this.textBox5.TabIndex = 4;
             // 
-            // button_AFD
-            // 
-            this.button_AFD.Location = new System.Drawing.Point(244, 232);
-            this.button_AFD.Name = "button_AFD";
-            this.button_AFD.Size = new System.Drawing.Size(176, 24);
-            this.button_AFD.TabIndex = 12;
-            this.button_AFD.Text = "Construir AFD";
-            this.button_AFD.UseVisualStyleBackColor = true;
-            // 
-            // dataGrid_AFD
-            // 
-            this.dataGrid_AFD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_AFD.Location = new System.Drawing.Point(244, 272);
-            this.dataGrid_AFD.Name = "dataGrid_AFD";
-            this.dataGrid_AFD.Size = new System.Drawing.Size(221, 195);
-            this.dataGrid_AFD.TabIndex = 13;
-            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.groupBox4);
@@ -589,6 +532,33 @@
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Análisis Léxico";
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(512, 87);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(158, 38);
+            this.button13.TabIndex = 16;
+            this.button13.Text = "Validar";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(357, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Lexema:";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(360, 32);
+            this.textBox8.Multiline = true;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(310, 49);
+            this.textBox8.TabIndex = 14;
             // 
             // dataGridView2
             // 
@@ -687,33 +657,33 @@
             this.textBox7.Size = new System.Drawing.Size(310, 38);
             this.textBox7.TabIndex = 4;
             // 
-            // textBox8
+            // LB_ExRExplicita
             // 
-            this.textBox8.Location = new System.Drawing.Point(360, 32);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(310, 49);
-            this.textBox8.TabIndex = 14;
+            this.LB_ExRExplicita.AutoSize = true;
+            this.LB_ExRExplicita.Location = new System.Drawing.Point(6, 154);
+            this.LB_ExRExplicita.Name = "LB_ExRExplicita";
+            this.LB_ExRExplicita.Size = new System.Drawing.Size(135, 13);
+            this.LB_ExRExplicita.TabIndex = 10;
+            this.LB_ExRExplicita.Text = "Expresión Regular Explicita";
             // 
-            // label9
+            // TB_ExpresionRegularExplicita
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(357, 16);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(54, 13);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Lexema:";
+            this.TB_ExpresionRegularExplicita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_ExpresionRegularExplicita.Location = new System.Drawing.Point(0, 182);
+            this.TB_ExpresionRegularExplicita.Multiline = true;
+            this.TB_ExpresionRegularExplicita.Name = "TB_ExpresionRegularExplicita";
+            this.TB_ExpresionRegularExplicita.ReadOnly = true;
+            this.TB_ExpresionRegularExplicita.Size = new System.Drawing.Size(462, 53);
+            this.TB_ExpresionRegularExplicita.TabIndex = 11;
             // 
-            // button13
+            // LB_Posfija
             // 
-            this.button13.Location = new System.Drawing.Point(512, 87);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(158, 38);
-            this.button13.TabIndex = 16;
-            this.button13.Text = "Validar";
-            this.button13.UseVisualStyleBackColor = true;
-//>>>>>>> Forms-DEV
+            this.LB_Posfija.AutoSize = true;
+            this.LB_Posfija.Location = new System.Drawing.Point(3, 284);
+            this.LB_Posfija.Name = "LB_Posfija";
+            this.LB_Posfija.Size = new System.Drawing.Size(137, 13);
+            this.LB_Posfija.TabIndex = 12;
+            this.LB_Posfija.Text = "Expresión regular en Posfija";
             // 
             // Form1
             // 
@@ -737,8 +707,8 @@
             this.tabPage4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFN)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -769,7 +739,6 @@
 =======*/
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -809,7 +778,10 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.TextBox textBox7;
-//>>>>>>> Forms-DEV
+        private System.Windows.Forms.Label LB_Posfija;
+        private System.Windows.Forms.TextBox TB_ExpresionRegularExplicita;
+        private System.Windows.Forms.Label LB_ExRExplicita;
+        //>>>>>>> Forms-DEV
     }
 }
 
