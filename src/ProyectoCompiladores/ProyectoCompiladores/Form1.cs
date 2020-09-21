@@ -80,8 +80,8 @@ namespace ProyectoCompiladores
                 }
         */
 
-        static String alfabeto = "abcdefghijklmnñopqrstuvxyz0123456789";
-        static String op_Presedecia1 = "*+?.";//jerarquia 1
+        static String alfabeto = "abcdefghijklmnñopqrstuvxyz0123456789.";
+        static String op_Presedecia1 = "*+?";//jerarquia 1
         static String op_Presedecia2 = "&";//jerarquia 2
         static String op_Presedecia3 = "|";//jerarquia 3
         static List<string> Operadores = new List<String>() { op_Presedecia3, op_Presedecia2, op_Presedecia1 };
@@ -321,7 +321,7 @@ namespace ProyectoCompiladores
                     i += IndiceFinal - i;
                     //MessageBox.Show("La cadena va quedando así: " + Resultado);
                 }
-                else
+                else if(ExpresionRegular[i] != ']')
                 {
                     Resultado += ExpresionRegular[i];
                 }
