@@ -4,7 +4,7 @@
 ## Preparacion del proyecto(viernes 11 Septiembre)==>(*):
 Permitir que el usuario, a través de un control de carga de archivo (FileUpload, <input type="file">, etc.), seleccione un archivo  de texto (*.txt) e internamente procesarlo para finalmente mostrar el contenido en un control de entrada de texto (TextBox, <input type="text">, etc.).
 
-## 1º avance (Jueves 24 Septiembre)==>():
+## 1º avance (Jueves 24 Septiembre)==>(*):
 En una entrada de texto el usuario podrá capturar una expresión regular. Al dar clic en el botón de "Convertir a posfija" se llevará a cabo de manera interna la conversión y, se mostrará el resultado.
 El alfabeto sobre el que se trabajará es: Σ = { a, b, c, d, e, f, g, ... z, 0, 1, 2, 3, ... 9 }
 ### Ejemplo de interfaz:
