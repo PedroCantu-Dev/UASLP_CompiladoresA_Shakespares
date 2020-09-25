@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using System.Collections.Specialized;
+using System.Globalization;
 
 namespace ProyectoCompiladores
 {
@@ -121,11 +122,8 @@ namespace ProyectoCompiladores
             String posFija = "";
 
             Stack<char> pila = new Stack<char>();
-
-
             String infija = FormateoExR(inFijaTextBox.Text);
             //infija = desglosaCorchetes(infija);
-
             //variables de control para el primer while
             Boolean error = false;
             int contadorInfija = 0;
@@ -213,8 +211,8 @@ namespace ProyectoCompiladores
 
         private string FormateoExR(string ExpresionRegular)
         {
-            string ExRC = CambiaConcatenaciones(ExpresionRegular);
-            string Resultado = CambiaCorchetes(ExRC);
+            string ExRC = CambiaCorchetes(ExpresionRegular);
+            string Resultado = CambiaConcatenaciones(ExRC);
             TB_ExpresionRegularExplicita.Text = Resultado;
             return Resultado;
         }
@@ -224,10 +222,10 @@ namespace ProyectoCompiladores
             string Resultado = "";
             for(int i = 0; i < ExpresionRegular.Length - 1; i++)
             {
-                if(ExpresionRegular[i] == '[')
+                if (ExpresionRegular[i] == '[')
                 {
                     int IndiceFinal = ExpresionRegular.IndexOf(']', i);
-                    for(int z = i; z <= IndiceFinal; z++)
+                    for (int z = i; z <= IndiceFinal; z++)
                     {
                         Resultado += ExpresionRegular[z];
                     }
@@ -236,27 +234,39 @@ namespace ProyectoCompiladores
                 else
                 {
                     Resultado += ExpresionRegular[i];
-                    if(op_Presedecia1.Contains(ExpresionRegular[i]))
+                    if (op_Presedecia1.Contains(ExpresionRegular[i]))
                     {
-                        if(alfabeto.Contains(ExpresionRegular[i + 1]))
+                        if (alfabeto.Contains(ExpresionRegular[i + 1])) //(*&a)
                         {
                             Resultado += "&";
-                        } 
+                        }
+                        else if (ExpresionRegular[i + 1] == '[')
+                        {
+                            Resultado += "&";
+                        }
+                        else if(ExpresionRegular[i+1] == '(')
+                        {
+                            Resultado += "&";
+                        }
                     }
-                    else if (alfabeto.Contains(ExpresionRegular[i]) && ExpresionRegular[i+1] == '(')
+                    else if (alfabeto.Contains(ExpresionRegular[i]) && ExpresionRegular[i + 1] == '(') //a(b) = a&(b
                     {
                         Resultado += "&";
                     }
 
-                    else if(alfabeto.Contains(ExpresionRegular[i]) && alfabeto.Contains(ExpresionRegular[i + 1]))
+                    else if (alfabeto.Contains(ExpresionRegular[i]) && alfabeto.Contains(ExpresionRegular[i + 1])) // ab = a&b
                     {
                         Resultado += "&";
                     }
-                    else if(ExpresionRegular[i] == ')' && alfabeto.Contains(ExpresionRegular[i + 1]))
+                    else if (ExpresionRegular[i] == ')' && alfabeto.Contains(ExpresionRegular[i + 1])) //(a|b)&a
                     {
                         Resultado += "&";
                     }
-                    else if(alfabeto.Contains(ExpresionRegular[i]) && ExpresionRegular[i + 1] == '[')
+                    else if (alfabeto.Contains(ExpresionRegular[i]) && ExpresionRegular[i + 1] == '[') //a&[bc] )&(
+                    {
+                        Resultado += "&";
+                    }
+                    else if (ExpresionRegular[i] == ')' && ExpresionRegular[i + 1] == '(')
                     {
                         Resultado += "&";
                     }
@@ -274,10 +284,10 @@ namespace ProyectoCompiladores
             for (int i = 0; i < ExpresionRegular.Length; i++)
             {
                 
-                if (ExpresionRegular[i] == '[')
+                if (ExpresionRegular[i] == '[') //
                 {
                     int IndiceFinal = ExpresionRegular.IndexOf(']', i);
-                    if (ExpresionRegular.IndexOf('-', i) < IndiceFinal && ExpresionRegular.IndexOf('-', i) != -1) // En caso de que sea un rango de numeros. Ejemplo[0-5]
+                    if (ExpresionRegular.IndexOf('-', i) < IndiceFinal && ExpresionRegular.IndexOf('-', i) != -1) // En caso de que sea un rango de numeros y letras. Ejemplo[0-5][a-c]
                     {
                         int IndiceMedio = ExpresionRegular.IndexOf('-', i);
                         int NumeroDigInicial = ExpresionRegular.IndexOf('-', i) - i;
@@ -286,26 +296,49 @@ namespace ProyectoCompiladores
                         {
                             NumeroInicial += ExpresionRegular[i + z];
                         }
-                        //MessageBox.Show("Numero Inicial: " + NumeroInicial);
-                        int ValorInicial = int.Parse(NumeroInicial);
-                        int NumeroDigitos = IndiceFinal - IndiceMedio;
-                        int valorFinal;
-                        string Valor = "";
-                        for (int z = IndiceMedio + 1; z < IndiceFinal; z++)
-                        {
-                            Valor += ExpresionRegular[z];
-                        }
-                        valorFinal = int.Parse(Valor);
-                        //MessageBox.Show("El valor inicial es de: " + ValorInicial + "\nEl valor final es de: " + valorFinal);
-                        Resultado += '(';
-                        for (int j = ValorInicial; j <= valorFinal - 1; j++)
-                        {
-                            Resultado += j;
-                            Resultado += '|';
-                        }
-                        Resultado += valorFinal;
-                        Resultado += ')';
 
+                        int ValorInicial = 0;
+                        if (int.TryParse(NumeroInicial, out ValorInicial))
+                        {
+                            int NumeroDigitos = IndiceFinal - IndiceMedio;
+                            int valorFinal;
+                            string Valor = "";
+                            for (int z = IndiceMedio + 1; z < IndiceFinal; z++)
+                            {
+                                Valor += ExpresionRegular[z];
+                            }
+                            valorFinal = int.Parse(Valor);
+                            //MessageBox.Show("El valor inicial es de: " + ValorInicial + "\nEl valor final es de: " + valorFinal);
+                            Resultado += '(';
+                            for (int j = ValorInicial; j <= valorFinal - 1; j++)
+                            {
+                                Resultado += j;
+                                Resultado += '|';
+                            }
+                            Resultado += valorFinal;
+                            Resultado += ')';
+                        }
+                        else // En este caso contemplamos que sea un rango pero de cadenas.
+                        {
+                            string ValorFinal = "";
+                            for (int z = IndiceMedio + 1; z < IndiceFinal; z++)
+                            {
+                                ValorFinal += ExpresionRegular[z];
+                            }
+                            int IndiceInicialCad = alfabeto.IndexOf(NumeroInicial);
+                            int IndiceFinalCad = alfabeto.IndexOf(ValorFinal);
+                            if(IndiceFinalCad != -1 && IndiceInicialCad != -1)
+                            {
+                                Resultado += '(';
+                                for (int j = IndiceInicialCad; j <=IndiceFinalCad - 1; j++)
+                                {
+                                    Resultado += alfabeto[j];
+                                    Resultado += '|';
+                                }
+                                Resultado += alfabeto[IndiceFinalCad];
+                                Resultado += ')';
+                            }
+                        }
                     }
                     else // Si no es un rango de números. Ejemplo[0ABC]
                     {
@@ -336,6 +369,7 @@ namespace ProyectoCompiladores
             int i = 0;
             foreach (string c in Operadores)
             {
+                
                 if (c.Contains(c1))
                 {
                     indiceMayor = i;
@@ -355,12 +389,20 @@ namespace ProyectoCompiladores
                 i++;
             }
 
+            
             if (indiceMayor > indiceMenor)
             {
+                //MessageBox.Show(c1  + " : " + indiceMayor  + "\n" + " tiene mayor prioridad que: \n" + c2  + ":" + indiceMenor);
                 return true;
+            }
+            else if(indiceMayor < indiceMenor)
+            {
+                //MessageBox.Show(c2  + " : " + indiceMenor + "\n"  + " tiene mayor prioridad que: " + c1 + " : " + indiceMayor);
+                return false;
             }
             else
             {
+                //MessageBox.Show(c1 + " : " +  indiceMayor + "\n " + "tiene la misma prioridad que: " + c2 + " : " + indiceMenor );
                 return false;
             }
         }

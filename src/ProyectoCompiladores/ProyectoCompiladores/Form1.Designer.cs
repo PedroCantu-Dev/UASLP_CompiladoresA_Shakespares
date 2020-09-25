@@ -31,6 +31,9 @@
             System.Windows.Forms.TabPage tabPage2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.LB_Posfija = new System.Windows.Forms.Label();
+            this.TB_ExpresionRegularExplicita = new System.Windows.Forms.TextBox();
+            this.LB_ExRExplicita = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BT_LimpiarTX1 = new System.Windows.Forms.Button();
             this.BT_SubirArchivo1 = new System.Windows.Forms.Button();
@@ -83,9 +86,6 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.button12 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.LB_ExRExplicita = new System.Windows.Forms.Label();
-            this.TB_ExpresionRegularExplicita = new System.Windows.Forms.TextBox();
-            this.LB_Posfija = new System.Windows.Forms.Label();
             tabPage2 = new System.Windows.Forms.TabPage();
             tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -133,6 +133,34 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Análisis Léxico";
+            // 
+            // LB_Posfija
+            // 
+            this.LB_Posfija.AutoSize = true;
+            this.LB_Posfija.Location = new System.Drawing.Point(3, 254);
+            this.LB_Posfija.Name = "LB_Posfija";
+            this.LB_Posfija.Size = new System.Drawing.Size(137, 13);
+            this.LB_Posfija.TabIndex = 12;
+            this.LB_Posfija.Text = "Expresión regular en Posfija";
+            // 
+            // TB_ExpresionRegularExplicita
+            // 
+            this.TB_ExpresionRegularExplicita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_ExpresionRegularExplicita.Location = new System.Drawing.Point(0, 182);
+            this.TB_ExpresionRegularExplicita.Multiline = true;
+            this.TB_ExpresionRegularExplicita.Name = "TB_ExpresionRegularExplicita";
+            this.TB_ExpresionRegularExplicita.ReadOnly = true;
+            this.TB_ExpresionRegularExplicita.Size = new System.Drawing.Size(462, 53);
+            this.TB_ExpresionRegularExplicita.TabIndex = 11;
+            // 
+            // LB_ExRExplicita
+            // 
+            this.LB_ExRExplicita.AutoSize = true;
+            this.LB_ExRExplicita.Location = new System.Drawing.Point(6, 154);
+            this.LB_ExRExplicita.Name = "LB_ExRExplicita";
+            this.LB_ExRExplicita.Size = new System.Drawing.Size(135, 13);
+            this.LB_ExRExplicita.TabIndex = 10;
+            this.LB_ExRExplicita.Text = "Expresión Regular Explicita";
             // 
             // label1
             // 
@@ -185,7 +213,8 @@
             // 
             // posFijaTextBox
             // 
-            this.posFijaTextBox.Location = new System.Drawing.Point(0, 300);
+            this.posFijaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.posFijaTextBox.Location = new System.Drawing.Point(0, 279);
             this.posFijaTextBox.Multiline = true;
             this.posFijaTextBox.Name = "posFijaTextBox";
             this.posFijaTextBox.ReadOnly = true;
@@ -657,34 +686,6 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(310, 38);
             this.textBox7.TabIndex = 4;
-            // 
-            // LB_ExRExplicita
-            // 
-            this.LB_ExRExplicita.AutoSize = true;
-            this.LB_ExRExplicita.Location = new System.Drawing.Point(6, 154);
-            this.LB_ExRExplicita.Name = "LB_ExRExplicita";
-            this.LB_ExRExplicita.Size = new System.Drawing.Size(135, 13);
-            this.LB_ExRExplicita.TabIndex = 10;
-            this.LB_ExRExplicita.Text = "Expresión Regular Explicita";
-            // 
-            // TB_ExpresionRegularExplicita
-            // 
-            this.TB_ExpresionRegularExplicita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_ExpresionRegularExplicita.Location = new System.Drawing.Point(0, 182);
-            this.TB_ExpresionRegularExplicita.Multiline = true;
-            this.TB_ExpresionRegularExplicita.Name = "TB_ExpresionRegularExplicita";
-            this.TB_ExpresionRegularExplicita.ReadOnly = true;
-            this.TB_ExpresionRegularExplicita.Size = new System.Drawing.Size(462, 53);
-            this.TB_ExpresionRegularExplicita.TabIndex = 11;
-            // 
-            // LB_Posfija
-            // 
-            this.LB_Posfija.AutoSize = true;
-            this.LB_Posfija.Location = new System.Drawing.Point(3, 284);
-            this.LB_Posfija.Name = "LB_Posfija";
-            this.LB_Posfija.Size = new System.Drawing.Size(137, 13);
-            this.LB_Posfija.TabIndex = 12;
-            this.LB_Posfija.Text = "Expresión regular en Posfija";
             // 
             // Form1
             // 
