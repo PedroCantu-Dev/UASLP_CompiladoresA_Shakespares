@@ -49,45 +49,16 @@ namespace ProyectoCompiladores
         #endregion
 
         #region tab_1Avance
-        /*
 
-                EVALUACIÓN DE EXPRESIONES EN NOTACIÓN POSFIJA.
-
-                1. Inicializar una pila.
-                2. Apuntar al primer carácter de la expresión posfija.
-                while ( no ocurra un error && no sea fin de la expresión posfija )
-                {
-                    switch ( carácter )
-                    {
-                        Operando:
-                        Insertar en la pila;
-                        break;
-                        Operador:
-                        if ( si es “unario”)
-                        {
-                            Extraer el valor del tope de la pila y aplicar el operador.
-                            (Se produce un error en caso de no tener valor).
-                            Insertar el resultado en el nuevo tope de la pila.
-                        }
-                        else ( si es “binario”)
-                        {
-                            Extraer los 2 valores del tope de la pila y aplicar el operador.
-                            (Se produce un error en caso de no tener los 2 valores).
-                            Insertar el resultado en el nuevo tope de la pila.
-                        }
-                        break;
-                    }
-                    Apuntar al siguiente carácter de la expresión posfija.
-                }
-        */
-
-        static String alfabeto = "abcdefghijklmnñopqrstuvxyz0123456789.";
+        static String caracteresNumericos = "0123456789";
+        static String caracteresAlfabeticos = "abcdefghijklmnñopqrstuvxyz";
+        static String caracteresOtros = ".";
+        static String alfabeto = caracteresNumericos + caracteresAlfabeticos + caracteresOtros;
         static String op_Presedecia1 = "*+?";//jerarquia 1
         static String op_Presedecia2 = "&";//jerarquia 2
         static String op_Presedecia3 = "|";//jerarquia 3
         static List<string> Operadores = new List<String>() { op_Presedecia3, op_Presedecia2, op_Presedecia1 };
-        // static List<String> operadores = new List<String>(op_Presedecia1,op_Presedecia2,op_Presedecia3);
-
+ 
         static String op = op_Presedecia1 + op_Presedecia2 + op_Presedecia3;
 
         private void BT_SubirArchivo1_Click(object sender, EventArgs e)
@@ -119,17 +90,18 @@ namespace ProyectoCompiladores
 
         private void InToPosBoton_Click(object sender, EventArgs e)
         {
-            String posFija = "";
+            String posFija = "";//inicializa la posfija
 
             Stack<char> pila = new Stack<char>();
             String infija = FormateoExR(inFijaTextBox.Text);
             //infija = desglosaCorchetes(infija);
+
             //variables de control para el primer while
             Boolean error = false;
             int contadorInfija = 0;
             Boolean band = false;
 
-            if (infija == "")
+            if (infija == "")//si la expresion entrante esta vacia marca error
             {
                 error = true;
             }
@@ -141,9 +113,9 @@ namespace ProyectoCompiladores
 
                 switch (caracter)
                 {
-                    case ' ': //en caso de ser un espacio.
+                    case ' ': //en caso de ser un espaciolo ignora
                         break;
-                    case '\n':
+                    case '\n'://al final de la expresion
                         while (pila.Any())
                         {
                             if (pila.Peek() != '(' && pila.Peek() != ')')
@@ -276,16 +248,168 @@ namespace ProyectoCompiladores
             //MessageBox.Show("La cadena una vez hecho las concatenaciones pertinentes queda: " + Resultado);
             return Resultado;
         }
+/*------------------------------------------------------------------------------------------------------------------------------------------------*/
+        public string desglosaCorchetes(string ExpresionRegular)
+        {
+            string Resultado = "";
+
+            Stack<int> pilaDeIndices = new Stack<int>();//guarda los indices de los corchetes.
+
+            for (int i = 0; i < ExpresionRegular.Length; i++)
+            {
+                if (ExpresionRegular[i] == '[') //corchete izquierdo.
+                {
+                    pilaDeIndices.Push(i);                  
+                }
+                else if(ExpresionRegular[i] != ']')//corchete derecho.
+                {
+                    String subCadenaDeCorchetes = "(";
+                    if (pilaDeIndices.Any() == false)//si la pila esta vacia quiere decir que hay un signo ] de mas y retorna error.
+                    {
+                        throw new corcheteException("falta por lo menos un corchete izquierdo");
+                    }
+                    int indiceInicio = pilaDeIndices.Pop();
+
+                    if (ExpresionRegular.IndexOf('[', indiceInicio, i - indiceInicio))
+                    {
+                        int indiceMedio = ExpresionRegular.IndexOf('-', indiceInicio, i - indiceInicio);
+                    }
+                    else
+                    {
+
+                    }
+
+                    if(indiceMedio>0)//si encuentra un guion(-)
+                    {
+                        char primerCaracter = ' ';
+                        char SegundoCaracter = ' ';
+                        for(int z = indiceInicio; z < indiceMedio; z++)
+                        {
+                            switch (ExpresionRegular[z])
+                            {
+                                case ' ':
+                                    break;
+                                default:
+                                    if(primerCaracter != ' ')// ya se habia asignado antes
+                                    {
+                                        throw new corcheteException("Mas de un caracter entre corchete y guion");
+                                    }
+                                    primerCaracter = ExpresionRegular[z];
+                                    break;
+                            }
+
+                        }
+                        for (int z = indiceMedio; z < i; z++)
+                        {
+                            switch (ExpresionRegular[z])
+                            {
+                                case ' ':
+                                    break;
+                                default:
+                                    if (SegundoCaracter != ' ')// ya se habia asignado antes
+                                    {
+                                        throw new corcheteException("Mas de un caracter entre guion y corchete");
+                                    }
+                                    SegundoCaracter = ExpresionRegular[z];
+                                    break;
+                            }
+                        }
+                        //Caracteres Alfabeticos.
+                        if(caracteresAlfabeticos.Contains(primerCaracter) && caracteresAlfabeticos.Contains(SegundoCaracter))
+                        {
+                            if(caracteresAlfabeticos.IndexOf(primerCaracter) < caracteresAlfabeticos.IndexOf(SegundoCaracter))//el orden de caracteres es creciente
+                            {
+                                for(int z = caracteresAlfabeticos.IndexOf(primerCaracter); z <= caracteresAlfabeticos.IndexOf(SegundoCaracter); z++)
+                                {
+                                    if (z < caracteresAlfabeticos.IndexOf(SegundoCaracter))
+                                        subCadenaDeCorchetes += ExpresionRegular[z] + "|";
+                                    else
+                                        subCadenaDeCorchetes += ExpresionRegular[z];
+                                }
+                            }
+                            else
+                            {
+                                for (int z = caracteresAlfabeticos.IndexOf(primerCaracter); z >= caracteresAlfabeticos.IndexOf(SegundoCaracter); z--)
+                                {
+                                    if(z > caracteresAlfabeticos.IndexOf(SegundoCaracter))
+                                        subCadenaDeCorchetes += ExpresionRegular[z] + "|";
+                                    else
+                                        subCadenaDeCorchetes += ExpresionRegular[z];
+                                }
+                            }
+                        }
+                        //Caracteres Numericos.
+                        else if(caracteresNumericos.Contains(primerCaracter) && caracteresNumericos.Contains(SegundoCaracter))
+                        {
+                            if (caracteresNumericos.IndexOf(primerCaracter) < caracteresNumericos.IndexOf(SegundoCaracter))//el orden de caracteres es creciente
+                            {
+                                for (int z = caracteresNumericos.IndexOf(primerCaracter); z <= caracteresNumericos.IndexOf(SegundoCaracter); z++)
+                                {
+                                    if (z < caracteresNumericos.IndexOf(SegundoCaracter))
+                                        subCadenaDeCorchetes += ExpresionRegular[z] + "|";
+                                    else
+                                        subCadenaDeCorchetes += ExpresionRegular[z];
+                                }
+                            }
+                            else
+                            {
+                                for (int z = caracteresNumericos.IndexOf(primerCaracter); z >= caracteresNumericos.IndexOf(SegundoCaracter); z--)
+                                {
+                                    if (z > caracteresNumericos.IndexOf(SegundoCaracter))
+                                        subCadenaDeCorchetes += ExpresionRegular[z] + "|";
+                                    else
+                                        subCadenaDeCorchetes += ExpresionRegular[z];
+                                }
+                            }
+                        }
+                        //caracteres Combinados.
+                        else
+                        {
+                            throw new corcheteException("los caracteres entre corchetes no coinciden en tipo");
+                        }
+                        subCadenaDeCorchetes += ")";
+                    }
+                    else//es una secuencia de caracteres a los que se les aplica el operando de alternativas
+                    {
+                        for(int z = indiceInicio + 1; z < i - 1; z++)
+                        {
+                            if(alfabeto.Contains(ExpresionRegular[z]) || ExpresionRegular[z]== ' ' )
+                            {
+                                if(ExpresionRegular[z] != ' ')//ignora los espacios.
+                                {
+                                    if(z < i-1 )
+                                    {
+                                        subCadenaDeCorchetes += ExpresionRegular[z] + "|";
+                                    }
+                                    else
+                                    {
+                                        subCadenaDeCorchetes += ExpresionRegular[z] + ")";
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                throw new corcheteException("caracter invalido");
+                            }
+                        }    
+                    }
+
+                    //Resultado += ExpresionRegular[i];
+                }//if(ExpresionRegular[i] != ']')//corchete derecho(END).
+            }
+            return Resultado;
+        }
+/*-----------------------------------------------------------------------------------------------------------------------*/
 
         public string CambiaCorchetes(string ExpresionRegular)
         {
             string Resultado = "";
-            //MessageBox.Show("Expresion regular sin conversión: " + ExpresionRegular);
+
             for (int i = 0; i < ExpresionRegular.Length; i++)
             {
-                
                 if (ExpresionRegular[i] == '[') //
                 {
+
                     int IndiceFinal = ExpresionRegular.IndexOf(']', i);
                     if (ExpresionRegular.IndexOf('-', i) < IndiceFinal && ExpresionRegular.IndexOf('-', i) != -1) // En caso de que sea un rango de numeros y letras. Ejemplo[0-5][a-c]
                     {
@@ -327,10 +451,10 @@ namespace ProyectoCompiladores
                             }
                             int IndiceInicialCad = alfabeto.IndexOf(NumeroInicial);
                             int IndiceFinalCad = alfabeto.IndexOf(ValorFinal);
-                            if(IndiceFinalCad != -1 && IndiceInicialCad != -1)
+                            if (IndiceFinalCad != -1 && IndiceInicialCad != -1)
                             {
                                 Resultado += '(';
-                                for (int j = IndiceInicialCad; j <=IndiceFinalCad - 1; j++)
+                                for (int j = IndiceInicialCad; j <= IndiceFinalCad - 1; j++)
                                 {
                                     Resultado += alfabeto[j];
                                     Resultado += '|';
@@ -354,7 +478,7 @@ namespace ProyectoCompiladores
                     i += IndiceFinal - i;
                     //MessageBox.Show("La cadena va quedando así: " + Resultado);
                 }
-                else if(ExpresionRegular[i] != ']')
+                else if (ExpresionRegular[i] != ']')
                 {
                     Resultado += ExpresionRegular[i];
                 }
@@ -362,6 +486,9 @@ namespace ProyectoCompiladores
             //MessageBox.Show("Expresión regular explicita al desglosar los corchetes: " + Resultado);
             return Resultado;
         }
+
+
+
         private Boolean prioridad(char c1, char c2)
         {
             int indiceMayor = -1;
@@ -407,32 +534,19 @@ namespace ProyectoCompiladores
             }
         }
 
-
-        /*
-        private String desglosaCorchetes(String infija)
+        void compruebaAlfabeto(String expresion)
         {
-            String res;
-
-            List<int> corchetesIniciales = new List<int>();
-            List<int> corchetesFinales = new List<int>();
-
-            Boolean salir = false;
-            for (int i = s.IndexOf('['); i > -1; i = s.IndexOf('[', i + 1))
+            foreach(char caracter in expresion)
             {
-                corchetesIniciales.Add(i);
+                if(!alfabeto.Contains(caracter) && !op.Contains(caracter))
+                {
+                    throw new alfabetoException("Almenos un caracter de la Expresion no corresponde con el alfabeto");
+                }
             }
-            for (int i = s.IndexOf(']'); i > -1; i = s.IndexOf(']', i + 1))
-            {
-                corchetesFinales.Add(i);
-            }
-
-            if (corchetesFinales.Count() != corchetesFinales.Count())
-            {
-                return "";
-            }
-
+                
         }
-        */
+
+        
         #endregion
 
         #region tab_3avance
@@ -447,14 +561,5 @@ namespace ProyectoCompiladores
         #region tab_6avance
         #endregion
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
     }//Forms END
 }//namespace END
