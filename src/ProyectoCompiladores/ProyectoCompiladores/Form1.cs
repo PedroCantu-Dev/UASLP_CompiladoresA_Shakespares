@@ -432,7 +432,7 @@ namespace ProyectoCompiladores
             }
             while(expresionesResultantes.Any() == true)
             {
-                resultado = expresionesResultantes.Pop()
+                resultado = expresionesResultantes.Pop();
             }
 
             return resultado;
