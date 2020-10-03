@@ -49,14 +49,14 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button4 = new System.Windows.Forms.Button();
+            this.BT_ConstruirAFN = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.BT_LimpiarTexto2 = new System.Windows.Forms.Button();
+            this.BT_SubirArchivo2 = new System.Windows.Forms.Button();
+            this.TB_ExpresionR2 = new System.Windows.Forms.TextBox();
+            this.BT_ConversionPosfija2 = new System.Windows.Forms.Button();
+            this.TB_Posfija2 = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGrid_AFD = new System.Windows.Forms.DataGridView();
@@ -304,14 +304,14 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Controls.Add(this.button4);
+            this.groupBox2.Controls.Add(this.BT_ConstruirAFN);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.BT_LimpiarTexto2);
+            this.groupBox2.Controls.Add(this.BT_SubirArchivo2);
+            this.groupBox2.Controls.Add(this.TB_ExpresionR2);
+            this.groupBox2.Controls.Add(this.BT_ConversionPosfija2);
+            this.groupBox2.Controls.Add(this.TB_Posfija2);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(475, 473);
@@ -327,14 +327,15 @@
             this.dataGridView1.Size = new System.Drawing.Size(221, 195);
             this.dataGridView1.TabIndex = 11;
             // 
-            // button4
+            // BT_ConstruirAFN
             // 
-            this.button4.Location = new System.Drawing.Point(3, 232);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(176, 24);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Construir AFN";
-            this.button4.UseVisualStyleBackColor = true;
+            this.BT_ConstruirAFN.Location = new System.Drawing.Point(3, 232);
+            this.BT_ConstruirAFN.Name = "BT_ConstruirAFN";
+            this.BT_ConstruirAFN.Size = new System.Drawing.Size(176, 24);
+            this.BT_ConstruirAFN.TabIndex = 10;
+            this.BT_ConstruirAFN.Text = "Construir AFN";
+            this.BT_ConstruirAFN.UseVisualStyleBackColor = true;
+            this.BT_ConstruirAFN.Click += new System.EventHandler(this.BT_ConstruirAFN_Click);
             // 
             // label3
             // 
@@ -356,48 +357,51 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Expresión regular:";
             // 
-            // button1
+            // BT_LimpiarTexto2
             // 
-            this.button1.Location = new System.Drawing.Point(115, 98);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 40);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Limpiar Texto";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BT_LimpiarTexto2.Location = new System.Drawing.Point(115, 98);
+            this.BT_LimpiarTexto2.Name = "BT_LimpiarTexto2";
+            this.BT_LimpiarTexto2.Size = new System.Drawing.Size(109, 40);
+            this.BT_LimpiarTexto2.TabIndex = 7;
+            this.BT_LimpiarTexto2.Text = "Limpiar Texto";
+            this.BT_LimpiarTexto2.UseVisualStyleBackColor = true;
+            this.BT_LimpiarTexto2.Click += new System.EventHandler(this.BT_LimpiarTexto2_Click);
             // 
-            // button2
+            // BT_SubirArchivo2
             // 
-            this.button2.Location = new System.Drawing.Point(0, 98);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 40);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Subir Archivo";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BT_SubirArchivo2.Location = new System.Drawing.Point(0, 98);
+            this.BT_SubirArchivo2.Name = "BT_SubirArchivo2";
+            this.BT_SubirArchivo2.Size = new System.Drawing.Size(109, 40);
+            this.BT_SubirArchivo2.TabIndex = 6;
+            this.BT_SubirArchivo2.Text = "Subir Archivo";
+            this.BT_SubirArchivo2.UseVisualStyleBackColor = true;
+            this.BT_SubirArchivo2.Click += new System.EventHandler(this.BT_SubirArchivo2_Click);
             // 
-            // textBox2
+            // TB_ExpresionR2
             // 
-            this.textBox2.Location = new System.Drawing.Point(0, 32);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(462, 49);
-            this.textBox2.TabIndex = 3;
+            this.TB_ExpresionR2.Location = new System.Drawing.Point(0, 32);
+            this.TB_ExpresionR2.Multiline = true;
+            this.TB_ExpresionR2.Name = "TB_ExpresionR2";
+            this.TB_ExpresionR2.Size = new System.Drawing.Size(462, 49);
+            this.TB_ExpresionR2.TabIndex = 3;
             // 
-            // button3
+            // BT_ConversionPosfija2
             // 
-            this.button3.Location = new System.Drawing.Point(347, 98);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(115, 38);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Convertir a posfija";
-            this.button3.UseVisualStyleBackColor = true;
+            this.BT_ConversionPosfija2.Location = new System.Drawing.Point(347, 98);
+            this.BT_ConversionPosfija2.Name = "BT_ConversionPosfija2";
+            this.BT_ConversionPosfija2.Size = new System.Drawing.Size(115, 38);
+            this.BT_ConversionPosfija2.TabIndex = 5;
+            this.BT_ConversionPosfija2.Text = "Convertir a posfija";
+            this.BT_ConversionPosfija2.UseVisualStyleBackColor = true;
+            this.BT_ConversionPosfija2.Click += new System.EventHandler(this.BT_ConversionPosfija2_Click);
             // 
-            // textBox3
+            // TB_Posfija2
             // 
-            this.textBox3.Location = new System.Drawing.Point(0, 169);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(462, 57);
-            this.textBox3.TabIndex = 4;
+            this.TB_Posfija2.Location = new System.Drawing.Point(0, 169);
+            this.TB_Posfija2.Multiline = true;
+            this.TB_Posfija2.Name = "TB_Posfija2";
+            this.TB_Posfija2.Size = new System.Drawing.Size(462, 57);
+            this.TB_Posfija2.TabIndex = 4;
             // 
             // tabPage4
             // 
@@ -743,12 +747,12 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button BT_LimpiarTexto2;
+        private System.Windows.Forms.Button BT_SubirArchivo2;
+        private System.Windows.Forms.TextBox TB_ExpresionR2;
+        private System.Windows.Forms.Button BT_ConversionPosfija2;
+        private System.Windows.Forms.TextBox TB_Posfija2;
+        private System.Windows.Forms.Button BT_ConstruirAFN;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.GroupBox groupBox3;

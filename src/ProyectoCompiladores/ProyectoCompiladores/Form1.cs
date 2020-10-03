@@ -63,6 +63,11 @@ namespace ProyectoCompiladores
 
         private void BT_SubirArchivo1_Click(object sender, EventArgs e)
         {
+            inFijaTextBox.Text = SubirArchivo();
+        }
+
+        private string SubirArchivo()
+        {
             OpenFileDialog VentanaCargaArchivo = new OpenFileDialog();
             VentanaCargaArchivo.InitialDirectory = "c:\\";
             VentanaCargaArchivo.Filter = "Archivo de Texto (*.txt)|*.txt";
@@ -78,8 +83,9 @@ namespace ProyectoCompiladores
                     CadenaAux += "\n";
                     CadenaTextBox += CadenaAux;
                 }
-                inFijaTextBox.Text = CadenaTextBox;
+                return CadenaTextBox;
             }
+            return null;
         }
         private void BT_LimpiarTX1_Click(object sender, EventArgs e)
         {
@@ -90,10 +96,15 @@ namespace ProyectoCompiladores
 
         private void InToPosBoton_Click(object sender, EventArgs e)
         {
+            posFijaTextBox.Text = ConversionPosfija(inFijaTextBox.Text);
+        }
+
+        private string ConversionPosfija(string Infija)
+        {
             String posFija = "";//inicializa la posfija
 
             Stack<char> pila = new Stack<char>();
-            String infija = FormateoExR(inFijaTextBox.Text);
+            String infija = FormateoExR(Infija);
             //infija = desglosaCorchetes(infija);
 
             //variables de control para el primer while
@@ -178,7 +189,7 @@ namespace ProyectoCompiladores
                 }
             }
 
-            posFijaTextBox.Text = posFija;
+            return posFija;
         }
 
         private string FormateoExR(string ExpresionRegular)
@@ -654,7 +665,31 @@ namespace ProyectoCompiladores
                 
         }
 
-        
+
+        #endregion
+
+        #region tab_2avance
+        private void BT_SubirArchivo2_Click(object sender, EventArgs e)
+        {
+            TB_ExpresionR2.Text = SubirArchivo();
+        }
+
+        private void BT_LimpiarTexto2_Click(object sender, EventArgs e)
+        {
+            TB_Posfija2.Text = "";
+            TB_ExpresionR2.Text = "";
+        }
+
+        private void BT_ConversionPosfija2_Click(object sender, EventArgs e)
+        {
+            TB_Posfija2.Text = ConversionPosfija(TB_ExpresionR2.Text);
+        }
+
+        private void BT_ConstruirAFN_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #endregion
 
         #region tab_3avance
@@ -669,5 +704,6 @@ namespace ProyectoCompiladores
         #region tab_6avance
         #endregion
 
+        
     }//Forms END
 }//namespace END
