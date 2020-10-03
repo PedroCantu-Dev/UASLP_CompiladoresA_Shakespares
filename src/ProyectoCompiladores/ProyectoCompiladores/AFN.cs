@@ -43,16 +43,16 @@ namespace ProyectoCompiladores
         }
 
         /*agrega un nuevo estado de inicio y uno de aceptacion con una transicion*/
-        public void addEstado()
+        public void addTransicion(char transision)
         {
             if(inicial == null && final == null)
             {
-                inicial = new Estado(0,alfabeto);
-                final = new Estado(1,alfabeto);
+                inicial = new Estado(0,0,alfabeto);
+                final = new Estado(1,2,alfabeto);
             }
             else
             {
-                 inicial = new Estado(final.)
+               
             }
             //Estado inicial = new Estado(,);
         }
@@ -60,17 +60,61 @@ namespace ProyectoCompiladores
         /*Agrega un nuevo estado final y un nuevo estado inicial*/
         public void addCerraduraPositiva()
         {
+            this.sumaUnoAEstados();//los estados se recorren en indice
+            
+            Estado inicialAnterior = inicial;
+            inicialAnterior.cambiaTipo(1);
+            inicial = new Estado(0,0, alfabeto);//nuevo estado inicial
+            estados.Insert(0, inicial);//agrega el nuevo estado inicial al principio de la lista
+                   
+            Estado finalAnterior = final;
+            finalAnterior.cambiaTipo(1);
+            final = new Estado(final.Index + 1, 2, alfabeto);
+            estados.Add(final);//agrega el nuevo estado final a la lista
 
+            inicial.addTransision('ε',inicialAnterior,alfabeto);            
+            finalAnterior.addTransision('ε', final, alfabeto);
+            finalAnterior.addTransision('ε', inicialAnterior, alfabeto);
         }
 
         public void addCeroOUnaInstancia()
         {
+            this.sumaUnoAEstados();//los estados se recorren en indice
+
+            Estado inicialAnterior = inicial;
+            inicialAnterior.cambiaTipo(1);
+            inicial = new Estado(0, 0, alfabeto);//nuevo estado inicial
+            estados.Insert(0, inicial);//agrega el nuevo estado inicial al principio de la lista
+
+            Estado finalAnterior = final;
+            finalAnterior.cambiaTipo(1);
+            final = new Estado(final.Index + 1, 2, alfabeto);
+            estados.Add(final);//agrega el nuevo estado final a la lista
+
+            inicial.addTransision('ε', inicialAnterior, alfabeto);
+            finalAnterior.addTransision('ε', final, alfabeto);
+            inicial.addTransision('ε', final, alfabeto);
 
         }
 
         public void daddCerraduraDeKleen()
         {
+            this.sumaUnoAEstados();//los estados se recorren en indice
 
+            Estado inicialAnterior = inicial;
+            inicialAnterior.cambiaTipo(1);
+            inicial = new Estado(0, 0, alfabeto);//nuevo estado inicial
+            estados.Insert(0, inicial);//agrega el nuevo estado inicial al principio de la lista
+
+            Estado finalAnterior = final;
+            finalAnterior.cambiaTipo(1);
+            final = new Estado(final.Index + 1, 2, alfabeto);
+            estados.Add(final);//agrega el nuevo estado final a la lista
+
+            inicial.addTransision('ε', inicialAnterior, alfabeto);
+            finalAnterior.addTransision('ε', final, alfabeto);
+            finalAnterior.addTransision('ε', inicialAnterior, alfabeto);
+            inicial.addTransision('ε', final, alfabeto);
         }
 
         public void addAlternativas()
@@ -83,5 +127,14 @@ namespace ProyectoCompiladores
         {
 
         }
+
+        public void sumaUnoAEstados()
+        {
+            foreach(Estado estado in estados)
+            {
+                estado.sumaUnoAlIndice();
+            }
+        }
+
     }
 }
