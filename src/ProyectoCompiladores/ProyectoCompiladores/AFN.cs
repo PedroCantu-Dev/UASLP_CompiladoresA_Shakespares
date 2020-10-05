@@ -55,18 +55,18 @@ namespace ProyectoCompiladores
                 {
                     if (OperadoresUnarios.Contains(c))
                     {
-                        MessageBox.Show("Estoy haciendo una operacion unaria");
+                        //MessageBox.Show("Estoy haciendo una operacion unaria");
                         Operando O = PilaOperandos.Pop();
                         switch (c)
                         {
                             case '*':
-                                Resultado = addCerraduraDeKleen();
+                                Resultado = addCerraduraDeKleen(O);
                                 break;
                             case '+':
-                                Resultado = addCerraduraPositiva();
+                                Resultado = addCerraduraPositiva(O);
                                 break;
                             case '?':
-                                Resultado = addCeroOUnaInstancia();
+                                Resultado = addCeroOUnaInstancia(O);
                                 break;
                         }
                         //MessageBoxResultadoOperacion(Resultado);
@@ -74,7 +74,7 @@ namespace ProyectoCompiladores
                     }
                     else if(OperadoresBinarios.Contains(c))
                     {
-                        MessageBox.Show("Estoy haciendo una operacion binaria");
+                        //MessageBox.Show("Estoy haciendo una operacion binaria");
                         Operando Operando2 = PilaOperandos.Pop();
                         Operando Operando1 = PilaOperandos.Pop();
                         /*MessageBox.Show("Operando 1 tiene : " + Operando1.EstadosOperando.Count + "\n" +
@@ -88,7 +88,7 @@ namespace ProyectoCompiladores
                                 Resultado = addAlternativas(Operando1, Operando2);
                                 break;
                         }
-                        //MessageBoxResultadoOperacion(Resultado);
+                        MessageBoxResultadoOperacion(Resultado);
                         PilaOperandos.Push(Resultado);
                     }
                 }
@@ -121,7 +121,7 @@ namespace ProyectoCompiladores
                 if(e.tipo != 2)
                 {
                     c += "Estado: " + e.Index + "\n";
-                    c += "\tCon sus transiciones: \n\n" ;
+                    c += "\tTiene " + e.Transiciones.Count + " transiciones: \n\n" ;
                     foreach (Transicion t in e.Transiciones)
                     {
                         c += "\tTransición con simbolo " + t.Simbolo + " hacia: " + t.IdEstadoDestino + "\n";
@@ -139,6 +139,7 @@ namespace ProyectoCompiladores
 
         public Operando addConcatenacion(Operando Op1, Operando Op2)
         {
+            //MessageBox.Show("Agregando concatenacion desde: " + +Op1.EstadosOperando[0].Index + " hasta : " + Op2.EstadosOperando[0].Index);
             Operando NuevoOperando = new Operando(new List<Estado>()); // Creamos el nuevo operando.
             int IndiceEstadoAceptacionOp1 = Op1.EstadosOperando[Op1.CuentaEstados() - 1].Index; // Obtenemos el indice de aceptación del operando número 1.
             char SimboloTransicion = Op1.ObtenSimboloTransicion(Op1.EstadosOperando[Op1.CuentaEstados() - 2].Index, // Obtenemos el simbolo que va desde el penultimo estado del operando 1 hasta su estado de aceptación. 
@@ -166,12 +167,57 @@ namespace ProyectoCompiladores
         public Operando addAlternativas(Operando Op1, Operando Op2)
         {
             Operando NuevoOperando = new Operando(new List<Estado>()); // Creamos el nuevo operando que se va a insertar en la pila. 
-            
-            return null;
+            int IndiceNuevoInicio= Op1.EstadosOperando[0].Index;
+            Op1.IncrementaIndicesEstados();
+            Op2.IncrementaIndicesEstados();
+            Op1.EstadosOperando[Op1.CuentaEstados() - 1].cambiaTipo(1); // Cambiamos el tipo del estado de aceptación del segundo operando.
+            Op2.EstadosOperando[Op2.CuentaEstados() - 1].cambiaTipo(1); // Cambiamos el tipo del estado de aceptación del segundo operando.
+            ContadorEstados = Op2.EstadosOperando[Op2.CuentaEstados() - 1].Index + 1;
+            Estado NuevoInicio = new Estado(IndiceNuevoInicio,0);
+            Estado NuevoFinal = new Estado(ContadorEstados, 2);
+            ContadorEstados++;
+            NuevoInicio.addTransicion('ε', Op1.GetEstado(0).Index);
+            NuevoInicio.addTransicion('ε', Op2.GetEstado(0).Index);
+            Op1.GetEstado(Op1.CuentaEstados() - 1).addTransicion('ε', NuevoFinal.Index);
+            Op2.GetEstado(Op2.CuentaEstados() - 1).addTransicion('ε', NuevoFinal.Index);
+
+            NuevoOperando.EstadosOperando.Add(NuevoInicio);
+            foreach(Estado e in Op1.EstadosOperando)
+            {
+                NuevoOperando.EstadosOperando.Add(e);
+            }
+
+            foreach (Estado e in Op2.EstadosOperando)
+            {
+                NuevoOperando.EstadosOperando.Add(e);
+            }
+            NuevoOperando.EstadosOperando.Add(NuevoFinal);
+            return NuevoOperando;
         }
 
-        public Operando addCerraduraPositiva()
+        public Operando addCerraduraPositiva(Operando Op1)
         {
+            Operando NuevoOperando = new Operando(new List<Estado>());
+
+            int IndexNuevo = Op1.GetEstado(0).Index;
+            Op1.IncrementaIndicesEstados();
+            Op1.GetEstado(0).cambiaTipo(1);
+            Op1.GetEstado(Op1.CuentaEstados() - 1).cambiaTipo(1);
+            Estado NuevoInicio = new Estado(IndexNuevo, 0);
+            ContadorEstados = Op1.GetEstado(Op1.CuentaEstados() - 1).Index + 1;
+            Estado NuevoFinal = new Estado(ContadorEstados, 2);
+            ContadorEstados++;
+            NuevoInicio.addTransicion('ε', Op1.GetEstado(0).Index);
+            Op1.GetEstado(Op1.CuentaEstados() - 1).addTransicion('ε', Op1.GetEstado(0).Index);
+            Op1.GetEstado(Op1.CuentaEstados() - 1).addTransicion('ε', NuevoFinal.Index);
+
+            NuevoOperando.EstadosOperando.Add(NuevoInicio);
+            foreach (Estado e in Op1.EstadosOperando)
+            {
+                NuevoOperando.EstadosOperando.Add(e);
+            }
+            NuevoOperando.EstadosOperando.Add(NuevoFinal);
+            return NuevoOperando;
             /*
             this.sumaUnoAEstados();//los estados se recorren en indice
             
@@ -188,11 +234,31 @@ namespace ProyectoCompiladores
             inicial.addTransicion('ε',inicialAnterior,alfabeto);            
             finalAnterior.addTransicion('ε', final, alfabeto);
             finalAnterior.addTransicion('ε', inicialAnterior, alfabeto);*/
-            return null;
         }
 
-        public Operando addCeroOUnaInstancia()
+        public Operando addCeroOUnaInstancia(Operando Op1)
         {
+            Operando NuevoOperando = new Operando(new List<Estado>());
+
+            int IndexNuevo = Op1.GetEstado(0).Index;
+            Op1.IncrementaIndicesEstados();
+            Op1.GetEstado(0).cambiaTipo(1);
+            Op1.GetEstado(Op1.CuentaEstados() - 1).cambiaTipo(1);
+            Estado NuevoInicio = new Estado(IndexNuevo, 0);
+            ContadorEstados = Op1.GetEstado(Op1.CuentaEstados() - 1).Index + 1;
+            Estado NuevoFinal = new Estado(ContadorEstados, 2);
+            ContadorEstados++;
+            NuevoInicio.addTransicion('ε', Op1.GetEstado(0).Index);
+            NuevoInicio.addTransicion('ε', NuevoFinal.Index);
+            Op1.GetEstado(Op1.CuentaEstados() - 1).addTransicion('ε', NuevoFinal.Index);
+
+            NuevoOperando.EstadosOperando.Add(NuevoInicio);
+            foreach (Estado e in Op1.EstadosOperando)
+            {
+                NuevoOperando.EstadosOperando.Add(e);
+            }
+            NuevoOperando.EstadosOperando.Add(NuevoFinal);
+            return NuevoOperando;
             /*
             this.sumaUnoAEstados();//los estados se recorren en indice
 
@@ -210,11 +276,31 @@ namespace ProyectoCompiladores
             finalAnterior.addTransicion('ε', final, alfabeto);
             inicial.addTransicion('ε', final, alfabeto);
             */
-            return null;
         }
 
-        public Operando addCerraduraDeKleen()
+        public Operando addCerraduraDeKleen(Operando Op1)
         {
+            Operando NuevoOperando = new Operando(new List<Estado>());
+
+            int IndexNuevo = Op1.GetEstado(0).Index;
+            Op1.IncrementaIndicesEstados();
+            Op1.GetEstado(0).cambiaTipo(1);
+            Op1.GetEstado(Op1.CuentaEstados() - 1).cambiaTipo(1);
+            Estado NuevoInicio = new Estado(IndexNuevo, 0);
+            ContadorEstados = Op1.GetEstado(Op1.CuentaEstados() - 1).Index + 1;
+            Estado NuevoFinal = new Estado(ContadorEstados, 2);
+            ContadorEstados++;
+            NuevoInicio.addTransicion('ε', Op1.GetEstado(0).Index);
+            NuevoInicio.addTransicion('ε', NuevoFinal.Index);
+            Op1.GetEstado(Op1.CuentaEstados() - 1).addTransicion('ε', Op1.GetEstado(0).Index);
+            Op1.GetEstado(Op1.CuentaEstados() - 1).addTransicion('ε', NuevoFinal.Index);
+
+            NuevoOperando.EstadosOperando.Add(NuevoInicio);
+            foreach(Estado e in Op1.EstadosOperando)
+            {
+                NuevoOperando.EstadosOperando.Add(e);
+            }
+            NuevoOperando.EstadosOperando.Add(NuevoFinal);
             /*
             this.sumaUnoAEstados();//los estados se recorren en indice
 
@@ -233,7 +319,7 @@ namespace ProyectoCompiladores
             finalAnterior.addTransicion('ε', inicialAnterior, alfabeto);
             inicial.addTransicion('ε', final, alfabeto);
             */
-            return null;
+            return NuevoOperando;
         }
         public void sumaUnoAEstados()
         {

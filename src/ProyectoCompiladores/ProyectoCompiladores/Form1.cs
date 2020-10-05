@@ -59,7 +59,7 @@ namespace ProyectoCompiladores
         static String op_Presedecia2 = "&";//jerarquia 2
         static String op_Presedecia3 = "|";//jerarquia 3
         static List<string> Operadores = new List<String>() { op_Presedecia3, op_Presedecia2, op_Presedecia1 };
- 
+
         static String op = op_Presedecia1 + op_Presedecia2 + op_Presedecia3;
 
         private void BT_SubirArchivo1_Click(object sender, EventArgs e)
@@ -204,7 +204,7 @@ namespace ProyectoCompiladores
         private string CambiaConcatenaciones(string ExpresionRegular)
         {
             string Resultado = "";
-            for(int i = 0; i < ExpresionRegular.Length - 1; i++)
+            for (int i = 0; i < ExpresionRegular.Length - 1; i++)
             {
                 if (ExpresionRegular[i] == '[')
                 {
@@ -228,7 +228,7 @@ namespace ProyectoCompiladores
                         {
                             Resultado += "&";
                         }
-                        else if(ExpresionRegular[i+1] == '(')
+                        else if (ExpresionRegular[i + 1] == '(')
                         {
                             Resultado += "&";
                         }
@@ -260,178 +260,178 @@ namespace ProyectoCompiladores
             //MessageBox.Show("La cadena una vez hecho las concatenaciones pertinentes queda: " + Resultado);
             return Resultado;
         }
-/*------------------------------------------------------------------------------------------------------------------------------------------------
-        public string desglosaCorchetes(string ExpresionRegular)
-        {
-            string Resultado = "";
-
-            Stack<int> pilaDeIndices = new Stack<int>();//guarda los indices de los corchetes.
-
-            for (int i = 0; i < ExpresionRegular.Length; i++)
-            {
-                if (ExpresionRegular[i] == '[') //corchete izquierdo.
+        /*------------------------------------------------------------------------------------------------------------------------------------------------
+                public string desglosaCorchetes(string ExpresionRegular)
                 {
-                    pilaDeIndices.Push(i);                  
+                    string Resultado = "";
+
+                    Stack<int> pilaDeIndices = new Stack<int>();//guarda los indices de los corchetes.
+
+                    for (int i = 0; i < ExpresionRegular.Length; i++)
+                    {
+                        if (ExpresionRegular[i] == '[') //corchete izquierdo.
+                        {
+                            pilaDeIndices.Push(i);                  
+                        }
+                        else if(ExpresionRegular[i] != ']')//corchete derecho.
+                        {
+                            String subCadenaDeCorchetes = "(";
+                            if (pilaDeIndices.Any() == false)//si la pila esta vacia quiere decir que hay un signo ] de mas y retorna error.
+                            {
+                                throw new corcheteException("falta por lo menos un corchete izquierdo");
+                            }
+                            int indiceInicio = pilaDeIndices.Pop();
+
+                            if (ExpresionRegular.IndexOf('[', indiceInicio, i - indiceInicio))
+                            {
+                                int indiceMedio = ExpresionRegular.IndexOf('-', indiceInicio, i - indiceInicio);
+                            }
+                            else
+                            {
+
+                            }
+
+                            if(indiceMedio>0)//si encuentra un guion(-)
+                            {
+                                char primerCaracter = ' ';
+                                char SegundoCaracter = ' ';
+                                for(int z = indiceInicio; z < indiceMedio; z++)
+                                {
+                                    switch (ExpresionRegular[z])
+                                    {
+                                        case ' ':
+                                            break;
+                                        default:
+                                            if(primerCaracter != ' ')// ya se habia asignado antes
+                                            {
+                                                throw new corcheteException("Mas de un caracter entre corchete y guion");
+                                            }
+                                            primerCaracter = ExpresionRegular[z];
+                                            break;
+                                    }
+
+                                }
+                                for (int z = indiceMedio; z < i; z++)
+                                {
+                                    switch (ExpresionRegular[z])
+                                    {
+                                        case ' ':
+                                            break;
+                                        default:
+                                            if (SegundoCaracter != ' ')// ya se habia asignado antes
+                                            {
+                                                throw new corcheteException("Mas de un caracter entre guion y corchete");
+                                            }
+                                            SegundoCaracter = ExpresionRegular[z];
+                                            break;
+                                    }
+                                }
+                                //Caracteres Alfabeticos.
+                                if(caracteresAlfabeticos.Contains(primerCaracter) && caracteresAlfabeticos.Contains(SegundoCaracter))
+                                {
+                                    if(caracteresAlfabeticos.IndexOf(primerCaracter) < caracteresAlfabeticos.IndexOf(SegundoCaracter))//el orden de caracteres es creciente
+                                    {
+                                        for(int z = caracteresAlfabeticos.IndexOf(primerCaracter); z <= caracteresAlfabeticos.IndexOf(SegundoCaracter); z++)
+                                        {
+                                            if (z < caracteresAlfabeticos.IndexOf(SegundoCaracter))
+                                                subCadenaDeCorchetes += ExpresionRegular[z] + "|";
+                                            else
+                                                subCadenaDeCorchetes += ExpresionRegular[z];
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (int z = caracteresAlfabeticos.IndexOf(primerCaracter); z >= caracteresAlfabeticos.IndexOf(SegundoCaracter); z--)
+                                        {
+                                            if(z > caracteresAlfabeticos.IndexOf(SegundoCaracter))
+                                                subCadenaDeCorchetes += ExpresionRegular[z] + "|";
+                                            else
+                                                subCadenaDeCorchetes += ExpresionRegular[z];
+                                        }
+                                    }
+                                }
+                                //Caracteres Numericos.
+                                else if(caracteresNumericos.Contains(primerCaracter) && caracteresNumericos.Contains(SegundoCaracter))
+                                {
+                                    if (caracteresNumericos.IndexOf(primerCaracter) < caracteresNumericos.IndexOf(SegundoCaracter))//el orden de caracteres es creciente
+                                    {
+                                        for (int z = caracteresNumericos.IndexOf(primerCaracter); z <= caracteresNumericos.IndexOf(SegundoCaracter); z++)
+                                        {
+                                            if (z < caracteresNumericos.IndexOf(SegundoCaracter))
+                                                subCadenaDeCorchetes += ExpresionRegular[z] + "|";
+                                            else
+                                                subCadenaDeCorchetes += ExpresionRegular[z];
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (int z = caracteresNumericos.IndexOf(primerCaracter); z >= caracteresNumericos.IndexOf(SegundoCaracter); z--)
+                                        {
+                                            if (z > caracteresNumericos.IndexOf(SegundoCaracter))
+                                                subCadenaDeCorchetes += ExpresionRegular[z] + "|";
+                                            else
+                                                subCadenaDeCorchetes += ExpresionRegular[z];
+                                        }
+                                    }
+                                }
+                                //caracteres Combinados.
+                                else
+                                {
+                                    throw new corcheteException("los caracteres entre corchetes no coinciden en tipo");
+                                }
+                                subCadenaDeCorchetes += ")";
+                            }
+                            else//es una secuencia de caracteres a los que se les aplica el operando de alternativas
+                            {
+                                for(int z = indiceInicio + 1; z < i - 1; z++)
+                                {
+                                    if(alfabeto.Contains(ExpresionRegular[z]) || ExpresionRegular[z]== ' ' )
+                                    {
+                                        if(ExpresionRegular[z] != ' ')//ignora los espacios.
+                                        {
+                                            if(z < i-1 )
+                                            {
+                                                subCadenaDeCorchetes += ExpresionRegular[z] + "|";
+                                            }
+                                            else
+                                            {
+                                                subCadenaDeCorchetes += ExpresionRegular[z] + ")";
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        throw new corcheteException("caracter invalido");
+                                    }
+                                }    
+                            }
+
+                            //Resultado += ExpresionRegular[i];
+                        }//if(ExpresionRegular[i] != ']')//corchete derecho(END).
+                    }
+                    return Resultado;
                 }
-                else if(ExpresionRegular[i] != ']')//corchete derecho.
-                {
-                    String subCadenaDeCorchetes = "(";
-                    if (pilaDeIndices.Any() == false)//si la pila esta vacia quiere decir que hay un signo ] de mas y retorna error.
-                    {
-                        throw new corcheteException("falta por lo menos un corchete izquierdo");
-                    }
-                    int indiceInicio = pilaDeIndices.Pop();
-
-                    if (ExpresionRegular.IndexOf('[', indiceInicio, i - indiceInicio))
-                    {
-                        int indiceMedio = ExpresionRegular.IndexOf('-', indiceInicio, i - indiceInicio);
-                    }
-                    else
-                    {
-
-                    }
-
-                    if(indiceMedio>0)//si encuentra un guion(-)
-                    {
-                        char primerCaracter = ' ';
-                        char SegundoCaracter = ' ';
-                        for(int z = indiceInicio; z < indiceMedio; z++)
-                        {
-                            switch (ExpresionRegular[z])
-                            {
-                                case ' ':
-                                    break;
-                                default:
-                                    if(primerCaracter != ' ')// ya se habia asignado antes
-                                    {
-                                        throw new corcheteException("Mas de un caracter entre corchete y guion");
-                                    }
-                                    primerCaracter = ExpresionRegular[z];
-                                    break;
-                            }
-
-                        }
-                        for (int z = indiceMedio; z < i; z++)
-                        {
-                            switch (ExpresionRegular[z])
-                            {
-                                case ' ':
-                                    break;
-                                default:
-                                    if (SegundoCaracter != ' ')// ya se habia asignado antes
-                                    {
-                                        throw new corcheteException("Mas de un caracter entre guion y corchete");
-                                    }
-                                    SegundoCaracter = ExpresionRegular[z];
-                                    break;
-                            }
-                        }
-                        //Caracteres Alfabeticos.
-                        if(caracteresAlfabeticos.Contains(primerCaracter) && caracteresAlfabeticos.Contains(SegundoCaracter))
-                        {
-                            if(caracteresAlfabeticos.IndexOf(primerCaracter) < caracteresAlfabeticos.IndexOf(SegundoCaracter))//el orden de caracteres es creciente
-                            {
-                                for(int z = caracteresAlfabeticos.IndexOf(primerCaracter); z <= caracteresAlfabeticos.IndexOf(SegundoCaracter); z++)
-                                {
-                                    if (z < caracteresAlfabeticos.IndexOf(SegundoCaracter))
-                                        subCadenaDeCorchetes += ExpresionRegular[z] + "|";
-                                    else
-                                        subCadenaDeCorchetes += ExpresionRegular[z];
-                                }
-                            }
-                            else
-                            {
-                                for (int z = caracteresAlfabeticos.IndexOf(primerCaracter); z >= caracteresAlfabeticos.IndexOf(SegundoCaracter); z--)
-                                {
-                                    if(z > caracteresAlfabeticos.IndexOf(SegundoCaracter))
-                                        subCadenaDeCorchetes += ExpresionRegular[z] + "|";
-                                    else
-                                        subCadenaDeCorchetes += ExpresionRegular[z];
-                                }
-                            }
-                        }
-                        //Caracteres Numericos.
-                        else if(caracteresNumericos.Contains(primerCaracter) && caracteresNumericos.Contains(SegundoCaracter))
-                        {
-                            if (caracteresNumericos.IndexOf(primerCaracter) < caracteresNumericos.IndexOf(SegundoCaracter))//el orden de caracteres es creciente
-                            {
-                                for (int z = caracteresNumericos.IndexOf(primerCaracter); z <= caracteresNumericos.IndexOf(SegundoCaracter); z++)
-                                {
-                                    if (z < caracteresNumericos.IndexOf(SegundoCaracter))
-                                        subCadenaDeCorchetes += ExpresionRegular[z] + "|";
-                                    else
-                                        subCadenaDeCorchetes += ExpresionRegular[z];
-                                }
-                            }
-                            else
-                            {
-                                for (int z = caracteresNumericos.IndexOf(primerCaracter); z >= caracteresNumericos.IndexOf(SegundoCaracter); z--)
-                                {
-                                    if (z > caracteresNumericos.IndexOf(SegundoCaracter))
-                                        subCadenaDeCorchetes += ExpresionRegular[z] + "|";
-                                    else
-                                        subCadenaDeCorchetes += ExpresionRegular[z];
-                                }
-                            }
-                        }
-                        //caracteres Combinados.
-                        else
-                        {
-                            throw new corcheteException("los caracteres entre corchetes no coinciden en tipo");
-                        }
-                        subCadenaDeCorchetes += ")";
-                    }
-                    else//es una secuencia de caracteres a los que se les aplica el operando de alternativas
-                    {
-                        for(int z = indiceInicio + 1; z < i - 1; z++)
-                        {
-                            if(alfabeto.Contains(ExpresionRegular[z]) || ExpresionRegular[z]== ' ' )
-                            {
-                                if(ExpresionRegular[z] != ' ')//ignora los espacios.
-                                {
-                                    if(z < i-1 )
-                                    {
-                                        subCadenaDeCorchetes += ExpresionRegular[z] + "|";
-                                    }
-                                    else
-                                    {
-                                        subCadenaDeCorchetes += ExpresionRegular[z] + ")";
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                throw new corcheteException("caracter invalido");
-                            }
-                        }    
-                    }
-
-                    //Resultado += ExpresionRegular[i];
-                }//if(ExpresionRegular[i] != ']')//corchete derecho(END).
-            }
-            return Resultado;
-        }
------------------------------------------------------------------------------------------------------------------------*/
-/********************************************************
- * **********************************************/
-    public String desgloseCorchetes(String expresion)
+        -----------------------------------------------------------------------------------------------------------------------*/
+        /********************************************************
+         * **********************************************/
+        public String desgloseCorchetes(String expresion)
         {
             String resultado = "";
             Stack<int> corchetesIzquierdos = new Stack<int>();
             Stack<String> expresionesResultantes = new Stack<String>();
-            for(int i = 0; i < expresion.Length; i++ )
+            for (int i = 0; i < expresion.Length; i++)
             {
                 char caracterDeTurno = expresion.ElementAt(i);//caracter de urno dentro de la expresion
 
-                if(caracterDeTurno == '[')//corchete izquierdo
+                if (caracterDeTurno == '[')//corchete izquierdo
                 {
                     corchetesIzquierdos.Push(i);
                 }
-                else if(caracterDeTurno == ']')//corchete derecho
+                else if (caracterDeTurno == ']')//corchete derecho
                 {
                     int indiceInicial = corchetesIzquierdos.Pop();
                 }
-                else if(alfabeto.Contains(caracterDeTurno) )//es un caracter
+                else if (alfabeto.Contains(caracterDeTurno))//es un caracter
                 {
                     expresionesResultantes.Push(expresionesResultantes.ElementAt(i));
                 }
@@ -442,25 +442,25 @@ namespace ProyectoCompiladores
                     expresionesResultantes.Push(en);
                 }
             }
-            while(expresionesResultantes.Any() == true)
+            while (expresionesResultantes.Any() == true)
             {
                 resultado = expresionesResultantes.Pop();
             }
 
             return resultado;
         }
-        
-        
-        
-        
-        
-        
-  
-        
-        
+
+
+
+
+
+
+
+
+
         public String desgloseSecuencialCorchetes(char primerCaracter, char SegundoCaracter)
-    {
-       String res = "(";
+        {
+            String res = "(";
             //Caracteres Alfabeticos.
             if (caracteresAlfabeticos.Contains(primerCaracter) && caracteresAlfabeticos.Contains(SegundoCaracter))
             {
@@ -471,7 +471,7 @@ namespace ProyectoCompiladores
                         if (z < caracteresAlfabeticos.IndexOf(SegundoCaracter))
                             res += caracteresAlfabeticos.ElementAt(z) + "|";
                         else
-                            res += caracteresAlfabeticos.ElementAt(z)+ ")";
+                            res += caracteresAlfabeticos.ElementAt(z) + ")";
                     }
                 }
                 else
@@ -616,7 +616,7 @@ namespace ProyectoCompiladores
             int i = 0;
             foreach (string c in Operadores)
             {
-                
+
                 if (c.Contains(c1))
                 {
                     indiceMayor = i;
@@ -636,13 +636,13 @@ namespace ProyectoCompiladores
                 i++;
             }
 
-            
+
             if (indiceMayor > indiceMenor)
             {
                 //MessageBox.Show(c1  + " : " + indiceMayor  + "\n" + " tiene mayor prioridad que: \n" + c2  + ":" + indiceMenor);
                 return true;
             }
-            else if(indiceMayor < indiceMenor)
+            else if (indiceMayor < indiceMenor)
             {
                 //MessageBox.Show(c2  + " : " + indiceMenor + "\n"  + " tiene mayor prioridad que: " + c1 + " : " + indiceMayor);
                 return false;
@@ -656,14 +656,14 @@ namespace ProyectoCompiladores
 
         void compruebaAlfabeto(String expresion)
         {
-            foreach(char caracter in expresion)
+            foreach (char caracter in expresion)
             {
-                if(!alfabeto.Contains(caracter) && !op.Contains(caracter))
+                if (!alfabeto.Contains(caracter) && !op.Contains(caracter))
                 {
                     throw new alfabetoException("Almenos un caracter de la Expresion no corresponde con el alfabeto");
                 }
             }
-                
+
         }
 
 
@@ -679,6 +679,9 @@ namespace ProyectoCompiladores
         {
             TB_Posfija2.Text = "";
             TB_ExpresionR2.Text = "";
+            DGV_AFN.Columns.Clear();
+            DGV_AFN.Rows.Clear();
+            DGV_AFN.Columns.Add("Estado", "Estado");
         }
 
         private void BT_ConversionPosfija2_Click(object sender, EventArgs e)
@@ -695,6 +698,10 @@ namespace ProyectoCompiladores
 
         public void LLenaDGVAFN(Operando AFN, string alfabeto)
         {
+            DGV_AFN.Columns.Clear();
+            DGV_AFN.Rows.Clear();
+            //MessageBox.Show("La cantidad de caracteres en el alfabeto es de:  " + alfabeto.Length);
+            DGV_AFN.Columns.Add("Estado", "Estado");
             foreach (char c in alfabeto)
             {
                 DGV_AFN.Columns.Add(c.ToString(), c.ToString());
@@ -705,12 +712,23 @@ namespace ProyectoCompiladores
                 DGV_AFN.Rows.Add();
                 DGV_AFN.Rows[i].Cells[0].Value = AFN.EstadosOperando[i].Index;
                 List<string> TablaTransiciones = AFN.EstadosOperando[i].ObtenTablaTransiciones(alfabeto);
-                for(int j = 0; j < TablaTransiciones.Count; j++)
+                for (int j = 0; j < TablaTransiciones.Count; j++)
                 {
-                    string Valor  = "{" + TablaTransiciones[j] + "}" ;
-                    if(Valor != "{}")
+                    string[] CadenaSplit = TablaTransiciones[j].Split('-');
+                    //string Valor  = TablaTransiciones[j];
+
+                    string Valor = "";
+                    string CadenaAux = "{";
+                    foreach (string c in CadenaSplit)
+                    {
+                        CadenaAux += c + ",";
+                    }
+                    Valor = CadenaAux.Remove(CadenaAux.Length - 1);
+                    Valor += "}";
+                    if (Valor != "{}")
                     {
                         DGV_AFN.Rows[i].Cells[j + 1].Value = Valor;
+
                     }
                     else
                     {
@@ -734,6 +752,6 @@ namespace ProyectoCompiladores
         #region tab_6avance
         #endregion
 
-        
+
     }//Forms END
 }//namespace END

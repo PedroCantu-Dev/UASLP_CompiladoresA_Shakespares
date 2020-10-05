@@ -37,14 +37,27 @@ namespace ProyectoCompiladores
 
         public void EliminaTransicionEstado(int IndexEstado, int IndexEstadoDestino)
         {
-            IndexEstado--;
-            Estado e = EstadosOperando.ElementAt(IndexEstado);
-            for (int i = 0; i < e.Transiciones.Count; i++)
+            //MessageBox.Show("Estoy borrando una transicion desde: "  + IndexEstado + " hasta: " + IndexEstadoDestino);
+            Estado ex = new Estado(-1, -1);
+            foreach (Estado e in EstadosOperando)
             {
-                if (e.Transiciones[i].IdEstadoDestino == IndexEstadoDestino)
+                if(e.Index== IndexEstado)
                 {
-                    e.Transiciones.RemoveAt(i);
-                    break;
+                    ex = e;
+                }
+            }
+            
+            if(ex.Index != -1)
+            {
+                
+                for (int i = 0; i < ex.Transiciones.Count; i++)
+                {
+                    if (ex.Transiciones[i].IdEstadoDestino == IndexEstadoDestino)
+                    {
+                        
+                        ex.Transiciones.RemoveAt(i);
+                        break;
+                    }
                 }
             }
         }
@@ -62,15 +75,24 @@ namespace ProyectoCompiladores
 
         public char ObtenSimboloTransicion(int IndexEstado, int IndexEstadoDestino)
         {
-            IndexEstado--;
             //MessageBox.Show("Buscando transicion de: " + IndexEstado + " hacia: " + IndexEstadoDestino);
-            Estado e = EstadosOperando.ElementAt(IndexEstado);
-            for (int i = 0; i < e.Transiciones.Count; i++)
+            Estado EstadoInicio = new Estado(-1,-1); 
+            foreach(Estado e in EstadosOperando)
             {
-                if ((e.Transiciones[i].IdEstadoDestino) == IndexEstadoDestino)
+                if (e.Index == IndexEstado)
                 {
-                    //MessageBox.Show("Encontré la transición de: " + (IndexEstado + 1) + " hacia: " + (IndexEstadoDestino + 1) + " con el símbolo: " + e.Transiciones[i].Simbolo);
-                    return e.Transiciones[i].Simbolo;
+                    EstadoInicio = e;
+                }
+            }
+            if(EstadoInicio.Index != -1)
+            {
+                for (int i = 0; i < EstadoInicio.Transiciones.Count; i++)
+                {
+                    if ((EstadoInicio.Transiciones[i].IdEstadoDestino) == IndexEstadoDestino)
+                    {
+                        //MessageBox.Show("Encontré la transición de: " + (IndexEstado + 1) + " hacia: " + (IndexEstadoDestino + 1) + " con el símbolo: " + e.Transiciones[i].Simbolo);
+                        return EstadoInicio.Transiciones[i].Simbolo;
+                    }
                 }
             }
             return '/';
