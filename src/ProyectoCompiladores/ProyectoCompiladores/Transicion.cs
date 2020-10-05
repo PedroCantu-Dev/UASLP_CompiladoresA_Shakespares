@@ -8,9 +8,13 @@ namespace ProyectoCompiladores
 {
     public class Transicion
     {
-        public Transicion()
-        {
+        public char Simbolo { get; set; }
 
+        public int IdEstadoDestino { get; set; }
+        public Transicion(char S, int id)
+        {
+            IdEstadoDestino = id;
+            Simbolo = S;
         }
     }
 }

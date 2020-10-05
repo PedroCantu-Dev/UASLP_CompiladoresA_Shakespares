@@ -10,6 +10,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Collections.Specialized;
 using System.Globalization;
+using Microsoft.Win32;
 
 namespace ProyectoCompiladores
 {
@@ -687,7 +688,36 @@ namespace ProyectoCompiladores
 
         private void BT_ConstruirAFN_Click(object sender, EventArgs e)
         {
+            AFN AFN = new AFN(TB_Posfija2.Text);
+            Operando AFNResultante = AFN.algoritmoDeEvaluacion(TB_Posfija2.Text);
+            LLenaDGVAFN(AFNResultante, AFN.alfabeto);
+        }
 
+        public void LLenaDGVAFN(Operando AFN, string alfabeto)
+        {
+            foreach (char c in alfabeto)
+            {
+                DGV_AFN.Columns.Add(c.ToString(), c.ToString());
+            }
+
+            for (int i = 0; i < AFN.EstadosOperando.Count; i++)
+            {
+                DGV_AFN.Rows.Add();
+                DGV_AFN.Rows[i].Cells[0].Value = AFN.EstadosOperando[i].Index;
+                List<string> TablaTransiciones = AFN.EstadosOperando[i].ObtenTablaTransiciones(alfabeto);
+                for(int j = 0; j < TablaTransiciones.Count; j++)
+                {
+                    string Valor  = "{" + TablaTransiciones[j] + "}" ;
+                    if(Valor != "{}")
+                    {
+                        DGV_AFN.Rows[i].Cells[j + 1].Value = Valor;
+                    }
+                    else
+                    {
+                        DGV_AFN.Rows[i].Cells[j + 1].Value = "Ø";
+                    }
+                }
+            }
         }
 
         #endregion
