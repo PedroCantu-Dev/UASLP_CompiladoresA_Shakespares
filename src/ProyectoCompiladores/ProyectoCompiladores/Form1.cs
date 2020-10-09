@@ -287,11 +287,20 @@ namespace ProyectoCompiladores
                 {
                     expresionesResultantes.Push(caracterDeTurno.ToString());
                 }
-                else if (op.Contains(caracterDeTurno))//es un operador
+                
+                else if(op_Presedecia1.Contains(caracterDeTurno))//es un operador unario
                 {
                     String en = "";
                     en = expresionesResultantes.Pop() + caracterDeTurno;
                     expresionesResultantes.Push(en);
+                }
+                else if (op_Presedecia2.Contains(caracterDeTurno))//es un operador &
+                {
+
+                }
+                else if (op_Presedecia3.Contains(caracterDeTurno))//es un operador |
+                {
+                    expresionesResultantes.Push(caracterDeTurno.ToString());
                 }
                 else if (caracterDeTurno == ']')//corchete derecho
                 {
@@ -331,6 +340,12 @@ namespace ProyectoCompiladores
                             {
                                 aux = "|" + expresionesResultantes.Pop() + aux;
                             }
+                            else if(op_Presedecia3.Contains(car))
+                            {
+                                String alaDerecha = expresionesResultantes.Pop();
+                                String aLaIzquierda = expresionesResultantes.Pop();
+                                expresionesResultantes.Push(aLaIzquierda + alaDerecha);
+                            }
                             if (indicesDerechos.Contains(j))
                             {
                                 int auxIndex = indicesDerechos.IndexOf(j);
@@ -357,12 +372,28 @@ namespace ProyectoCompiladores
                 }
                 
             }
-            while (expresionesResultantes.Any() == true)
+            while (expresionesResultantes.Any())
             {
-                resultado = "&" + expresionesResultantes.Pop()+ resultado;
+                String resultanteTurno = expresionesResultantes.Pop();
+                if (expresionesResultantes.Any())
+                {
+                    if (expresionesResultantes.Peek() == "|")
+                    {
+                        expresionesResultantes.Pop();
+                        expresionesResultantes.Push(expresionesResultantes.Pop() + "|" + resultanteTurno);
+                    }
+                    else
+                    {
+                        //resultado = "&" + resultanteTurno + resultado;
+                        expresionesResultantes.Push(expresionesResultantes.Pop() + "&" + resultanteTurno);
+                    }
+                }
+                else
+                {
+                    resultado = resultanteTurno;
+                }
             }
-
-            resultado = resultado.Substring(1, resultado.Length - 1);
+            //resultado = resultado.Substring(1, resultado.Length - 1);
 
             return resultado;
         }
