@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProyectoCompiladores
 {
@@ -38,6 +39,7 @@ namespace ProyectoCompiladores
 
         public void addTransicion(char Simbolo, int IdEstado)
         {
+            //MessageBox.Show("Tengo : " + Transiciones.Count + " transiciones y estoy agregando una nueva hacia: " + IdEstado + " con el simbolo: " + Simbolo);
             Transicion NuevaTransicion = new Transicion(Simbolo, IdEstado);
             Transiciones.Add(NuevaTransicion);
         }
@@ -59,9 +61,18 @@ namespace ProyectoCompiladores
                     if(Transiciones[i].Simbolo == c)
                     {
                         Cadena += Transiciones[i].IdEstadoDestino;
+                        Cadena += "-";
                     }
                 }
-                TablaTransiciones.Add(Cadena);
+                if(Cadena.Length > 1)
+                {
+                    string Aux = Cadena.Remove(Cadena.Length - 1);
+                    TablaTransiciones.Add(Aux);
+                }
+                else
+                {
+                    TablaTransiciones.Add(Cadena);
+                }   
             }
             return TablaTransiciones;
         }        

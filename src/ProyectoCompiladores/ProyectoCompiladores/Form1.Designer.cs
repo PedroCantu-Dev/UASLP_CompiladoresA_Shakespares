@@ -49,6 +49,7 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.DGV_AFN = new System.Windows.Forms.DataGridView();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BT_ConstruirAFN = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -86,7 +87,6 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.button12 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             tabPage2 = new System.Windows.Forms.TabPage();
             tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -315,7 +315,7 @@
             this.groupBox2.Controls.Add(this.TB_Posfija2);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(476, 473);
+            this.groupBox2.Size = new System.Drawing.Size(1165, 473);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Análisis Léxico";
@@ -327,8 +327,13 @@
             this.Estado});
             this.DGV_AFN.Location = new System.Drawing.Point(3, 272);
             this.DGV_AFN.Name = "DGV_AFN";
-            this.DGV_AFN.Size = new System.Drawing.Size(466, 195);
+            this.DGV_AFN.Size = new System.Drawing.Size(1156, 195);
             this.DGV_AFN.TabIndex = 11;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
             // 
             // BT_ConstruirAFN
             // 
@@ -691,11 +696,6 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(310, 38);
             this.textBox7.TabIndex = 4;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
             // 
             // Form1
             // 
