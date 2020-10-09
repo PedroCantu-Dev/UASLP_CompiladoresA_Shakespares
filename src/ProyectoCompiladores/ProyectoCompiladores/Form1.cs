@@ -279,7 +279,7 @@ namespace ProyectoCompiladores
             {
                 char caracterDeTurno = expresion.ElementAt(i);//caracter de turno dentro de la expresion
 
-                if (caracterDeTurno == '[')//corchete izquierdo
+                if (caracterDeTurno == '[' || caracterDeTurno == '(')//corchete izquierdo
                 {
                     corchetesIzquierdos.Push(i);
                 }
@@ -302,7 +302,7 @@ namespace ProyectoCompiladores
                 {
                     expresionesResultantes.Push(caracterDeTurno.ToString());
                 }
-                else if (caracterDeTurno == ']')//corchete derecho
+                else if (caracterDeTurno == ']' || caracterDeTurno == ')' )//corchete derecho
                 {
                     int indiceInicial = corchetesIzquierdos.Pop();
 
@@ -329,7 +329,7 @@ namespace ProyectoCompiladores
                         }
                         expresionesResultantes.Push(desgloseSecuencialCorchetes(inicial,final));
                     }
-                    else //if (expresion.Substring(indiceInicial + 1, i - indiceInicial - 1).Contains('[') && expresion.Substring(indiceInicial + 1, i - indiceInicial - 1).Contains(']'))
+                    else if(caracterDeTurno == ')') 
                     {
                         String aux = ")";
                         for (int j = i -1; j > indiceInicial; j--)
@@ -338,7 +338,14 @@ namespace ProyectoCompiladores
                             
                             if (alfabeto.Contains(car))
                             {
-                                aux = "|" + expresionesResultantes.Pop() + aux;
+                                if (op_Presedecia3.Contains(expresion.ElementAt(j - 1)))
+                                {
+                                    aux =  expresionesResultantes.Pop() + aux;
+                                }
+                                else
+                                {
+                                    aux = "&" + expresionesResultantes.Pop() + aux;
+                                }
                             }
                             else if(op_Presedecia3.Contains(car))
                             {
@@ -353,13 +360,40 @@ namespace ProyectoCompiladores
                                 indicesDerechos.RemoveAt(auxIndex);
                                 indicesIzquierdos.RemoveAt(auxIndex);
                                 j = nuevoJ;
-                                aux = "|" + expresionesResultantes.Pop() + aux;
+                                aux = "&" + expresionesResultantes.Pop() + aux;
                             }
-                            /*
-                              * aqui queda implementar lo de los parentesis ---> ()
-                              * */
                         }
                         aux = "(" + aux.Substring(1,aux.Length-1);
+                        expresionesResultantes.Push(aux);
+                    }
+                    else
+                    {
+                        String aux = ")";
+                        for (int j = i - 1; j > indiceInicial; j--)
+                        {
+                            char car = expresion.ElementAt(j);
+
+                            if (alfabeto.Contains(car))
+                            {
+                                aux = "|" + expresionesResultantes.Pop() + aux;
+                            }
+                            else if (op_Presedecia3.Contains(car))
+                            {
+                                String alaDerecha = expresionesResultantes.Pop();
+                                String aLaIzquierda = expresionesResultantes.Pop();
+                                expresionesResultantes.Push(aLaIzquierda + alaDerecha);
+                            }
+                            if (indicesDerechos.Contains(j))
+                            {
+                                int auxIndex = indicesDerechos.IndexOf(j);
+                                int nuevoJ = indicesIzquierdos.ElementAt(auxIndex);
+                                indicesDerechos.RemoveAt(auxIndex);
+                                indicesIzquierdos.RemoveAt(auxIndex);
+                                j = nuevoJ;
+                                aux = "|" + expresionesResultantes.Pop() + aux;
+                            }
+                        }
+                        aux = "(" + aux.Substring(1, aux.Length - 1);
                         expresionesResultantes.Push(aux);
                     }
                     //al final de cada insersion con corchetes se guardan sus indices en listas para las anidadas
@@ -615,7 +649,7 @@ namespace ProyectoCompiladores
             String res = "";
             foreach (char caracter in expresion)
             {
-                if (!alfabeto.Contains(caracter) && !op.Contains(caracter) && !caracteresOtros2.Contains(caracter))
+                if (!alfabeto.Contains(caracter) && !op.Contains(caracter) && !caracteresOtros2.Contains(caracter) && caracter != ')' && caracter != '(')
                 {
                     throw new alfabetoException("Almenos un caracter de la Expresion no corresponde con el alfabeto");
                 }
