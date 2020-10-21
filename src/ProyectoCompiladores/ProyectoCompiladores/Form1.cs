@@ -733,9 +733,17 @@ namespace ProyectoCompiladores
             }
         }
 
+
         #endregion
 
         #region tab_3avance
+        private void button_AFD_Click(object sender, EventArgs e)
+        {
+            AFN AFN = new AFN(TB_Posfija2.Text);
+            Operando AFNResultante = AFN.algoritmoDeEvaluacion(TB_Posfija2.Text);
+            LLenaDGVAFN(AFNResultante, AFN.alfabeto);
+        }
+
         #endregion
 
         #region tab_4avance

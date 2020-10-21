@@ -18,6 +18,9 @@ namespace ProyectoCompiladores
         protected string OperadoresBinarios = "&|C";
         public string alfabeto = "";
         protected int ContadorEstados = 1;
+
+        public List<Estado> Estados { get { return this.estados; } }
+
         public AFN(String expresionPosfija)
         {
             estados = new List<Estado>();

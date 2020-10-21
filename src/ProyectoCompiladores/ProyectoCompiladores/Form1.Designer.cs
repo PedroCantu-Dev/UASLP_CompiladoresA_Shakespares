@@ -458,6 +458,7 @@
             this.button_AFD.TabIndex = 12;
             this.button_AFD.Text = "Construir AFD";
             this.button_AFD.UseVisualStyleBackColor = true;
+            this.button_AFD.Click += new System.EventHandler(this.button_AFD_Click);
             // 
             // dataGrid_AFN
             // 
