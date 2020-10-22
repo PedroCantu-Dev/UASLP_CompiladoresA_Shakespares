@@ -48,7 +48,7 @@ namespace ProyectoCompiladores
         public void AddTransicion(Destado d, char simbolo)
         {
 
-            listaTransiciones.Add(new TransicionD(simbolo, d.indice ));
+            listaTransiciones.Add(new TransicionD(simbolo, d.indice));
         }
 
         public Boolean Equals(Destado comparacion)
@@ -105,7 +105,7 @@ namespace ProyectoCompiladores
         {
             foreach (Estado e in this.listaEstadosEnAFN)
             {
-                if(e.Index == Index)
+                if (e.Index == Index)
                 {
                     return true;
                 }
@@ -122,6 +122,29 @@ namespace ProyectoCompiladores
                 }
             }
             return false;
+        }
+
+        private String getStringEstadoDestinoTransicion(char transicion)
+        {
+            foreach (TransicionD t in this.listaTransiciones)
+            {
+                if (t.Simbolo == transicion)
+                {
+                    return t.indiceDest.ToString();
+                }
+            }
+            return "Ø";
+        }
+
+        public String[] getRowTransiciones(String alfabeto)
+        {
+            List<String> res = new List<string>();
+            res.Add(this.indice.ToString());
+            foreach (char c in alfabeto)
+            {
+                res.Add(getStringEstadoDestinoTransicion(c));
+            }
+            return res.ToArray();
         }
     }
 }

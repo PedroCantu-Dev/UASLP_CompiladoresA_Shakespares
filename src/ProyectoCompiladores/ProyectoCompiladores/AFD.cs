@@ -11,9 +11,9 @@ namespace ProyectoCompiladores
     public class AFD
     {
         
-        Destados destados;
+        public  Destados destados;
         AFN afn;
-        String alfabetoAFD;
+        public String alfabetoAFD;
 
         public AFD(AFN afn)
         {

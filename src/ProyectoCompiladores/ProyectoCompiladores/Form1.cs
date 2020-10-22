@@ -689,10 +689,8 @@ namespace ProyectoCompiladores
             AFN AFN = new AFN(TB_Posfija2.Text);
             Operando AFNResultante = AFN.algoritmoDeEvaluacion(TB_Posfija2.Text);
             LLenaDGVAFN(AFNResultante, AFN.alfabeto);
-
             AFN.estados = AFNResultante.EstadosOperando;
-            AFD afd = new AFD(AFN);
-            afd.init();
+            
         }
 
         public void LLenaDGVAFN(Operando AFN, string alfabeto)
@@ -741,16 +739,111 @@ namespace ProyectoCompiladores
         #endregion
 
         #region tab_3avance
-        private void button_AFD_Click(object sender, EventArgs e)
+        
+        private void BT_SubirArchivo3_Click(object sender, EventArgs e)
         {
-            AFN AFN = new AFN(TB_Posfija2.Text);
-            Operando AFNResultante = AFN.algoritmoDeEvaluacion(TB_Posfija2.Text);
-            AFN.estados = AFNResultante.EstadosOperando;
-            AFD afd = new AFD(AFN);
-            afd.init();
-            //LLenaDGVAFN(AFNResultante, AFN.alfabeto);
+            expresionRegular3.Text = SubirArchivo();
         }
 
+        private void BT_LimpiarTexto3_Click(object sender, EventArgs e)
+        {
+            posfija3.Text = "";
+            expresionRegular3.Text = "";
+            dataGrid_AFN3.Columns.Clear();
+            dataGrid_AFN3.Rows.Clear();
+            dataGrid_AFN3.Columns.Add("Estado","Estado");//, "Estado");
+
+            dataGrid_AFD3.Columns.Clear();
+            dataGrid_AFD3.Rows.Clear();
+            dataGrid_AFD3.Columns.Add("Estado", "Estado");
+        }
+
+        private void BT_ConversionPosfija3_Click(object sender, EventArgs e)
+        {
+            posfija3.Text = ConversionPosfija(expresionRegular3.Text);
+        }
+        AFN AFN3;
+        private void BT_ConstruirAFN3_Click(object sender, EventArgs e)
+        {
+            AFN AFN3 = new AFN(posfija3.Text);
+            Operando AFNResultante = AFN3.algoritmoDeEvaluacion(posfija3.Text);
+            AFN3.estados = AFNResultante.EstadosOperando;
+            LLenaDGVAFN3(AFNResultante, AFN3.alfabeto);
+        }
+
+        private void button_AFD_Click(object sender, EventArgs e)
+        {
+            AFN AFN3 = new AFN(posfija3.Text);
+            Operando AFNResultante = AFN3.algoritmoDeEvaluacion(posfija3.Text);
+            AFN3.estados = AFNResultante.EstadosOperando;
+
+            AFD afd = new AFD(AFN3);
+            afd.init();
+            LLenaDGVAFD3(afd);
+            
+        }
+         
+        public void LLenaDGVAFD3(AFD afd)
+        {
+            dataGrid_AFD3.Columns.Clear();
+            dataGrid_AFD3.Rows.Clear();
+            //MessageBox.Show("La cantidad de caracteres en el alfabeto es de:  " + alfabeto.Length);
+            dataGrid_AFD3.Columns.Add("Estado", "Estado");
+            foreach (char c in afd.alfabetoAFD)
+            {
+                dataGrid_AFD3.Columns.Add(c.ToString(), c.ToString());
+            }
+
+            foreach(Destado d in afd.destados.Lista)
+            {
+                dataGrid_AFD3.Rows.Add(d.getRowTransiciones(afd.alfabetoAFD));
+            }
+        }
+
+        public void LLenaDGVAFN3(Operando AFN, string alfabeto)
+        {
+            dataGrid_AFN3.Columns.Clear();
+            dataGrid_AFN3.Rows.Clear();
+            //MessageBox.Show("La cantidad de caracteres en el alfabeto es de:  " + alfabeto.Length);
+            dataGrid_AFN3.Columns.Add("Estado", "Estado");
+            foreach (char c in alfabeto)
+            {
+                dataGrid_AFN3.Columns.Add(c.ToString(), c.ToString());
+            }
+
+            for (int i = 0; i < AFN.EstadosOperando.Count; i++)
+            {
+                dataGrid_AFN3.Rows.Add();
+                dataGrid_AFN3.Rows[i].Cells[0].Value = AFN.EstadosOperando[i].Index;
+                List<string> TablaTransiciones = AFN.EstadosOperando[i].ObtenTablaTransiciones(alfabeto);
+                for (int j = 0; j < TablaTransiciones.Count; j++)
+                {
+                    string[] CadenaSplit = TablaTransiciones[j].Split('-');
+                    //string Valor  = TablaTransiciones[j];
+
+                    string Valor = "";
+                    string CadenaAux = "{";
+                    foreach (string c in CadenaSplit)
+                    {
+                        CadenaAux += c + ",";
+                    }
+                    Valor = CadenaAux.Remove(CadenaAux.Length - 1);
+                    Valor += "}";
+                    if (Valor != "{}")
+                    {
+                        dataGrid_AFN3.Rows[i].Cells[j + 1].Value = Valor;
+
+                    }
+                    else
+                    {
+                        dataGrid_AFN3.Rows[i].Cells[j + 1].Value = "Ø";
+                    }
+                }
+            }
+        }
+
+
+        
 
         #endregion
 

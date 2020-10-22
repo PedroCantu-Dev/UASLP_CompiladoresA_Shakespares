@@ -60,17 +60,17 @@
             this.TB_Posfija2 = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGrid_AFD = new System.Windows.Forms.DataGridView();
-            this.button_AFD = new System.Windows.Forms.Button();
-            this.dataGrid_AFN = new System.Windows.Forms.DataGridView();
-            this.button_AFN = new System.Windows.Forms.Button();
+            this.dataGrid_AFD3 = new System.Windows.Forms.DataGridView();
+            this.button_AFD3 = new System.Windows.Forms.Button();
+            this.dataGrid_AFN3 = new System.Windows.Forms.DataGridView();
+            this.button_AFN3 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.Limpiar3_BT = new System.Windows.Forms.Button();
+            this.Subir3_BT = new System.Windows.Forms.Button();
+            this.expresionRegular3 = new System.Windows.Forms.TextBox();
+            this.ConvertirPosfija3_BT = new System.Windows.Forms.Button();
+            this.posfija3 = new System.Windows.Forms.TextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button13 = new System.Windows.Forms.Button();
@@ -97,8 +97,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV_AFN)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFD3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFN3)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -424,17 +424,17 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dataGrid_AFD);
-            this.groupBox3.Controls.Add(this.button_AFD);
-            this.groupBox3.Controls.Add(this.dataGrid_AFN);
-            this.groupBox3.Controls.Add(this.button_AFN);
+            this.groupBox3.Controls.Add(this.dataGrid_AFD3);
+            this.groupBox3.Controls.Add(this.button_AFD3);
+            this.groupBox3.Controls.Add(this.dataGrid_AFN3);
+            this.groupBox3.Controls.Add(this.button_AFN3);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.button6);
-            this.groupBox3.Controls.Add(this.button7);
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.button8);
-            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.Limpiar3_BT);
+            this.groupBox3.Controls.Add(this.Subir3_BT);
+            this.groupBox3.Controls.Add(this.expresionRegular3);
+            this.groupBox3.Controls.Add(this.ConvertirPosfija3_BT);
+            this.groupBox3.Controls.Add(this.posfija3);
             this.groupBox3.Location = new System.Drawing.Point(6, 6);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(475, 470);
@@ -442,40 +442,41 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Análisis Léxico";
             // 
-            // dataGrid_AFD
+            // dataGrid_AFD3
             // 
-            this.dataGrid_AFD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_AFD.Location = new System.Drawing.Point(244, 272);
-            this.dataGrid_AFD.Name = "dataGrid_AFD";
-            this.dataGrid_AFD.Size = new System.Drawing.Size(221, 195);
-            this.dataGrid_AFD.TabIndex = 13;
+            this.dataGrid_AFD3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_AFD3.Location = new System.Drawing.Point(244, 272);
+            this.dataGrid_AFD3.Name = "dataGrid_AFD3";
+            this.dataGrid_AFD3.Size = new System.Drawing.Size(221, 195);
+            this.dataGrid_AFD3.TabIndex = 13;
             // 
-            // button_AFD
+            // button_AFD3
             // 
-            this.button_AFD.Location = new System.Drawing.Point(244, 232);
-            this.button_AFD.Name = "button_AFD";
-            this.button_AFD.Size = new System.Drawing.Size(176, 24);
-            this.button_AFD.TabIndex = 12;
-            this.button_AFD.Text = "Construir AFD";
-            this.button_AFD.UseVisualStyleBackColor = true;
-            this.button_AFD.Click += new System.EventHandler(this.button_AFD_Click);
+            this.button_AFD3.Location = new System.Drawing.Point(244, 232);
+            this.button_AFD3.Name = "button_AFD3";
+            this.button_AFD3.Size = new System.Drawing.Size(176, 24);
+            this.button_AFD3.TabIndex = 12;
+            this.button_AFD3.Text = "Construir AFD";
+            this.button_AFD3.UseVisualStyleBackColor = true;
+            this.button_AFD3.Click += new System.EventHandler(this.button_AFD_Click);
             // 
-            // dataGrid_AFN
+            // dataGrid_AFN3
             // 
-            this.dataGrid_AFN.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_AFN.Location = new System.Drawing.Point(3, 272);
-            this.dataGrid_AFN.Name = "dataGrid_AFN";
-            this.dataGrid_AFN.Size = new System.Drawing.Size(221, 195);
-            this.dataGrid_AFN.TabIndex = 11;
+            this.dataGrid_AFN3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_AFN3.Location = new System.Drawing.Point(3, 272);
+            this.dataGrid_AFN3.Name = "dataGrid_AFN3";
+            this.dataGrid_AFN3.Size = new System.Drawing.Size(221, 195);
+            this.dataGrid_AFN3.TabIndex = 11;
             // 
-            // button_AFN
+            // button_AFN3
             // 
-            this.button_AFN.Location = new System.Drawing.Point(3, 232);
-            this.button_AFN.Name = "button_AFN";
-            this.button_AFN.Size = new System.Drawing.Size(176, 24);
-            this.button_AFN.TabIndex = 10;
-            this.button_AFN.Text = "Construir AFN";
-            this.button_AFN.UseVisualStyleBackColor = true;
+            this.button_AFN3.Location = new System.Drawing.Point(3, 232);
+            this.button_AFN3.Name = "button_AFN3";
+            this.button_AFN3.Size = new System.Drawing.Size(176, 24);
+            this.button_AFN3.TabIndex = 10;
+            this.button_AFN3.Text = "Construir AFN";
+            this.button_AFN3.UseVisualStyleBackColor = true;
+            this.button_AFN3.Click += new System.EventHandler(this.BT_ConstruirAFN3_Click);
             // 
             // label5
             // 
@@ -497,49 +498,51 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Expresión regular:";
             // 
-            // button6
+            // Limpiar3_BT
             // 
-            this.button6.Location = new System.Drawing.Point(115, 98);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(109, 40);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "Limpiar Texto";
-            this.button6.UseVisualStyleBackColor = true;
+            this.Limpiar3_BT.Location = new System.Drawing.Point(115, 98);
+            this.Limpiar3_BT.Name = "Limpiar3_BT";
+            this.Limpiar3_BT.Size = new System.Drawing.Size(109, 40);
+            this.Limpiar3_BT.TabIndex = 7;
+            this.Limpiar3_BT.Text = "Limpiar Texto";
+            this.Limpiar3_BT.UseVisualStyleBackColor = true;
+            this.Limpiar3_BT.Click += new System.EventHandler(this.BT_LimpiarTexto3_Click);
             // 
-            // button7
+            // Subir3_BT
             // 
-            this.button7.Location = new System.Drawing.Point(0, 98);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(109, 40);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "Subir Archivo";
-            this.button7.UseVisualStyleBackColor = true;
+            this.Subir3_BT.Location = new System.Drawing.Point(0, 98);
+            this.Subir3_BT.Name = "Subir3_BT";
+            this.Subir3_BT.Size = new System.Drawing.Size(109, 40);
+            this.Subir3_BT.TabIndex = 6;
+            this.Subir3_BT.Text = "Subir Archivo";
+            this.Subir3_BT.UseVisualStyleBackColor = true;
+            this.Subir3_BT.Click += new System.EventHandler(this.BT_SubirArchivo3_Click);
             // 
-            // textBox4
+            // expresionRegular3
             // 
-            this.textBox4.Location = new System.Drawing.Point(0, 32);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(462, 49);
-            this.textBox4.TabIndex = 3;
+            this.expresionRegular3.Location = new System.Drawing.Point(0, 32);
+            this.expresionRegular3.Multiline = true;
+            this.expresionRegular3.Name = "expresionRegular3";
+            this.expresionRegular3.Size = new System.Drawing.Size(462, 49);
+            this.expresionRegular3.TabIndex = 3;
             // 
-            // button8
+            // ConvertirPosfija3_BT
             // 
-            this.button8.Location = new System.Drawing.Point(347, 98);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(115, 38);
-            this.button8.TabIndex = 5;
-            this.button8.Text = "Convertir a posfija";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.ConvertirPosfija3_BT.Location = new System.Drawing.Point(347, 98);
+            this.ConvertirPosfija3_BT.Name = "ConvertirPosfija3_BT";
+            this.ConvertirPosfija3_BT.Size = new System.Drawing.Size(115, 38);
+            this.ConvertirPosfija3_BT.TabIndex = 5;
+            this.ConvertirPosfija3_BT.Text = "Convertir a posfija";
+            this.ConvertirPosfija3_BT.UseVisualStyleBackColor = true;
+            this.ConvertirPosfija3_BT.Click += new System.EventHandler(this.BT_ConversionPosfija3_Click);
             // 
-            // textBox5
+            // posfija3
             // 
-            this.textBox5.Location = new System.Drawing.Point(0, 169);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(462, 57);
-            this.textBox5.TabIndex = 4;
+            this.posfija3.Location = new System.Drawing.Point(0, 169);
+            this.posfija3.Multiline = true;
+            this.posfija3.Name = "posfija3";
+            this.posfija3.Size = new System.Drawing.Size(462, 57);
+            this.posfija3.TabIndex = 4;
             // 
             // tabPage5
             // 
@@ -722,8 +725,8 @@
             this.tabPage4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFD3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFN3)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -766,17 +769,17 @@
         private System.Windows.Forms.DataGridView DGV_AFN;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView dataGrid_AFD;
-        private System.Windows.Forms.Button button_AFD;
-        private System.Windows.Forms.DataGridView dataGrid_AFN;
-        private System.Windows.Forms.Button button_AFN;
+        private System.Windows.Forms.DataGridView dataGrid_AFD3;
+        private System.Windows.Forms.Button button_AFD3;
+        private System.Windows.Forms.DataGridView dataGrid_AFN3;
+        private System.Windows.Forms.Button button_AFN3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Button Limpiar3_BT;
+        private System.Windows.Forms.Button Subir3_BT;
+        private System.Windows.Forms.TextBox expresionRegular3;
+        private System.Windows.Forms.Button ConvertirPosfija3_BT;
+        private System.Windows.Forms.TextBox posfija3;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button13;
