@@ -43,5 +43,30 @@ namespace ProyectoCompiladores
         {
             return this.Lista.ElementAt(i);
         }
+
+       /* public Boolean Exist(List<Estado> lista)
+        {
+            foreach(Destado d in Lista)
+            {
+                if(d.Equals(lista))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }*/
+
+        public Destado Exist(List<Estado> lista)
+        {
+            foreach (Destado d in Lista)
+            {
+                if (d.Equals(lista))
+                {
+                    return d;
+                }
+            }
+            return null;
+        }
+
     }
 }

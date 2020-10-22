@@ -53,7 +53,6 @@
     <Compile Include="Destado.cs" />
     <Compile Include="Destados.cs" />
     <Compile Include="Estado.cs" />
-    <Compile Include="EstadoD.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -689,6 +689,10 @@ namespace ProyectoCompiladores
             AFN AFN = new AFN(TB_Posfija2.Text);
             Operando AFNResultante = AFN.algoritmoDeEvaluacion(TB_Posfija2.Text);
             LLenaDGVAFN(AFNResultante, AFN.alfabeto);
+
+            AFN.estados = AFNResultante.EstadosOperando;
+            AFD afd = new AFD(AFN);
+            afd.init();
         }
 
         public void LLenaDGVAFN(Operando AFN, string alfabeto)
@@ -741,8 +745,12 @@ namespace ProyectoCompiladores
         {
             AFN AFN = new AFN(TB_Posfija2.Text);
             Operando AFNResultante = AFN.algoritmoDeEvaluacion(TB_Posfija2.Text);
-            LLenaDGVAFN(AFNResultante, AFN.alfabeto);
+            AFN.estados = AFNResultante.EstadosOperando;
+            AFD afd = new AFD(AFN);
+            afd.init();
+            //LLenaDGVAFN(AFNResultante, AFN.alfabeto);
         }
+
 
         #endregion
 
@@ -755,6 +763,9 @@ namespace ProyectoCompiladores
         #region tab_6avance
         #endregion
 
+        private void button8_Click(object sender, EventArgs e)
+        {
 
+        }
     }//Forms END
 }//namespace END

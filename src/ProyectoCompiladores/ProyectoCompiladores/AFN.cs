@@ -12,7 +12,7 @@ namespace ProyectoCompiladores
         protected Estado inicial = null;
         protected Estado final = null;
 
-        protected List<Estado> estados;
+        public List<Estado> estados;
         protected String op = "*+?&|";
         protected string OperadoresUnarios = "*+?";
         protected string OperadoresBinarios = "&|C";
@@ -25,6 +25,18 @@ namespace ProyectoCompiladores
         {
             estados = new List<Estado>();
             alfabeto = encuentraAlfabeto(expresionPosfija) + "ε";
+        }
+
+        public Estado getEstadoByIndex(int Index)
+        {
+            foreach(Estado e in this.estados)
+            {
+                if(e.Index == Index)
+                {
+                    return e;
+                }
+            }
+            return null;
         }
 
         //para determinar el alfabeto de la expresion
