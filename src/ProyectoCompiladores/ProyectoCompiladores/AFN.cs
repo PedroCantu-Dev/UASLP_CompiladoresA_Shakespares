@@ -45,7 +45,7 @@ namespace ProyectoCompiladores
             string res = "";
             foreach(char caracter in expresionPosfija)
             {
-                if(!op.Contains(caracter))
+                if(!op.Contains(caracter) && !res.Contains(caracter))
                 {
                     res += caracter;
                 }
@@ -103,7 +103,7 @@ namespace ProyectoCompiladores
                                 Resultado = addAlternativas(Operando1, Operando2);
                                 break;
                         }
-                        MessageBoxResultadoOperacion(Resultado);
+                        //MessageBoxResultadoOperacion(Resultado);
                         PilaOperandos.Push(Resultado);
                     }
                 }

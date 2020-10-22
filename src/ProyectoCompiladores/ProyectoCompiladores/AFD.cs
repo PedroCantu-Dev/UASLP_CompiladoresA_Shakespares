@@ -45,7 +45,10 @@ namespace ProyectoCompiladores
                             {
                                 destados.Add(U);
                             }
-                            this.destados.ElementAt(i).AddTransicion(U, a);
+                            if (!dest.ExistTransicion(U.indice))
+                            {
+                                this.destados.ElementAt(i).AddTransicion(U, a);
+                            }
                         }
                         
                     }

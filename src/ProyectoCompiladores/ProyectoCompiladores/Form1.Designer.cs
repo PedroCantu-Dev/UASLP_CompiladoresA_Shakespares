@@ -437,7 +437,7 @@
             this.groupBox3.Controls.Add(this.posfija3);
             this.groupBox3.Location = new System.Drawing.Point(6, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(475, 470);
+            this.groupBox3.Size = new System.Drawing.Size(1165, 476);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Análisis Léxico";
@@ -445,14 +445,14 @@
             // dataGrid_AFD3
             // 
             this.dataGrid_AFD3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_AFD3.Location = new System.Drawing.Point(244, 272);
+            this.dataGrid_AFD3.Location = new System.Drawing.Point(616, 275);
             this.dataGrid_AFD3.Name = "dataGrid_AFD3";
-            this.dataGrid_AFD3.Size = new System.Drawing.Size(221, 195);
+            this.dataGrid_AFD3.Size = new System.Drawing.Size(519, 195);
             this.dataGrid_AFD3.TabIndex = 13;
             // 
             // button_AFD3
             // 
-            this.button_AFD3.Location = new System.Drawing.Point(244, 232);
+            this.button_AFD3.Location = new System.Drawing.Point(802, 232);
             this.button_AFD3.Name = "button_AFD3";
             this.button_AFD3.Size = new System.Drawing.Size(176, 24);
             this.button_AFD3.TabIndex = 12;
@@ -463,14 +463,14 @@
             // dataGrid_AFN3
             // 
             this.dataGrid_AFN3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_AFN3.Location = new System.Drawing.Point(3, 272);
+            this.dataGrid_AFN3.Location = new System.Drawing.Point(9, 275);
             this.dataGrid_AFN3.Name = "dataGrid_AFN3";
-            this.dataGrid_AFN3.Size = new System.Drawing.Size(221, 195);
+            this.dataGrid_AFN3.Size = new System.Drawing.Size(506, 195);
             this.dataGrid_AFN3.TabIndex = 11;
             // 
             // button_AFN3
             // 
-            this.button_AFN3.Location = new System.Drawing.Point(3, 232);
+            this.button_AFN3.Location = new System.Drawing.Point(115, 232);
             this.button_AFN3.Name = "button_AFN3";
             this.button_AFN3.Size = new System.Drawing.Size(176, 24);
             this.button_AFN3.TabIndex = 10;

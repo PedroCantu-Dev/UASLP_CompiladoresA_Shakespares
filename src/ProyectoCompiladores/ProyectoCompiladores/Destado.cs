@@ -91,6 +91,18 @@ namespace ProyectoCompiladores
             }
         }
 
+        public Boolean ExistTransicion(int IndiceTransicion)
+        {
+            foreach(TransicionD t in listaTransiciones)
+            {
+                if(t.indiceDest == IndiceTransicion)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
         public List<int> listaEstadosEnAFN_Index()
         {
