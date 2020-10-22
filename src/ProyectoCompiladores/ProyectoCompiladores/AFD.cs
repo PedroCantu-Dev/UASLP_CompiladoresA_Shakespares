@@ -24,7 +24,8 @@ namespace ProyectoCompiladores
 
         public void init()
         {
-            destados.Add(cerraduraEpsilon(afn.Estados[0]));
+            Destado toAdd = cerraduraEpsilon(afn.Estados[0]);
+            destados.Add(toAdd);
 
             for(int i = 0; i < this.destados.Count(); i++)
             {
@@ -35,13 +36,17 @@ namespace ProyectoCompiladores
 
                     foreach (char a in alfabetoAFD)
                     {
-                        Destado U = cerraduraEpsilon(mover(this.destados.ElementAt(i), a));
-                       
-                        if (!destados.Contains(U))
+                        List<Estado> moverRes = mover(this.destados.ElementAt(i),a);
+                        if (moverRes.Count()>0)
                         {
-                            destados.Add(U);
-                        }
+                            Destado U = cerraduraEpsilon(moverRes);
+
+                            if (!destados.Contains(U))
+                            {
+                                destados.Add(U);
+                            }
                             this.destados.ElementAt(i).AddTransicion(U, a);
+                        }
                         
                     }
                 }
