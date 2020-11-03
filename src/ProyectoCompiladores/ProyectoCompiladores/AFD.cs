@@ -5,6 +5,7 @@ using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProyectoCompiladores
 {
@@ -56,6 +57,12 @@ namespace ProyectoCompiladores
             }
         }
 
+
+        public bool ValidaLexema(string Lexema)
+        {
+            MessageBox.Show("Validando el lexema");
+            return false;
+        }
 
         private List<Estado> mover(Destado T, char transicion)//se lleva a cabo con el AFN
         {

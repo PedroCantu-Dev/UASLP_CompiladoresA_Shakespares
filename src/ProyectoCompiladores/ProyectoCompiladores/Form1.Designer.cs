@@ -73,20 +73,20 @@
             this.posfija3 = new System.Windows.Forms.TextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button13 = new System.Windows.Forms.Button();
+            this.BT_ValidarLexemaA4 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button5 = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.button9 = new System.Windows.Forms.Button();
+            this.TB_LexemaA4 = new System.Windows.Forms.TextBox();
+            this.DGV_AFDA4 = new System.Windows.Forms.DataGridView();
+            this.DGV_AFNA4 = new System.Windows.Forms.DataGridView();
+            this.BT_ConstruirAFNA4 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button12 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.BT_LimpiarTextoA4 = new System.Windows.Forms.Button();
+            this.BT_SubirArchivoA4 = new System.Windows.Forms.Button();
+            this.TB_ExpresionRegularA4 = new System.Windows.Forms.TextBox();
+            this.BT_PosfijaA4 = new System.Windows.Forms.Button();
+            this.TB_PosfijaA4 = new System.Windows.Forms.TextBox();
+            this.BT_ConstruirAFDA4 = new System.Windows.Forms.Button();
             tabPage2 = new System.Windows.Forms.TabPage();
             tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -101,8 +101,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_AFN3)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_AFDA4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_AFNA4)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage2
@@ -557,20 +557,20 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button13);
+            this.groupBox4.Controls.Add(this.BT_ValidarLexemaA4);
             this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.textBox8);
-            this.groupBox4.Controls.Add(this.dataGridView2);
-            this.groupBox4.Controls.Add(this.button5);
-            this.groupBox4.Controls.Add(this.dataGridView3);
-            this.groupBox4.Controls.Add(this.button9);
+            this.groupBox4.Controls.Add(this.TB_LexemaA4);
+            this.groupBox4.Controls.Add(this.DGV_AFDA4);
+            this.groupBox4.Controls.Add(this.BT_ConstruirAFDA4);
+            this.groupBox4.Controls.Add(this.DGV_AFNA4);
+            this.groupBox4.Controls.Add(this.BT_ConstruirAFNA4);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.button10);
-            this.groupBox4.Controls.Add(this.button11);
-            this.groupBox4.Controls.Add(this.textBox6);
-            this.groupBox4.Controls.Add(this.button12);
-            this.groupBox4.Controls.Add(this.textBox7);
+            this.groupBox4.Controls.Add(this.BT_LimpiarTextoA4);
+            this.groupBox4.Controls.Add(this.BT_SubirArchivoA4);
+            this.groupBox4.Controls.Add(this.TB_ExpresionRegularA4);
+            this.groupBox4.Controls.Add(this.BT_PosfijaA4);
+            this.groupBox4.Controls.Add(this.TB_PosfijaA4);
             this.groupBox4.Location = new System.Drawing.Point(3, 6);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(676, 470);
@@ -578,14 +578,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Análisis Léxico";
             // 
-            // button13
+            // BT_ValidarLexemaA4
             // 
-            this.button13.Location = new System.Drawing.Point(512, 87);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(158, 38);
-            this.button13.TabIndex = 16;
-            this.button13.Text = "Validar";
-            this.button13.UseVisualStyleBackColor = true;
+            this.BT_ValidarLexemaA4.Location = new System.Drawing.Point(512, 87);
+            this.BT_ValidarLexemaA4.Name = "BT_ValidarLexemaA4";
+            this.BT_ValidarLexemaA4.Size = new System.Drawing.Size(158, 38);
+            this.BT_ValidarLexemaA4.TabIndex = 16;
+            this.BT_ValidarLexemaA4.Text = "Validar";
+            this.BT_ValidarLexemaA4.UseVisualStyleBackColor = true;
+            this.BT_ValidarLexemaA4.Click += new System.EventHandler(this.BT_ValidarLexemaA4_Click);
             // 
             // label9
             // 
@@ -597,47 +598,39 @@
             this.label9.TabIndex = 15;
             this.label9.Text = "Lexema:";
             // 
-            // textBox8
+            // TB_LexemaA4
             // 
-            this.textBox8.Location = new System.Drawing.Point(360, 32);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(310, 49);
-            this.textBox8.TabIndex = 14;
+            this.TB_LexemaA4.Location = new System.Drawing.Point(360, 32);
+            this.TB_LexemaA4.Multiline = true;
+            this.TB_LexemaA4.Name = "TB_LexemaA4";
+            this.TB_LexemaA4.Size = new System.Drawing.Size(310, 49);
+            this.TB_LexemaA4.TabIndex = 14;
             // 
-            // dataGridView2
+            // DGV_AFDA4
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(244, 272);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(221, 195);
-            this.dataGridView2.TabIndex = 13;
+            this.DGV_AFDA4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_AFDA4.Location = new System.Drawing.Point(244, 272);
+            this.DGV_AFDA4.Name = "DGV_AFDA4";
+            this.DGV_AFDA4.Size = new System.Drawing.Size(221, 195);
+            this.DGV_AFDA4.TabIndex = 13;
             // 
-            // button5
+            // DGV_AFNA4
             // 
-            this.button5.Location = new System.Drawing.Point(244, 232);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(176, 24);
-            this.button5.TabIndex = 12;
-            this.button5.Text = "Construir AFD";
-            this.button5.UseVisualStyleBackColor = true;
+            this.DGV_AFNA4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_AFNA4.Location = new System.Drawing.Point(3, 272);
+            this.DGV_AFNA4.Name = "DGV_AFNA4";
+            this.DGV_AFNA4.Size = new System.Drawing.Size(221, 195);
+            this.DGV_AFNA4.TabIndex = 11;
             // 
-            // dataGridView3
+            // BT_ConstruirAFNA4
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(3, 272);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(221, 195);
-            this.dataGridView3.TabIndex = 11;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(3, 232);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(176, 24);
-            this.button9.TabIndex = 10;
-            this.button9.Text = "Construir AFN";
-            this.button9.UseVisualStyleBackColor = true;
+            this.BT_ConstruirAFNA4.Location = new System.Drawing.Point(3, 232);
+            this.BT_ConstruirAFNA4.Name = "BT_ConstruirAFNA4";
+            this.BT_ConstruirAFNA4.Size = new System.Drawing.Size(176, 24);
+            this.BT_ConstruirAFNA4.TabIndex = 10;
+            this.BT_ConstruirAFNA4.Text = "Construir AFN";
+            this.BT_ConstruirAFNA4.UseVisualStyleBackColor = true;
+            this.BT_ConstruirAFNA4.Click += new System.EventHandler(this.BT_ConstruirAFNA4_Click);
             // 
             // label7
             // 
@@ -659,48 +652,61 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "Expresión regular:";
             // 
-            // button10
+            // BT_LimpiarTextoA4
             // 
-            this.button10.Location = new System.Drawing.Point(201, 87);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(109, 23);
-            this.button10.TabIndex = 7;
-            this.button10.Text = "Limpiar Texto";
-            this.button10.UseVisualStyleBackColor = true;
+            this.BT_LimpiarTextoA4.Location = new System.Drawing.Point(201, 87);
+            this.BT_LimpiarTextoA4.Name = "BT_LimpiarTextoA4";
+            this.BT_LimpiarTextoA4.Size = new System.Drawing.Size(109, 23);
+            this.BT_LimpiarTextoA4.TabIndex = 7;
+            this.BT_LimpiarTextoA4.Text = "Limpiar Texto";
+            this.BT_LimpiarTextoA4.UseVisualStyleBackColor = true;
+            this.BT_LimpiarTextoA4.Click += new System.EventHandler(this.BT_LimpiarTextoA4_Click);
             // 
-            // button11
+            // BT_SubirArchivoA4
             // 
-            this.button11.Location = new System.Drawing.Point(0, 87);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(109, 23);
-            this.button11.TabIndex = 6;
-            this.button11.Text = "Subir Archivo";
-            this.button11.UseVisualStyleBackColor = true;
+            this.BT_SubirArchivoA4.Location = new System.Drawing.Point(0, 87);
+            this.BT_SubirArchivoA4.Name = "BT_SubirArchivoA4";
+            this.BT_SubirArchivoA4.Size = new System.Drawing.Size(109, 23);
+            this.BT_SubirArchivoA4.TabIndex = 6;
+            this.BT_SubirArchivoA4.Text = "Subir Archivo";
+            this.BT_SubirArchivoA4.UseVisualStyleBackColor = true;
+            this.BT_SubirArchivoA4.Click += new System.EventHandler(this.BT_SubirArchivoA4_Click);
             // 
-            // textBox6
+            // TB_ExpresionRegularA4
             // 
-            this.textBox6.Location = new System.Drawing.Point(0, 32);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(310, 49);
-            this.textBox6.TabIndex = 3;
+            this.TB_ExpresionRegularA4.Location = new System.Drawing.Point(0, 32);
+            this.TB_ExpresionRegularA4.Multiline = true;
+            this.TB_ExpresionRegularA4.Name = "TB_ExpresionRegularA4";
+            this.TB_ExpresionRegularA4.Size = new System.Drawing.Size(310, 49);
+            this.TB_ExpresionRegularA4.TabIndex = 3;
             // 
-            // button12
+            // BT_PosfijaA4
             // 
-            this.button12.Location = new System.Drawing.Point(0, 116);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(310, 34);
-            this.button12.TabIndex = 5;
-            this.button12.Text = "Convertir a posfija";
-            this.button12.UseVisualStyleBackColor = true;
+            this.BT_PosfijaA4.Location = new System.Drawing.Point(0, 116);
+            this.BT_PosfijaA4.Name = "BT_PosfijaA4";
+            this.BT_PosfijaA4.Size = new System.Drawing.Size(310, 34);
+            this.BT_PosfijaA4.TabIndex = 5;
+            this.BT_PosfijaA4.Text = "Convertir a posfija";
+            this.BT_PosfijaA4.UseVisualStyleBackColor = true;
+            this.BT_PosfijaA4.Click += new System.EventHandler(this.BT_PosfijaA4_Click);
             // 
-            // textBox7
+            // TB_PosfijaA4
             // 
-            this.textBox7.Location = new System.Drawing.Point(0, 169);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(310, 38);
-            this.textBox7.TabIndex = 4;
+            this.TB_PosfijaA4.Location = new System.Drawing.Point(0, 169);
+            this.TB_PosfijaA4.Multiline = true;
+            this.TB_PosfijaA4.Name = "TB_PosfijaA4";
+            this.TB_PosfijaA4.Size = new System.Drawing.Size(310, 38);
+            this.TB_PosfijaA4.TabIndex = 4;
+            // 
+            // BT_ConstruirAFDA4
+            // 
+            this.BT_ConstruirAFDA4.Location = new System.Drawing.Point(244, 232);
+            this.BT_ConstruirAFDA4.Name = "BT_ConstruirAFDA4";
+            this.BT_ConstruirAFDA4.Size = new System.Drawing.Size(176, 24);
+            this.BT_ConstruirAFDA4.TabIndex = 12;
+            this.BT_ConstruirAFDA4.Text = "Construir AFD";
+            this.BT_ConstruirAFDA4.UseVisualStyleBackColor = true;
+            this.BT_ConstruirAFDA4.Click += new System.EventHandler(this.BT_ConstruirAFDA4_Click);
             // 
             // Form1
             // 
@@ -730,8 +736,8 @@
             this.tabPage5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_AFDA4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_AFNA4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -782,24 +788,24 @@
         private System.Windows.Forms.TextBox posfija3;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button BT_ValidarLexemaA4;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TextBox TB_LexemaA4;
+        private System.Windows.Forms.DataGridView DGV_AFDA4;
+        private System.Windows.Forms.DataGridView DGV_AFNA4;
+        private System.Windows.Forms.Button BT_ConstruirAFNA4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button BT_LimpiarTextoA4;
+        private System.Windows.Forms.Button BT_SubirArchivoA4;
+        private System.Windows.Forms.TextBox TB_ExpresionRegularA4;
+        private System.Windows.Forms.Button BT_PosfijaA4;
+        private System.Windows.Forms.TextBox TB_PosfijaA4;
         private System.Windows.Forms.Label LB_Posfija;
         private System.Windows.Forms.TextBox TB_ExpresionRegularExplicita;
         private System.Windows.Forms.Label LB_ExRExplicita;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.Button BT_ConstruirAFDA4;
         //>>>>>>> Forms-DEV
     }
 }

@@ -98,7 +98,14 @@ namespace ProyectoCompiladores
 
         private void InToPosBoton_Click(object sender, EventArgs e)
         {
-            posFijaTextBox.Text = ConversionPosfija(inFijaTextBox.Text);
+            try
+            {
+                posFijaTextBox.Text = ConversionPosfija(inFijaTextBox.Text);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Ocurrió una excepción: \n" + E.Message);
+            }
         }
 
         private string ConversionPosfija(string Infija)
@@ -681,7 +688,14 @@ namespace ProyectoCompiladores
 
         private void BT_ConversionPosfija2_Click(object sender, EventArgs e)
         {
-            TB_Posfija2.Text = ConversionPosfija(TB_ExpresionR2.Text);
+            try
+            {
+                TB_Posfija2.Text = ConversionPosfija(TB_ExpresionR2.Text);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Ocurrió una excepción: \n" + E.Message);
+            }
         }
 
         private void BT_ConstruirAFN_Click(object sender, EventArgs e)
@@ -760,7 +774,15 @@ namespace ProyectoCompiladores
 
         private void BT_ConversionPosfija3_Click(object sender, EventArgs e)
         {
-            posfija3.Text = ConversionPosfija(expresionRegular3.Text);
+            try
+            {
+                posfija3.Text = ConversionPosfija(expresionRegular3.Text);
+
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Ocurrió una excepción: \n" + E.Message);
+            }
         }
         AFN AFN3;
         private void BT_ConstruirAFN3_Click(object sender, EventArgs e)
@@ -859,6 +881,131 @@ namespace ProyectoCompiladores
         private void button8_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BT_SubirArchivoA4_Click(object sender, EventArgs e)
+        {
+            TB_ExpresionRegularA4.Text = SubirArchivo();
+        }
+
+        private void BT_LimpiarTextoA4_Click(object sender, EventArgs e)
+        {
+            TB_ExpresionRegularA4.Text = "";
+            TB_PosfijaA4.Text = "";
+            TB_LexemaA4.Text = "";
+            DGV_AFDA4.Columns.Clear();
+            DGV_AFDA4.Rows.Clear();
+            DGV_AFDA4.Columns.Add("Estado", "Estado");
+
+            DGV_AFNA4.Columns.Clear();
+            DGV_AFNA4.Rows.Clear();
+            DGV_AFNA4.Columns.Add("Estado", "Estado");
+        }
+
+        private void BT_PosfijaA4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TB_PosfijaA4.Text = ConversionPosfija(TB_ExpresionRegularA4.Text);
+
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Ocurrió una excepcion: \n" + E.Message);
+            }
+        }
+
+        private void BT_ConstruirAFNA4_Click(object sender, EventArgs e)
+        {
+            AFN AFN4 = new AFN(TB_PosfijaA4.Text);
+            Operando AFNResultante = AFN4.algoritmoDeEvaluacion(TB_PosfijaA4.Text);
+            AFN4.estados = AFNResultante.EstadosOperando;
+            LLenaDGVAFN4(AFNResultante, AFN4.alfabeto);
+        }
+
+        private void BT_ConstruirAFDA4_Click(object sender, EventArgs e)
+        {
+            AFN AFN4 = new AFN(TB_PosfijaA4.Text);
+            Operando AFNResultante = AFN4.algoritmoDeEvaluacion(TB_PosfijaA4.Text);
+            AFN4.estados = AFNResultante.EstadosOperando;
+
+            AFD afd = new AFD(AFN4);
+            afd.init();
+            LLenaDGVAFD4(afd);
+
+        }
+
+
+        private void BT_ValidarLexemaA4_Click(object sender, EventArgs e)
+        {
+
+            AFN AFN4 = new AFN(TB_PosfijaA4.Text);
+            Operando AFNResultante = AFN4.algoritmoDeEvaluacion(TB_PosfijaA4.Text);
+            AFN4.estados = AFNResultante.EstadosOperando;
+
+            AFD afd = new AFD(AFN4);
+            afd.init();
+
+            afd.ValidaLexema(TB_LexemaA4.Text);
+        }
+
+        public void LLenaDGVAFD4(AFD afd)
+        {
+            DGV_AFDA4.Columns.Clear();
+            DGV_AFDA4.Rows.Clear();
+            //MessageBox.Show("La cantidad de caracteres en el alfabeto es de:  " + alfabeto.Length);
+            DGV_AFDA4.Columns.Add("Estado", "Estado");
+            foreach (char c in afd.alfabetoAFD)
+            {
+                DGV_AFDA4.Columns.Add(c.ToString(), c.ToString());
+            }
+
+            foreach (Destado d in afd.destados.Lista)
+            {
+                DGV_AFDA4.Rows.Add(d.getRowTransiciones(afd.alfabetoAFD));
+            }
+        }
+
+        public void LLenaDGVAFN4(Operando AFN, string alfabeto)
+        {
+            DGV_AFNA4.Columns.Clear();
+            DGV_AFNA4.Rows.Clear();
+            //MessageBox.Show("La cantidad de caracteres en el alfabeto es de:  " + alfabeto.Length);
+            DGV_AFNA4.Columns.Add("Estado", "Estado");
+            foreach (char c in alfabeto)
+            {
+                DGV_AFNA4.Columns.Add(c.ToString(), c.ToString());
+            }
+
+            for (int i = 0; i < AFN.EstadosOperando.Count; i++)
+            {
+                DGV_AFNA4.Rows.Add();
+                DGV_AFNA4.Rows[i].Cells[0].Value = AFN.EstadosOperando[i].Index;
+                List<string> TablaTransiciones = AFN.EstadosOperando[i].ObtenTablaTransiciones(alfabeto);
+                for (int j = 0; j < TablaTransiciones.Count; j++)
+                {
+                    string[] CadenaSplit = TablaTransiciones[j].Split('-');
+                    //string Valor  = TablaTransiciones[j];
+
+                    string Valor = "";
+                    string CadenaAux = "{";
+                    foreach (string c in CadenaSplit)
+                    {
+                        CadenaAux += c + ",";
+                    }
+                    Valor = CadenaAux.Remove(CadenaAux.Length - 1);
+                    Valor += "}";
+                    if (Valor != "{}")
+                    {
+                        DGV_AFNA4.Rows[i].Cells[j + 1].Value = Valor;
+
+                    }
+                    else
+                    {
+                        DGV_AFNA4.Rows[i].Cells[j + 1].Value = "Ø";
+                    }
+                }
+            }
         }
     }//Forms END
 }//namespace END
