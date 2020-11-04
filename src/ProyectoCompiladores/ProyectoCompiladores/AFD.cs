@@ -60,8 +60,30 @@ namespace ProyectoCompiladores
 
         public bool ValidaLexema(string Lexema)
         {
-            MessageBox.Show("Validando el lexema");
-            return false;
+            bool bandera = true;
+            int indiceCaracter = 0;
+            int indiceDEstado = 0;
+            while(bandera == true && indiceCaracter < Lexema.Length)
+            {
+                int Aux = destados.Lista[indiceDEstado].ExisteTransicionSimbolo(Lexema[indiceCaracter]);
+                if (Aux != -1)
+                {
+                    indiceDEstado = Aux;
+                    indiceCaracter++;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            if(destados.Lista[indiceDEstado].tipo == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private List<Estado> mover(Destado T, char transicion)//se lleva a cabo con el AFN
@@ -196,7 +218,7 @@ namespace ProyectoCompiladores
 
 
         //65 a 90
-        int asciiCounter = 0;
+        int asciiCounter = 1;
 
         private String getNombreDestado()
         {

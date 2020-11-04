@@ -11,7 +11,6 @@ namespace ProyectoCompiladores
     public class Destados
     {
         public List<Destado> Lista;
-
         public Destados()
         {
             Lista = new List<Destado>();
@@ -68,5 +67,22 @@ namespace ProyectoCompiladores
             return null;
         }
 
+        public void ChecaFinal(List<int> EstadosFinales)
+        {
+            foreach(Destado d in Lista)
+            {
+                foreach(int i in EstadosFinales)
+                {
+                    if (d.Contains(i))
+                    {
+                        d.tipo = true;
+                    }  
+                    else
+                    {
+                        d.tipo = false;
+                    }
+                }
+            }
+        }
     }
 }

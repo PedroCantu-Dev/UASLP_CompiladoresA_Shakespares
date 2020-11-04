@@ -344,5 +344,19 @@ namespace ProyectoCompiladores
             }
         }
 
+
+        public List<int> RegresaFinales()
+        {
+            List<int> Lista = new List<int>();
+            foreach(Estado e in estados)
+            {
+                if(e.tipo == 2)
+                {
+                    Lista.Add(e.Index);
+                }
+            }
+            return Lista;
+        }
+
     }
 }

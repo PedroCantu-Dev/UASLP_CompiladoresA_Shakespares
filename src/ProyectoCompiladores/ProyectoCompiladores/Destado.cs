@@ -14,14 +14,14 @@ namespace ProyectoCompiladores
         public List<TransicionD> listaTransiciones = new List<TransicionD>();
         public String Nombre;
         public int indice;
-
+        public bool tipo; // Inicial o Final (false || true)
         public Destado()
         {
             listaEstadosEnAFN = new List<Estado>();
             marcado = false;
         }
 
-        public Destado(List<Estado> listaEstadosEnAFN, String Nombre)
+        public Destado(List<Estado> listaEstadosEnAFN, String Nombre, bool tipo)
         {
             this.listaEstadosEnAFN = listaEstadosEnAFN;
             marcado = false;
@@ -157,6 +157,20 @@ namespace ProyectoCompiladores
                 res.Add(getStringEstadoDestinoTransicion(c));
             }
             return res.ToArray();
+        }
+
+        public int ExisteTransicionSimbolo(char Simbolo)
+        {
+            int Indice = -1;
+            for(int i = 0; i < listaTransiciones.Count; i++)
+            {
+                if(listaTransiciones[i].Simbolo == Simbolo)
+                {
+                    Indice = i;
+                    return Indice;
+                }
+            }
+            return Indice;
         }
     }
 }

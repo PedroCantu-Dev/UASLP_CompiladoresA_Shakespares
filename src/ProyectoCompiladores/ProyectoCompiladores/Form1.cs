@@ -865,24 +865,11 @@ namespace ProyectoCompiladores
         }
 
 
-        
+
 
         #endregion
 
         #region tab_4avance
-        #endregion
-
-        #region tab_5avance
-        #endregion
-
-        #region tab_6avance
-        #endregion
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BT_SubirArchivoA4_Click(object sender, EventArgs e)
         {
             TB_ExpresionRegularA4.Text = SubirArchivo();
@@ -932,7 +919,6 @@ namespace ProyectoCompiladores
             AFD afd = new AFD(AFN4);
             afd.init();
             LLenaDGVAFD4(afd);
-
         }
 
 
@@ -946,7 +932,20 @@ namespace ProyectoCompiladores
             AFD afd = new AFD(AFN4);
             afd.init();
 
-            afd.ValidaLexema(TB_LexemaA4.Text);
+
+            List<int> ListaAceptacion = AFN4.RegresaFinales();
+            afd.destados.ChecaFinal(ListaAceptacion);
+            bool res = afd.ValidaLexema(TB_LexemaA4.Text);
+            if(res == true)
+            {
+                MessageBox.Show("El lexema es valido");
+
+            }
+            else
+            {
+                MessageBox.Show("El lexema no es valido");
+
+            }
         }
 
         public void LLenaDGVAFD4(AFD afd)
@@ -1007,5 +1006,15 @@ namespace ProyectoCompiladores
                 }
             }
         }
+
+        #endregion
+
+        #region tab_5avance
+        #endregion
+
+        #region tab_6avance
+        #endregion
+
+
     }//Forms END
 }//namespace END
