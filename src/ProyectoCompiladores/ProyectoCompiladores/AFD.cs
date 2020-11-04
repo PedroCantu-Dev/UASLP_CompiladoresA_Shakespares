@@ -60,6 +60,8 @@ namespace ProyectoCompiladores
 
         public bool ValidaLexema(string Lexema)
         {
+            //MessageBox.Show("Validando el lexema");
+
             bool bandera = true;
             int indiceCaracter = 0;
             int indiceDEstado = 0;
@@ -76,6 +78,7 @@ namespace ProyectoCompiladores
                     return false;
                 }
             }
+
             if(destados.Lista[indiceDEstado].tipo == true)
             {
                 return true;
@@ -218,7 +221,7 @@ namespace ProyectoCompiladores
 
 
         //65 a 90
-        int asciiCounter = 1;
+        int asciiCounter = 0;
 
         private String getNombreDestado()
         {

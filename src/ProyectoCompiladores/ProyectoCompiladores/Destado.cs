@@ -166,7 +166,7 @@ namespace ProyectoCompiladores
             {
                 if(listaTransiciones[i].Simbolo == Simbolo)
                 {
-                    Indice = i;
+                    Indice = listaTransiciones[i].indiceDest;
                     return Indice;
                 }
             }
