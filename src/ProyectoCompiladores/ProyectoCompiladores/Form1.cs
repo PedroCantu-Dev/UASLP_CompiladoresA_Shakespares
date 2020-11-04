@@ -55,7 +55,7 @@ namespace ProyectoCompiladores
         static String caracteresAlfabeticos = "abcdefghijklmnñopqrstuvxyz";
         //static String puntoCar = ".";
         static String caracteresOtros2 = "[]- ";
-        static String alfabeto = caracteresNumericos + caracteresAlfabeticos + ".";
+        public static String alfabeto = caracteresNumericos + caracteresAlfabeticos + ".";
         static String op_Presedecia1 = "*+?";//jerarquia 1
         static String op_Presedecia2 = "&";//jerarquia 2
         static String op_Presedecia3 = "|";//jerarquia 3

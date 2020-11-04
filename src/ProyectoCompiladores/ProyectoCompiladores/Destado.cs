@@ -93,9 +93,9 @@ namespace ProyectoCompiladores
 
         public Boolean ExistTransicion(int IndiceTransicion)
         {
-            foreach(TransicionD t in listaTransiciones)
+            foreach (TransicionD t in listaTransiciones)
             {
-                if(t.indiceDest == IndiceTransicion)
+                if (t.indiceDest == IndiceTransicion)
                 {
                     return true;
                 }
@@ -162,12 +162,24 @@ namespace ProyectoCompiladores
         public int ExisteTransicionSimbolo(char Simbolo)
         {
             int Indice = -1;
-            for(int i = 0; i < listaTransiciones.Count; i++)
+            for (int i = 0; i < listaTransiciones.Count; i++)
             {
-                if(listaTransiciones[i].Simbolo == Simbolo)
+                if (listaTransiciones[i].Simbolo == Simbolo)
                 {
                     Indice = listaTransiciones[i].indiceDest;
                     return Indice;
+                }
+
+            }
+            if(Indice == -1)
+            {
+                for (int i = 0; i < listaTransiciones.Count; i++)
+                {
+                    if (listaTransiciones[i].Simbolo == '.')
+                    {
+                        Indice = listaTransiciones[i].indiceDest;
+                        return Indice;
+                    }
                 }
             }
             return Indice;
