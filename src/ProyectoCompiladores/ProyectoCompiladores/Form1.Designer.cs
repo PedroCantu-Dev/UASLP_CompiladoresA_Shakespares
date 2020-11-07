@@ -77,6 +77,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.TB_LexemaA4 = new System.Windows.Forms.TextBox();
             this.DGV_AFDA4 = new System.Windows.Forms.DataGridView();
+            this.BT_ConstruirAFDA4 = new System.Windows.Forms.Button();
             this.DGV_AFNA4 = new System.Windows.Forms.DataGridView();
             this.BT_ConstruirAFNA4 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -86,7 +87,7 @@
             this.TB_ExpresionRegularA4 = new System.Windows.Forms.TextBox();
             this.BT_PosfijaA4 = new System.Windows.Forms.Button();
             this.TB_PosfijaA4 = new System.Windows.Forms.TextBox();
-            this.BT_ConstruirAFDA4 = new System.Windows.Forms.Button();
+            this.LB_LexemaValido = new System.Windows.Forms.Label();
             tabPage2 = new System.Windows.Forms.TabPage();
             tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -557,6 +558,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.LB_LexemaValido);
             this.groupBox4.Controls.Add(this.BT_ValidarLexemaA4);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.TB_LexemaA4);
@@ -573,7 +575,7 @@
             this.groupBox4.Controls.Add(this.TB_PosfijaA4);
             this.groupBox4.Location = new System.Drawing.Point(3, 6);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(676, 470);
+            this.groupBox4.Size = new System.Drawing.Size(1041, 470);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Análisis Léxico";
@@ -613,6 +615,16 @@
             this.DGV_AFDA4.Name = "DGV_AFDA4";
             this.DGV_AFDA4.Size = new System.Drawing.Size(221, 195);
             this.DGV_AFDA4.TabIndex = 13;
+            // 
+            // BT_ConstruirAFDA4
+            // 
+            this.BT_ConstruirAFDA4.Location = new System.Drawing.Point(244, 232);
+            this.BT_ConstruirAFDA4.Name = "BT_ConstruirAFDA4";
+            this.BT_ConstruirAFDA4.Size = new System.Drawing.Size(176, 24);
+            this.BT_ConstruirAFDA4.TabIndex = 12;
+            this.BT_ConstruirAFDA4.Text = "Construir AFD";
+            this.BT_ConstruirAFDA4.UseVisualStyleBackColor = true;
+            this.BT_ConstruirAFDA4.Click += new System.EventHandler(this.BT_ConstruirAFDA4_Click);
             // 
             // DGV_AFNA4
             // 
@@ -698,15 +710,14 @@
             this.TB_PosfijaA4.Size = new System.Drawing.Size(310, 38);
             this.TB_PosfijaA4.TabIndex = 4;
             // 
-            // BT_ConstruirAFDA4
+            // LB_LexemaValido
             // 
-            this.BT_ConstruirAFDA4.Location = new System.Drawing.Point(244, 232);
-            this.BT_ConstruirAFDA4.Name = "BT_ConstruirAFDA4";
-            this.BT_ConstruirAFDA4.Size = new System.Drawing.Size(176, 24);
-            this.BT_ConstruirAFDA4.TabIndex = 12;
-            this.BT_ConstruirAFDA4.Text = "Construir AFD";
-            this.BT_ConstruirAFDA4.UseVisualStyleBackColor = true;
-            this.BT_ConstruirAFDA4.Click += new System.EventHandler(this.BT_ConstruirAFDA4_Click);
+            this.LB_LexemaValido.AutoSize = true;
+            this.LB_LexemaValido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_LexemaValido.Location = new System.Drawing.Point(360, 152);
+            this.LB_LexemaValido.Name = "LB_LexemaValido";
+            this.LB_LexemaValido.Size = new System.Drawing.Size(0, 24);
+            this.LB_LexemaValido.TabIndex = 17;
             // 
             // Form1
             // 
@@ -806,6 +817,7 @@
         private System.Windows.Forms.Label LB_ExRExplicita;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.Button BT_ConstruirAFDA4;
+        private System.Windows.Forms.Label LB_LexemaValido;
         //>>>>>>> Forms-DEV
     }
 }

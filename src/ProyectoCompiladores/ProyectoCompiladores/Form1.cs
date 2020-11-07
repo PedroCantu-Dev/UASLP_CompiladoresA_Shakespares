@@ -887,6 +887,8 @@ namespace ProyectoCompiladores
             DGV_AFNA4.Columns.Clear();
             DGV_AFNA4.Rows.Clear();
             DGV_AFNA4.Columns.Add("Estado", "Estado");
+
+            LB_LexemaValido.Text = "";
         }
 
         private void BT_PosfijaA4_Click(object sender, EventArgs e)
@@ -938,13 +940,16 @@ namespace ProyectoCompiladores
             bool res = afd.ValidaLexema(TB_LexemaA4.Text);
             if(res == true)
             {
-                MessageBox.Show("El lexema es valido");
+                //MessageBox.Show("El lexema es válido");
+                LB_LexemaValido.ForeColor = Color.Black;
+                LB_LexemaValido.Text = "El lexema si pertenece al lenguaje de la expresión regular";
 
             }
             else
             {
-                MessageBox.Show("El lexema no es valido");
-
+                //MessageBox.Show("El lexema no es válido");
+                LB_LexemaValido.ForeColor = Color.Red;
+                LB_LexemaValido.Text = "El lexema no pertenece al lenguaje de la expresión regular";
             }
         }
 
