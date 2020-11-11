@@ -1012,6 +1012,7 @@ namespace ProyectoCompiladores
             }
         }
 
+
         #endregion
 
         #region tab_5avance
@@ -1020,6 +1021,37 @@ namespace ProyectoCompiladores
         #region tab_6avance
         #endregion
 
+        private void BT_ClasificaTokens5oAvance_Click(object sender, EventArgs e)
+        {
+            if(TB_Numero5oAvance.Text != "" && TB_Identificador5oAvance.Text != "")
+            {
+                string PosfijaNumero = ConversionPosfija(TB_Numero5oAvance.Text);
+                string PosfijaIdentificador = ConversionPosfija(TB_Identificador5oAvance.Text);
 
+                AFN AfnNumero = new AFN(PosfijaNumero);
+                AFN AfnIdentificador = new AFN(PosfijaIdentificador);
+
+                AFD AFDNumero = new AFD(AfnNumero);
+                AFDNumero.init();
+                AFD AFDIdentificador = new AFD(AfnIdentificador);
+                AFDIdentificador.init();
+
+                List<int> ListaAceptacion = AfnNumero.RegresaFinales();
+                AFDNumero.destados.ChecaFinal(ListaAceptacion);
+
+                ListaAceptacion = AfnIdentificador.RegresaFinales();
+                AFDIdentificador.destados.ChecaFinal(ListaAceptacion);
+
+                /**
+                 * 
+                 * Hasta aquí ya tenemos los AFD cargados!
+                 **/
+
+            }
+            else
+            {
+                MessageBox.Show("Por favor llene los campos requeridos");
+            }
+        }
     }//Forms END
 }//namespace END
