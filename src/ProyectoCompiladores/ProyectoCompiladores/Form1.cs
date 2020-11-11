@@ -1028,8 +1028,16 @@ namespace ProyectoCompiladores
                 string PosfijaNumero = ConversionPosfija(TB_Numero5oAvance.Text);
                 string PosfijaIdentificador = ConversionPosfija(TB_Identificador5oAvance.Text);
 
+
+
                 AFN AfnNumero = new AFN(PosfijaNumero);
                 AFN AfnIdentificador = new AFN(PosfijaIdentificador);
+
+                Operando AFNResultante = AfnNumero.algoritmoDeEvaluacion(PosfijaNumero);
+                AfnNumero.estados = AFNResultante.EstadosOperando;
+                AFNResultante = AfnIdentificador.algoritmoDeEvaluacion(PosfijaIdentificador);
+                AfnIdentificador.estados = AFNResultante.EstadosOperando;
+
 
                 AFD AFDNumero = new AFD(AfnNumero);
                 AFDNumero.init();
