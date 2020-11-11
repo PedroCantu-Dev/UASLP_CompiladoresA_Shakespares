@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Collections.Specialized;
 using System.Globalization;
 using Microsoft.Win32;
+using System.Net.NetworkInformation;
 
 namespace ProyectoCompiladores
 {
@@ -61,6 +62,33 @@ namespace ProyectoCompiladores
         static String op_Presedecia3 = "|";//jerarquia 3
         static List<string> Operadores = new List<String>() { op_Presedecia3, op_Presedecia2, op_Presedecia1 };
 
+
+        static List<string> PalabrasReservadas = new List<string>()
+        {
+           "if",
+           "then",
+           "else",
+           "end",
+           "repeat",
+           "until",
+           "read",
+           "write"
+        };
+
+        static List<string> SimbolosEspeciales = new List<string>()
+        {
+            "+",
+            "-",
+            "*",
+            "/",
+            "=",
+            "<",
+            ">",
+            "(",
+            ")",
+            ";",
+            ":="
+        };
         static String op = op_Presedecia1 + op_Presedecia2 + op_Presedecia3;
 
         private void BT_SubirArchivo1_Click(object sender, EventArgs e)
@@ -279,7 +307,7 @@ namespace ProyectoCompiladores
             String resultado = "";
             Stack<int> corchetesIzquierdos = new Stack<int>();
             Stack<String> expresionesResultantes = new Stack<String>();
-            List<int> indicesIzquierdos= new List<int>();
+            List<int> indicesIzquierdos = new List<int>();
             List<int> indicesDerechos = new List<int>();
 
             for (int i = 0; i < expresion.Length; i++)
@@ -294,8 +322,8 @@ namespace ProyectoCompiladores
                 {
                     expresionesResultantes.Push(caracterDeTurno.ToString());
                 }
-                
-                else if(op_Presedecia1.Contains(caracterDeTurno))//es un operador unario
+
+                else if (op_Presedecia1.Contains(caracterDeTurno))//es un operador unario
                 {
                     String en = "";
                     en = expresionesResultantes.Pop() + caracterDeTurno;
@@ -309,7 +337,7 @@ namespace ProyectoCompiladores
                 {
                     expresionesResultantes.Push(caracterDeTurno.ToString());
                 }
-                else if (caracterDeTurno == ']' || caracterDeTurno == ')' )//corchete derecho
+                else if (caracterDeTurno == ']' || caracterDeTurno == ')')//corchete derecho
                 {
                     int indiceInicial = corchetesIzquierdos.Pop();
 
@@ -317,16 +345,16 @@ namespace ProyectoCompiladores
                     {
                         String inicial = "";
                         String final = "";
-                        int indiceGuion = expresion.IndexOf('-',indiceInicial);
+                        int indiceGuion = expresion.IndexOf('-', indiceInicial);
 
-                        for(int j = i-1; j > indiceInicial; j--)
+                        for (int j = i - 1; j > indiceInicial; j--)
                         {
                             char car = expresion.ElementAt(j);
                             if (alfabeto.Contains(car))
                             {
                                 if (j > indiceGuion)
                                 {
-                                    final = expresionesResultantes.Pop() + final ;
+                                    final = expresionesResultantes.Pop() + final;
                                 }
                                 else
                                 {
@@ -334,27 +362,27 @@ namespace ProyectoCompiladores
                                 }
                             }
                         }
-                        expresionesResultantes.Push(desgloseSecuencialCorchetes(inicial,final));
+                        expresionesResultantes.Push(desgloseSecuencialCorchetes(inicial, final));
                     }
-                    else if(caracterDeTurno == ')') 
+                    else if (caracterDeTurno == ')')
                     {
                         String aux = ")";
-                        for (int j = i -1; j > indiceInicial; j--)
+                        for (int j = i - 1; j > indiceInicial; j--)
                         {
                             char car = expresion.ElementAt(j);
-                            
+
                             if (alfabeto.Contains(car))
                             {
                                 if (op_Presedecia3.Contains(expresion.ElementAt(j - 1)))
                                 {
-                                    aux =  expresionesResultantes.Pop() + aux;
+                                    aux = expresionesResultantes.Pop() + aux;
                                 }
                                 else
                                 {
                                     aux = "&" + expresionesResultantes.Pop() + aux;
                                 }
                             }
-                            else if(op_Presedecia3.Contains(car))
+                            else if (op_Presedecia3.Contains(car))
                             {
                                 String alaDerecha = expresionesResultantes.Pop();
                                 String aLaIzquierda = expresionesResultantes.Pop();
@@ -370,7 +398,7 @@ namespace ProyectoCompiladores
                                 aux = "&" + expresionesResultantes.Pop() + aux;
                             }
                         }
-                        aux = "(" + aux.Substring(1,aux.Length-1);
+                        aux = "(" + aux.Substring(1, aux.Length - 1);
                         expresionesResultantes.Push(aux);
                     }
                     else
@@ -411,7 +439,7 @@ namespace ProyectoCompiladores
                 {
                     //algun error
                 }
-                
+
             }
             while (expresionesResultantes.Any())
             {
@@ -475,29 +503,29 @@ namespace ProyectoCompiladores
                 }
             }
             //Caracteres Numericos.
-            else if ( Int32.TryParse(primerCaracter,out aux) && Int32.TryParse(SegundoCaracter,out aux))
+            else if (Int32.TryParse(primerCaracter, out aux) && Int32.TryParse(SegundoCaracter, out aux))
             {
-                    int primerCaracterDig;
-                    Int32.TryParse(primerCaracter, out primerCaracterDig);
-                    int segundoCaracterDig;
-                    Int32.TryParse(SegundoCaracter, out segundoCaracterDig);
+                int primerCaracterDig;
+                Int32.TryParse(primerCaracter, out primerCaracterDig);
+                int segundoCaracterDig;
+                Int32.TryParse(SegundoCaracter, out segundoCaracterDig);
 
-                    if(segundoCaracterDig < primerCaracterDig)
+                if (segundoCaracterDig < primerCaracterDig)
+                {
+                    for (int j = primerCaracterDig; j >= segundoCaracterDig; j--)
                     {
-                        for (int j = primerCaracterDig; j >= segundoCaracterDig; j--)
-                        {
-                            res += j.ToString() + "|";
-                        }
+                        res += j.ToString() + "|";
                     }
-                    else
+                }
+                else
+                {
+                    for (int j = primerCaracterDig; j <= segundoCaracterDig; j++)
                     {
-                        for (int j = primerCaracterDig; j <= segundoCaracterDig; j++)
-                        {
-                            res += j.ToString() + "|";
-                        }
+                        res += j.ToString() + "|";
                     }
-                    
-                    res = res.Substring(0,res.Length-1)+')';
+                }
+
+                res = res.Substring(0, res.Length - 1) + ')';
             }
             else
             {
@@ -506,10 +534,10 @@ namespace ProyectoCompiladores
             return res;
         }
 
-        public String desgloseListaCorchetes(int startIndex, int endIndex,String expresion)
+        public String desgloseListaCorchetes(int startIndex, int endIndex, String expresion)
         {
             String res = "(";
-            for(int j = 0; j <= endIndex; j++)
+            for (int j = 0; j <= endIndex; j++)
             {
                 res += expresion[j];
             }
@@ -660,7 +688,7 @@ namespace ProyectoCompiladores
                 {
                     throw new alfabetoException("Almenos un caracter de la Expresion no corresponde con el alfabeto");
                 }
-                else if(caracter != ' ')
+                else if (caracter != ' ')
                 {
                     res += caracter;
                 }
@@ -704,7 +732,7 @@ namespace ProyectoCompiladores
             Operando AFNResultante = AFN.algoritmoDeEvaluacion(TB_Posfija2.Text);
             LLenaDGVAFN(AFNResultante, AFN.alfabeto);
             AFN.estados = AFNResultante.EstadosOperando;
-            
+
         }
 
         public void LLenaDGVAFN(Operando AFN, string alfabeto)
@@ -753,7 +781,7 @@ namespace ProyectoCompiladores
         #endregion
 
         #region tab_3avance
-        
+
         private void BT_SubirArchivo3_Click(object sender, EventArgs e)
         {
             expresionRegular3.Text = SubirArchivo();
@@ -765,7 +793,7 @@ namespace ProyectoCompiladores
             expresionRegular3.Text = "";
             dataGrid_AFN3.Columns.Clear();
             dataGrid_AFN3.Rows.Clear();
-            dataGrid_AFN3.Columns.Add("Estado","Estado");//, "Estado");
+            dataGrid_AFN3.Columns.Add("Estado", "Estado");//, "Estado");
 
             dataGrid_AFD3.Columns.Clear();
             dataGrid_AFD3.Rows.Clear();
@@ -802,9 +830,9 @@ namespace ProyectoCompiladores
             AFD afd = new AFD(AFN3);
             afd.init();
             LLenaDGVAFD3(afd);
-            
+
         }
-         
+
         public void LLenaDGVAFD3(AFD afd)
         {
             dataGrid_AFD3.Columns.Clear();
@@ -816,7 +844,7 @@ namespace ProyectoCompiladores
                 dataGrid_AFD3.Columns.Add(c.ToString(), c.ToString());
             }
 
-            foreach(Destado d in afd.destados.Lista)
+            foreach (Destado d in afd.destados.Lista)
             {
                 dataGrid_AFD3.Rows.Add(d.getRowTransiciones(afd.alfabetoAFD));
             }
@@ -938,7 +966,7 @@ namespace ProyectoCompiladores
             List<int> ListaAceptacion = AFN4.RegresaFinales();
             afd.destados.ChecaFinal(ListaAceptacion);
             bool res = afd.ValidaLexema(TB_LexemaA4.Text);
-            if(res == true)
+            if (res == true)
             {
                 //MessageBox.Show("El lexema es válido");
                 LB_LexemaValido.ForeColor = Color.Black;
@@ -1023,8 +1051,9 @@ namespace ProyectoCompiladores
 
         private void BT_ClasificaTokens5oAvance_Click(object sender, EventArgs e)
         {
-            if(TB_Numero5oAvance.Text != "" && TB_Identificador5oAvance.Text != "")
+            if (TB_Numero5oAvance.Text != "" && TB_Identificador5oAvance.Text != "" && TB_LenguajeTiny5oAvance.Text != "")
             {
+                DGV_Tokens5oAvance.Rows.Clear();
                 string PosfijaNumero = ConversionPosfija(TB_Numero5oAvance.Text);
                 string PosfijaIdentificador = ConversionPosfija(TB_Identificador5oAvance.Text);
 
@@ -1052,14 +1081,80 @@ namespace ProyectoCompiladores
 
                 /**
                  * 
-                 * Hasta aquí ya tenemos los AFD cargados!
+                 * Hasta aquí ya tenemos los AFN y AFD cargados!
                  **/
 
+                List<String[]> tinyLines = new List<String[]>();
+                List<string> StringClasificadas = new List<string>();
+                for (int lineIndex = 0; lineIndex < TB_LenguajeTiny5oAvance.Lines.Length; lineIndex++)
+                {
+                    string Trimeada = TB_LenguajeTiny5oAvance.Lines[lineIndex].Trim();
+                    String[] lineArray = Trimeada.Split(' ');
+                    tinyLines.Add(lineArray);
+                    foreach (string s in lineArray)
+                    {
+                        bool Nuevo = !ListaContains(s, StringClasificadas);
+                        if (ListaContains(s, PalabrasReservadas))
+                        {
+                            if (Nuevo)
+                            {
+                                DGV_Tokens5oAvance.Rows.Add(s, s);
+                                StringClasificadas.Add(s);
+                            }
+                        }
+                        else if (ListaContains(s, SimbolosEspeciales))
+                        {
+                            if (Nuevo)
+                            {
+                                DGV_Tokens5oAvance.Rows.Add("operador", s);
+                                StringClasificadas.Add(s);
+                            }
+                        }
+                        else if (AFDNumero.ValidaLexema(s))
+                        {
+                            if (Nuevo)
+                            {
+                                DGV_Tokens5oAvance.Rows.Add("número", s);
+                                StringClasificadas.Add(s);
+                            }
+                        }
+                        else if (AFDIdentificador.ValidaLexema(s))
+                        {
+                            if (Nuevo)
+                            {
+                                DGV_Tokens5oAvance.Rows.Add("ídentificador", s);
+                                StringClasificadas.Add(s);
+                            }
+                        }
+                        else
+                        {
+                            if (Nuevo)
+                            {
+                                DGV_Tokens5oAvance.Rows.Add("Error Léxico", s);
+                                StringClasificadas.Add(s);
+                            }
+                        }
+                    }
+                }
             }
             else
             {
                 MessageBox.Show("Por favor llene los campos requeridos");
             }
+        }
+
+        public bool ListaContains(string Cadena, List<string> Lista)
+        {
+            bool resultado = false;
+
+            foreach (string c in Lista)
+            {
+                if (Cadena == c)
+                {
+                    return true;
+                }
+            }
+            return resultado;
         }
     }//Forms END
 }//namespace END
