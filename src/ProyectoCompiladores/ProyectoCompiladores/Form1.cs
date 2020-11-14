@@ -1184,17 +1184,6 @@ namespace ProyectoCompiladores
             TB_Numero5oAvance.Text = "";
         }
 
-
-        #endregion
-
-        #region tab_6avance
-        #endregion
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void BT_SubirrArchivoExpReg5_Click(object sender, EventArgs e)
         {
             TB_ExpresionRegular5.Text = SubirArchivo();
@@ -1208,14 +1197,14 @@ namespace ProyectoCompiladores
         private void BT_ConvertirPosfija5_Click(object sender, EventArgs e)
         {
             try
-                {
-                    TB_Posfija5.Text = ConversionPosfija(TB_ExpresionRegular5.Text);
+            {
+                TB_Posfija5.Text = ConversionPosfija(TB_ExpresionRegular5.Text);
 
-                }
-                catch (Exception E)
-                {
-                    MessageBox.Show("Ocurrió una excepcion: \n" + E.Message);
-                }
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Ocurrió una excepcion: \n" + E.Message);
+            }
         }
 
         private void BT_ConstruirAFN5_Click(object sender, EventArgs e)
@@ -1342,6 +1331,13 @@ namespace ProyectoCompiladores
                 LB_Validacion5.Text = "";
             }
         }
+        #endregion
+
+        #region tab_6avance
+        #endregion
+
+
+
 
     }//Forms END
 }//namespace END
