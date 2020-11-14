@@ -23,7 +23,7 @@ namespace ProyectoCompiladores
         }
 
         #region tab_PreparacionDelProyecto
-        private void BT_SubirArchivoPrep_Click(object sender, EventArgs e)
+        private void BT_kPrep_Click(object sender, EventArgs e)
         {
             OpenFileDialog VentanaCargaArchivo = new OpenFileDialog();
             VentanaCargaArchivo.InitialDirectory = "c:\\";
@@ -682,6 +682,7 @@ namespace ProyectoCompiladores
         String limpiaExpresion(String expresion)
         {
             String res = "";
+            expresion = expresion.Trim();
             foreach (char caracter in expresion)
             {
                 if (!alfabeto.Contains(caracter) && !op.Contains(caracter) && !caracteresOtros2.Contains(caracter) && caracter != ')' && caracter != '(')
@@ -1044,11 +1045,6 @@ namespace ProyectoCompiladores
         #endregion
 
         #region tab_5avance
-        #endregion
-
-        #region tab_6avance
-        #endregion
-
         private void BT_ClasificaTokens5oAvance_Click(object sender, EventArgs e)
         {
             if (TB_Numero5oAvance.Text != "" && TB_Identificador5oAvance.Text != "" && TB_LenguajeTiny5oAvance.Text != "")
@@ -1126,10 +1122,11 @@ namespace ProyectoCompiladores
                                 StringClasificadas.Add(s);
                             }
                         }
-                        else
+                        else if(s !="")
                         {
                             if (Nuevo)
                             {
+                                
                                 DGV_Tokens5oAvance.Rows.Add("Error Léxico", s);
                                 StringClasificadas.Add(s);
                             }
@@ -1156,5 +1153,42 @@ namespace ProyectoCompiladores
             }
             return resultado;
         }
+
+        private void BT_subirNumero_Click(object sender, EventArgs e)
+        {
+            TB_Numero5oAvance.Text = SubirArchivo();
+        }
+
+        private void BT_subirIdentificador_Click(object sender, EventArgs e)
+        {
+            TB_Identificador5oAvance.Text = SubirArchivo();
+        }
+
+        private void BT_SubirPrograma_Click(object sender, EventArgs e)
+        {
+            TB_LenguajeTiny5oAvance.Text = SubirArchivo();
+        }
+
+        private void BT_ProgramaClear_Click(object sender, EventArgs e)
+        {
+            TB_LenguajeTiny5oAvance.Text = "";
+        }
+
+        private void BT_subirIdentificadorClear_Click(object sender, EventArgs e)
+        {
+            TB_Identificador5oAvance.Text = "";
+        }
+
+        private void BT_subirNumeroClear_Click(object sender, EventArgs e)
+        {
+            TB_Numero5oAvance.Text = "";
+        }
+
+        #endregion
+
+        #region tab_6avance
+        #endregion
+
+
     }//Forms END
 }//namespace END

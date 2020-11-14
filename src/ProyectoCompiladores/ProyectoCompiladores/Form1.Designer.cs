@@ -89,16 +89,22 @@
             this.BT_PosfijaA4 = new System.Windows.Forms.Button();
             this.TB_PosfijaA4 = new System.Windows.Forms.TextBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.TB_Identificador5oAvance = new System.Windows.Forms.TextBox();
-            this.TB_Numero5oAvance = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.TB_LenguajeTiny5oAvance = new System.Windows.Forms.TextBox();
-            this.BT_ClasificaTokens5oAvance = new System.Windows.Forms.Button();
+            this.BT_SubirPrograma = new System.Windows.Forms.Button();
+            this.BT_subirNumero = new System.Windows.Forms.Button();
+            this.BT_subirIdentificador = new System.Windows.Forms.Button();
             this.DGV_Tokens5oAvance = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lexema = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BT_ClasificaTokens5oAvance = new System.Windows.Forms.Button();
+            this.TB_LenguajeTiny5oAvance = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.TB_Numero5oAvance = new System.Windows.Forms.TextBox();
+            this.TB_Identificador5oAvance = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.BT_subirIdentificadorClear = new System.Windows.Forms.Button();
+            this.BT_subirNumeroClear = new System.Windows.Forms.Button();
+            this.BT_ProgramaClear = new System.Windows.Forms.Button();
             tabPage2 = new System.Windows.Forms.TabPage();
             tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -290,7 +296,6 @@
             this.BT_SubirArchivoPrep.TabIndex = 0;
             this.BT_SubirArchivoPrep.Text = "Subir Archivo";
             this.BT_SubirArchivoPrep.UseVisualStyleBackColor = true;
-            this.BT_SubirArchivoPrep.Click += new System.EventHandler(this.BT_SubirArchivoPrep_Click);
             // 
             // tabControl1
             // 
@@ -735,6 +740,12 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.BT_ProgramaClear);
+            this.tabPage6.Controls.Add(this.BT_subirNumeroClear);
+            this.tabPage6.Controls.Add(this.BT_subirIdentificadorClear);
+            this.tabPage6.Controls.Add(this.BT_SubirPrograma);
+            this.tabPage6.Controls.Add(this.BT_subirNumero);
+            this.tabPage6.Controls.Add(this.BT_subirIdentificador);
             this.tabPage6.Controls.Add(this.DGV_Tokens5oAvance);
             this.tabPage6.Controls.Add(this.BT_ClasificaTokens5oAvance);
             this.tabPage6.Controls.Add(this.TB_LenguajeTiny5oAvance);
@@ -750,68 +761,36 @@
             this.tabPage6.Text = "5º Avance";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // BT_SubirPrograma
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 20);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "identificador:";
+            this.BT_SubirPrograma.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_SubirPrograma.Location = new System.Drawing.Point(23, 255);
+            this.BT_SubirPrograma.Name = "BT_SubirPrograma";
+            this.BT_SubirPrograma.Size = new System.Drawing.Size(118, 33);
+            this.BT_SubirPrograma.TabIndex = 10;
+            this.BT_SubirPrograma.Text = " Subir programa";
+            this.BT_SubirPrograma.UseVisualStyleBackColor = true;
+            this.BT_SubirPrograma.Click += new System.EventHandler(this.BT_SubirPrograma_Click);
             // 
-            // label10
+            // BT_subirNumero
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(269, 19);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(74, 20);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "número:";
+            this.BT_subirNumero.Location = new System.Drawing.Point(485, 19);
+            this.BT_subirNumero.Name = "BT_subirNumero";
+            this.BT_subirNumero.Size = new System.Drawing.Size(19, 21);
+            this.BT_subirNumero.TabIndex = 9;
+            this.BT_subirNumero.Text = "↑";
+            this.BT_subirNumero.UseVisualStyleBackColor = true;
+            this.BT_subirNumero.Click += new System.EventHandler(this.BT_subirNumero_Click);
             // 
-            // TB_Identificador5oAvance
+            // BT_subirIdentificador
             // 
-            this.TB_Identificador5oAvance.Location = new System.Drawing.Point(138, 21);
-            this.TB_Identificador5oAvance.Name = "TB_Identificador5oAvance";
-            this.TB_Identificador5oAvance.Size = new System.Drawing.Size(100, 20);
-            this.TB_Identificador5oAvance.TabIndex = 2;
-            // 
-            // TB_Numero5oAvance
-            // 
-            this.TB_Numero5oAvance.Location = new System.Drawing.Point(342, 21);
-            this.TB_Numero5oAvance.Name = "TB_Numero5oAvance";
-            this.TB_Numero5oAvance.Size = new System.Drawing.Size(100, 20);
-            this.TB_Numero5oAvance.TabIndex = 3;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(19, 55);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(234, 20);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Programa en lenguaje TINY:";
-            // 
-            // TB_LenguajeTiny5oAvance
-            // 
-            this.TB_LenguajeTiny5oAvance.Location = new System.Drawing.Point(23, 90);
-            this.TB_LenguajeTiny5oAvance.Multiline = true;
-            this.TB_LenguajeTiny5oAvance.Name = "TB_LenguajeTiny5oAvance";
-            this.TB_LenguajeTiny5oAvance.Size = new System.Drawing.Size(445, 158);
-            this.TB_LenguajeTiny5oAvance.TabIndex = 5;
-            // 
-            // BT_ClasificaTokens5oAvance
-            // 
-            this.BT_ClasificaTokens5oAvance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_ClasificaTokens5oAvance.Location = new System.Drawing.Point(23, 271);
-            this.BT_ClasificaTokens5oAvance.Name = "BT_ClasificaTokens5oAvance";
-            this.BT_ClasificaTokens5oAvance.Size = new System.Drawing.Size(273, 33);
-            this.BT_ClasificaTokens5oAvance.TabIndex = 6;
-            this.BT_ClasificaTokens5oAvance.Text = "Clasifica Tokens";
-            this.BT_ClasificaTokens5oAvance.UseVisualStyleBackColor = true;
-            this.BT_ClasificaTokens5oAvance.Click += new System.EventHandler(this.BT_ClasificaTokens5oAvance_Click);
+            this.BT_subirIdentificador.Location = new System.Drawing.Point(244, 21);
+            this.BT_subirIdentificador.Name = "BT_subirIdentificador";
+            this.BT_subirIdentificador.Size = new System.Drawing.Size(19, 21);
+            this.BT_subirIdentificador.TabIndex = 8;
+            this.BT_subirIdentificador.Text = "↑";
+            this.BT_subirIdentificador.UseVisualStyleBackColor = true;
+            this.BT_subirIdentificador.Click += new System.EventHandler(this.BT_subirIdentificador_Click);
             // 
             // DGV_Tokens5oAvance
             // 
@@ -833,6 +812,99 @@
             // 
             this.Lexema.HeaderText = "Lexema";
             this.Lexema.Name = "Lexema";
+            // 
+            // BT_ClasificaTokens5oAvance
+            // 
+            this.BT_ClasificaTokens5oAvance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_ClasificaTokens5oAvance.Location = new System.Drawing.Point(225, 254);
+            this.BT_ClasificaTokens5oAvance.Name = "BT_ClasificaTokens5oAvance";
+            this.BT_ClasificaTokens5oAvance.Size = new System.Drawing.Size(243, 34);
+            this.BT_ClasificaTokens5oAvance.TabIndex = 6;
+            this.BT_ClasificaTokens5oAvance.Text = "Clasifica Tokens";
+            this.BT_ClasificaTokens5oAvance.UseVisualStyleBackColor = true;
+            this.BT_ClasificaTokens5oAvance.Click += new System.EventHandler(this.BT_ClasificaTokens5oAvance_Click);
+            // 
+            // TB_LenguajeTiny5oAvance
+            // 
+            this.TB_LenguajeTiny5oAvance.Location = new System.Drawing.Point(23, 90);
+            this.TB_LenguajeTiny5oAvance.Multiline = true;
+            this.TB_LenguajeTiny5oAvance.Name = "TB_LenguajeTiny5oAvance";
+            this.TB_LenguajeTiny5oAvance.Size = new System.Drawing.Size(445, 158);
+            this.TB_LenguajeTiny5oAvance.TabIndex = 5;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(19, 55);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(234, 20);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Programa en lenguaje TINY:";
+            // 
+            // TB_Numero5oAvance
+            // 
+            this.TB_Numero5oAvance.Location = new System.Drawing.Point(379, 19);
+            this.TB_Numero5oAvance.Name = "TB_Numero5oAvance";
+            this.TB_Numero5oAvance.Size = new System.Drawing.Size(100, 20);
+            this.TB_Numero5oAvance.TabIndex = 3;
+            // 
+            // TB_Identificador5oAvance
+            // 
+            this.TB_Identificador5oAvance.Location = new System.Drawing.Point(138, 21);
+            this.TB_Identificador5oAvance.Name = "TB_Identificador5oAvance";
+            this.TB_Identificador5oAvance.Size = new System.Drawing.Size(100, 20);
+            this.TB_Identificador5oAvance.TabIndex = 2;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(299, 20);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(74, 20);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "número:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(19, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 20);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "identificador:";
+            // 
+            // BT_subirIdentificadorClear
+            // 
+            this.BT_subirIdentificadorClear.Location = new System.Drawing.Point(269, 21);
+            this.BT_subirIdentificadorClear.Name = "BT_subirIdentificadorClear";
+            this.BT_subirIdentificadorClear.Size = new System.Drawing.Size(24, 22);
+            this.BT_subirIdentificadorClear.TabIndex = 11;
+            this.BT_subirIdentificadorClear.Text = "⌫";
+            this.BT_subirIdentificadorClear.UseVisualStyleBackColor = true;
+            this.BT_subirIdentificadorClear.Click += new System.EventHandler(this.BT_subirIdentificadorClear_Click);
+            // 
+            // BT_subirNumeroClear
+            // 
+            this.BT_subirNumeroClear.Location = new System.Drawing.Point(510, 19);
+            this.BT_subirNumeroClear.Name = "BT_subirNumeroClear";
+            this.BT_subirNumeroClear.Size = new System.Drawing.Size(23, 21);
+            this.BT_subirNumeroClear.TabIndex = 12;
+            this.BT_subirNumeroClear.Text = "⌫";
+            this.BT_subirNumeroClear.UseVisualStyleBackColor = true;
+            this.BT_subirNumeroClear.Click += new System.EventHandler(this.BT_subirNumeroClear_Click);
+            // 
+            // BT_ProgramaClear
+            // 
+            this.BT_ProgramaClear.Location = new System.Drawing.Point(147, 255);
+            this.BT_ProgramaClear.Name = "BT_ProgramaClear";
+            this.BT_ProgramaClear.Size = new System.Drawing.Size(72, 33);
+            this.BT_ProgramaClear.TabIndex = 13;
+            this.BT_ProgramaClear.Text = "⌫";
+            this.BT_ProgramaClear.UseVisualStyleBackColor = true;
+            this.BT_ProgramaClear.Click += new System.EventHandler(this.BT_ProgramaClear_Click);
             // 
             // Form1
             // 
@@ -947,6 +1019,12 @@
         private System.Windows.Forms.Button BT_ClasificaTokens5oAvance;
         private System.Windows.Forms.TextBox TB_LenguajeTiny5oAvance;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button BT_subirIdentificador;
+        private System.Windows.Forms.Button BT_subirNumero;
+        private System.Windows.Forms.Button BT_SubirPrograma;
+        private System.Windows.Forms.Button BT_ProgramaClear;
+        private System.Windows.Forms.Button BT_subirNumeroClear;
+        private System.Windows.Forms.Button BT_subirIdentificadorClear;
         //>>>>>>> Forms-DEV
     }
 }

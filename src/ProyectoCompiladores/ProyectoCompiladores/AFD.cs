@@ -79,7 +79,7 @@ namespace ProyectoCompiladores
                 }
             }
 
-            if(destados.Lista[indiceDEstado].tipo == true)
+            if(destados.Lista[indiceDEstado].tipo == true && Lexema != "")
             {
                 return true;
             }
