@@ -89,6 +89,25 @@
             this.BT_PosfijaA4 = new System.Windows.Forms.Button();
             this.TB_PosfijaA4 = new System.Windows.Forms.TextBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.LB_Validacion5 = new System.Windows.Forms.Label();
+            this.BT_ValidarLexema5 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.TB_Lexema5 = new System.Windows.Forms.TextBox();
+            this.dataGridViewAFD5 = new System.Windows.Forms.DataGridView();
+            this.BT_ConstriurAFD5 = new System.Windows.Forms.Button();
+            this.dataGridViewAFN5 = new System.Windows.Forms.DataGridView();
+            this.BT_ConstruirAFN5 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.BT_LimpiarExpReg5 = new System.Windows.Forms.Button();
+            this.BT_SubirrArchivoExpReg5 = new System.Windows.Forms.Button();
+            this.TB_ExpresionRegular5 = new System.Windows.Forms.TextBox();
+            this.BT_ConvertirPosfija5 = new System.Windows.Forms.Button();
+            this.TB_Posfija5 = new System.Windows.Forms.TextBox();
+            this.BT_ProgramaClear = new System.Windows.Forms.Button();
+            this.BT_subirNumeroClear = new System.Windows.Forms.Button();
+            this.BT_subirIdentificadorClear = new System.Windows.Forms.Button();
             this.BT_SubirPrograma = new System.Windows.Forms.Button();
             this.BT_subirNumero = new System.Windows.Forms.Button();
             this.BT_subirIdentificador = new System.Windows.Forms.Button();
@@ -102,9 +121,6 @@
             this.TB_Identificador5oAvance = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.BT_subirIdentificadorClear = new System.Windows.Forms.Button();
-            this.BT_subirNumeroClear = new System.Windows.Forms.Button();
-            this.BT_ProgramaClear = new System.Windows.Forms.Button();
             tabPage2 = new System.Windows.Forms.TabPage();
             tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -122,6 +138,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV_AFDA4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_AFNA4)).BeginInit();
             this.tabPage6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAFD5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAFN5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Tokens5oAvance)).BeginInit();
             this.SuspendLayout();
             // 
@@ -740,6 +759,7 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.groupBox5);
             this.tabPage6.Controls.Add(this.BT_ProgramaClear);
             this.tabPage6.Controls.Add(this.BT_subirNumeroClear);
             this.tabPage6.Controls.Add(this.BT_subirIdentificadorClear);
@@ -761,12 +781,207 @@
             this.tabPage6.Text = "5º Avance";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.LB_Validacion5);
+            this.groupBox5.Controls.Add(this.BT_ValidarLexema5);
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.TB_Lexema5);
+            this.groupBox5.Controls.Add(this.dataGridViewAFD5);
+            this.groupBox5.Controls.Add(this.BT_ConstriurAFD5);
+            this.groupBox5.Controls.Add(this.dataGridViewAFN5);
+            this.groupBox5.Controls.Add(this.BT_ConstruirAFN5);
+            this.groupBox5.Controls.Add(this.label14);
+            this.groupBox5.Controls.Add(this.label15);
+            this.groupBox5.Controls.Add(this.BT_LimpiarExpReg5);
+            this.groupBox5.Controls.Add(this.BT_SubirrArchivoExpReg5);
+            this.groupBox5.Controls.Add(this.TB_ExpresionRegular5);
+            this.groupBox5.Controls.Add(this.BT_ConvertirPosfija5);
+            this.groupBox5.Controls.Add(this.TB_Posfija5);
+            this.groupBox5.Location = new System.Drawing.Point(16, 12);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(768, 470);
+            this.groupBox5.TabIndex = 14;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Análisis Léxico";
+            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
+            // 
+            // LB_Validacion5
+            // 
+            this.LB_Validacion5.AutoSize = true;
+            this.LB_Validacion5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_Validacion5.Location = new System.Drawing.Point(336, 148);
+            this.LB_Validacion5.Name = "LB_Validacion5";
+            this.LB_Validacion5.Size = new System.Drawing.Size(0, 18);
+            this.LB_Validacion5.TabIndex = 17;
+            // 
+            // BT_ValidarLexema5
+            // 
+            this.BT_ValidarLexema5.Location = new System.Drawing.Point(512, 87);
+            this.BT_ValidarLexema5.Name = "BT_ValidarLexema5";
+            this.BT_ValidarLexema5.Size = new System.Drawing.Size(158, 38);
+            this.BT_ValidarLexema5.TabIndex = 16;
+            this.BT_ValidarLexema5.Text = "Validar";
+            this.BT_ValidarLexema5.UseVisualStyleBackColor = true;
+            //this.BT_ValidarLexema5.Click += new System.EventHandler(this.BT_ValidarLexema5_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(357, 16);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(54, 13);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Lexema:";
+            // 
+            // TB_Lexema5
+            // 
+            this.TB_Lexema5.Location = new System.Drawing.Point(360, 32);
+            this.TB_Lexema5.Multiline = true;
+            this.TB_Lexema5.Name = "TB_Lexema5";
+            this.TB_Lexema5.Size = new System.Drawing.Size(310, 49);
+            this.TB_Lexema5.TabIndex = 14;
+            this.TB_Lexema5.TextChanged += new System.EventHandler(this.TB_Lexema5_TextChanged);
+            // 
+            // dataGridViewAFD5
+            // 
+            this.dataGridViewAFD5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAFD5.Location = new System.Drawing.Point(244, 272);
+            this.dataGridViewAFD5.Name = "dataGridViewAFD5";
+            this.dataGridViewAFD5.Size = new System.Drawing.Size(221, 195);
+            this.dataGridViewAFD5.TabIndex = 13;
+            // 
+            // BT_ConstriurAFD5
+            // 
+            this.BT_ConstriurAFD5.Location = new System.Drawing.Point(244, 232);
+            this.BT_ConstriurAFD5.Name = "BT_ConstriurAFD5";
+            this.BT_ConstriurAFD5.Size = new System.Drawing.Size(176, 24);
+            this.BT_ConstriurAFD5.TabIndex = 12;
+            this.BT_ConstriurAFD5.Text = "Construir AFD";
+            this.BT_ConstriurAFD5.UseVisualStyleBackColor = true;
+            this.BT_ConstriurAFD5.Click += new System.EventHandler(this.BT_ConstriurAFD5_Click);
+            // 
+            // dataGridViewAFN5
+            // 
+            this.dataGridViewAFN5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAFN5.Location = new System.Drawing.Point(3, 272);
+            this.dataGridViewAFN5.Name = "dataGridViewAFN5";
+            this.dataGridViewAFN5.Size = new System.Drawing.Size(221, 195);
+            this.dataGridViewAFN5.TabIndex = 11;
+            // 
+            // BT_ConstruirAFN5
+            // 
+            this.BT_ConstruirAFN5.Location = new System.Drawing.Point(3, 232);
+            this.BT_ConstruirAFN5.Name = "BT_ConstruirAFN5";
+            this.BT_ConstruirAFN5.Size = new System.Drawing.Size(176, 24);
+            this.BT_ConstruirAFN5.TabIndex = 10;
+            this.BT_ConstruirAFN5.Text = "Construir AFN";
+            this.BT_ConstruirAFN5.UseVisualStyleBackColor = true;
+            this.BT_ConstruirAFN5.Click += new System.EventHandler(this.BT_ConstruirAFN5_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(6, 153);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(49, 13);
+            this.label14.TabIndex = 9;
+            this.label14.Text = "Posfija:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(3, 16);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(109, 13);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "Expresión regular:";
+            // 
+            // BT_LimpiarExpReg5
+            // 
+            this.BT_LimpiarExpReg5.Location = new System.Drawing.Point(201, 87);
+            this.BT_LimpiarExpReg5.Name = "BT_LimpiarExpReg5";
+            this.BT_LimpiarExpReg5.Size = new System.Drawing.Size(109, 23);
+            this.BT_LimpiarExpReg5.TabIndex = 7;
+            this.BT_LimpiarExpReg5.Text = "Limpiar Texto";
+            this.BT_LimpiarExpReg5.UseVisualStyleBackColor = true;
+            this.BT_LimpiarExpReg5.Click += new System.EventHandler(this.BT_LimpiarExpReg5_Click);
+            // 
+            // BT_SubirrArchivoExpReg5
+            // 
+            this.BT_SubirrArchivoExpReg5.Location = new System.Drawing.Point(0, 87);
+            this.BT_SubirrArchivoExpReg5.Name = "BT_SubirrArchivoExpReg5";
+            this.BT_SubirrArchivoExpReg5.Size = new System.Drawing.Size(109, 23);
+            this.BT_SubirrArchivoExpReg5.TabIndex = 6;
+            this.BT_SubirrArchivoExpReg5.Text = "Subir Archivo";
+            this.BT_SubirrArchivoExpReg5.UseVisualStyleBackColor = true;
+            this.BT_SubirrArchivoExpReg5.Click += new System.EventHandler(this.BT_SubirrArchivoExpReg5_Click);
+            // 
+            // TB_ExpresionRegular5
+            // 
+            this.TB_ExpresionRegular5.Location = new System.Drawing.Point(0, 32);
+            this.TB_ExpresionRegular5.Multiline = true;
+            this.TB_ExpresionRegular5.Name = "TB_ExpresionRegular5";
+            this.TB_ExpresionRegular5.Size = new System.Drawing.Size(310, 49);
+            this.TB_ExpresionRegular5.TabIndex = 3;
+            // 
+            // BT_ConvertirPosfija5
+            // 
+            this.BT_ConvertirPosfija5.Location = new System.Drawing.Point(0, 116);
+            this.BT_ConvertirPosfija5.Name = "BT_ConvertirPosfija5";
+            this.BT_ConvertirPosfija5.Size = new System.Drawing.Size(310, 34);
+            this.BT_ConvertirPosfija5.TabIndex = 5;
+            this.BT_ConvertirPosfija5.Text = "Convertir a posfija";
+            this.BT_ConvertirPosfija5.UseVisualStyleBackColor = true;
+            this.BT_ConvertirPosfija5.Click += new System.EventHandler(this.BT_ConvertirPosfija5_Click);
+            // 
+            // TB_Posfija5
+            // 
+            this.TB_Posfija5.Location = new System.Drawing.Point(0, 169);
+            this.TB_Posfija5.Multiline = true;
+            this.TB_Posfija5.Name = "TB_Posfija5";
+            this.TB_Posfija5.Size = new System.Drawing.Size(310, 38);
+            this.TB_Posfija5.TabIndex = 4;
+            // 
+            // BT_ProgramaClear
+            // 
+            this.BT_ProgramaClear.Location = new System.Drawing.Point(936, 282);
+            this.BT_ProgramaClear.Name = "BT_ProgramaClear";
+            this.BT_ProgramaClear.Size = new System.Drawing.Size(46, 33);
+            this.BT_ProgramaClear.TabIndex = 13;
+            this.BT_ProgramaClear.Text = "⌫";
+            this.BT_ProgramaClear.UseVisualStyleBackColor = true;
+            this.BT_ProgramaClear.Click += new System.EventHandler(this.BT_ProgramaClear_Click);
+            // 
+            // BT_subirNumeroClear
+            // 
+            this.BT_subirNumeroClear.Location = new System.Drawing.Point(1060, 43);
+            this.BT_subirNumeroClear.Name = "BT_subirNumeroClear";
+            this.BT_subirNumeroClear.Size = new System.Drawing.Size(33, 21);
+            this.BT_subirNumeroClear.TabIndex = 12;
+            this.BT_subirNumeroClear.Text = "⌫";
+            this.BT_subirNumeroClear.UseVisualStyleBackColor = true;
+            this.BT_subirNumeroClear.Click += new System.EventHandler(this.BT_subirNumeroClear_Click);
+            // 
+            // BT_subirIdentificadorClear
+            // 
+            this.BT_subirIdentificadorClear.Location = new System.Drawing.Point(1060, 16);
+            this.BT_subirIdentificadorClear.Name = "BT_subirIdentificadorClear";
+            this.BT_subirIdentificadorClear.Size = new System.Drawing.Size(33, 22);
+            this.BT_subirIdentificadorClear.TabIndex = 11;
+            this.BT_subirIdentificadorClear.Text = "⌫";
+            this.BT_subirIdentificadorClear.UseVisualStyleBackColor = true;
+            this.BT_subirIdentificadorClear.Click += new System.EventHandler(this.BT_subirIdentificadorClear_Click);
+            // 
             // BT_SubirPrograma
             // 
             this.BT_SubirPrograma.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_SubirPrograma.Location = new System.Drawing.Point(23, 255);
+            this.BT_SubirPrograma.Location = new System.Drawing.Point(803, 282);
             this.BT_SubirPrograma.Name = "BT_SubirPrograma";
-            this.BT_SubirPrograma.Size = new System.Drawing.Size(118, 33);
+            this.BT_SubirPrograma.Size = new System.Drawing.Size(127, 33);
             this.BT_SubirPrograma.TabIndex = 10;
             this.BT_SubirPrograma.Text = " Subir programa";
             this.BT_SubirPrograma.UseVisualStyleBackColor = true;
@@ -774,9 +989,9 @@
             // 
             // BT_subirNumero
             // 
-            this.BT_subirNumero.Location = new System.Drawing.Point(485, 19);
+            this.BT_subirNumero.Location = new System.Drawing.Point(1025, 44);
             this.BT_subirNumero.Name = "BT_subirNumero";
-            this.BT_subirNumero.Size = new System.Drawing.Size(19, 21);
+            this.BT_subirNumero.Size = new System.Drawing.Size(29, 21);
             this.BT_subirNumero.TabIndex = 9;
             this.BT_subirNumero.Text = "↑";
             this.BT_subirNumero.UseVisualStyleBackColor = true;
@@ -784,9 +999,9 @@
             // 
             // BT_subirIdentificador
             // 
-            this.BT_subirIdentificador.Location = new System.Drawing.Point(244, 21);
+            this.BT_subirIdentificador.Location = new System.Drawing.Point(1024, 16);
             this.BT_subirIdentificador.Name = "BT_subirIdentificador";
-            this.BT_subirIdentificador.Size = new System.Drawing.Size(19, 21);
+            this.BT_subirIdentificador.Size = new System.Drawing.Size(30, 21);
             this.BT_subirIdentificador.TabIndex = 8;
             this.BT_subirIdentificador.Text = "↑";
             this.BT_subirIdentificador.UseVisualStyleBackColor = true;
@@ -798,9 +1013,9 @@
             this.DGV_Tokens5oAvance.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nombre,
             this.Lexema});
-            this.DGV_Tokens5oAvance.Location = new System.Drawing.Point(567, 38);
+            this.DGV_Tokens5oAvance.Location = new System.Drawing.Point(803, 335);
             this.DGV_Tokens5oAvance.Name = "DGV_Tokens5oAvance";
-            this.DGV_Tokens5oAvance.Size = new System.Drawing.Size(243, 429);
+            this.DGV_Tokens5oAvance.Size = new System.Drawing.Size(358, 128);
             this.DGV_Tokens5oAvance.TabIndex = 7;
             // 
             // Nombre
@@ -816,9 +1031,9 @@
             // BT_ClasificaTokens5oAvance
             // 
             this.BT_ClasificaTokens5oAvance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_ClasificaTokens5oAvance.Location = new System.Drawing.Point(225, 254);
+            this.BT_ClasificaTokens5oAvance.Location = new System.Drawing.Point(988, 282);
             this.BT_ClasificaTokens5oAvance.Name = "BT_ClasificaTokens5oAvance";
-            this.BT_ClasificaTokens5oAvance.Size = new System.Drawing.Size(243, 34);
+            this.BT_ClasificaTokens5oAvance.Size = new System.Drawing.Size(173, 34);
             this.BT_ClasificaTokens5oAvance.TabIndex = 6;
             this.BT_ClasificaTokens5oAvance.Text = "Clasifica Tokens";
             this.BT_ClasificaTokens5oAvance.UseVisualStyleBackColor = true;
@@ -826,17 +1041,17 @@
             // 
             // TB_LenguajeTiny5oAvance
             // 
-            this.TB_LenguajeTiny5oAvance.Location = new System.Drawing.Point(23, 90);
+            this.TB_LenguajeTiny5oAvance.Location = new System.Drawing.Point(803, 116);
             this.TB_LenguajeTiny5oAvance.Multiline = true;
             this.TB_LenguajeTiny5oAvance.Name = "TB_LenguajeTiny5oAvance";
-            this.TB_LenguajeTiny5oAvance.Size = new System.Drawing.Size(445, 158);
+            this.TB_LenguajeTiny5oAvance.Size = new System.Drawing.Size(358, 158);
             this.TB_LenguajeTiny5oAvance.TabIndex = 5;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(19, 55);
+            this.label11.Location = new System.Drawing.Point(799, 79);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(234, 20);
             this.label11.TabIndex = 4;
@@ -844,14 +1059,14 @@
             // 
             // TB_Numero5oAvance
             // 
-            this.TB_Numero5oAvance.Location = new System.Drawing.Point(379, 19);
+            this.TB_Numero5oAvance.Location = new System.Drawing.Point(919, 44);
             this.TB_Numero5oAvance.Name = "TB_Numero5oAvance";
             this.TB_Numero5oAvance.Size = new System.Drawing.Size(100, 20);
             this.TB_Numero5oAvance.TabIndex = 3;
             // 
             // TB_Identificador5oAvance
             // 
-            this.TB_Identificador5oAvance.Location = new System.Drawing.Point(138, 21);
+            this.TB_Identificador5oAvance.Location = new System.Drawing.Point(918, 16);
             this.TB_Identificador5oAvance.Name = "TB_Identificador5oAvance";
             this.TB_Identificador5oAvance.Size = new System.Drawing.Size(100, 20);
             this.TB_Identificador5oAvance.TabIndex = 2;
@@ -860,7 +1075,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(299, 20);
+            this.label10.Location = new System.Drawing.Point(839, 45);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(74, 20);
             this.label10.TabIndex = 1;
@@ -870,41 +1085,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 19);
+            this.label2.Location = new System.Drawing.Point(799, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "identificador:";
-            // 
-            // BT_subirIdentificadorClear
-            // 
-            this.BT_subirIdentificadorClear.Location = new System.Drawing.Point(269, 21);
-            this.BT_subirIdentificadorClear.Name = "BT_subirIdentificadorClear";
-            this.BT_subirIdentificadorClear.Size = new System.Drawing.Size(24, 22);
-            this.BT_subirIdentificadorClear.TabIndex = 11;
-            this.BT_subirIdentificadorClear.Text = "⌫";
-            this.BT_subirIdentificadorClear.UseVisualStyleBackColor = true;
-            this.BT_subirIdentificadorClear.Click += new System.EventHandler(this.BT_subirIdentificadorClear_Click);
-            // 
-            // BT_subirNumeroClear
-            // 
-            this.BT_subirNumeroClear.Location = new System.Drawing.Point(510, 19);
-            this.BT_subirNumeroClear.Name = "BT_subirNumeroClear";
-            this.BT_subirNumeroClear.Size = new System.Drawing.Size(23, 21);
-            this.BT_subirNumeroClear.TabIndex = 12;
-            this.BT_subirNumeroClear.Text = "⌫";
-            this.BT_subirNumeroClear.UseVisualStyleBackColor = true;
-            this.BT_subirNumeroClear.Click += new System.EventHandler(this.BT_subirNumeroClear_Click);
-            // 
-            // BT_ProgramaClear
-            // 
-            this.BT_ProgramaClear.Location = new System.Drawing.Point(147, 255);
-            this.BT_ProgramaClear.Name = "BT_ProgramaClear";
-            this.BT_ProgramaClear.Size = new System.Drawing.Size(72, 33);
-            this.BT_ProgramaClear.TabIndex = 13;
-            this.BT_ProgramaClear.Text = "⌫";
-            this.BT_ProgramaClear.UseVisualStyleBackColor = true;
-            this.BT_ProgramaClear.Click += new System.EventHandler(this.BT_ProgramaClear_Click);
             // 
             // Form1
             // 
@@ -938,6 +1123,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV_AFNA4)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAFD5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAFN5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Tokens5oAvance)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1025,6 +1214,22 @@
         private System.Windows.Forms.Button BT_ProgramaClear;
         private System.Windows.Forms.Button BT_subirNumeroClear;
         private System.Windows.Forms.Button BT_subirIdentificadorClear;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label LB_Validacion5;
+        private System.Windows.Forms.Button BT_ValidarLexema5;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox TB_Lexema5;
+        private System.Windows.Forms.DataGridView dataGridViewAFD5;
+        private System.Windows.Forms.Button BT_ConstriurAFD5;
+        private System.Windows.Forms.DataGridView dataGridViewAFN5;
+        private System.Windows.Forms.Button BT_ConstruirAFN5;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button BT_LimpiarExpReg5;
+        private System.Windows.Forms.Button BT_SubirrArchivoExpReg5;
+        private System.Windows.Forms.TextBox TB_ExpresionRegular5;
+        private System.Windows.Forms.Button BT_ConvertirPosfija5;
+        private System.Windows.Forms.TextBox TB_Posfija5;
         //>>>>>>> Forms-DEV
     }
 }

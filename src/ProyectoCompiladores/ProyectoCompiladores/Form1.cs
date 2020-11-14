@@ -1184,11 +1184,164 @@ namespace ProyectoCompiladores
             TB_Numero5oAvance.Text = "";
         }
 
+
         #endregion
 
         #region tab_6avance
         #endregion
 
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BT_SubirrArchivoExpReg5_Click(object sender, EventArgs e)
+        {
+            TB_ExpresionRegular5.Text = SubirArchivo();
+        }
+
+        private void BT_LimpiarExpReg5_Click(object sender, EventArgs e)
+        {
+            TB_ExpresionRegular5.Text = "";
+        }
+
+        private void BT_ConvertirPosfija5_Click(object sender, EventArgs e)
+        {
+            try
+                {
+                    TB_Posfija5.Text = ConversionPosfija(TB_ExpresionRegular5.Text);
+
+                }
+                catch (Exception E)
+                {
+                    MessageBox.Show("Ocurrió una excepcion: \n" + E.Message);
+                }
+        }
+
+        private void BT_ConstruirAFN5_Click(object sender, EventArgs e)
+        {
+            AFN AFN5 = new AFN(TB_Posfija5.Text);
+            Operando AFNResultante = AFN5.algoritmoDeEvaluacion(TB_Posfija5.Text);
+            AFN5.estados = AFNResultante.EstadosOperando;
+            LLenaDGVAFN5(AFNResultante, AFN5.alfabeto);
+        }
+
+        private void BT_ConstriurAFD5_Click(object sender, EventArgs e)
+        {
+            AFN AFN5 = new AFN(TB_Posfija5.Text);
+            Operando AFNResultante = AFN5.algoritmoDeEvaluacion(TB_Posfija5.Text);
+            AFN5.estados = AFNResultante.EstadosOperando;
+
+            AFD afd = new AFD(AFN5);
+            afd.init();
+            LLenaDGVAFD5(afd);
+        }
+
+        public void LLenaDGVAFD5(AFD afd)
+        {
+            dataGridViewAFD5.Columns.Clear();
+            dataGridViewAFD5.Rows.Clear();
+            //MessageBox.Show("La cantidad de caracteres en el alfabeto es de:  " + alfabeto.Length);
+            dataGridViewAFD5.Columns.Add("Estado", "Estado");
+            foreach (char c in afd.alfabetoAFD)
+            {
+                dataGridViewAFD5.Columns.Add(c.ToString(), c.ToString());
+            }
+
+            foreach (Destado d in afd.destados.Lista)
+            {
+                dataGridViewAFD5.Rows.Add(d.getRowTransiciones(afd.alfabetoAFD));
+            }
+        }
+
+        public void LLenaDGVAFN5(Operando AFN, string alfabeto)
+        {
+            dataGridViewAFN5.Columns.Clear();
+            dataGridViewAFN5.Rows.Clear();
+            //MessageBox.Show("La cantidad de caracteres en el alfabeto es de:  " + alfabeto.Length);
+            dataGridViewAFN5.Columns.Add("Estado", "Estado");
+            foreach (char c in alfabeto)
+            {
+                dataGridViewAFN5.Columns.Add(c.ToString(), c.ToString());
+            }
+
+            for (int i = 0; i < AFN.EstadosOperando.Count; i++)
+            {
+                dataGridViewAFN5.Rows.Add();
+                dataGridViewAFN5.Rows[i].Cells[0].Value = AFN.EstadosOperando[i].Index;
+                List<string> TablaTransiciones = AFN.EstadosOperando[i].ObtenTablaTransiciones(alfabeto);
+                for (int j = 0; j < TablaTransiciones.Count; j++)
+                {
+                    string[] CadenaSplit = TablaTransiciones[j].Split('-');
+                    //string Valor  = TablaTransiciones[j];
+
+                    string Valor = "";
+                    string CadenaAux = "{";
+                    foreach (string c in CadenaSplit)
+                    {
+                        CadenaAux += c + ",";
+                    }
+                    Valor = CadenaAux.Remove(CadenaAux.Length - 1);
+                    Valor += "}";
+                    if (Valor != "{}")
+                    {
+                        dataGridViewAFN5.Rows[i].Cells[j + 1].Value = Valor;
+
+                    }
+                    else
+                    {
+                        dataGridViewAFN5.Rows[i].Cells[j + 1].Value = "Ø";
+                    }
+                }
+            }
+        }
+
+        private void TB_Lexema5_TextChanged(object sender, EventArgs e)
+        {
+            ValidarLexema5();
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+            ValidarLexema5();
+        }
+
+
+        private void ValidarLexema5()
+        {
+            if (TB_Lexema5.Text != "" && TB_Posfija5.Text != "")
+            {
+
+                AFN AFN5 = new AFN(TB_Posfija5.Text);
+                Operando AFNResultante = AFN5.algoritmoDeEvaluacion(TB_Posfija5.Text);
+                AFN5.estados = AFNResultante.EstadosOperando;
+
+                AFD afd = new AFD(AFN5);
+                afd.init();
+
+
+                List<int> ListaAceptacion = AFN5.RegresaFinales();
+                afd.destados.ChecaFinal(ListaAceptacion);
+                bool res = afd.ValidaLexema(TB_Lexema5.Text);
+                if (res == true)
+                {
+                    //MessageBox.Show("El lexema es válido");
+                    LB_Validacion5.ForeColor = Color.Black;
+                    LB_Validacion5.Text = "El lexema si pertenece al lenguaje de la expresión regular";
+
+                }
+                else
+                {
+                    //MessageBox.Show("El lexema no es válido");
+                    LB_Validacion5.ForeColor = Color.Red;
+                    LB_Validacion5.Text = "El lexema no pertenece al lenguaje de la expresión regular";
+                }
+            }
+            else
+            {
+                LB_Validacion5.Text = "";
+            }
+        }
 
     }//Forms END
 }//namespace END
