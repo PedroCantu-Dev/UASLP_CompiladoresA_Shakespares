@@ -1047,97 +1047,113 @@ namespace ProyectoCompiladores
         #region tab_5avance
         private void BT_ClasificaTokens5oAvance_Click(object sender, EventArgs e)
         {
-            if (TB_Numero5oAvance.Text != "" && TB_Identificador5oAvance.Text != "" && TB_LenguajeTiny5oAvance.Text != "")
+            try
             {
-                DGV_Tokens5oAvance.Rows.Clear();
-                string PosfijaNumero = ConversionPosfija(TB_Numero5oAvance.Text);
-                string PosfijaIdentificador = ConversionPosfija(TB_Identificador5oAvance.Text);
-
-
-
-                AFN AfnNumero = new AFN(PosfijaNumero);
-                AFN AfnIdentificador = new AFN(PosfijaIdentificador);
-
-                Operando AFNResultante = AfnNumero.algoritmoDeEvaluacion(PosfijaNumero);
-                AfnNumero.estados = AFNResultante.EstadosOperando;
-                AFNResultante = AfnIdentificador.algoritmoDeEvaluacion(PosfijaIdentificador);
-                AfnIdentificador.estados = AFNResultante.EstadosOperando;
-
-
-                AFD AFDNumero = new AFD(AfnNumero);
-                AFDNumero.init();
-                AFD AFDIdentificador = new AFD(AfnIdentificador);
-                AFDIdentificador.init();
-
-                List<int> ListaAceptacion = AfnNumero.RegresaFinales();
-                AFDNumero.destados.ChecaFinal(ListaAceptacion);
-
-                ListaAceptacion = AfnIdentificador.RegresaFinales();
-                AFDIdentificador.destados.ChecaFinal(ListaAceptacion);
-
-                /**
-                 * 
-                 * Hasta aquí ya tenemos los AFN y AFD cargados!
-                 **/
-
-                List<String[]> tinyLines = new List<String[]>();
-                List<string> StringClasificadas = new List<string>();
-                for (int lineIndex = 0; lineIndex < TB_LenguajeTiny5oAvance.Lines.Length; lineIndex++)
+                if (TB_Numero5oAvance.Text != "" && TB_Identificador5oAvance.Text != "" && TB_LenguajeTiny5oAvance.Text != "")
                 {
-                    string Trimeada = TB_LenguajeTiny5oAvance.Lines[lineIndex].Trim();
-                    String[] lineArray = Trimeada.Split(' ');
-                    tinyLines.Add(lineArray);
-                    foreach (string s in lineArray)
+                    DGV_Tokens5oAvance.Rows.Clear();
+                    string PosfijaNumero = ConversionPosfija(TB_Numero5oAvance.Text);
+                    string PosfijaIdentificador = ConversionPosfija(TB_Identificador5oAvance.Text);
+
+
+
+                    AFN AfnNumero = new AFN(PosfijaNumero);
+                    AFN AfnIdentificador = new AFN(PosfijaIdentificador);
+
+                    Operando AFNResultante = AfnNumero.algoritmoDeEvaluacion(PosfijaNumero);
+                    AfnNumero.estados = AFNResultante.EstadosOperando;
+                    AFNResultante = AfnIdentificador.algoritmoDeEvaluacion(PosfijaIdentificador);
+                    AfnIdentificador.estados = AFNResultante.EstadosOperando;
+
+
+                    AFD AFDNumero = new AFD(AfnNumero);
+                    AFDNumero.init();
+                    AFD AFDIdentificador = new AFD(AfnIdentificador);
+                    AFDIdentificador.init();
+
+                    List<int> ListaAceptacion = AfnNumero.RegresaFinales();
+                    AFDNumero.destados.ChecaFinal(ListaAceptacion);
+
+                    ListaAceptacion = AfnIdentificador.RegresaFinales();
+                    AFDIdentificador.destados.ChecaFinal(ListaAceptacion);
+
+                    /**
+                     * 
+                     * Hasta aquí ya tenemos los AFN y AFD cargados!
+                     **/
+
+                    List<String[]> tinyLines = new List<String[]>();
+                    List<string> StringClasificadas = new List<string>();
+                    int ContadorFila = 0;
+                    for (int lineIndex = 0; lineIndex < TB_LenguajeTiny5oAvance.Lines.Length; lineIndex++)
                     {
-                        bool Nuevo = !ListaContains(s, StringClasificadas);
-                        if (ListaContains(s, PalabrasReservadas))
+                        string Trimeada = TB_LenguajeTiny5oAvance.Lines[lineIndex].Trim();
+                        String[] lineArray = Trimeada.Split(' ');
+                        tinyLines.Add(lineArray);
+                        foreach (string s in lineArray)
                         {
-                            if (Nuevo)
+                            bool Nuevo = !ListaContains(s, StringClasificadas);
+                            if (ListaContains(s, PalabrasReservadas))
                             {
-                                DGV_Tokens5oAvance.Rows.Add(s, s);
-                                StringClasificadas.Add(s);
+                                if (Nuevo)
+                                {
+                                    DGV_Tokens5oAvance.Rows.Add(s, s);
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                }
                             }
-                        }
-                        else if (ListaContains(s, SimbolosEspeciales))
-                        {
-                            if (Nuevo)
+                            else if (ListaContains(s, SimbolosEspeciales))
                             {
-                                DGV_Tokens5oAvance.Rows.Add("operador", s);
-                                StringClasificadas.Add(s);
+                                if (Nuevo)
+                                {
+                                    DGV_Tokens5oAvance.Rows.Add(s, s);
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                }
                             }
-                        }
-                        else if (AFDNumero.ValidaLexema(s))
-                        {
-                            if (Nuevo)
+                            else if (AFDNumero.ValidaLexema(s))
                             {
-                                DGV_Tokens5oAvance.Rows.Add("número", s);
-                                StringClasificadas.Add(s);
+                                if (Nuevo)
+                                {
+                                    DGV_Tokens5oAvance.Rows.Add("número", s);
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                }
                             }
-                        }
-                        else if (AFDIdentificador.ValidaLexema(s))
-                        {
-                            if (Nuevo)
+                            else if (AFDIdentificador.ValidaLexema(s))
                             {
-                                DGV_Tokens5oAvance.Rows.Add("ídentificador", s);
-                                StringClasificadas.Add(s);
+                                if (Nuevo)
+                                {
+                                    DGV_Tokens5oAvance.Rows.Add("ídentificador", s);
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                }
                             }
-                        }
-                        else if(s !="")
-                        {
-                            if (Nuevo)
+                            else if (s != "")
                             {
-                                
-                                DGV_Tokens5oAvance.Rows.Add("Error Léxico", s);
-                                StringClasificadas.Add(s);
+                                if (Nuevo)
+                                {
+
+                                    DGV_Tokens5oAvance.Rows.Add("Error Léxico", s);
+                                    DGV_Tokens5oAvance.Rows[ContadorFila].Cells[0].Style.ForeColor = Color.Red;
+                                    DGV_Tokens5oAvance.Rows[ContadorFila].Cells[1].Style.ForeColor = Color.Red;
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                }
                             }
                         }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Por favor llene los campos requeridos");
+                }
             }
-            else
+            catch (Exception E)
             {
-                MessageBox.Show("Por favor llene los campos requeridos");
+                MessageBox.Show("Ocurrió una excepción\n" + E.Message);
             }
+           
         }
 
         public bool ListaContains(string Cadena, List<string> Lista)
