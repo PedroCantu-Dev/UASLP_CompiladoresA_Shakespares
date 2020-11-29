@@ -70,8 +70,87 @@ Es importante recordar los tokens del lenguaje TINY:
 
 
 ## 6º avance (Viernes 4 Diciembre)==>():
+Se agregará una sección para Análisis Sintáctico LR(0). 
+
+Se mostrará un botón "Construir Colección LR(0) Canónica", al cual, al darle click, internamente construirá el autómata LR(0) en base a la gramática TINY.
+
+Mostrará como resultado una tabla de transiciones del AFD resultante, así como un listado del contenido de los elementos de cada estado.
+
+### Ejemplo de interfaz:
+<a href="assets/Entrega6.pdf"><img src="assets/Entrega6.png" alt="Entrega6"  width="700px" height="500px"></a>
+
+Gramática del lenguaje TINY :
+
++programa -> secuencia-sent
+
++secuencia-sent -> secuencia-sent ; sentencia | sentencia
+
++sentencia -> sent-if | sent-repeat | sent-assign | sent-read | sent-write
+
++sent-if -> if exp then secuencia-sent end | if exp then secuencia-sent else secuencia-sent end
+
++sent-repeat -> repeat secuencia-sent until exp
+
++sent-assign -> identificador := exp
+
++sent-read -> read identificador
+
++sent-write -> write exp
+
++exp -> exp-simple op-comp exp-simple | exp-simple
+
++op-comp -> < | > | =
+
++exp-simple -> exp-simple opsuma term | term
+
++opsuma -> + | -
+
++term -> term opmult factor | factor
+
++opmult -> * | /
+
++factor -> ( exp ) | numero | identificador
+
+
 
 ## 7º avance (Viernes 18 Diciembre)==>():
+
+Al botón actual de "Construir Colección LR(0) Canónica" le agregaremos " y Tabla de Análisis Sintáctico LR", al cual, al darle clic, internamente, además de construir el autómata LR(0), también se deberá construir la tabla de Análisis Sintáctico LR en base a la gramática TINY, y se imprimirá en pantalla.
+
+### Ejemplo de interfaz:
+<a href="assets/Entrega7.pdf"><img src="assets/Entrega7.png" alt="Entrega7"  width="700px" height="500px"></a>
+
++Gramática del lenguaje TINY
+
++programa -> secuencia-sent
+
++secuencia-sent -> secuencia-sent ; sentencia | sentencia
+
++sentencia -> sent-if | sent-repeat | sent-assign | sent-read | sent-write
+
++sent-if -> if exp then secuencia-sent end | if exp then secuencia-sent else secuencia-sent end
+
++sent-repeat -> repeat secuencia-sent until exp
+
++sent-assign -> identificador := exp
+
++sent-read -> read identificador
+
++sent-write -> write exp
+
++exp -> exp-simple op-comp exp-simple | exp-simple
+
++op-comp -> < | > | =
+
++exp-simple -> exp-simple opsuma term | term
+
++opsuma -> + | -
+
++term -> term opmult factor | factor
+
++opmult -> * | /
+
++factor -> ( exp ) | numero | identificador
 
 ## Proyecto final (Jueves 7 Enero)==>():
 
