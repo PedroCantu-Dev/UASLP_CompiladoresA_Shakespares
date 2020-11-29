@@ -79,36 +79,22 @@ Mostrará como resultado una tabla de transiciones del AFD resultante, así como
 ### Ejemplo de interfaz:
 <a href="assets/Entrega6.pdf"><img src="assets/Entrega6.png" alt="Entrega6"  width="700px" height="500px"></a>
 
-Gramática del lenguaje TINY :
+### Gramatica del lenguaje TINY:
 
 +programa -> secuencia-sent
-
 +secuencia-sent -> secuencia-sent ; sentencia | sentencia
-
 +sentencia -> sent-if | sent-repeat | sent-assign | sent-read | sent-write
-
 +sent-if -> if exp then secuencia-sent end | if exp then secuencia-sent else secuencia-sent end
-
 +sent-repeat -> repeat secuencia-sent until exp
-
 +sent-assign -> identificador := exp
-
 +sent-read -> read identificador
-
 +sent-write -> write exp
-
 +exp -> exp-simple op-comp exp-simple | exp-simple
-
 +op-comp -> < | > | =
-
 +exp-simple -> exp-simple opsuma term | term
-
 +opsuma -> + | -
-
 +term -> term opmult factor | factor
-
 +opmult -> * | /
-
 +factor -> ( exp ) | numero | identificador
 
 
@@ -120,36 +106,22 @@ Al botón actual de "Construir Colección LR(0) Canónica" le agregaremos " y Ta
 ### Ejemplo de interfaz:
 <a href="assets/Entrega7.pdf"><img src="assets/Entrega7.png" alt="Entrega7"  width="700px" height="500px"></a>
 
-+Gramática del lenguaje TINY
+### Gramatica del lenguaje TINY:
 
 +programa -> secuencia-sent
-
 +secuencia-sent -> secuencia-sent ; sentencia | sentencia
-
 +sentencia -> sent-if | sent-repeat | sent-assign | sent-read | sent-write
-
 +sent-if -> if exp then secuencia-sent end | if exp then secuencia-sent else secuencia-sent end
-
 +sent-repeat -> repeat secuencia-sent until exp
-
 +sent-assign -> identificador := exp
-
 +sent-read -> read identificador
-
 +sent-write -> write exp
-
 +exp -> exp-simple op-comp exp-simple | exp-simple
-
 +op-comp -> < | > | =
-
 +exp-simple -> exp-simple opsuma term | term
-
 +opsuma -> + | -
-
 +term -> term opmult factor | factor
-
 +opmult -> * | /
-
 +factor -> ( exp ) | numero | identificador
 
 ## Proyecto final (Jueves 7 Enero)==>():
