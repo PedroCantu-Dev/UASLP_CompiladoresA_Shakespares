@@ -77,7 +77,7 @@ Se mostrará un botón "Construir Colección LR(0) Canónica", al cual, al darle
 Mostrará como resultado una tabla de transiciones del AFD resultante, así como un listado del contenido de los elementos de cada estado.
 
 ### Ejemplo de interfaz:
-<a href="assets/Entrega6.pdf"><img src="assets/Entrega6.png" alt="Entrega6"  width="800px" height="500px"></a>
+<a href="assets/Entrega6.pdf"><img src="assets/Entrega6.png" alt="Entrega6"  width="1806px" height="650px"></a>
 
 ### Gramatica del lenguaje TINY:
 + programa -> secuencia-sent
@@ -103,7 +103,7 @@ Mostrará como resultado una tabla de transiciones del AFD resultante, así como
 Al botón actual de "Construir Colección LR(0) Canónica" le agregaremos " y Tabla de Análisis Sintáctico LR", al cual, al darle clic, internamente, además de construir el autómata LR(0), también se deberá construir la tabla de Análisis Sintáctico LR en base a la gramática TINY, y se imprimirá en pantalla.
 
 ### Ejemplo de interfaz:
-<a href="assets/Entrega7.pdf"><img src="assets/Entrega7.png" alt="Entrega7"  width="800px" height="500px"></a>
+<a href="assets/Entrega7.pdf"><img src="assets/Entrega7.png" alt="Entrega7"  width="1740px" height="600px"></a>
 
 ### Gramatica del lenguaje TINY:
 + programa -> secuencia-sent
