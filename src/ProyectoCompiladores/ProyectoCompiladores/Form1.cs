@@ -1347,13 +1347,17 @@ namespace ProyectoCompiladores
                 LB_Validacion5.Text = "";
             }
         }
+
+
+
         #endregion
 
         #region tab_6avance
         #endregion
 
+        private void groupBoxSintactico6_Enter(object sender, EventArgs e)
+        {
 
-
-
+        }
     }//Forms END
 }//namespace END
