@@ -59,7 +59,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gramatica.cs" />
     <Compile Include="Operando.cs" />
+    <Compile Include="Produccion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transicion.cs" />

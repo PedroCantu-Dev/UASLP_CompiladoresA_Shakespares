@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace ProyectoCompiladores
 {
-    class Producion
+    class Produccion
     {
+        string Encabezado;
+        List<string> CuerpoProduccion;
+
+
+        public Produccion(string Encabezado, List<string> Cuerpo)
+        {
+            this.Encabezado = Encabezado;
+            this.CuerpoProduccion = Cuerpo;
+        }
     }
 }

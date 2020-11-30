@@ -1353,11 +1353,285 @@ namespace ProyectoCompiladores
         #endregion
 
         #region tab_6avance
+        private void BT_SubirArchivoExpReg_6_Click(object sender, EventArgs e)
+        {
+            TB_ExpresionRegular_6.Text = SubirArchivo();
+        }
+
+        private void BT_LimpiarExpReg_6_Click(object sender, EventArgs e)
+        {
+            TB_ExpresionRegular_6.Text = "";
+        }
+
+        private void BT_ConvertirPosfija_6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TB_Posfija_6.Text = ConversionPosfija(TB_ExpresionRegular_6.Text);
+
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Ocurrió una excepcion: \n" + E.Message);
+            }
+        }
+
+        private void BT_ValidarLexema6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AFN AFN = new AFN(TB_Posfija_6.Text);
+                Operando AFNResultante = AFN.algoritmoDeEvaluacion(TB_Posfija_6.Text);
+                AFN.estados = AFNResultante.EstadosOperando;
+
+                AFD afd = new AFD(AFN);
+                afd.init();
+
+
+                List<int> ListaAceptacion = AFN.RegresaFinales();
+                afd.destados.ChecaFinal(ListaAceptacion);
+                bool res = afd.ValidaLexema(TB_Lexema_6.Text);
+                if (res == true)
+                {
+                    //MessageBox.Show("El lexema es válido");
+                    MessageBox.Show("El lexema si pertenece a la expresión regular");
+
+                }
+                else
+                {
+                    //MessageBox.Show("El lexema no es válido");
+                    MessageBox.Show("El lexema no pertenece al lenguaje de la expresión regular");
+                }
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Ocurrió una excepción:\n " + E.Message);
+            }
+        }
+
+        private void BT_ConstruirAFN_6_Click(object sender, EventArgs e)
+        {
+            AFN AFN = new AFN(TB_Posfija_6.Text);
+            Operando AFNResultante = AFN.algoritmoDeEvaluacion(TB_Posfija_6.Text);
+            AFN.estados = AFNResultante.EstadosOperando;
+            LLenaDGVAFN6(AFNResultante, AFN.alfabeto);
+        }
+
+
+        public void LLenaDGVAFN6(Operando AFN, string alfabeto)
+        {
+            DGV_AFN_6.Columns.Clear();
+            DGV_AFN_6.Rows.Clear();
+            //MessageBox.Show("La cantidad de caracteres en el alfabeto es de:  " + alfabeto.Length);
+            DGV_AFN_6.Columns.Add("Estado", "Estado");
+            foreach (char c in alfabeto)
+            {
+                DGV_AFN_6.Columns.Add(c.ToString(), c.ToString());
+            }
+
+            for (int i = 0; i < AFN.EstadosOperando.Count; i++)
+            {
+                DGV_AFN_6.Rows.Add();
+                DGV_AFN_6.Rows[i].Cells[0].Value = AFN.EstadosOperando[i].Index;
+                List<string> TablaTransiciones = AFN.EstadosOperando[i].ObtenTablaTransiciones(alfabeto);
+                for (int j = 0; j < TablaTransiciones.Count; j++)
+                {
+                    string[] CadenaSplit = TablaTransiciones[j].Split('-');
+                    //string Valor  = TablaTransiciones[j];
+
+                    string Valor = "";
+                    string CadenaAux = "{";
+                    foreach (string c in CadenaSplit)
+                    {
+                        CadenaAux += c + ",";
+                    }
+                    Valor = CadenaAux.Remove(CadenaAux.Length - 1);
+                    Valor += "}";
+                    if (Valor != "{}")
+                    {
+                        DGV_AFN_6.Rows[i].Cells[j + 1].Value = Valor;
+
+                    }
+                    else
+                    {
+                        DGV_AFN_6.Rows[i].Cells[j + 1].Value = "Ø";
+                    }
+                }
+            }
+        }
+
+        private void BT_ConstruirAFD_6_Click(object sender, EventArgs e)
+        {
+            AFN AFN = new AFN(TB_Posfija_6.Text);
+            Operando AFNResultante = AFN.algoritmoDeEvaluacion(TB_Posfija_6.Text);
+            AFN.estados = AFNResultante.EstadosOperando;
+
+            AFD afd = new AFD(AFN);
+            afd.init();
+            LLenaDGVAFD6(afd);
+        }
+
+        public void LLenaDGVAFD6(AFD afd)
+        {
+            DGV_AFD_6.Columns.Clear();
+            DGV_AFD_6.Rows.Clear();
+            //MessageBox.Show("La cantidad de caracteres en el alfabeto es de:  " + alfabeto.Length);
+            DGV_AFD_6.Columns.Add("Estado", "Estado");
+            foreach (char c in afd.alfabetoAFD)
+            {
+                DGV_AFD_6.Columns.Add(c.ToString(), c.ToString());
+            }
+
+            foreach (Destado d in afd.destados.Lista)
+            {
+                DGV_AFD_6.Rows.Add(d.getRowTransiciones(afd.alfabetoAFD));
+            }
+        }
+
+        private void BT_SubirIdentificador_6_Click(object sender, EventArgs e)
+        {
+            TB_Identificador_6.Text = SubirArchivo();
+        }
+
+        private void BT_SubirNumero_6_Click(object sender, EventArgs e)
+        {
+            TB_Numero_6.Text = SubirArchivo();
+        }
+
+        private void BT_SubirIdentificadorClear_6_Click(object sender, EventArgs e)
+        {
+            TB_Identificador_6.Text = "";
+        }
+
+        private void BT_SubirNumeroClear_6_Click(object sender, EventArgs e)
+        {
+            TB_Numero_6.Text = "";
+        }
+
+
+        private void BT_SubirProgramaTiny_6_Click(object sender, EventArgs e)
+        {
+            TB_ProgramaTiny_6.Text = SubirArchivo();
+        }
+
+        private void BT_ProgramaTinyClear_6_Click(object sender, EventArgs e)
+        {
+            TB_ProgramaTiny_6.Text = "";
+        }
+
+        private void BT_ClasificaTokens_6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TB_Numero_6.Text != "" && TB_Identificador_6.Text != "" && TB_ProgramaTiny_6.Text != "")
+                {
+                    DGV_Tokens_6.Rows.Clear();
+                    string PosfijaNumero = ConversionPosfija(TB_Numero_6.Text);
+                    string PosfijaIdentificador = ConversionPosfija(TB_Identificador_6.Text);
+
+
+
+                    AFN AfnNumero = new AFN(PosfijaNumero);
+                    AFN AfnIdentificador = new AFN(PosfijaIdentificador);
+
+                    Operando AFNResultante = AfnNumero.algoritmoDeEvaluacion(PosfijaNumero);
+                    AfnNumero.estados = AFNResultante.EstadosOperando;
+                    AFNResultante = AfnIdentificador.algoritmoDeEvaluacion(PosfijaIdentificador);
+                    AfnIdentificador.estados = AFNResultante.EstadosOperando;
+
+
+                    AFD AFDNumero = new AFD(AfnNumero);
+                    AFDNumero.init();
+                    AFD AFDIdentificador = new AFD(AfnIdentificador);
+                    AFDIdentificador.init();
+
+                    List<int> ListaAceptacion = AfnNumero.RegresaFinales();
+                    AFDNumero.destados.ChecaFinal(ListaAceptacion);
+
+                    ListaAceptacion = AfnIdentificador.RegresaFinales();
+                    AFDIdentificador.destados.ChecaFinal(ListaAceptacion);
+
+                    /**
+                     * 
+                     * Hasta aquí ya tenemos los AFN y AFD cargados!
+                     **/
+
+                    List<String[]> tinyLines = new List<String[]>();
+                    List<string> StringClasificadas = new List<string>();
+                    int ContadorFila = 0;
+                    for (int lineIndex = 0; lineIndex < TB_ProgramaTiny_6.Lines.Length; lineIndex++)
+                    {
+                        string Trimeada = TB_ProgramaTiny_6.Lines[lineIndex].Trim();
+                        String[] lineArray = Trimeada.Split(' ');
+                        tinyLines.Add(lineArray);
+                        foreach (string s in lineArray)
+                        {
+                            bool Nuevo = !ListaContains(s, StringClasificadas);
+                            if (ListaContains(s, PalabrasReservadas))
+                            {
+                                if (Nuevo)
+                                {
+                                    DGV_Tokens_6.Rows.Add(s, s);
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                }
+                            }
+                            else if (ListaContains(s, SimbolosEspeciales))
+                            {
+                                if (Nuevo)
+                                {
+                                    DGV_Tokens_6.Rows.Add(s, s);
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                }
+                            }
+                            else if (AFDNumero.ValidaLexema(s))
+                            {
+                                if (Nuevo)
+                                {
+                                    DGV_Tokens_6.Rows.Add("número", s);
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                }
+                            }
+                            else if (AFDIdentificador.ValidaLexema(s))
+                            {
+                                if (Nuevo)
+                                {
+                                    DGV_Tokens_6.Rows.Add("ídentificador", s);
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                }
+                            }
+                            else if (s != "")
+                            {
+                                if (Nuevo)
+                                {
+
+                                    DGV_Tokens_6.Rows.Add("Error Léxico", s);
+                                    DGV_Tokens_6.Rows[ContadorFila].Cells[0].Style.ForeColor = Color.Red;
+                                    DGV_Tokens_6.Rows[ContadorFila].Cells[1].Style.ForeColor = Color.Red;
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor llene los campos requeridos");
+                }
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Ocurrió una excepción\n" + E.Message);
+            }
+        }
+
+
         #endregion
 
-        private void groupBoxSintactico6_Enter(object sender, EventArgs e)
-        {
 
-        }
     }//Forms END
 }//namespace END
