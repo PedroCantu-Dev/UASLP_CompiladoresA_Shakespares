@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 namespace ProyectoCompiladores
 {
 
-   /*
-    { "John Doe", 42 },
-    { "Jane Doe", 38 },
-    { "Joe Doe", 12 },
-    { "Jenna Doe", 12 } */
-public class Gramatica
+    /*
+     { "John Doe", 42 },
+     { "Jane Doe", 38 },
+     { "Joe Doe", 12 },
+     { "Jenna Doe", 12 } */
+    public class Gramatica
     {
+
+        public string ProducciónAumentada = ". programa";
+        public AFDL AFD;
         List<String> terminales = new List<string>
         {
             "if",
@@ -55,7 +58,7 @@ public class Gramatica
             "factor"
         };
 
-        Dictionary<string, string> Gramática = new Dictionary<string, string>{
+        Dictionary<string, string> G = new Dictionary<string, string>{
             {"programa", "secuencia-sent" },
             {"secuencia-sent","secuencia-sent ; sentencia | sentencia" },
             {"sentencia","sent-if | sent-repeat | sent-assign | sent-read | sent-write"},
@@ -73,9 +76,6 @@ public class Gramatica
             {"factor" ,"( exp ) | numero | identificador"},
         };
 
-        List<Produccion> Producciones;
-
-
         public Gramatica()
         {
             initGramatica();
@@ -83,10 +83,18 @@ public class Gramatica
 
         public void initGramatica()
         {
-            foreach(KeyValuePair<string, string> EntradaD in Gramática)
+
+            AFD = new AFDL(G, terminales, NoTerminales,ProducciónAumentada);
+
+            /*foreach (KeyValuePair<string, string> EntradaD in Gramática)
             {
                 string[] ArregloCadenas = EntradaD.Value.Split('|');
-            }
+                foreach (string c in ArregloCadenas)
+                {
+                    string Aux = c.TrimEnd();
+                    MessageBox.Show("Producción:\n " + EntradaD.Key + " ----> " + Aux);
+                }
+            }*/
         }
     }
 

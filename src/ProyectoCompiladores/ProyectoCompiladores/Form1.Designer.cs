@@ -1441,6 +1441,7 @@
             this.BT_ContruirColeccionLR0Canonica_6.TabIndex = 5;
             this.BT_ContruirColeccionLR0Canonica_6.Text = "Construir Coleccion LR(0) Canónica";
             this.BT_ContruirColeccionLR0Canonica_6.UseVisualStyleBackColor = true;
+            this.BT_ContruirColeccionLR0Canonica_6.Click += new System.EventHandler(this.BT_ContruirColeccionLR0Canonica_6_Click);
             // 
             // groupBox6
             // 

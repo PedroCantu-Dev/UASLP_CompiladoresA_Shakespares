@@ -14,6 +14,8 @@ namespace ProyectoCompiladores
 
         public int indiceDest { get; set; }
 
+        public string S { get; set; }
+
         public TransicionD(char transicion, String nombreDeEstadoDestino)//es una transicion para AFD
         {
             Simbolo = transicion;
@@ -22,6 +24,12 @@ namespace ProyectoCompiladores
         public TransicionD(char transicion, int indiceDestino)//es una transicion para AFD
         {
             Simbolo = transicion;
+            indiceDest = indiceDestino;
+        }
+
+        public TransicionD(string transicion, int indiceDestino)
+        {
+            S = transicion;
             indiceDest = indiceDestino;
         }
     }

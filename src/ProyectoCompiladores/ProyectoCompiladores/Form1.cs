@@ -1630,8 +1630,12 @@ namespace ProyectoCompiladores
         }
 
 
+
         #endregion
 
-
+        private void BT_ContruirColeccionLR0Canonica_6_Click(object sender, EventArgs e)
+        {
+            Gramatica G = new Gramatica();
+        }
     }//Forms END
 }//namespace END
