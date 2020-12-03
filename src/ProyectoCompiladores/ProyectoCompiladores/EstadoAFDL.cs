@@ -27,6 +27,7 @@ namespace ProyectoCompiladores
             foreach(string c in ElementosEstado)
             {
                 string[] Split = c.Split(' ');
+                String ve = c;
 
                 int indexPunto = -1;
                 for (int i = 0; i < Split.Length; i++)
@@ -37,7 +38,7 @@ namespace ProyectoCompiladores
                         break;
                     }
                 }
-                if(indexPunto != -1 && indexPunto != Split.Length)
+                if(indexPunto != -1 && indexPunto != Split.Length-1)
                 {
                     if(Split[indexPunto + 1] == SimboloABuscar) // X está después del .
                     {
@@ -101,5 +102,18 @@ namespace ProyectoCompiladores
             TransicionD NuevaTransicion = new TransicionD(Simbolo, Id);
             Transiciones.Add(NuevaTransicion);
         }
+
+        public string getEstadoString()
+        {
+            String res = "";
+
+            foreach(String s in this.ElementosEstado)
+            {
+                res += s+",";
+            }
+            return res;
+        }
     }
+
+    
 }

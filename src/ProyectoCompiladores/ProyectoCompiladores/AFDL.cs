@@ -84,13 +84,15 @@ namespace ProyectoCompiladores
             string CadenaMostrar = "";
             foreach(EstadoAFDL E in Estados)
             {
-                CadenaMostrar += "\n\nEstado:         " + E.IndiceEstado;
-                foreach(string s in E.ElementosEstado)
+                CadenaMostrar += "\n\nEstado:         " + E.IndiceEstado+ ":";
+                /*foreach(string s in E.ElementosEstado)
                 {
-                    CadenaMostrar += s;
-                }
+                    CadenaMostrar += s+ ",";
+                }*/
+                CadenaMostrar += "Num estados "+ E.ElementosEstado.Count;
                 CadenaMostrar += "\n";
             }
+
 
             MessageBox.Show(CadenaMostrar);
         }
@@ -121,10 +123,12 @@ namespace ProyectoCompiladores
 
             while (Bandera)
             {
-                NumeroElementos = J.Count;
-                foreach (string c in ElementosEvaluar)
+                
+                //foreach (string c in J)
+                    for(int ii = 0; ii < J.Count; ii++)
                 {
-                    string[] CadenaSplit = c.Split(' ');
+                    NumeroElementos = J.Count;
+                    string[] CadenaSplit = J[ii].Split(' ');
                     int indexPunto = -1;
                     for(int i = 0; i < CadenaSplit.Length; i++)
                     {
@@ -148,13 +152,15 @@ namespace ProyectoCompiladores
                                     J.Add(Aux);
                                 }
                             }
-                            if(NumeroElementos == J.Count)
-                            {
-                                Bandera = false;
-                            }
+                            
                         }
                     }
+                    if (NumeroElementos == J.Count)
+                    {
+                        Bandera = false;
+                    }
                 }
+
             }
             return J;
         }
@@ -176,7 +182,12 @@ namespace ProyectoCompiladores
             // [A --> xB],[A ---> xC ],[A --> xD],
             EstadoAFDL Seleccionado = Estados[indiceEstado];
             List<string> ProduccionesCambiadas = Seleccionado.DevuelveCadenas(Simbolo);
-            List<string> Resultado = Cerradura(ProduccionesCambiadas);
+            List<string> Resultado = new List<string>();
+            if (ProduccionesCambiadas.Count >0)
+            {
+                Resultado = Cerradura(ProduccionesCambiadas);
+            }
+            
             return Resultado;
         }
     }

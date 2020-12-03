@@ -1636,6 +1636,16 @@ namespace ProyectoCompiladores
         private void BT_ContruirColeccionLR0Canonica_6_Click(object sender, EventArgs e)
         {
             Gramatica G = new Gramatica();
+            AFDL AFDG = G.AFD;
+            DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Clear();
+            DGV_ContenidoDeEstadosAFDCanonica_6.Rows.Clear();
+            DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Add("indice de estado","indice de estado");
+            DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Add("contenido","contenido");
+
+            foreach (EstadoAFDL eAFDG in AFDG.Estados)
+            {
+                DGV_ContenidoDeEstadosAFDCanonica_6.Rows.Add(eAFDG.IndiceEstado+"("+eAFDG.ElementosEstado.Count+")",eAFDG.getEstadoString());
+            }
         }
     }//Forms END
 }//namespace END
