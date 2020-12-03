@@ -103,6 +103,18 @@ namespace ProyectoCompiladores
             Transiciones.Add(NuevaTransicion);
         }
 
+        public TransicionD getTransicion(string trans)
+        {
+            foreach(TransicionD tD in this.Transiciones)
+            {
+                if(tD.S == trans)
+                {
+                    return tD;
+                }
+            }
+            return null;
+        }
+
         public string getEstadoString()
         {
             String res = "";

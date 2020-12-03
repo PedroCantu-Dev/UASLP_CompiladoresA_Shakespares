@@ -13,16 +13,36 @@ namespace ProyectoCompiladores
         Dictionary<string, string> G;
         List<string> T = new List<string>();
         List<string> NT = new List<string>();
+
+
         int ContadorEstado = 1;
         string PAumentada;
-        public AFDL(Dictionary <string,string> Gramatica, List<string> Terminales, List<string> NoTerminales, string GramaticaAumentada)
+        public AFDL(Dictionary<string, string> Gramatica, List<string> Terminales, List<string> NoTerminales, string GramaticaAumentada)
         {
             this.G = Gramatica;
             this.T = Terminales;
             this.NT = NoTerminales;
+
             PAumentada = GramaticaAumentada;
             init();
         }
+
+        public List<string> getAllTransiciones()
+        {
+            List<string> res = new List<string>();
+
+            foreach(string s in this.NT)
+            {
+                res.Add(s);
+            }
+            foreach(string s in this.T)
+            {
+                res.Add(s);
+            }
+
+            return res;
+        }
+
 
         public void init()
         {
@@ -190,5 +210,6 @@ namespace ProyectoCompiladores
             
             return Resultado;
         }
+
     }
 }

@@ -1639,12 +1639,41 @@ namespace ProyectoCompiladores
             AFDL AFDG = G.AFD;
             DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Clear();
             DGV_ContenidoDeEstadosAFDCanonica_6.Rows.Clear();
-            DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Add("indice de estado","indice de estado");
-            DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Add("contenido","contenido");
+            DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Add("indice de estado", "indice de estado");
+            DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Add("contenido", "contenido");
+
+            DGV_AFDCanonica_6.Rows.Clear();
+            DGV_AFDCanonica_6.Columns.Clear();
+
+            DGV_AFDCanonica_6.Columns.Add("Estados", "Estados");
+            List<string> todasLasTransiciones = AFDG.getAllTransiciones();
+
+            foreach (string  s in todasLasTransiciones)//agrega las columnas de transiciones 
+            {
+                DGV_AFDCanonica_6.Columns.Add(s,s);
+            }
+
 
             foreach (EstadoAFDL eAFDG in AFDG.Estados)
             {
-                DGV_ContenidoDeEstadosAFDCanonica_6.Rows.Add(eAFDG.IndiceEstado+"("+eAFDG.ElementosEstado.Count+")",eAFDG.getEstadoString());
+                DGV_ContenidoDeEstadosAFDCanonica_6.Rows.Add(eAFDG.IndiceEstado+" : ("+eAFDG.ElementosEstado.Count+")",eAFDG.getEstadoString());
+
+                List<string> listaDeElementosEnRow = new List<string>();
+
+                listaDeElementosEnRow.Add("I" + eAFDG.IndiceEstado.ToString());
+                foreach (string s in todasLasTransiciones)
+                {
+                    TransicionD transicionDAux = eAFDG.getTransicion(s);
+                    if (transicionDAux  == null)// si no existe la transicion
+                    {
+                        listaDeElementosEnRow.Add("ø");
+                    }
+                    else//si existe la transixion con ese simbolo
+                    {
+                        listaDeElementosEnRow.Add(transicionDAux.indiceDest.ToString());
+                    }
+                }
+                DGV_AFDCanonica_6.Rows.Add(listaDeElementosEnRow.ToArray());
             }
         }
     }//Forms END
