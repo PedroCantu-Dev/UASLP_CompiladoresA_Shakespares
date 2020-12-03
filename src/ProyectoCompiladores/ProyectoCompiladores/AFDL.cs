@@ -73,7 +73,8 @@ namespace ProyectoCompiladores
                         }
                         else if(Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) != -1)
                         {
-                            Estados[i].AgregaTransicion(c, ChecaNuevoEstado(Ir_A));
+                            int indiceestado = ChecaNuevoEstado(Ir_A);
+                            Estados[i].AgregaTransicion(c, Estados[indiceestado].IndiceEstado);
                         }
                     }
                     foreach(string c in T)
@@ -89,7 +90,8 @@ namespace ProyectoCompiladores
                         }
                         else if (Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) != -1)
                         {
-                            Estados[i].AgregaTransicion(c, ChecaNuevoEstado(Ir_A));
+                            int indiceestado = ChecaNuevoEstado(Ir_A);
+                            Estados[i].AgregaTransicion(c, Estados[indiceestado].IndiceEstado);
                         }
                     }
 
