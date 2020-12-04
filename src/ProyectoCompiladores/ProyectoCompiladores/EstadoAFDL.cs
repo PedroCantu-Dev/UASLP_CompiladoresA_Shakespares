@@ -40,7 +40,7 @@ namespace ProyectoCompiladores
                 }
                 if(indexPunto != -1 && indexPunto != Split.Length-1) //[.][Valor] ---> . a 
                 {
-                    if(Split[indexPunto + 1][0] == (SimboloABuscar.ToCharArray())[0]) // X está después del .  ---> [a][P][a][.]
+                    if(Split[indexPunto + 1] == SimboloABuscar) // X está después del .  ---> [a][P][a][.]
                     {
                         char Aux2 = Split[indexPunto + 1][0];
                         int aux = indexPunto + 1;
@@ -69,7 +69,7 @@ namespace ProyectoCompiladores
             {
                 R += c + " "; 
             }
-            return (R.TrimEnd());
+            return (R);
         }
 
         public bool EsIgual(List<string> Candidato)
@@ -123,7 +123,7 @@ namespace ProyectoCompiladores
 
             foreach(String s in this.ElementosEstado)
             {
-                res += s+",";
+                res += s+" | | ";
             }
             return res;
         }

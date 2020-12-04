@@ -141,7 +141,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.button21 = new System.Windows.Forms.Button();
             this.DGV_AFDCanonica_6 = new System.Windows.Forms.DataGridView();
             this.BT_ContruirColeccionLR0Canonica_6 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -279,7 +278,7 @@
             tabAvance1.Controls.Add(this.groupBox1);
             tabAvance1.Location = new System.Drawing.Point(4, 22);
             tabAvance1.Name = "tabAvance1";
-            tabAvance1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            tabAvance1.Padding = new System.Windows.Forms.Padding(3);
             tabAvance1.Size = new System.Drawing.Size(1513, 485);
             tabAvance1.TabIndex = 1;
             tabAvance1.Text = "1º avance";
@@ -399,7 +398,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(1512, 87);
+            this.textBox1.Size = new System.Drawing.Size(1750, 87);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "Compiladores e Intérpretes A - Equipo Shakespares\r\nPedro de Jesús Cantú Olivares\r" +
     "\nAxel López Rodríguez";
@@ -413,8 +412,8 @@
             this.tabPage1.Controls.Add(this.BT_SubirArchivoPrep);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1513, 485);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1750, 485);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Preparación del Proyecto";
             // 
@@ -459,7 +458,7 @@
             this.tabControl.Location = new System.Drawing.Point(12, 106);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1521, 511);
+            this.tabControl.Size = new System.Drawing.Size(1758, 511);
             this.tabControl.TabIndex = 0;
             // 
             // tabAvance2
@@ -467,7 +466,7 @@
             this.tabAvance2.Controls.Add(this.groupBox2);
             this.tabAvance2.Location = new System.Drawing.Point(4, 22);
             this.tabAvance2.Name = "tabAvance2";
-            this.tabAvance2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabAvance2.Padding = new System.Windows.Forms.Padding(3);
             this.tabAvance2.Size = new System.Drawing.Size(1513, 485);
             this.tabAvance2.TabIndex = 2;
             this.tabAvance2.Text = "2º avance";
@@ -590,7 +589,7 @@
             this.tabAvance3.Controls.Add(this.groupBox3);
             this.tabAvance3.Location = new System.Drawing.Point(4, 22);
             this.tabAvance3.Name = "tabAvance3";
-            this.tabAvance3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabAvance3.Padding = new System.Windows.Forms.Padding(3);
             this.tabAvance3.Size = new System.Drawing.Size(1513, 485);
             this.tabAvance3.TabIndex = 3;
             this.tabAvance3.Text = "3º avance";
@@ -725,7 +724,7 @@
             this.tabAvance4.Controls.Add(this.groupBox4);
             this.tabAvance4.Location = new System.Drawing.Point(4, 22);
             this.tabAvance4.Name = "tabAvance4";
-            this.tabAvance4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabAvance4.Padding = new System.Windows.Forms.Padding(3);
             this.tabAvance4.Size = new System.Drawing.Size(1513, 485);
             this.tabAvance4.TabIndex = 4;
             this.tabAvance4.Text = "4º avance";
@@ -1242,7 +1241,7 @@
             this.tabAvance6.Controls.Add(this.groupBox6);
             this.tabAvance6.Location = new System.Drawing.Point(4, 22);
             this.tabAvance6.Name = "tabAvance6";
-            this.tabAvance6.Size = new System.Drawing.Size(1513, 485);
+            this.tabAvance6.Size = new System.Drawing.Size(1750, 485);
             this.tabAvance6.TabIndex = 6;
             this.tabAvance6.Text = "6º Avance";
             this.tabAvance6.UseVisualStyleBackColor = true;
@@ -1265,12 +1264,11 @@
             this.groupBoxSintactico6.Controls.Add(this.label23);
             this.groupBoxSintactico6.Controls.Add(this.label24);
             this.groupBoxSintactico6.Controls.Add(this.label25);
-            this.groupBoxSintactico6.Controls.Add(this.button21);
             this.groupBoxSintactico6.Controls.Add(this.DGV_AFDCanonica_6);
             this.groupBoxSintactico6.Controls.Add(this.BT_ContruirColeccionLR0Canonica_6);
             this.groupBoxSintactico6.Location = new System.Drawing.Point(1074, 7);
             this.groupBoxSintactico6.Name = "groupBoxSintactico6";
-            this.groupBoxSintactico6.Size = new System.Drawing.Size(436, 475);
+            this.groupBoxSintactico6.Size = new System.Drawing.Size(673, 475);
             this.groupBoxSintactico6.TabIndex = 15;
             this.groupBoxSintactico6.TabStop = false;
             this.groupBoxSintactico6.Text = "Análisis sintáctico LR(0)";
@@ -1281,7 +1279,7 @@
             this.DGV_ContenidoDeEstadosAFDCanonica_6.Location = new System.Drawing.Point(9, 268);
             this.DGV_ContenidoDeEstadosAFDCanonica_6.Name = "DGV_ContenidoDeEstadosAFDCanonica_6";
             this.DGV_ContenidoDeEstadosAFDCanonica_6.RowHeadersWidth = 51;
-            this.DGV_ContenidoDeEstadosAFDCanonica_6.Size = new System.Drawing.Size(421, 181);
+            this.DGV_ContenidoDeEstadosAFDCanonica_6.Size = new System.Drawing.Size(658, 181);
             this.DGV_ContenidoDeEstadosAFDCanonica_6.TabIndex = 32;
             // 
             // button14
@@ -1436,22 +1434,13 @@
             this.label25.Size = new System.Drawing.Size(0, 18);
             this.label25.TabIndex = 17;
             // 
-            // button21
-            // 
-            this.button21.Location = new System.Drawing.Point(512, 87);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(158, 38);
-            this.button21.TabIndex = 16;
-            this.button21.Text = "Validar";
-            this.button21.UseVisualStyleBackColor = true;
-            // 
             // DGV_AFDCanonica_6
             // 
             this.DGV_AFDCanonica_6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_AFDCanonica_6.Location = new System.Drawing.Point(9, 57);
             this.DGV_AFDCanonica_6.Name = "DGV_AFDCanonica_6";
             this.DGV_AFDCanonica_6.RowHeadersWidth = 51;
-            this.DGV_AFDCanonica_6.Size = new System.Drawing.Size(421, 205);
+            this.DGV_AFDCanonica_6.Size = new System.Drawing.Size(658, 205);
             this.DGV_AFDCanonica_6.TabIndex = 11;
             // 
             // BT_ContruirColeccionLR0Canonica_6
@@ -2350,7 +2339,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1573, 629);
+            this.ClientSize = new System.Drawing.Size(1782, 629);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2543,7 +2532,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Button button21;
         private System.Windows.Forms.DataGridView DGV_AFDCanonica_6;
         private System.Windows.Forms.Button BT_ContruirColeccionLR0Canonica_6;
         private System.Windows.Forms.Button BT_ProgramaTinyClear_6;

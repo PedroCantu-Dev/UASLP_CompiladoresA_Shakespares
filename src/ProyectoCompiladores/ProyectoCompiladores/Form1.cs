@@ -1646,6 +1646,7 @@ namespace ProyectoCompiladores
             DGV_AFDCanonica_6.Columns.Clear();
 
             DGV_AFDCanonica_6.Columns.Add("Estados", "Estados");
+            
             List<string> todasLasTransiciones = AFDG.getAllTransiciones();
 
             foreach (string  s in todasLasTransiciones)//agrega las columnas de transiciones 
@@ -1653,6 +1654,10 @@ namespace ProyectoCompiladores
                 DGV_AFDCanonica_6.Columns.Add(s,s);
             }
 
+            foreach (DataGridViewColumn c in DGV_AFDCanonica_6.Columns)
+            {
+                c.Frozen = false;
+            }
 
             foreach (EstadoAFDL eAFDG in AFDG.Estados)
             {
@@ -1674,6 +1679,11 @@ namespace ProyectoCompiladores
                     }
                 }
                 DGV_AFDCanonica_6.Rows.Add(listaDeElementosEnRow.ToArray());
+            }
+
+            foreach(DataGridViewColumn c in DGV_ContenidoDeEstadosAFDCanonica_6.Columns)
+            {
+                c.Frozen = false;
             }
         }
     }//Forms END

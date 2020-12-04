@@ -15,19 +15,20 @@ namespace ProyectoCompiladores
     public class Gramatica
     {
 
-        //public string ProducciónAumentada = ". programa";
-        public string ProducciónAumentada = ". P";
+        public string ProducciónAumentada = ". programa";
+        //public string ProducciónAumentada = ". P";
         public AFDL AFD;
-
+/*
         List<string> terminales = new List<string>
         {
             "a",
             "b",
             "c"
         };
-
-        /*List<String> terminales = new List<string>
+*/
+        List<String> terminales = new List<string>
         {
+            ";",
             "if",
             "then",
             "end",
@@ -35,6 +36,7 @@ namespace ProyectoCompiladores
             "repeat",
             "until",
             "identificador",
+            ":=",
             "read",
             "write",
             "<",
@@ -48,14 +50,13 @@ namespace ProyectoCompiladores
             ")",
             "numero"
         };
-
-        */
+        
+        /*
         List<string> NoTerminales = new List<string>
         {
             "P",
         };
-
-        /*
+       */
         List<String> NoTerminales = new List<string>
         {
             "programa",
@@ -74,13 +75,13 @@ namespace ProyectoCompiladores
             "opmult",
             "factor"
         };
-        */
-
+        
+        /*
         Dictionary<string, string> G = new Dictionary<string, string>
         {
-            {"P", "aPa |bPb |c"}
+            {"P", "a P a |b P b |c"}
         };
-        /*
+        */
         Dictionary<string, string> G = new Dictionary<string, string>{
             {"programa", "secuencia-sent" },
             {"secuencia-sent","secuencia-sent ; sentencia |sentencia" },
@@ -98,7 +99,7 @@ namespace ProyectoCompiladores
             {"opmult","* |/"},
             {"factor" ,"( exp ) |numero |identificador"},
         };
-        */
+        
         public Gramatica()
         {
             initGramatica();

@@ -13,7 +13,7 @@ namespace ProyectoCompiladores
         Dictionary<string, string> G;
         List<string> T = new List<string>();
         List<string> NT = new List<string>();
-
+        List<string> SimbolosGramaticales = new List<string>();
 
         int ContadorEstado = 1;
         string PAumentada;
@@ -24,6 +24,16 @@ namespace ProyectoCompiladores
             this.NT = NoTerminales;
 
             PAumentada = GramaticaAumentada;
+
+            foreach (string c in NT)
+            {
+                SimbolosGramaticales.Add(c);
+            }
+
+            foreach (string c in T)
+            {
+                SimbolosGramaticales.Add(c);
+            }
             init();
         }
 
@@ -31,11 +41,11 @@ namespace ProyectoCompiladores
         {
             List<string> res = new List<string>();
 
-            foreach(string s in this.NT)
+            foreach (string s in this.NT)
             {
                 res.Add(s);
             }
-            foreach(string s in this.T)
+            foreach (string s in this.T)
             {
                 res.Add(s);
             }
@@ -52,68 +62,67 @@ namespace ProyectoCompiladores
             {
                 PAumentada
             }
-            ),ContadorEstado));
+            ), ContadorEstado));
             bool Bandera = true;
-            while (Bandera)
+            //while (Bandera)
+            //{
+            //int Contador = Estados.Count;
+
+            for (int i = 0; i < Estados.Count; i++)
             {
-                int Contador = Estados.Count;
-
-                for(int i = 0; i < Estados.Count; i++)
+                /*foreach (string c in T)
                 {
+                    List<string> Ir_A = ir_A(i, c);
 
-                    foreach (string c in T)
+                    if (Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) == -1)
                     {
-                        List<string> Ir_A = ir_A(i, c);
-
-                        if (Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) == -1)
-                        {
-                            ContadorEstado++;
-                            EstadoAFDL Nuevo = new EstadoAFDL(Ir_A, ContadorEstado);
-                            Estados.Add(Nuevo);
-                            Estados[i].AgregaTransicion(c, Nuevo.IndiceEstado);
-                        }
-                        else if (Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) != -1)
-                        {
-                            int indiceestado = ChecaNuevoEstado(Ir_A);
-                            Estados[i].AgregaTransicion(c, Estados[indiceestado].IndiceEstado);
-                        }
+                        ContadorEstado++;
+                        EstadoAFDL Nuevo = new EstadoAFDL(Ir_A, ContadorEstado);
+                        Estados.Add(Nuevo);
+                        Estados[i].AgregaTransicion(c, Nuevo.IndiceEstado);
+                    }
+                    else if (Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) != -1)
+                    {
+                        int indiceestado = ChecaNuevoEstado(Ir_A);
+                        Estados[i].AgregaTransicion(c, Estados[indiceestado].IndiceEstado);
                     }
 
-                    foreach (string c in NT)
-                    {
-                        List<string> Ir_A = ir_A(i, c);
+                }*/
+                foreach (string c in SimbolosGramaticales)
+                {
+                    List<string> Ir_A = ir_A(i, c);
 
-                        if (Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) == -1)
-                        {
-                            ContadorEstado++;
-                            EstadoAFDL Nuevo = new EstadoAFDL(Ir_A, ContadorEstado);
-                            Estados.Add(Nuevo);
-                            Estados[i].AgregaTransicion(c, Nuevo.IndiceEstado);
-                        }
-                        else if (Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) != -1)
-                        {
-                            int indiceestado = ChecaNuevoEstado(Ir_A);
-                            Estados[i].AgregaTransicion(c, Estados[indiceestado].IndiceEstado);
-                        }
+                    if (Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) == -1)
+                    {
+                        ContadorEstado++;
+                        EstadoAFDL Nuevo = new EstadoAFDL(Ir_A, ContadorEstado);
+                        Estados.Add(Nuevo);
+                        Estados[i].AgregaTransicion(c, Nuevo.IndiceEstado);
                     }
-
-                    if (Contador == Estados.Count)
+                    else if (Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) != -1)
                     {
-                        Bandera = false;
+                        int indiceestado = ChecaNuevoEstado(Ir_A);
+                        Estados[i].AgregaTransicion(c, Estados[indiceestado].IndiceEstado);
                     }
                 }
-           }
+                //if (Contador == Estados.Count)
+                //{
+                //   Bandera = false;
+                //    break;
+                //}
+                //}
+            }
 
 
             string CadenaMostrar = "";
-            foreach(EstadoAFDL E in Estados)
+            foreach (EstadoAFDL E in Estados)
             {
-                CadenaMostrar += "\n\nEstado:         " + E.IndiceEstado+ ":";
+                CadenaMostrar += "\n\nEstado:         " + E.IndiceEstado + ":";
                 /*foreach(string s in E.ElementosEstado)
                 {
                     CadenaMostrar += s+ ",";
                 }*/
-                CadenaMostrar += "Num estados "+ E.ElementosEstado.Count;
+                CadenaMostrar += "Num estados " + E.ElementosEstado.Count;
                 CadenaMostrar += "\n";
             }
 
@@ -121,12 +130,12 @@ namespace ProyectoCompiladores
             MessageBox.Show(CadenaMostrar);
         }
 
-        
+
 
         public int ChecaNuevoEstado(List<string> Candidato)
         {
             bool Nuevo = true;
-            for(int i = 0; i < Estados.Count; i++)
+            for (int i = 0; i < Estados.Count; i++)
             {
                 if (Estados[i].EsIgual(Candidato))
                 {
@@ -140,53 +149,41 @@ namespace ProyectoCompiladores
             bool Bandera = true;
             List<string> J = new List<string>();
             int NumeroElementos = -1;
-            foreach(string c in ElementosEvaluar)
+            foreach (string c in ElementosEvaluar)
             {
                 J.Add(c);
             }
-
-            while (Bandera)
+            for (int ii = 0; ii < J.Count; ii++)
             {
-                
-                //foreach (string c in J)
-                    for(int ii = 0; ii < J.Count; ii++)
+                string[] CadenaSplit = J[ii].Split(' ');
+                int indexPunto = -1;
+                for (int i = 0; i < CadenaSplit.Length; i++)
                 {
-                    NumeroElementos = J.Count;
-                    string[] CadenaSplit = J[ii].Split(' ');
-                    int indexPunto = -1;
-                    for(int i = 0; i < CadenaSplit.Length; i++)
+                    if (CadenaSplit[i] == ".")
                     {
-                        if(CadenaSplit[i] == ".")
-                        {
-                            indexPunto = i;
-                            break;
-                        }
-                    }
-                    if(indexPunto != -1 && indexPunto != CadenaSplit.Length -1)
-                    {
-                        string CadenaEvaluar = CadenaSplit[indexPunto + 1];
-                        if (NT.Contains(CadenaEvaluar))
-                        {
-                            List<string> Producciones = DevuelveProducciones(CadenaEvaluar);
-                            foreach(string P in Producciones)
-                            {
-                                string Aux = ". " + P;
-                                if (!J.Contains(Aux))
-                                {
-                                    J.Add(Aux);
-                                }
-                            }
-                            
-                        }
-                    }
-                    if (NumeroElementos == J.Count)
-                    {
-                        Bandera = false;
+                        indexPunto = i;
                         break;
                     }
                 }
+                if (indexPunto != -1 && indexPunto != CadenaSplit.Length - 1)
+                {
+                    string CadenaEvaluar = CadenaSplit[indexPunto + 1];
+                    if (NT.Contains(CadenaEvaluar))
+                    {
+                        List<string> Producciones = DevuelveProducciones(CadenaEvaluar);
+                        foreach (string P in Producciones)
+                        {
+                            string Aux = ". " + P;
+                            if (!J.Contains(Aux))
+                            {
+                                J.Add(Aux);
+                            }
+                        }
 
+                    }
+                }
             }
+            //}
             return J;
         }
 
@@ -208,13 +205,11 @@ namespace ProyectoCompiladores
             EstadoAFDL Seleccionado = Estados[indiceEstado];
             List<string> ProduccionesCambiadas = Seleccionado.DevuelveCadenas(Simbolo);
             List<string> Resultado = new List<string>();
-            if (ProduccionesCambiadas.Count >0)
+            if (ProduccionesCambiadas.Count > 0)
             {
                 Resultado = Cerradura(ProduccionesCambiadas);
             }
-            
             return Resultado;
         }
-
     }
 }
