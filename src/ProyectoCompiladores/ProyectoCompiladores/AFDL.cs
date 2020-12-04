@@ -60,24 +60,8 @@ namespace ProyectoCompiladores
 
                 for(int i = 0; i < Estados.Count; i++)
                 {
-                    foreach(string c in NT)
-                    {
-                        List<string> Ir_A = ir_A(i, c);
 
-                        if(Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) == -1)
-                        {
-                            ContadorEstado++;
-                            EstadoAFDL Nuevo = new EstadoAFDL(Ir_A, ContadorEstado);
-                            Estados.Add(Nuevo);
-                            Estados[i].AgregaTransicion(c, Nuevo.IndiceEstado);
-                        }
-                        else if(Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) != -1)
-                        {
-                            int indiceestado = ChecaNuevoEstado(Ir_A);
-                            Estados[i].AgregaTransicion(c, Estados[indiceestado].IndiceEstado);
-                        }
-                    }
-                    foreach(string c in T)
+                    foreach (string c in T)
                     {
                         List<string> Ir_A = ir_A(i, c);
 
@@ -95,12 +79,30 @@ namespace ProyectoCompiladores
                         }
                     }
 
-                    if(Contador == Estados.Count)
+                    foreach (string c in NT)
+                    {
+                        List<string> Ir_A = ir_A(i, c);
+
+                        if (Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) == -1)
+                        {
+                            ContadorEstado++;
+                            EstadoAFDL Nuevo = new EstadoAFDL(Ir_A, ContadorEstado);
+                            Estados.Add(Nuevo);
+                            Estados[i].AgregaTransicion(c, Nuevo.IndiceEstado);
+                        }
+                        else if (Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) != -1)
+                        {
+                            int indiceestado = ChecaNuevoEstado(Ir_A);
+                            Estados[i].AgregaTransicion(c, Estados[indiceestado].IndiceEstado);
+                        }
+                    }
+
+                    if (Contador == Estados.Count)
                     {
                         Bandera = false;
                     }
                 }
-            }
+           }
 
 
             string CadenaMostrar = "";
@@ -180,6 +182,7 @@ namespace ProyectoCompiladores
                     if (NumeroElementos == J.Count)
                     {
                         Bandera = false;
+                        break;
                     }
                 }
 

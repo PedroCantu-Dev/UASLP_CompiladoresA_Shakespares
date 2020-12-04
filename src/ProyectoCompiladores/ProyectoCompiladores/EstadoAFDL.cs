@@ -38,10 +38,12 @@ namespace ProyectoCompiladores
                         break;
                     }
                 }
-                if(indexPunto != -1 && indexPunto != Split.Length-1)
+                if(indexPunto != -1 && indexPunto != Split.Length-1) //[.][Valor] ---> . a 
                 {
-                    if(Split[indexPunto + 1] == SimboloABuscar) // X está después del .
+                    if(Split[indexPunto + 1][0] == (SimboloABuscar.ToCharArray())[0]) // X está después del .  ---> [a][P][a][.]
                     {
+                        char Aux2 = Split[indexPunto + 1][0];
+                        int aux = indexPunto + 1;
                         //Crear cadena nueva, luego mover el punto 1 lugar a la derecha.
                         string R = MoverPuntoDerecha(Split, indexPunto);
                         Resultado.Add(R);
@@ -75,8 +77,8 @@ namespace ProyectoCompiladores
             bool Res = true;
             int Contador = 0;
 
-            if (Candidato.Count == ElementosEstado.Count)
-            {
+            //if (Candidato.Count == ElementosEstado.Count)
+            //{
                 foreach (string c in Candidato)
                 {
                     if (ElementosEstado.Contains(c))
@@ -93,7 +95,7 @@ namespace ProyectoCompiladores
                 {
                     return false;
                 }
-            }
+            //}
             return false;      
         }
 
