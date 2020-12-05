@@ -91,9 +91,11 @@ namespace ProyectoCompiladores
                 foreach (string c in SimbolosGramaticales)
                 {
                     List<string> Ir_A = ir_A(i, c);
-
+                    
+                    
                     if (Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) == -1)
                     {
+                        
                         ContadorEstado++;
                         EstadoAFDL Nuevo = new EstadoAFDL(Ir_A, ContadorEstado);
                         Estados.Add(Nuevo);

@@ -1663,7 +1663,7 @@ namespace ProyectoCompiladores
                 TB_InfoEstadoLR0.Text += EstadoString + "} \n";
                 List<string> listaDeElementosEnRow = new List<string>();
 
-                listaDeElementosEnRow.Add("I" + eAFDG.IndiceEstado.ToString());
+                listaDeElementosEnRow.Add("I" + eAFDG.IndiceEstado.ToString() + "(" + eAFDG.Transiciones.Count + ")");
                 foreach (string s in todasLasTransiciones)
                 {
                     TransicionD transicionDAux = eAFDG.getTransicion(s);

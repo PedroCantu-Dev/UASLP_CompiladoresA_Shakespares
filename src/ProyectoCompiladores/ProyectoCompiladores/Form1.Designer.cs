@@ -123,6 +123,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabAvance6 = new System.Windows.Forms.TabPage();
             this.groupBoxSintactico6 = new System.Windows.Forms.GroupBox();
+            this.TB_InfoEstadoLR0 = new System.Windows.Forms.RichTextBox();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
@@ -230,7 +231,6 @@
             this.TB_ExpresionRegular_7 = new System.Windows.Forms.TextBox();
             this.BT_ConvertirPosfija_7 = new System.Windows.Forms.Button();
             this.TB_Posfija_7 = new System.Windows.Forms.TextBox();
-            this.TB_InfoEstadoLR0 = new System.Windows.Forms.RichTextBox();
             tabAvance1 = new System.Windows.Forms.TabPage();
             tabAvance1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -1271,6 +1271,16 @@
             this.groupBoxSintactico6.TabIndex = 15;
             this.groupBoxSintactico6.TabStop = false;
             this.groupBoxSintactico6.Text = "Análisis sintáctico LR(0)";
+            // 
+            // TB_InfoEstadoLR0
+            // 
+            this.TB_InfoEstadoLR0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_InfoEstadoLR0.Location = new System.Drawing.Point(9, 269);
+            this.TB_InfoEstadoLR0.Name = "TB_InfoEstadoLR0";
+            this.TB_InfoEstadoLR0.ReadOnly = true;
+            this.TB_InfoEstadoLR0.Size = new System.Drawing.Size(658, 197);
+            this.TB_InfoEstadoLR0.TabIndex = 32;
+            this.TB_InfoEstadoLR0.Text = "";
             // 
             // button14
             // 
@@ -2324,15 +2334,6 @@
             this.TB_Posfija_7.Name = "TB_Posfija_7";
             this.TB_Posfija_7.Size = new System.Drawing.Size(310, 38);
             this.TB_Posfija_7.TabIndex = 4;
-            // 
-            // TB_InfoEstadoLR0
-            // 
-            this.TB_InfoEstadoLR0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_InfoEstadoLR0.Location = new System.Drawing.Point(9, 269);
-            this.TB_InfoEstadoLR0.Name = "TB_InfoEstadoLR0";
-            this.TB_InfoEstadoLR0.Size = new System.Drawing.Size(658, 197);
-            this.TB_InfoEstadoLR0.TabIndex = 32;
-            this.TB_InfoEstadoLR0.Text = "";
             // 
             // Form1
             // 
