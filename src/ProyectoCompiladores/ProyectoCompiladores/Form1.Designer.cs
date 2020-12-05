@@ -123,7 +123,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabAvance6 = new System.Windows.Forms.TabPage();
             this.groupBoxSintactico6 = new System.Windows.Forms.GroupBox();
-            this.DGV_ContenidoDeEstadosAFDCanonica_6 = new System.Windows.Forms.DataGridView();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
@@ -231,6 +230,7 @@
             this.TB_ExpresionRegular_7 = new System.Windows.Forms.TextBox();
             this.BT_ConvertirPosfija_7 = new System.Windows.Forms.Button();
             this.TB_Posfija_7 = new System.Windows.Forms.TextBox();
+            this.TB_InfoEstadoLR0 = new System.Windows.Forms.RichTextBox();
             tabAvance1 = new System.Windows.Forms.TabPage();
             tabAvance1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -254,7 +254,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Tokens5oAvance)).BeginInit();
             this.tabAvance6.SuspendLayout();
             this.groupBoxSintactico6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_ContenidoDeEstadosAFDCanonica_6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_AFDCanonica_6)).BeginInit();
             this.groupBox6.SuspendLayout();
@@ -279,7 +278,7 @@
             tabAvance1.Location = new System.Drawing.Point(4, 22);
             tabAvance1.Name = "tabAvance1";
             tabAvance1.Padding = new System.Windows.Forms.Padding(3);
-            tabAvance1.Size = new System.Drawing.Size(1513, 485);
+            tabAvance1.Size = new System.Drawing.Size(1750, 485);
             tabAvance1.TabIndex = 1;
             tabAvance1.Text = "1º avance";
             tabAvance1.UseVisualStyleBackColor = true;
@@ -467,7 +466,7 @@
             this.tabAvance2.Location = new System.Drawing.Point(4, 22);
             this.tabAvance2.Name = "tabAvance2";
             this.tabAvance2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAvance2.Size = new System.Drawing.Size(1513, 485);
+            this.tabAvance2.Size = new System.Drawing.Size(1750, 485);
             this.tabAvance2.TabIndex = 2;
             this.tabAvance2.Text = "2º avance";
             this.tabAvance2.UseVisualStyleBackColor = true;
@@ -590,7 +589,7 @@
             this.tabAvance3.Location = new System.Drawing.Point(4, 22);
             this.tabAvance3.Name = "tabAvance3";
             this.tabAvance3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAvance3.Size = new System.Drawing.Size(1513, 485);
+            this.tabAvance3.Size = new System.Drawing.Size(1750, 485);
             this.tabAvance3.TabIndex = 3;
             this.tabAvance3.Text = "3º avance";
             this.tabAvance3.UseVisualStyleBackColor = true;
@@ -725,7 +724,7 @@
             this.tabAvance4.Location = new System.Drawing.Point(4, 22);
             this.tabAvance4.Name = "tabAvance4";
             this.tabAvance4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAvance4.Size = new System.Drawing.Size(1513, 485);
+            this.tabAvance4.Size = new System.Drawing.Size(1750, 485);
             this.tabAvance4.TabIndex = 4;
             this.tabAvance4.Text = "4º avance";
             this.tabAvance4.UseVisualStyleBackColor = true;
@@ -914,7 +913,7 @@
             this.tabAvance5.Controls.Add(this.label2);
             this.tabAvance5.Location = new System.Drawing.Point(4, 22);
             this.tabAvance5.Name = "tabAvance5";
-            this.tabAvance5.Size = new System.Drawing.Size(1513, 485);
+            this.tabAvance5.Size = new System.Drawing.Size(1750, 485);
             this.tabAvance5.TabIndex = 5;
             this.tabAvance5.Text = "5º Avance";
             this.tabAvance5.UseVisualStyleBackColor = true;
@@ -1248,7 +1247,7 @@
             // 
             // groupBoxSintactico6
             // 
-            this.groupBoxSintactico6.Controls.Add(this.DGV_ContenidoDeEstadosAFDCanonica_6);
+            this.groupBoxSintactico6.Controls.Add(this.TB_InfoEstadoLR0);
             this.groupBoxSintactico6.Controls.Add(this.button14);
             this.groupBoxSintactico6.Controls.Add(this.button15);
             this.groupBoxSintactico6.Controls.Add(this.button16);
@@ -1272,15 +1271,6 @@
             this.groupBoxSintactico6.TabIndex = 15;
             this.groupBoxSintactico6.TabStop = false;
             this.groupBoxSintactico6.Text = "Análisis sintáctico LR(0)";
-            // 
-            // DGV_ContenidoDeEstadosAFDCanonica_6
-            // 
-            this.DGV_ContenidoDeEstadosAFDCanonica_6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_ContenidoDeEstadosAFDCanonica_6.Location = new System.Drawing.Point(9, 268);
-            this.DGV_ContenidoDeEstadosAFDCanonica_6.Name = "DGV_ContenidoDeEstadosAFDCanonica_6";
-            this.DGV_ContenidoDeEstadosAFDCanonica_6.RowHeadersWidth = 51;
-            this.DGV_ContenidoDeEstadosAFDCanonica_6.Size = new System.Drawing.Size(658, 181);
-            this.DGV_ContenidoDeEstadosAFDCanonica_6.TabIndex = 32;
             // 
             // button14
             // 
@@ -1788,7 +1778,7 @@
             this.tabAvance7.Controls.Add(this.groupBox8);
             this.tabAvance7.Location = new System.Drawing.Point(4, 22);
             this.tabAvance7.Name = "tabAvance7";
-            this.tabAvance7.Size = new System.Drawing.Size(1513, 485);
+            this.tabAvance7.Size = new System.Drawing.Size(1750, 485);
             this.tabAvance7.TabIndex = 7;
             this.tabAvance7.Text = "7º Avance";
             this.tabAvance7.UseVisualStyleBackColor = true;
@@ -2335,6 +2325,15 @@
             this.TB_Posfija_7.Size = new System.Drawing.Size(310, 38);
             this.TB_Posfija_7.TabIndex = 4;
             // 
+            // TB_InfoEstadoLR0
+            // 
+            this.TB_InfoEstadoLR0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_InfoEstadoLR0.Location = new System.Drawing.Point(9, 269);
+            this.TB_InfoEstadoLR0.Name = "TB_InfoEstadoLR0";
+            this.TB_InfoEstadoLR0.Size = new System.Drawing.Size(658, 197);
+            this.TB_InfoEstadoLR0.TabIndex = 32;
+            this.TB_InfoEstadoLR0.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2375,7 +2374,6 @@
             this.tabAvance6.ResumeLayout(false);
             this.groupBoxSintactico6.ResumeLayout(false);
             this.groupBoxSintactico6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_ContenidoDeEstadosAFDCanonica_6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_AFDCanonica_6)).EndInit();
             this.groupBox6.ResumeLayout(false);
@@ -2550,7 +2548,6 @@
         private System.Windows.Forms.TextBox TB_Identificador_6;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.DataGridView DGV_ContenidoDeEstadosAFDCanonica_6;
         private System.Windows.Forms.TabPage tabAvance7;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.DataGridView DGV_ContenidoDeEstadosAFDCanonica_7;
@@ -2607,6 +2604,7 @@
         private System.Windows.Forms.Button BT_ConvertirPosfija_7;
         private System.Windows.Forms.TextBox TB_Posfija_7;
         private System.Windows.Forms.DataGridView DGV_TablaAnalisisSintactico_7;
+        private System.Windows.Forms.RichTextBox TB_InfoEstadoLR0;
         //>>>>>>> Forms-DEV
     }
 }

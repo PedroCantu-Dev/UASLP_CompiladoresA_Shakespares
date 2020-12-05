@@ -19,7 +19,6 @@ namespace ProyectoCompiladores
             IndiceEstado = indice;
         }
 
-
         public List<string> DevuelveCadenas(string SimboloABuscar)
         {
             List<string> Resultado = new List<string>();
@@ -123,7 +122,7 @@ namespace ProyectoCompiladores
 
             foreach(String s in this.ElementosEstado)
             {
-                res += s+" | | ";
+                res += "\t" + s + "\n";
             }
             return res;
         }

@@ -127,7 +127,7 @@ namespace ProyectoCompiladores
             }
 
 
-            MessageBox.Show(CadenaMostrar);
+            //MessageBox.Show(CadenaMostrar);
         }
 
 

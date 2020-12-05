@@ -1637,10 +1637,10 @@ namespace ProyectoCompiladores
         {
             Gramatica G = new Gramatica();
             AFDL AFDG = G.AFD;
-            DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Clear();
-            DGV_ContenidoDeEstadosAFDCanonica_6.Rows.Clear();
-            DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Add("indice de estado", "indice de estado");
-            DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Add("contenido", "contenido");
+            // DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Clear();
+            //DGV_ContenidoDeEstadosAFDCanonica_6.Rows.Clear();
+            //DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Add("indice de estado", "indice de estado");
+            //DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Add("contenido", "contenido");
 
             DGV_AFDCanonica_6.Rows.Clear();
             DGV_AFDCanonica_6.Columns.Clear();
@@ -1654,15 +1654,13 @@ namespace ProyectoCompiladores
                 DGV_AFDCanonica_6.Columns.Add(s,s);
             }
 
-            foreach (DataGridViewColumn c in DGV_AFDCanonica_6.Columns)
-            {
-                c.Frozen = false;
-            }
 
             foreach (EstadoAFDL eAFDG in AFDG.Estados)
             {
-                DGV_ContenidoDeEstadosAFDCanonica_6.Rows.Add(eAFDG.IndiceEstado+" : ("+eAFDG.ElementosEstado.Count+")",eAFDG.getEstadoString());
-
+                //DGV_ContenidoDeEstadosAFDCanonica_6.Rows.Add(eAFDG.IndiceEstado+" : ("+eAFDG.ElementosEstado.Count+")",eAFDG.getEstadoString());
+                string EstadoString = eAFDG.getEstadoString();
+                TB_InfoEstadoLR0.Text += "Estado: " + eAFDG.IndiceEstado + "(" + eAFDG.ElementosEstado.Count +  ")\n" + "{\n";
+                TB_InfoEstadoLR0.Text += EstadoString + "} \n";
                 List<string> listaDeElementosEnRow = new List<string>();
 
                 listaDeElementosEnRow.Add("I" + eAFDG.IndiceEstado.ToString());
@@ -1679,11 +1677,6 @@ namespace ProyectoCompiladores
                     }
                 }
                 DGV_AFDCanonica_6.Rows.Add(listaDeElementosEnRow.ToArray());
-            }
-
-            foreach(DataGridViewColumn c in DGV_ContenidoDeEstadosAFDCanonica_6.Columns)
-            {
-                c.Frozen = false;
             }
         }
     }//Forms END
