@@ -53,6 +53,7 @@
     <Compile Include="corcheteException.cs" />
     <Compile Include="Destado.cs" />
     <Compile Include="Destados.cs" />
+    <Compile Include="Elemento.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="EstadoAFDL.cs" />
     <Compile Include="Form1.cs">

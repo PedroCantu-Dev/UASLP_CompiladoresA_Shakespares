@@ -57,12 +57,19 @@ namespace ProyectoCompiladores
         public void init()
         {
             Estados = new List<EstadoAFDL>();
-
-            Estados.Add(new EstadoAFDL(Cerradura(new List<string>
+            Elemento NuevoElemento = new Elemento(PAumentada, "programa'");
+            List<Elemento> Inicial = new List<Elemento>
+            {
+                NuevoElemento
+            };
+            EstadoAFDL NuevoEstado = new EstadoAFDL(Cerradura(Inicial), ContadorEstado);
+            Estados.Add(NuevoEstado);
+            /*Estados.Add(new EstadoAFDL(Cerradura(new List<string>
             {
                 PAumentada
             }
-            ), ContadorEstado));
+            ), ContadorEstado));*/
+            //List<string> EstadoInicial = Cerradura()
             bool Bandera = true;
             //while (Bandera)
             //{
@@ -90,7 +97,7 @@ namespace ProyectoCompiladores
                 }*/
                 foreach (string c in SimbolosGramaticales)
                 {
-                    List<string> Ir_A = ir_A(i, c);
+                    List<Elemento> Ir_A = ir_A(i, c);
                     
                     
                     if (Ir_A.Count != 0 && ChecaNuevoEstado(Ir_A) == -1)
@@ -134,7 +141,7 @@ namespace ProyectoCompiladores
 
 
 
-        public int ChecaNuevoEstado(List<string> Candidato)
+        public int ChecaNuevoEstado(List<Elemento> Candidato)
         {
             bool Nuevo = true;
             for (int i = 0; i < Estados.Count; i++)
@@ -146,18 +153,22 @@ namespace ProyectoCompiladores
             }
             return -1;
         }
-        public List<string> Cerradura(List<string> ElementosEvaluar)
+        public List<Elemento> Cerradura(List<Elemento> ElementosEvaluar)//List<string> ElementosEvaluar)
         {
             bool Bandera = true;
-            List<string> J = new List<string>();
+            List<Elemento> J = new List<Elemento>();
             int NumeroElementos = -1;
-            foreach (string c in ElementosEvaluar)
+            foreach(Elemento e in ElementosEvaluar)
+            {
+                J.Add(e);
+            }
+            /*foreach (string c in ElementosEvaluar)
             {
                 J.Add(c);
-            }
+            }*/
             for (int ii = 0; ii < J.Count; ii++)
             {
-                string[] CadenaSplit = J[ii].Split(' ');
+                string[] CadenaSplit = J[ii].CuerpoProduccion.Split(' ');
                 int indexPunto = -1;
                 for (int i = 0; i < CadenaSplit.Length; i++)
                 {
@@ -172,15 +183,30 @@ namespace ProyectoCompiladores
                     string CadenaEvaluar = CadenaSplit[indexPunto + 1];
                     if (NT.Contains(CadenaEvaluar))
                     {
-                        List<string> Producciones = DevuelveProducciones(CadenaEvaluar);
+                        List<Elemento> Producciones = DevuelveProducciones(CadenaEvaluar);
+                        foreach(Elemento e in Producciones)
+                        {
+                            string P = e.CuerpoProduccion;
+                            string Aux = ". " + P;
+                            if (!Contiene(J, Aux))
+                            {
+                                Elemento NuevoElemento = new Elemento(Aux, e.EncabezadoProduccion);
+                                J.Add(NuevoElemento);
+                            }
+                        }
+                        /*
                         foreach (string P in Producciones)
                         {
                             string Aux = ". " + P;
-                            if (!J.Contains(Aux))
+                            if (!Contiene(J, Aux))
+                            {
+                                Elemento NuevoElemento = 
+                            }
+                            /*if (!J.Contains(Aux))
                             {
                                 J.Add(Aux);
                             }
-                        }
+                        }*/
 
                     }
                 }
@@ -189,24 +215,35 @@ namespace ProyectoCompiladores
             return J;
         }
 
-
-        public List<string> DevuelveProducciones(string Encabezado)
+        public bool Contiene(List<Elemento> Elementos, string Cadena)
+        {
+            foreach (Elemento e in Elementos) 
+            {
+                if(e.CuerpoProduccion == Cadena)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public List<Elemento> DevuelveProducciones(string Encabezado)
         {
             string[] Split = G[Encabezado].Split('|');
-            List<string> Resultado = new List<string>();
+            List<Elemento> Resultado = new List<Elemento>();
             foreach (string c in Split)
             {
-                Resultado.Add(c.TrimEnd());
+                Elemento NuevoElemento = new Elemento(c.TrimEnd(), Encabezado);
+                Resultado.Add(NuevoElemento);
             }
             return Resultado;
         }
 
-        public List<string> ir_A(int indiceEstado, string Simbolo)
+        public List<Elemento> ir_A(int indiceEstado, string Simbolo)
         {
             // [A --> xB],[A ---> xC ],[A --> xD],
             EstadoAFDL Seleccionado = Estados[indiceEstado];
-            List<string> ProduccionesCambiadas = Seleccionado.DevuelveCadenas(Simbolo);
-            List<string> Resultado = new List<string>();
+            List<Elemento> ProduccionesCambiadas = Seleccionado.DevuelveCadenas(Simbolo);
+            List<Elemento> Resultado = new List<Elemento>();
             if (ProduccionesCambiadas.Count > 0)
             {
                 Resultado = Cerradura(ProduccionesCambiadas);

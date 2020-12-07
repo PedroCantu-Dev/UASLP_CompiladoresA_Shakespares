@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace ProyectoCompiladores
 {
-    class Elemento
+    public class Elemento
     {
-        string InfoElemento;
+        public string CuerpoProduccion;
+        public string EncabezadoProduccion;
+
+
+        public Elemento(string C, string E)
+        {
+            this.CuerpoProduccion = C;
+            this.EncabezadoProduccion = E;
+        }
     }
 }

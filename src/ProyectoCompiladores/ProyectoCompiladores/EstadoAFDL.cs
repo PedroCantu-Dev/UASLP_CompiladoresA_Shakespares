@@ -8,23 +8,25 @@ namespace ProyectoCompiladores
 {
     public class EstadoAFDL
     {
-        public List<string> ElementosEstado;
+        public List<Elemento> ElementosEstado;
+        //public List<string> ElementosEstado;
         public List<TransicionD> Transiciones;
         public int IndiceEstado;
 
-        public EstadoAFDL(List<string> E , int indice)
+        public EstadoAFDL(List<Elemento> E , int indice)
         {
             ElementosEstado = E;
             Transiciones = new List<TransicionD>();
             IndiceEstado = indice;
         }
 
-        public List<string> DevuelveCadenas(string SimboloABuscar)
+        public List<Elemento> DevuelveCadenas(string SimboloABuscar)
         {
-            List<string> Resultado = new List<string>();
+            List<Elemento> Resultado = new List<Elemento>();
 
-            foreach(string c in ElementosEstado)
+            foreach(Elemento e in ElementosEstado)
             {
+                string c = e.CuerpoProduccion;
                 string[] Split = c.Split(' ');
                 String ve = c;
 
@@ -45,7 +47,7 @@ namespace ProyectoCompiladores
                         int aux = indexPunto + 1;
                         //Crear cadena nueva, luego mover el punto 1 lugar a la derecha.
                         string R = MoverPuntoDerecha(Split, indexPunto);
-                        Resultado.Add(R);
+                        Resultado.Add(new Elemento(R,e.EncabezadoProduccion));
                     }
                 }
             }
@@ -71,16 +73,17 @@ namespace ProyectoCompiladores
             return (R);
         }
 
-        public bool EsIgual(List<string> Candidato)
+        public bool EsIgual(List<Elemento> Candidato)
         {
             bool Res = true;
             int Contador = 0;
 
             //if (Candidato.Count == ElementosEstado.Count)
             //{
-                foreach (string c in Candidato)
+                foreach (Elemento e in Candidato)
                 {
-                    if (ElementosEstado.Contains(c))
+                string c = e.CuerpoProduccion;
+                    if (Contiene(c))
                     {
                         Contador++;
                     }
@@ -94,10 +97,21 @@ namespace ProyectoCompiladores
                 {
                     return false;
                 }
-            //}
-            return false;      
+            //}  
         }
 
+
+        public bool Contiene(string Cadena)
+        {
+            foreach(Elemento e in ElementosEstado)
+            {
+                if(Cadena == e.CuerpoProduccion)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public void AgregaTransicion(string Simbolo, int Id)
         {
             TransicionD NuevaTransicion = new TransicionD(Simbolo, Id);
@@ -120,10 +134,16 @@ namespace ProyectoCompiladores
         {
             String res = "";
 
-            foreach(String s in this.ElementosEstado)
+            foreach(Elemento e in ElementosEstado)
             {
-                res += "\t" + s + "\n";
+                string s = e.CuerpoProduccion;
+                string Encabezado = e.EncabezadoProduccion;
+                res += "\t" + Encabezado + "  -->  " + s + "\n";
             }
+            /*foreach(String s in this.ElementosEstado)
+            {
+               
+            }*/
             return res;
         }
     }
