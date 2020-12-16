@@ -26,7 +26,7 @@ namespace ProyectoCompiladores
             "c"
         };
 */
-        List<String> terminales = new List<string>
+       public  List<String> terminales = new List<string>
         {
             ";",
             "if",
@@ -57,7 +57,7 @@ namespace ProyectoCompiladores
             "P",
         };
        */
-        List<String> NoTerminales = new List<string>
+       public  List<String> NoTerminales = new List<string>
         {
             "programa",
             "secuencia-sent",
@@ -99,7 +99,17 @@ namespace ProyectoCompiladores
             {"opmult","* |/"},
             {"factor" ,"( exp ) |numero |identificador"},
         };
+
+        public bool esTerminal(String ent)
+        {
+            if (this.terminales.Contains(ent))
+                return true;
+            else
+                return false;
+        }
+
         
+
         public Gramatica()
         {
             initGramatica();
