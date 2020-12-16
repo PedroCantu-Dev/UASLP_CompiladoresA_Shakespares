@@ -14,7 +14,8 @@ namespace ProyectoCompiladores
         List<string> T = new List<string>();
         List<string> NT = new List<string>();
         List<string> SimbolosGramaticales = new List<string>();
-
+        public string[,] Ir_A;
+        public string[,] Accion;
         int ContadorEstado = 1;
         string PAumentada;
         public AFDL(Dictionary<string, string> Gramatica, List<string> Terminales, List<string> NoTerminales, string GramaticaAumentada)
@@ -35,6 +36,8 @@ namespace ProyectoCompiladores
                 SimbolosGramaticales.Add(c);
             }
             init();
+            Ir_A = new string[Estados.Count, NT.Count];
+            Accion = new string[Estados.Count, T.Count];
         }
 
         public List<string> getAllTransiciones()
@@ -140,7 +143,10 @@ namespace ProyectoCompiladores
         }
 
 
+        public void LlenaTablaAnalisisSintactico()
+        {
 
+        }
         public int ChecaNuevoEstado(List<Elemento> Candidato)
         {
             bool Nuevo = true;
@@ -238,6 +244,11 @@ namespace ProyectoCompiladores
             return Resultado;
         }
 
+        public int DevuelveNumeroProduccion(string Produccion)
+        {
+
+            return -1;
+        }
         public List<Elemento> ir_A(int indiceEstado, string Simbolo)
         {
             // [A --> xB],[A ---> xC ],[A --> xD],
