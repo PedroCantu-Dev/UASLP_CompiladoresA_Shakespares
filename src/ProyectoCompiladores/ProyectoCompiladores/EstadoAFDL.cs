@@ -26,7 +26,9 @@ namespace ProyectoCompiladores
 
             foreach(Elemento e in ElementosEstado)
             {
-                string c = e.CuerpoProduccion;
+                
+                string c = e.CuerpoProduccion.TrimEnd(' ');
+                c.TrimEnd(' ');
                 string[] Split = c.Split(' ');
                 String ve = c;
 
@@ -47,6 +49,7 @@ namespace ProyectoCompiladores
                         int aux = indexPunto + 1;
                         //Crear cadena nueva, luego mover el punto 1 lugar a la derecha.
                         string R = MoverPuntoDerecha(Split, indexPunto);
+                        R.TrimEnd(' ');
                         Resultado.Add(new Elemento(R,e.EncabezadoProduccion));
                     }
                 }
@@ -70,7 +73,8 @@ namespace ProyectoCompiladores
             {
                 R += c + " "; 
             }
-            return (R);
+            string Aux = R.TrimEnd(' ');
+            return (Aux);
         }
 
         public bool EsIgual(List<Elemento> Candidato)

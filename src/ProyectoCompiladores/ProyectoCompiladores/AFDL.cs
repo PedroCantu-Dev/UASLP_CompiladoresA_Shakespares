@@ -11,12 +11,12 @@ namespace ProyectoCompiladores
         public List<EstadoAFDL> Estados;
 
         Dictionary<string, string> G;
-        List<string> T = new List<string>();
-        List<string> NT = new List<string>();
-        List<string> SimbolosGramaticales = new List<string>();
+        public List<string> T = new List<string>();
+        public List<string> NT = new List<string>();
+        public List<string> SimbolosGramaticales = new List<string>();
         public string[,] Ir_A;
         public string[,] Accion;
-        int ContadorEstado = 1;
+        int ContadorEstado = 0;
         string PAumentada;
         public AFDL(Dictionary<string, string> Gramatica, List<string> Terminales, List<string> NoTerminales, string GramaticaAumentada)
         {
@@ -26,18 +26,20 @@ namespace ProyectoCompiladores
 
             PAumentada = GramaticaAumentada;
 
+            foreach (string c in T)
+            {
+                SimbolosGramaticales.Add(c);
+            }
+
             foreach (string c in NT)
             {
                 SimbolosGramaticales.Add(c);
             }
 
-            foreach (string c in T)
-            {
-                SimbolosGramaticales.Add(c);
-            }
+            
             init();
             Ir_A = new string[Estados.Count, NT.Count];
-            Accion = new string[Estados.Count, T.Count];
+            Accion = new string[Estados.Count, T.Count + 1];
         }
 
         public List<string> getAllTransiciones()
@@ -194,6 +196,7 @@ namespace ProyectoCompiladores
                         {
                             string P = e.CuerpoProduccion;
                             string Aux = ". " + P;
+                            Aux.TrimEnd();
                             if (!Contiene(J, Aux))
                             {
                                 Elemento NuevoElemento = new Elemento(Aux, e.EncabezadoProduccion);
@@ -238,7 +241,7 @@ namespace ProyectoCompiladores
             List<Elemento> Resultado = new List<Elemento>();
             foreach (string c in Split)
             {
-                Elemento NuevoElemento = new Elemento(c.TrimEnd(), Encabezado);
+                Elemento NuevoElemento = new Elemento(c.TrimEnd(' '), Encabezado);
                 Resultado.Add(NuevoElemento);
             }
             return Resultado;
@@ -266,7 +269,9 @@ namespace ProyectoCompiladores
         {
             foreach(String s in T)
             {
-                if(elemento.IndexOf(s) == indice + 2)
+                int index = elemento.IndexOf(s,indice);
+
+                if (elemento.IndexOf(s,indice) == indice + 2)
                 {
                     return s;
                 }
@@ -279,12 +284,14 @@ namespace ProyectoCompiladores
         {
             foreach (EstadoAFDL estado in this.Estados)
             {
-
-
                 foreach (Elemento elemento in estado.ElementosEstado)
                 {
+                   string Aux = elemento.EncabezadoProduccion.TrimEnd(' ');
+                    elemento.EncabezadoProduccion = Aux;
                     if (elemento.CuerpoProduccion.IndexOf(".") != elemento.CuerpoProduccion.Length - 1)//a)
                     {//se hacen los dirige
+                        int Punto = elemento.CuerpoProduccion.IndexOf(".");
+                        int Longitud = elemento.CuerpoProduccion.Length;
                         string aux = getTerminalDespuesDelPunto(elemento.CuerpoProduccion, elemento.CuerpoProduccion.IndexOf("."));
                         if(aux != null)
                         {
@@ -298,6 +305,7 @@ namespace ProyectoCompiladores
                             }
                             if(indiceIrA != -1)
                             {
+                                int indiceSimbolo = T.IndexOf(aux);
                                 Accion[estado.IndiceEstado, T.IndexOf(aux)] = "d" + indiceIrA.ToString();
                             }
                         }
@@ -307,13 +315,19 @@ namespace ProyectoCompiladores
                     {// si el punto esta al ultimo se hacen los reducir
                         String[] siguientesCadena = diccionarioParaB[elemento.EncabezadoProduccion].Split(' ');
                         int indicePunto = elemento.CuerpoProduccion.IndexOf(".");
-                        String elementoSinPuntoAux = elemento.CuerpoProduccion.Remove(elemento.CuerpoProduccion.IndexOf("."),indicePunto+1);
-                        elementoSinPuntoAux.Trim(' ');
-                        
+                        String elementoSinPuntoAux = elemento.CuerpoProduccion.Remove(elemento.CuerpoProduccion.IndexOf(".") - 1);
+
                         int indiceProd = getIndiceProduccion(elementoSinPuntoAux);
                         foreach (string s in siguientesCadena )
                         {
-                            Accion[estado.IndiceEstado, T.IndexOf(s)] = "r" + indiceProd.ToString();
+                            if(s == "$")
+                            {
+                                Accion[estado.IndiceEstado, T.Count] = "r" + indiceProd.ToString();
+                            }
+                            else
+                            {
+                                Accion[estado.IndiceEstado, T.IndexOf(s)] = "r" + indiceProd.ToString();
+                            }
 
                         }
                     }
@@ -327,31 +341,72 @@ namespace ProyectoCompiladores
                 {
                     if(NT.Contains(tD.S))
                     {
-                        Ir_A[estado.IndiceEstado, NT.IndexOf(tD.S)] = "I" + tD.indiceDest;
+                        Ir_A[estado.IndiceEstado, NT.IndexOf(tD.S)] = tD.indiceDest.ToString();
                     }
                 }
             }
+
+            /*string CadenaMessage = "";
+
+            for(int i = 0; i < Estados.Count; i++)
+            {
+                for(int j = 0; j < NT.Count; j++)
+                {
+                    if(Ir_A[i,j] != null)
+                    {
+                        CadenaMessage += Ir_A[i, j] + " ";
+
+                    }
+                    else
+                    {
+                        CadenaMessage += "ø ";
+                    }
+                }
+                CadenaMessage += "\n";
+            }
+            MessageBox.Show("Ir_A: \n" + CadenaMessage);
+
+            CadenaMessage = "";
+
+            for (int i = 0; i < Estados.Count; i++)
+            {
+                for (int j = 0; j < T.Count + 1; j++)
+                {
+                    if (Accion[i, j] != null)
+                    {
+                        CadenaMessage += Accion[i, j] + " ";
+
+                    }
+                    else
+                    {
+                        CadenaMessage += "ø ";
+                    }
+                }
+                CadenaMessage += "\n";
+            }
+            MessageBox.Show("Accion: \n" + CadenaMessage);
+            */
         }
 
         private int getIndiceProduccion(String produccionBus)
         {
-            int aux = -1;
+            int aux = 0;
+     
            foreach (KeyValuePair<string, string> EntradaD in G)
            {
-               string[] ArregloCadenas = EntradaD.Value.Split(' ');
+               string[] ArregloCadenas = EntradaD.Value.Split('|');
                foreach (string c in ArregloCadenas)
                {
                     aux++;
-                   string Aux = c.TrimEnd();
+                   
                   // MessageBox.Show("Producción:\n " + EntradaD.Key + " ----> " + Aux);
-                  if(produccionBus == Aux)
+                  if(produccionBus == c)
                     {
                         return aux;
                     }
                }
            }
-
-            return aux;
+            return 0;
         }
 
 

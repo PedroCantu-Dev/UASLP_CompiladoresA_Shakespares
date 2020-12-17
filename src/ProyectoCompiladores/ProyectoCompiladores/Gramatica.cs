@@ -18,39 +18,38 @@ namespace ProyectoCompiladores
         public string ProducciónAumentada = ". programa";
         //public string ProducciónAumentada = ". P";
         public AFDL AFD;
-/*
-        List<string> terminales = new List<string>
+        /*List<string> terminales = new List<string>
         {
             "a",
             "b",
             "c"
         };
-*/
-       public  List<String> terminales = new List<string>
-        {
-            ";",
-            "if",
-            "then",
-            "end",
-            "else",
-            "repeat",
-            "until",
-            "identificador",
-            ":=",
-            "read",
-            "write",
-            "<",
-            ">",
-            "=",
-            "+",
-            "-",
-            "*",
-            "/",
-            "(",
-            ")",
-            "numero"
-        };
-        
+        */
+        public  List<String> terminales = new List<string>
+         {
+             ";",
+             "if",
+             "then",
+             "end",
+             "else",
+             "repeat",
+             "until",
+             "identificador",
+             ":=",
+             "read",
+             "write",
+             "<",
+             ">",
+             "=",
+             "+",
+             "-",
+             "*",
+             "/",
+             "(",
+             ")",
+             "numero"
+         };
+         
         /*
         List<string> NoTerminales = new List<string>
         {
@@ -76,12 +75,16 @@ namespace ProyectoCompiladores
             "factor"
         };
         
-        /*
-        Dictionary<string, string> G = new Dictionary<string, string>
+        
+        /*Dictionary<string, string> G = new Dictionary<string, string>
         {
-            {"P", "a P a |b P b |c"}
+            {"P", "a P a|b P b|c"}
         };
-        */
+
+        Dictionary<string, string> Siguientes = new Dictionary<string, string>
+        {
+            {"P", "$ a b"}
+        };*/
         Dictionary<string, string> G = new Dictionary<string, string>{
             {"programa", "secuencia-sent" },
             {"secuencia-sent","secuencia-sent ; sentencia |sentencia" },
@@ -118,11 +121,6 @@ namespace ProyectoCompiladores
             {"opmult","( numero identificador"},
             {"factor" ,"; end else until $ then ) < > = + - * /"},
         };
-
-
-
-
-
         public bool esTerminal(String ent)
         {
             if (this.terminales.Contains(ent))
@@ -130,8 +128,6 @@ namespace ProyectoCompiladores
             else
                 return false;
         }
-
-        
 
         public Gramatica()
         {

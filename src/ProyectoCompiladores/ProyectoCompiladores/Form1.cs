@@ -1353,141 +1353,6 @@ namespace ProyectoCompiladores
         #endregion
 
         #region tab_6avance
-        private void BT_SubirArchivoExpReg_6_Click(object sender, EventArgs e)
-        {
-            TB_ExpresionRegular_6.Text = SubirArchivo();
-        }
-
-        private void BT_LimpiarExpReg_6_Click(object sender, EventArgs e)
-        {
-            TB_ExpresionRegular_6.Text = "";
-        }
-
-        private void BT_ConvertirPosfija_6_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                TB_Posfija_6.Text = ConversionPosfija(TB_ExpresionRegular_6.Text);
-
-            }
-            catch (Exception E)
-            {
-                MessageBox.Show("Ocurrió una excepcion: \n" + E.Message);
-            }
-        }
-
-        private void BT_ValidarLexema6_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                AFN AFN = new AFN(TB_Posfija_6.Text);
-                Operando AFNResultante = AFN.algoritmoDeEvaluacion(TB_Posfija_6.Text);
-                AFN.estados = AFNResultante.EstadosOperando;
-
-                AFD afd = new AFD(AFN);
-                afd.init();
-
-
-                List<int> ListaAceptacion = AFN.RegresaFinales();
-                afd.destados.ChecaFinal(ListaAceptacion);
-                bool res = afd.ValidaLexema(TB_Lexema_6.Text);
-                if (res == true)
-                {
-                    //MessageBox.Show("El lexema es válido");
-                    MessageBox.Show("El lexema si pertenece a la expresión regular");
-
-                }
-                else
-                {
-                    //MessageBox.Show("El lexema no es válido");
-                    MessageBox.Show("El lexema no pertenece al lenguaje de la expresión regular");
-                }
-            }
-            catch (Exception E)
-            {
-                MessageBox.Show("Ocurrió una excepción:\n " + E.Message);
-            }
-        }
-
-        private void BT_ConstruirAFN_6_Click(object sender, EventArgs e)
-        {
-            AFN AFN = new AFN(TB_Posfija_6.Text);
-            Operando AFNResultante = AFN.algoritmoDeEvaluacion(TB_Posfija_6.Text);
-            AFN.estados = AFNResultante.EstadosOperando;
-            LLenaDGVAFN6(AFNResultante, AFN.alfabeto);
-        }
-
-
-        public void LLenaDGVAFN6(Operando AFN, string alfabeto)
-        {
-            DGV_AFN_6.Columns.Clear();
-            DGV_AFN_6.Rows.Clear();
-            //MessageBox.Show("La cantidad de caracteres en el alfabeto es de:  " + alfabeto.Length);
-            DGV_AFN_6.Columns.Add("Estado", "Estado");
-            foreach (char c in alfabeto)
-            {
-                DGV_AFN_6.Columns.Add(c.ToString(), c.ToString());
-            }
-
-            for (int i = 0; i < AFN.EstadosOperando.Count; i++)
-            {
-                DGV_AFN_6.Rows.Add();
-                DGV_AFN_6.Rows[i].Cells[0].Value = AFN.EstadosOperando[i].Index;
-                List<string> TablaTransiciones = AFN.EstadosOperando[i].ObtenTablaTransiciones(alfabeto);
-                for (int j = 0; j < TablaTransiciones.Count; j++)
-                {
-                    string[] CadenaSplit = TablaTransiciones[j].Split('-');
-                    //string Valor  = TablaTransiciones[j];
-
-                    string Valor = "";
-                    string CadenaAux = "{";
-                    foreach (string c in CadenaSplit)
-                    {
-                        CadenaAux += c + ",";
-                    }
-                    Valor = CadenaAux.Remove(CadenaAux.Length - 1);
-                    Valor += "}";
-                    if (Valor != "{}")
-                    {
-                        DGV_AFN_6.Rows[i].Cells[j + 1].Value = Valor;
-
-                    }
-                    else
-                    {
-                        DGV_AFN_6.Rows[i].Cells[j + 1].Value = "Ø";
-                    }
-                }
-            }
-        }
-
-        private void BT_ConstruirAFD_6_Click(object sender, EventArgs e)
-        {
-            AFN AFN = new AFN(TB_Posfija_6.Text);
-            Operando AFNResultante = AFN.algoritmoDeEvaluacion(TB_Posfija_6.Text);
-            AFN.estados = AFNResultante.EstadosOperando;
-
-            AFD afd = new AFD(AFN);
-            afd.init();
-            LLenaDGVAFD6(afd);
-        }
-
-        public void LLenaDGVAFD6(AFD afd)
-        {
-            DGV_AFD_6.Columns.Clear();
-            DGV_AFD_6.Rows.Clear();
-            //MessageBox.Show("La cantidad de caracteres en el alfabeto es de:  " + alfabeto.Length);
-            DGV_AFD_6.Columns.Add("Estado", "Estado");
-            foreach (char c in afd.alfabetoAFD)
-            {
-                DGV_AFD_6.Columns.Add(c.ToString(), c.ToString());
-            }
-
-            foreach (Destado d in afd.destados.Lista)
-            {
-                DGV_AFD_6.Rows.Add(d.getRowTransiciones(afd.alfabetoAFD));
-            }
-        }
-
         private void BT_SubirIdentificador_6_Click(object sender, EventArgs e)
         {
             TB_Identificador_6.Text = SubirArchivo();
@@ -1644,9 +1509,10 @@ namespace ProyectoCompiladores
 
             DGV_AFDCanonica_6.Rows.Clear();
             DGV_AFDCanonica_6.Columns.Clear();
-
+            DGV_AccionLR0.Columns.Clear();
+            DGV_irALR0.Columns.Clear();
             DGV_AFDCanonica_6.Columns.Add("Estados", "Estados");
-            
+            TB_InfoEstadoLR0.Text = "";
             List<string> todasLasTransiciones = AFDG.getAllTransiciones();
 
             foreach (string  s in todasLasTransiciones)//agrega las columnas de transiciones 
@@ -1656,6 +1522,8 @@ namespace ProyectoCompiladores
 
             // se crea una tabla de analisis sintactico.
             //TABLA_ASLR0 tabla = new TABLA_ASLR0(G.terminales,G.NoTerminales, AFDG);
+
+            
 
             foreach (EstadoAFDL eAFDG in AFDG.Estados)
             {
@@ -1679,6 +1547,55 @@ namespace ProyectoCompiladores
                     }
                 }
                 DGV_AFDCanonica_6.Rows.Add(listaDeElementosEnRow.ToArray());
+            }
+
+            DGV_AccionLR0.Columns.Add("Estado", "Estado");
+            for (int i = 0; i < AFDG.T.Count; i++)
+            {
+                DGV_AccionLR0.Columns.Add(AFDG.T[i], AFDG.T[i]);
+            }
+            DGV_AccionLR0.Columns.Add("$", "$");
+
+
+            for (int i = 0; i < AFDG.NT.Count; i++)
+            {
+                DGV_irALR0.Columns.Add(AFDG.NT[i], AFDG.NT[i]);
+            }
+
+            List<string> Renglon = new List<string>();
+            for(int i = 0; i < AFDG.Estados.Count; i++)
+            {
+                Renglon.Clear();
+                Renglon.Add(i.ToString());
+                for(int j = 0; j < AFDG.T.Count + 1; j++)
+                {
+                    if (AFDG.Accion[i,j] != null)
+                    {
+                        Renglon.Add(AFDG.Accion[i,j]);
+                    }
+                    else
+                    {
+                        Renglon.Add("ø");
+                    }
+                }
+                DGV_AccionLR0.Rows.Add(Renglon.ToArray());
+            }
+
+            for (int i = 0; i < AFDG.Estados.Count; i++)
+            {
+                Renglon.Clear();
+                for (int j = 0; j < AFDG.NT.Count; j++)
+                {
+                    if (AFDG.Ir_A[i, j] != null)
+                    {
+                        Renglon.Add(AFDG.Ir_A[i, j]);
+                    }
+                    else
+                    {
+                        Renglon.Add("ø");
+                    }
+                }
+                DGV_irALR0.Rows.Add(Renglon.ToArray());
             }
         }
 
