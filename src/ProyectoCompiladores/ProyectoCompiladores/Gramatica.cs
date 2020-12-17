@@ -100,6 +100,29 @@ namespace ProyectoCompiladores
             {"factor" ,"( exp ) |numero |identificador"},
         };
 
+
+        public Dictionary<string, string> Siguientes = new Dictionary<string, string>{
+            {"programa", "$" },
+            {"secuencia-sent","; end else until $" },
+            {"sentencia","; end else until $" },
+            {"sent-if","; end else until $"},
+            {"sent-repeat","; end else until $"},
+            {"sent-assign","; end else until $"},
+            {"sent-read","; end else until $"},
+            {"sent-write","; end else until $"},
+            {"exp","; end else until $ then )"},
+            {"op-comp","( numero identificador" },
+            {"exp-simple","; end else until $ then ) < > = + -"},
+            {"opsuma","( numero identificador"},
+            {"term","; end else until $ then ) < > = + - * /"},
+            {"opmult","( numero identificador"},
+            {"factor" ,"; end else until $ then ) < > = + - * /"},
+        };
+
+
+
+
+
         public bool esTerminal(String ent)
         {
             if (this.terminales.Contains(ent))
@@ -119,6 +142,7 @@ namespace ProyectoCompiladores
         {
 
             AFD = new AFDL(G, terminales, NoTerminales,ProducciónAumentada);
+            AFD.generaTablaDeAnalisisLR0(this.Siguientes);
 
             /*foreach (KeyValuePair<string, string> EntradaD in Gramática)
             {
@@ -130,6 +154,9 @@ namespace ProyectoCompiladores
                 }
             }*/
         }
+
+        
+
     }
 
 }

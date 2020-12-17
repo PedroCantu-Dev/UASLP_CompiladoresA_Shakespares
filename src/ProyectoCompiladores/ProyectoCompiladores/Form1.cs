@@ -1655,38 +1655,10 @@ namespace ProyectoCompiladores
             }
 
             // se crea una tabla de analisis sintactico.
-            TABLA_ASLR0 tabla = new TABLA_ASLR0(G.terminales,G.NoTerminales, AFDG);
+            //TABLA_ASLR0 tabla = new TABLA_ASLR0(G.terminales,G.NoTerminales, AFDG);
 
             foreach (EstadoAFDL eAFDG in AFDG.Estados)
-            {//aprovechar este ciclo para hacer la tabla de analisis sitactico
-             
-                //----Begin----- algoritmo para la obtencion de tabla de analisis sintactico.
-                foreach (Elemento elemento in eAFDG.ElementosEstado)               
-                {
-                    if(elemento.CuerpoProduccion.IndexOf(".") != elemento.CuerpoProduccion.Length - 1)//a)
-                    {//se hacen los dirige
-                        if(G.esTerminal(elemento.CuerpoProduccion.ElementAt(elemento.CuerpoProduccion.IndexOf(".") + 1).ToString()))
-                        {
-                            //ir_A(eAFDG.IndiceEstado,elemento.CuerpoProduccion.ElementAt(elemento.CuerpoProduccion.IndexOf(".") + 1).ToString()) = Ij 
-                            //---> ACCION[eAFDG.IndiceEstado,elemento.CuerpoProduccion.ElementAt(elemento.CuerpoProduccion.IndexOf(".") + 1).ToString()] = dj
-                            //tabla.insersion
-                        
-                        } 
-                    }
-
-                    if(elemento.CuerpoProduccion.IndexOf(".") == elemento.CuerpoProduccion.Length -1)//b)
-                    {// si el punto esta al ultimo se hacen los reducir
-                        
-                    }
-                    if(elemento.EncabezadoProduccion.Contains("'"))//c)
-                    {//estado de aceptacion [eAFDG.IndiceEstado,$] = ac
-
-
-                    }
-                }
-                //----End----- algoritmo para la obtencion de tabla de analisis sintactico.
-
-
+            {
                 //DGV_ContenidoDeEstadosAFDCanonica_6.Rows.Add(eAFDG.IndiceEstado+" : ("+eAFDG.ElementosEstado.Count+")",eAFDG.getEstadoString());
                 string EstadoString = eAFDG.getEstadoString();
                 TB_InfoEstadoLR0.Text += "Estado: " + eAFDG.IndiceEstado + "(" + eAFDG.ElementosEstado.Count +  ")\n" + "{\n";

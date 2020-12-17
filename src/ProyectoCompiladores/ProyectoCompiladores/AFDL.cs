@@ -261,5 +261,119 @@ namespace ProyectoCompiladores
             }
             return Resultado;
         }
+
+        private String getTerminalDespuesDelPunto(String elemento, int indice)
+        {
+            foreach(String s in T)
+            {
+                if(elemento.IndexOf(s) == indice + 2)
+                {
+                    return s;
+                }
+            }
+            return null;
+        }
+
+
+        public void generaTablaDeAnalisisLR0(Dictionary<string , string> diccionarioParaB )
+        {
+            foreach (EstadoAFDL estado in this.Estados)
+            {
+
+
+                foreach (Elemento elemento in estado.ElementosEstado)
+                {
+                    if (elemento.CuerpoProduccion.IndexOf(".") != elemento.CuerpoProduccion.Length - 1)//a)
+                    {//se hacen los dirige
+                        string aux = getTerminalDespuesDelPunto(elemento.CuerpoProduccion, elemento.CuerpoProduccion.IndexOf("."));
+                        if(aux != null)
+                        {
+                            int indiceIrA = -1;
+                            foreach(TransicionD t in estado.Transiciones)
+                            {
+                                if(t.S == aux)
+                                {
+                                    indiceIrA = t.indiceDest;
+                                }
+                            }
+                            if(indiceIrA != -1)
+                            {
+                                Accion[estado.IndiceEstado, T.IndexOf(aux)] = "d" + indiceIrA.ToString();
+                            }
+                        }
+                    }
+
+                    if (!elemento.EncabezadoProduccion.Contains("'") && elemento.CuerpoProduccion.IndexOf(".") == elemento.CuerpoProduccion.Length - 1)//b)
+                    {// si el punto esta al ultimo se hacen los reducir
+                        String[] siguientesCadena = diccionarioParaB[elemento.EncabezadoProduccion].Split(' ');
+                        int indicePunto = elemento.CuerpoProduccion.IndexOf(".");
+                        String elementoSinPuntoAux = elemento.CuerpoProduccion.Remove(elemento.CuerpoProduccion.IndexOf("."),indicePunto+1);
+                        elementoSinPuntoAux.Trim(' ');
+                        
+                        int indiceProd = getIndiceProduccion(elementoSinPuntoAux);
+                        foreach (string s in siguientesCadena )
+                        {
+                            Accion[estado.IndiceEstado, T.IndexOf(s)] = "r" + indiceProd.ToString();
+
+                        }
+                    }
+                    if (elemento.EncabezadoProduccion.Contains("'") && elemento.CuerpoProduccion.IndexOf(".") == elemento.CuerpoProduccion.Length - 1)//c)
+                    {//estado de aceptacion [eAFDG.IndiceEstado,$] = ac
+
+                        Accion[estado.IndiceEstado, T.Count()] = "ac";
+                    }
+                }
+                foreach(TransicionD tD in estado.Transiciones )
+                {
+                    if(NT.Contains(tD.S))
+                    {
+                        Ir_A[estado.IndiceEstado, NT.IndexOf(tD.S)] = "I" + tD.indiceDest;
+                    }
+                }
+            }
+        }
+
+        private int getIndiceProduccion(String produccionBus)
+        {
+            int aux = -1;
+           foreach (KeyValuePair<string, string> EntradaD in G)
+           {
+               string[] ArregloCadenas = EntradaD.Value.Split(' ');
+               foreach (string c in ArregloCadenas)
+               {
+                    aux++;
+                   string Aux = c.TrimEnd();
+                  // MessageBox.Show("Producción:\n " + EntradaD.Key + " ----> " + Aux);
+                  if(produccionBus == Aux)
+                    {
+                        return aux;
+                    }
+               }
+           }
+
+            return aux;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
