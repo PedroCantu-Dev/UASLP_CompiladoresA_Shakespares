@@ -87,20 +87,20 @@ namespace ProyectoCompiladores
         };*/
         Dictionary<string, string> G = new Dictionary<string, string>{
             {"programa", "secuencia-sent" },
-            {"secuencia-sent","secuencia-sent ; sentencia |sentencia" },
-            {"sentencia","sent-if |sent-repeat |sent-assign |sent-read |sent-write"},
-            {"sent-if","if exp then secuencia-sent end |if exp then secuencia-sent else secuencia-sent end"},
+            {"secuencia-sent","secuencia-sent ; sentencia|sentencia" },
+            {"sentencia","sent-if|sent-repeat|sent-assign|sent-read|sent-write"},
+            {"sent-if","if exp then secuencia-sent end|if exp then secuencia-sent else secuencia-sent end"},
             {"sent-repeat","repeat secuencia-sent until exp"},
             {"sent-assign","identificador := exp"},
             {"sent-read","read identificador"},
             {"sent-write","write exp"},
-            {"exp","exp-simple op-comp exp-simple |exp-simple"},
-            {"op-comp","< |> |=" },
-            {"exp-simple","exp-simple opsuma term |term"},
-            {"opsuma","+ |-"},
-            {"term","term opmult factor |factor"},
-            {"opmult","* |/"},
-            {"factor" ,"( exp ) |numero |identificador"},
+            {"exp","exp-simple op-comp exp-simple|exp-simple"},
+            {"op-comp","<|>|=" },
+            {"exp-simple","exp-simple opsuma term|term"},
+            {"opsuma","+|-"},
+            {"term","term opmult factor|factor"},
+            {"opmult","*|/"},
+            {"factor" ,"( exp )|numero|identificador"},
         };
 
 
