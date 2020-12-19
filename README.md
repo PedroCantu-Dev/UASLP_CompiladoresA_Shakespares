@@ -69,7 +69,7 @@ Es importante recordar los tokens del lenguaje TINY:
 + factor -> ( exp ) | numero | identificador
 
 
-## 6º avance (Viernes 4 Diciembre)==>():
+## 6º avance (Viernes 4 Diciembre)==>(*):
 Se agregará una sección para Análisis Sintáctico LR(0). 
 
 Se mostrará un botón "Construir Colección LR(0) Canónica", al cual, al darle click, internamente construirá el autómata LR(0) en base a la gramática TINY.
@@ -98,7 +98,7 @@ Mostrará como resultado una tabla de transiciones del AFD resultante, así como
 
 
 
-## 7º avance (Viernes 18 Diciembre)==>():
+## 7º avance (Viernes 18 Diciembre)==>(*):
 
 Al botón actual de "Construir Colección LR(0) Canónica" le agregaremos " y Tabla de Análisis Sintáctico LR", al cual, al darle clic, internamente, además de construir el autómata LR(0), también se deberá construir la tabla de Análisis Sintáctico LR en base a la gramática TINY, y se imprimirá en pantalla.
 
@@ -122,8 +122,18 @@ Al botón actual de "Construir Colección LR(0) Canónica" le agregaremos " y Ta
 + opmult -> * | /
 + factor -> ( exp ) | numero | identificador
 
-## Proyecto final (Jueves 7 Enero)==>():
+## Entrega no. 8 final (Jueves 7 Enero)==>():
 
+Como entrega final, será el analizador-léxico sintáctico completo.
+Se agregará un botón "Análisis Léxico y Sintáctico del programa en lenguaje TINY", al cual, al darle clic:
+
+1. Llevará a cabo el análisis léxico, utilizando el módulo que ya se tiene de clasificación de tokens. Si se encuentra uno o mas errores, muestra la línea y quién causa el error.
+2. Si se encontró algún error léxico. Ya no continuará con el análisis sintáctico.
+3. Si no encontró error léxico, llevará a cabo el análisis sintáctico LR y mostrará en pantalla el árbol de análisis sintáctico resultante (se aconseja utilizar TreeView para mostrar la jerarquía de las reducciones).
+4. Al primer error sintáctico, se para el proceso de análisis y se muestra en pantalla que ocurrió un error sintáctico.
+
+### Ejemplo de interfaz:
+<a href="assets/Entrega8.pdf"><img src="assets/Entrega8.png" alt="Entrega8"  width="1740px" height="600px"></a>
 
 
 
