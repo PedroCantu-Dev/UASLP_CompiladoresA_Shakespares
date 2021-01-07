@@ -1865,7 +1865,6 @@ namespace ProyectoCompiladores
                 TB_ErroresLexico.AppendText(Environment.NewLine);
                 AFDL AFD = CreaTablasLR0();
                 AlgoritmoEvaluacionLR0(CadenaPrograma, AFD);
-
             }
             //if(IndexFila != -1)
             //{
@@ -1879,6 +1878,7 @@ namespace ProyectoCompiladores
 
         public bool AlgoritmoEvaluacionLR0(List<string> Programa, AFDL AFD)
         {
+            List<TreeNode> NodosHijo = new List<TreeNode>();
             Stack<int> PilaEstados = new Stack<int>(); //Iniciamos la pila con estados
             string[,] Accion = AFD.Accion;
             string[,] Ir_A = AFD.Ir_A;
@@ -1909,6 +1909,9 @@ namespace ProyectoCompiladores
                         int indexD = EstadoDesplazar.IndexOf("d");
                         int NumeroElemento = int.Parse(EstadoDesplazar.Substring(indexD + 1).ToString());
                         PilaEstados.Push(NumeroElemento);
+                        TreeNode NuevoNodo = new TreeNode();
+                        NuevoNodo.Text = a;
+                        NodosHijo.Add(NuevoNodo);
                         indexA++;
                     }
                     else if(Accion[s, IndexElementoEvaluando].Contains("r")) // En caso de que sea un reducir.
@@ -1924,10 +1927,27 @@ namespace ProyectoCompiladores
                         }
                         int indexTope = PilaEstados.Peek();
                         string Padre = AFD.ObtenPadreProduccion(NumeroElemento);
+                        
+                        if(NodosHijo.Count != 0)
+                        {
+                            TreeNode NodoPadre = new TreeNode();
+                            NodoPadre.Text = Padre;
+                            foreach(TreeNode T in NodosHijo)
+                            {
+                                NodoPadre.Nodes.Add(T);
+                            }
+                            NodosHijo.Clear();
+                            NodosHijo.Add(NodoPadre);
+                        }
                         PilaEstados.Push(int.Parse(Ir_A[indexTope, AFD.NT.IndexOf(Padre)]));
                     }
                     else if(Accion[s, IndexElementoEvaluando] == "ac") // En caso de que sea un estado de aceptación.
                     {
+                        foreach(TreeNode T in NodosHijo)
+                        {
+                            TreeViewArbolSintáctico.Nodes.Add(T);
+                        }
+                        //TreeViewArbolSintáctico.
                         MessageBox.Show("El analisis se completó, no existe ningún error sintáctico");
                         break;
                     }

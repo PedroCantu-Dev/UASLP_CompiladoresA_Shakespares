@@ -150,12 +150,13 @@
             this.label21 = new System.Windows.Forms.Label();
             this.labelValidarLexema_6 = new System.Windows.Forms.Label();
             this.tabAvance7 = new System.Windows.Forms.TabPage();
-            this.labelValidarLexema_7 = new System.Windows.Forms.Label();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label29 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.BT_AnalisisLexicoSintactico = new System.Windows.Forms.Button();
+            this.label29 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.TB_ErroresLexico = new System.Windows.Forms.TextBox();
+            this.BT_AnalisisLexicoSintactico = new System.Windows.Forms.Button();
+            this.labelValidarLexema_7 = new System.Windows.Forms.Label();
+            this.TreeViewArbolSintáctico = new System.Windows.Forms.TreeView();
             tabAvance1 = new System.Windows.Forms.TabPage();
             tabAvance1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -185,8 +186,8 @@
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Tokens_6)).BeginInit();
             this.tabAvance7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabAvance1
@@ -1449,14 +1450,26 @@
             this.tabAvance7.Text = "7º Avance";
             this.tabAvance7.UseVisualStyleBackColor = true;
             // 
-            // labelValidarLexema_7
+            // groupBox7
             // 
-            this.labelValidarLexema_7.AutoSize = true;
-            this.labelValidarLexema_7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelValidarLexema_7.Location = new System.Drawing.Point(316, 148);
-            this.labelValidarLexema_7.Name = "labelValidarLexema_7";
-            this.labelValidarLexema_7.Size = new System.Drawing.Size(0, 18);
-            this.labelValidarLexema_7.TabIndex = 17;
+            this.groupBox7.Controls.Add(this.TreeViewArbolSintáctico);
+            this.groupBox7.Controls.Add(this.label29);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(602, 7);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(1145, 475);
+            this.groupBox7.TabIndex = 15;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Árbol de análisis sintáctico resultante";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(336, 148);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(0, 18);
+            this.label29.TabIndex = 17;
             // 
             // groupBox8
             // 
@@ -1471,25 +1484,15 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Análisis Léxico";
             // 
-            // label29
+            // TB_ErroresLexico
             // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(336, 148);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(0, 18);
-            this.label29.TabIndex = 17;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.label29);
-            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(602, 7);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(1145, 475);
-            this.groupBox7.TabIndex = 15;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Árbol de análisis sintáctico resultante";
+            this.TB_ErroresLexico.ForeColor = System.Drawing.Color.Red;
+            this.TB_ErroresLexico.Location = new System.Drawing.Point(7, 106);
+            this.TB_ErroresLexico.Multiline = true;
+            this.TB_ErroresLexico.Name = "TB_ErroresLexico";
+            this.TB_ErroresLexico.ReadOnly = true;
+            this.TB_ErroresLexico.Size = new System.Drawing.Size(469, 367);
+            this.TB_ErroresLexico.TabIndex = 19;
             // 
             // BT_AnalisisLexicoSintactico
             // 
@@ -1501,15 +1504,21 @@
             this.BT_AnalisisLexicoSintactico.UseVisualStyleBackColor = true;
             this.BT_AnalisisLexicoSintactico.Click += new System.EventHandler(this.BT_AnalisisLexicoSintactico_Click);
             // 
-            // TB_ErroresLexico
+            // labelValidarLexema_7
             // 
-            this.TB_ErroresLexico.ForeColor = System.Drawing.Color.Red;
-            this.TB_ErroresLexico.Location = new System.Drawing.Point(7, 106);
-            this.TB_ErroresLexico.Multiline = true;
-            this.TB_ErroresLexico.Name = "TB_ErroresLexico";
-            this.TB_ErroresLexico.ReadOnly = true;
-            this.TB_ErroresLexico.Size = new System.Drawing.Size(469, 367);
-            this.TB_ErroresLexico.TabIndex = 19;
+            this.labelValidarLexema_7.AutoSize = true;
+            this.labelValidarLexema_7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelValidarLexema_7.Location = new System.Drawing.Point(316, 148);
+            this.labelValidarLexema_7.Name = "labelValidarLexema_7";
+            this.labelValidarLexema_7.Size = new System.Drawing.Size(0, 18);
+            this.labelValidarLexema_7.TabIndex = 17;
+            // 
+            // TreeViewArbolSintáctico
+            // 
+            this.TreeViewArbolSintáctico.Location = new System.Drawing.Point(7, 26);
+            this.TreeViewArbolSintáctico.Name = "TreeViewArbolSintáctico";
+            this.TreeViewArbolSintáctico.Size = new System.Drawing.Size(1132, 443);
+            this.TreeViewArbolSintáctico.TabIndex = 18;
             // 
             // Form1
             // 
@@ -1558,10 +1567,10 @@
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Tokens_6)).EndInit();
             this.tabAvance7.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1699,6 +1708,7 @@
         private System.Windows.Forms.TextBox TB_ErroresLexico;
         private System.Windows.Forms.Button BT_AnalisisLexicoSintactico;
         private System.Windows.Forms.Label labelValidarLexema_7;
+        private System.Windows.Forms.TreeView TreeViewArbolSintáctico;
         //>>>>>>> Forms-DEV
     }
 }
