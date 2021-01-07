@@ -445,6 +445,26 @@ namespace ProyectoCompiladores
             return Caracteres;
         }
 
+        public string[] getTokensProduccion(int IndiceProduccion)
+        {
+            int aux = 0;
+            foreach (KeyValuePair<string, string> EntradaD in G)
+            {
+                string[] ArregloCadenas = EntradaD.Value.Split('|');
+                foreach (string c in ArregloCadenas)
+                {
+                    aux++;
+
+                    // MessageBox.Show("Producción:\n " + EntradaD.Key + " ----> " + Aux);
+                    if (aux == IndiceProduccion)
+                    {
+                        string[] CadenaProduccion = c.Split();
+                        return CadenaProduccion;
+                    }
+                }
+            }
+            return null;
+        }
 
         public string ObtenPadreProduccion(int IndiceProduccion)
         {

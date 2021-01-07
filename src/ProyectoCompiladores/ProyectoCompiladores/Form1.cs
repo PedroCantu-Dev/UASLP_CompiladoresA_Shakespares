@@ -1835,6 +1835,7 @@ namespace ProyectoCompiladores
 
         private void BT_AnalisisLexicoSintactico_Click(object sender, EventArgs e)
         {
+            TB_ErroresLexico.Text = "";
             ErroresLexicos = new List<ErrorLexico>();
             List<string> CadenaPrograma = ClasificaTokens();
             //MessageBox.Show(string.Join(Environment.NewLine,CadenaPrograma));
@@ -1878,6 +1879,8 @@ namespace ProyectoCompiladores
 
         public bool AlgoritmoEvaluacionLR0(List<string> Programa, AFDL AFD)
         {
+            TreeViewArbolSintáctico.Nodes.Clear();
+            TreeViewArbolSintáctico.Refresh();
             List<TreeNode> NodosHijo = new List<TreeNode>();
             Stack<int> PilaEstados = new Stack<int>(); //Iniciamos la pila con estados
             string[,] Accion = AFD.Accion;
@@ -1888,7 +1891,7 @@ namespace ProyectoCompiladores
             {
                 int s = PilaEstados.Peek();
                 string a = Programa[indexA];
-
+                int indexNodoActual = NodosHijo.Count;
                 int IndexElementoEvaluando = -1;
                 if (AFD.T.Contains(a))
                 {
@@ -1898,13 +1901,14 @@ namespace ProyectoCompiladores
                 {
                     IndexElementoEvaluando = AFD.NT.IndexOf(a);
                 }
-                if(a == "$")
+                if (a == "$")
                 {
                     IndexElementoEvaluando = AFD.T.Count;
                 }
-                if(IndexElementoEvaluando != -1)
+                if (IndexElementoEvaluando != -1)
                 {
-                    if (Accion[s, IndexElementoEvaluando].Contains("d")) { // En caso de que sea un desplazar.
+                    if (Accion[s, IndexElementoEvaluando].Contains("d"))
+                    { // En caso de que sea un desplazar.
                         string EstadoDesplazar = Accion[s, IndexElementoEvaluando];
                         int indexD = EstadoDesplazar.IndexOf("d");
                         int NumeroElemento = int.Parse(EstadoDesplazar.Substring(indexD + 1).ToString());
@@ -1914,36 +1918,53 @@ namespace ProyectoCompiladores
                         NodosHijo.Add(NuevoNodo);
                         indexA++;
                     }
-                    else if(Accion[s, IndexElementoEvaluando].Contains("r")) // En caso de que sea un reducir.
+                    else if (Accion[s, IndexElementoEvaluando].Contains("r")) // En caso de que sea un reducir.
                     {
                         string Cadenaarreglo = Accion[s, IndexElementoEvaluando];
                         int indexR = Cadenaarreglo.IndexOf("r");
                         int NumeroElemento = int.Parse(Cadenaarreglo.Substring(indexR + 1).ToString());
-                        int NumeroCaracteres = AFD.GetCaracteresProduccion(NumeroElemento);
+                        int NumeroCaracteres = AFD.GetCaracteresProduccion(NumeroElemento); // Cantidad de simbolos gramáticales que tiene la producción
 
-                        for(int i = 0; i < NumeroCaracteres; i++)
+                        for (int i = 0; i < NumeroCaracteres; i++)
                         {
                             PilaEstados.Pop();
                         }
-                        int indexTope = PilaEstados.Peek();
+                        s = PilaEstados.Peek();
                         string Padre = AFD.ObtenPadreProduccion(NumeroElemento);
-                        
-                        if(NodosHijo.Count != 0)
+                        PilaEstados.Push(int.Parse(Ir_A[s, AFD.NT.IndexOf(Padre)])); // Metemos Ir_A[t,A] en la pila
+
+                        //Enviamos de salida 
+                        List<TreeNode> NodosAGuardar = new List<TreeNode>();
+                        List<int> IndexEliminaciones = new List<int>();
+                        for(int i = indexNodoActual - NumeroCaracteres; i < indexNodoActual; i++)
                         {
-                            TreeNode NodoPadre = new TreeNode();
-                            NodoPadre.Text = Padre;
-                            foreach(TreeNode T in NodosHijo)
-                            {
-                                NodoPadre.Nodes.Add(T);
-                            }
-                            NodosHijo.Clear();
-                            NodosHijo.Add(NodoPadre);
+                            NodosAGuardar.Add(NodosHijo[i]);
+                            IndexEliminaciones.Add(i);
                         }
-                        PilaEstados.Push(int.Parse(Ir_A[indexTope, AFD.NT.IndexOf(Padre)]));
+
+                        //Acomodamos la lista de index para poder eliminar los registros que no nos sirven
+                        IndexEliminaciones.Sort();
+                        IndexEliminaciones.Reverse();
+                        //Eliminamos los nodos que ya copiamos
+                        foreach(int i in IndexEliminaciones)
+                        {
+                            NodosHijo.RemoveAt(i);
+                        }
+                        //Creamos el nodo padre que es el que va a guardar a los hijos
+                        TreeNode NodoPadre = new TreeNode(Padre);
+
+                        //LE agregamos al nodo padre sus nodos hijos
+                        foreach(TreeNode T in NodosAGuardar)
+                        {
+                            NodoPadre.Nodes.Add(T);
+                        }
+
+                        //Agregamos a la lista de nodos el nodo padre
+                        NodosHijo.Add(NodoPadre);                      
                     }
-                    else if(Accion[s, IndexElementoEvaluando] == "ac") // En caso de que sea un estado de aceptación.
+                    else if (Accion[s, IndexElementoEvaluando] == "ac") // En caso de que sea un estado de aceptación.
                     {
-                        foreach(TreeNode T in NodosHijo)
+                        foreach (TreeNode T in NodosHijo)
                         {
                             TreeViewArbolSintáctico.Nodes.Add(T);
                         }
@@ -1951,7 +1972,7 @@ namespace ProyectoCompiladores
                         MessageBox.Show("El analisis se completó, no existe ningún error sintáctico");
                         break;
                     }
-                    else if(Accion[s,IndexElementoEvaluando] == "")
+                    else if (Accion[s, IndexElementoEvaluando] == "")
                     {
                         MessageBox.Show("Ocurrió un error sintáctico");
                         break;
