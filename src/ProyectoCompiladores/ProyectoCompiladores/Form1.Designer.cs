@@ -150,61 +150,12 @@
             this.label21 = new System.Windows.Forms.Label();
             this.labelValidarLexema_6 = new System.Windows.Forms.Label();
             this.tabAvance7 = new System.Windows.Forms.TabPage();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.DGV_TablaAnalisisSintactico_7 = new System.Windows.Forms.DataGridView();
-            this.DGV_ContenidoDeEstadosAFDCanonica_7 = new System.Windows.Forms.DataGridView();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.button27 = new System.Windows.Forms.Button();
-            this.button28 = new System.Windows.Forms.Button();
-            this.dataGridView8 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button29 = new System.Windows.Forms.Button();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.button30 = new System.Windows.Forms.Button();
-            this.DGV_AFDCanonica_7 = new System.Windows.Forms.DataGridView();
-            this.BT_ContruirColeccionLR0Canonica_7 = new System.Windows.Forms.Button();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.BT_ProgramaTinyClear_7 = new System.Windows.Forms.Button();
-            this.BT_SubirNumeroClear_7 = new System.Windows.Forms.Button();
-            this.BT_SubirIdentificadorClear_7 = new System.Windows.Forms.Button();
-            this.BT_SubirProgramaTiny_7 = new System.Windows.Forms.Button();
-            this.BT_SubirNumero_7 = new System.Windows.Forms.Button();
-            this.BT_SubirIdentificador_7 = new System.Windows.Forms.Button();
-            this.DGV_Tokens_7 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BT_ClasificaTokens_7 = new System.Windows.Forms.Button();
-            this.TB_ProgramaTiny_7 = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.TB_Numero_7 = new System.Windows.Forms.TextBox();
-            this.TB_Identificador_7 = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
             this.labelValidarLexema_7 = new System.Windows.Forms.Label();
-            this.button39 = new System.Windows.Forms.Button();
-            this.label34 = new System.Windows.Forms.Label();
-            this.TB_Lexema_7 = new System.Windows.Forms.TextBox();
-            this.DGV_AFD_7 = new System.Windows.Forms.DataGridView();
-            this.BT_ConstruirAFD_7 = new System.Windows.Forms.Button();
-            this.DGV_AFN_7 = new System.Windows.Forms.DataGridView();
-            this.BT_ConstruirAFN_7 = new System.Windows.Forms.Button();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.BT_LimpiarExpReg_7 = new System.Windows.Forms.Button();
-            this.BT_SubirArchivoExpReg_7 = new System.Windows.Forms.Button();
-            this.TB_ExpresionRegular_7 = new System.Windows.Forms.TextBox();
-            this.BT_ConvertirPosfija_7 = new System.Windows.Forms.Button();
-            this.TB_Posfija_7 = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.BT_AnalisisLexicoSintactico = new System.Windows.Forms.Button();
+            this.TB_ErroresLexico = new System.Windows.Forms.TextBox();
             tabAvance1 = new System.Windows.Forms.TabPage();
             tabAvance1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -234,15 +185,8 @@
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Tokens_6)).BeginInit();
             this.tabAvance7.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_TablaAnalisisSintactico_7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_ContenidoDeEstadosAFDCanonica_7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_AFDCanonica_7)).BeginInit();
             this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_Tokens_7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_AFD_7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_AFN_7)).BeginInit();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabAvance1
@@ -1505,195 +1449,27 @@
             this.tabAvance7.Text = "7º Avance";
             this.tabAvance7.UseVisualStyleBackColor = true;
             // 
-            // groupBox7
+            // labelValidarLexema_7
             // 
-            this.groupBox7.Controls.Add(this.DGV_TablaAnalisisSintactico_7);
-            this.groupBox7.Controls.Add(this.DGV_ContenidoDeEstadosAFDCanonica_7);
-            this.groupBox7.Controls.Add(this.button22);
-            this.groupBox7.Controls.Add(this.button23);
-            this.groupBox7.Controls.Add(this.button24);
-            this.groupBox7.Controls.Add(this.button25);
-            this.groupBox7.Controls.Add(this.button27);
-            this.groupBox7.Controls.Add(this.button28);
-            this.groupBox7.Controls.Add(this.dataGridView8);
-            this.groupBox7.Controls.Add(this.button29);
-            this.groupBox7.Controls.Add(this.textBox11);
-            this.groupBox7.Controls.Add(this.label26);
-            this.groupBox7.Controls.Add(this.textBox12);
-            this.groupBox7.Controls.Add(this.textBox13);
-            this.groupBox7.Controls.Add(this.label27);
-            this.groupBox7.Controls.Add(this.label28);
-            this.groupBox7.Controls.Add(this.label29);
-            this.groupBox7.Controls.Add(this.button30);
-            this.groupBox7.Controls.Add(this.DGV_AFDCanonica_7);
-            this.groupBox7.Controls.Add(this.BT_ContruirColeccionLR0Canonica_7);
-            this.groupBox7.Location = new System.Drawing.Point(1076, 7);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(434, 475);
-            this.groupBox7.TabIndex = 15;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Análisis sintáctico LR(0)";
+            this.labelValidarLexema_7.AutoSize = true;
+            this.labelValidarLexema_7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelValidarLexema_7.Location = new System.Drawing.Point(316, 148);
+            this.labelValidarLexema_7.Name = "labelValidarLexema_7";
+            this.labelValidarLexema_7.Size = new System.Drawing.Size(0, 18);
+            this.labelValidarLexema_7.TabIndex = 17;
             // 
-            // DGV_TablaAnalisisSintactico_7
+            // groupBox8
             // 
-            this.DGV_TablaAnalisisSintactico_7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_TablaAnalisisSintactico_7.Location = new System.Drawing.Point(9, 268);
-            this.DGV_TablaAnalisisSintactico_7.Name = "DGV_TablaAnalisisSintactico_7";
-            this.DGV_TablaAnalisisSintactico_7.RowHeadersWidth = 51;
-            this.DGV_TablaAnalisisSintactico_7.Size = new System.Drawing.Size(406, 198);
-            this.DGV_TablaAnalisisSintactico_7.TabIndex = 33;
-            // 
-            // DGV_ContenidoDeEstadosAFDCanonica_7
-            // 
-            this.DGV_ContenidoDeEstadosAFDCanonica_7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_ContenidoDeEstadosAFDCanonica_7.Location = new System.Drawing.Point(293, 57);
-            this.DGV_ContenidoDeEstadosAFDCanonica_7.Name = "DGV_ContenidoDeEstadosAFDCanonica_7";
-            this.DGV_ContenidoDeEstadosAFDCanonica_7.RowHeadersWidth = 51;
-            this.DGV_ContenidoDeEstadosAFDCanonica_7.Size = new System.Drawing.Size(122, 205);
-            this.DGV_ContenidoDeEstadosAFDCanonica_7.TabIndex = 32;
-            // 
-            // button22
-            // 
-            this.button22.Location = new System.Drawing.Point(836, 285);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(46, 33);
-            this.button22.TabIndex = 31;
-            this.button22.Text = "⌫";
-            this.button22.UseVisualStyleBackColor = true;
-            // 
-            // button23
-            // 
-            this.button23.Location = new System.Drawing.Point(960, 46);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(33, 21);
-            this.button23.TabIndex = 30;
-            this.button23.Text = "⌫";
-            this.button23.UseVisualStyleBackColor = true;
-            // 
-            // button24
-            // 
-            this.button24.Location = new System.Drawing.Point(960, 19);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(33, 22);
-            this.button24.TabIndex = 29;
-            this.button24.Text = "⌫";
-            this.button24.UseVisualStyleBackColor = true;
-            // 
-            // button25
-            // 
-            this.button25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button25.Location = new System.Drawing.Point(703, 285);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(127, 33);
-            this.button25.TabIndex = 28;
-            this.button25.Text = " Subir programa";
-            this.button25.UseVisualStyleBackColor = true;
-            // 
-            // button27
-            // 
-            this.button27.Location = new System.Drawing.Point(925, 47);
-            this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(29, 21);
-            this.button27.TabIndex = 27;
-            this.button27.Text = "↑";
-            this.button27.UseVisualStyleBackColor = true;
-            // 
-            // button28
-            // 
-            this.button28.Location = new System.Drawing.Point(924, 19);
-            this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(30, 21);
-            this.button28.TabIndex = 26;
-            this.button28.Text = "↑";
-            this.button28.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView8
-            // 
-            this.dataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView8.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
-            this.dataGridView8.Location = new System.Drawing.Point(703, 338);
-            this.dataGridView8.Name = "dataGridView8";
-            this.dataGridView8.RowHeadersWidth = 51;
-            this.dataGridView8.Size = new System.Drawing.Size(358, 128);
-            this.dataGridView8.TabIndex = 25;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Lexema";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Width = 125;
-            // 
-            // button29
-            // 
-            this.button29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button29.Location = new System.Drawing.Point(888, 285);
-            this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(173, 34);
-            this.button29.TabIndex = 24;
-            this.button29.Text = "Clasifica Tokens";
-            this.button29.UseVisualStyleBackColor = true;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(703, 119);
-            this.textBox11.Multiline = true;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(358, 158);
-            this.textBox11.TabIndex = 23;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(699, 82);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(234, 20);
-            this.label26.TabIndex = 22;
-            this.label26.Text = "Programa en lenguaje TINY:";
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(819, 47);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 20);
-            this.textBox12.TabIndex = 21;
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(818, 19);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(100, 20);
-            this.textBox13.TabIndex = 20;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(739, 48);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(74, 20);
-            this.label27.TabIndex = 19;
-            this.label27.Text = "número:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(699, 17);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(113, 20);
-            this.label28.TabIndex = 18;
-            this.label28.Text = "identificador:";
+            this.groupBox8.Controls.Add(this.TB_ErroresLexico);
+            this.groupBox8.Controls.Add(this.BT_AnalisisLexicoSintactico);
+            this.groupBox8.Controls.Add(this.labelValidarLexema_7);
+            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox8.Location = new System.Drawing.Point(16, 3);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(482, 479);
+            this.groupBox8.TabIndex = 14;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Análisis Léxico";
             // 
             // label29
             // 
@@ -1704,348 +1480,36 @@
             this.label29.Size = new System.Drawing.Size(0, 18);
             this.label29.TabIndex = 17;
             // 
-            // button30
-            // 
-            this.button30.Location = new System.Drawing.Point(512, 87);
-            this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(158, 38);
-            this.button30.TabIndex = 16;
-            this.button30.Text = "Validar";
-            this.button30.UseVisualStyleBackColor = true;
-            // 
-            // DGV_AFDCanonica_7
-            // 
-            this.DGV_AFDCanonica_7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_AFDCanonica_7.Location = new System.Drawing.Point(9, 57);
-            this.DGV_AFDCanonica_7.Name = "DGV_AFDCanonica_7";
-            this.DGV_AFDCanonica_7.RowHeadersWidth = 51;
-            this.DGV_AFDCanonica_7.Size = new System.Drawing.Size(278, 205);
-            this.DGV_AFDCanonica_7.TabIndex = 11;
-            // 
-            // BT_ContruirColeccionLR0Canonica_7
-            // 
-            this.BT_ContruirColeccionLR0Canonica_7.Location = new System.Drawing.Point(9, 19);
-            this.BT_ContruirColeccionLR0Canonica_7.Name = "BT_ContruirColeccionLR0Canonica_7";
-            this.BT_ContruirColeccionLR0Canonica_7.Size = new System.Drawing.Size(406, 34);
-            this.BT_ContruirColeccionLR0Canonica_7.TabIndex = 5;
-            this.BT_ContruirColeccionLR0Canonica_7.Text = "Construir Coleccion LR(0) Canónica y Tabla de Análisis Sintáctico LR";
-            this.BT_ContruirColeccionLR0Canonica_7.UseVisualStyleBackColor = true;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.BT_ProgramaTinyClear_7);
-            this.groupBox8.Controls.Add(this.BT_SubirNumeroClear_7);
-            this.groupBox8.Controls.Add(this.BT_SubirIdentificadorClear_7);
-            this.groupBox8.Controls.Add(this.BT_SubirProgramaTiny_7);
-            this.groupBox8.Controls.Add(this.BT_SubirNumero_7);
-            this.groupBox8.Controls.Add(this.BT_SubirIdentificador_7);
-            this.groupBox8.Controls.Add(this.DGV_Tokens_7);
-            this.groupBox8.Controls.Add(this.BT_ClasificaTokens_7);
-            this.groupBox8.Controls.Add(this.TB_ProgramaTiny_7);
-            this.groupBox8.Controls.Add(this.label30);
-            this.groupBox8.Controls.Add(this.TB_Numero_7);
-            this.groupBox8.Controls.Add(this.TB_Identificador_7);
-            this.groupBox8.Controls.Add(this.label31);
-            this.groupBox8.Controls.Add(this.label32);
-            this.groupBox8.Controls.Add(this.labelValidarLexema_7);
-            this.groupBox8.Controls.Add(this.button39);
-            this.groupBox8.Controls.Add(this.label34);
-            this.groupBox8.Controls.Add(this.TB_Lexema_7);
-            this.groupBox8.Controls.Add(this.DGV_AFD_7);
-            this.groupBox8.Controls.Add(this.BT_ConstruirAFD_7);
-            this.groupBox8.Controls.Add(this.DGV_AFN_7);
-            this.groupBox8.Controls.Add(this.BT_ConstruirAFN_7);
-            this.groupBox8.Controls.Add(this.label35);
-            this.groupBox8.Controls.Add(this.label36);
-            this.groupBox8.Controls.Add(this.BT_LimpiarExpReg_7);
-            this.groupBox8.Controls.Add(this.BT_SubirArchivoExpReg_7);
-            this.groupBox8.Controls.Add(this.TB_ExpresionRegular_7);
-            this.groupBox8.Controls.Add(this.BT_ConvertirPosfija_7);
-            this.groupBox8.Controls.Add(this.TB_Posfija_7);
-            this.groupBox8.Location = new System.Drawing.Point(16, 3);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(1054, 479);
-            this.groupBox8.TabIndex = 14;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Análisis Léxico";
-            // 
-            // BT_ProgramaTinyClear_7
-            // 
-            this.BT_ProgramaTinyClear_7.Location = new System.Drawing.Point(813, 284);
-            this.BT_ProgramaTinyClear_7.Name = "BT_ProgramaTinyClear_7";
-            this.BT_ProgramaTinyClear_7.Size = new System.Drawing.Size(46, 33);
-            this.BT_ProgramaTinyClear_7.TabIndex = 31;
-            this.BT_ProgramaTinyClear_7.Text = "⌫";
-            this.BT_ProgramaTinyClear_7.UseVisualStyleBackColor = true;
-            // 
-            // BT_SubirNumeroClear_7
-            // 
-            this.BT_SubirNumeroClear_7.Location = new System.Drawing.Point(937, 45);
-            this.BT_SubirNumeroClear_7.Name = "BT_SubirNumeroClear_7";
-            this.BT_SubirNumeroClear_7.Size = new System.Drawing.Size(33, 21);
-            this.BT_SubirNumeroClear_7.TabIndex = 30;
-            this.BT_SubirNumeroClear_7.Text = "⌫";
-            this.BT_SubirNumeroClear_7.UseVisualStyleBackColor = true;
-            // 
-            // BT_SubirIdentificadorClear_7
-            // 
-            this.BT_SubirIdentificadorClear_7.Location = new System.Drawing.Point(937, 18);
-            this.BT_SubirIdentificadorClear_7.Name = "BT_SubirIdentificadorClear_7";
-            this.BT_SubirIdentificadorClear_7.Size = new System.Drawing.Size(33, 22);
-            this.BT_SubirIdentificadorClear_7.TabIndex = 29;
-            this.BT_SubirIdentificadorClear_7.Text = "⌫";
-            this.BT_SubirIdentificadorClear_7.UseVisualStyleBackColor = true;
-            // 
-            // BT_SubirProgramaTiny_7
-            // 
-            this.BT_SubirProgramaTiny_7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_SubirProgramaTiny_7.Location = new System.Drawing.Point(680, 284);
-            this.BT_SubirProgramaTiny_7.Name = "BT_SubirProgramaTiny_7";
-            this.BT_SubirProgramaTiny_7.Size = new System.Drawing.Size(127, 33);
-            this.BT_SubirProgramaTiny_7.TabIndex = 28;
-            this.BT_SubirProgramaTiny_7.Text = " Subir programa";
-            this.BT_SubirProgramaTiny_7.UseVisualStyleBackColor = true;
-            // 
-            // BT_SubirNumero_7
-            // 
-            this.BT_SubirNumero_7.Location = new System.Drawing.Point(902, 46);
-            this.BT_SubirNumero_7.Name = "BT_SubirNumero_7";
-            this.BT_SubirNumero_7.Size = new System.Drawing.Size(29, 21);
-            this.BT_SubirNumero_7.TabIndex = 27;
-            this.BT_SubirNumero_7.Text = "↑";
-            this.BT_SubirNumero_7.UseVisualStyleBackColor = true;
-            // 
-            // BT_SubirIdentificador_7
-            // 
-            this.BT_SubirIdentificador_7.Location = new System.Drawing.Point(901, 18);
-            this.BT_SubirIdentificador_7.Name = "BT_SubirIdentificador_7";
-            this.BT_SubirIdentificador_7.Size = new System.Drawing.Size(30, 21);
-            this.BT_SubirIdentificador_7.TabIndex = 26;
-            this.BT_SubirIdentificador_7.Text = "↑";
-            this.BT_SubirIdentificador_7.UseVisualStyleBackColor = true;
-            // 
-            // DGV_Tokens_7
-            // 
-            this.DGV_Tokens_7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_Tokens_7.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8});
-            this.DGV_Tokens_7.Location = new System.Drawing.Point(680, 337);
-            this.DGV_Tokens_7.Name = "DGV_Tokens_7";
-            this.DGV_Tokens_7.RowHeadersWidth = 51;
-            this.DGV_Tokens_7.Size = new System.Drawing.Size(358, 128);
-            this.DGV_Tokens_7.TabIndex = 25;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Lexema";
-            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Width = 125;
-            // 
-            // BT_ClasificaTokens_7
-            // 
-            this.BT_ClasificaTokens_7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_ClasificaTokens_7.Location = new System.Drawing.Point(865, 284);
-            this.BT_ClasificaTokens_7.Name = "BT_ClasificaTokens_7";
-            this.BT_ClasificaTokens_7.Size = new System.Drawing.Size(173, 34);
-            this.BT_ClasificaTokens_7.TabIndex = 24;
-            this.BT_ClasificaTokens_7.Text = "Clasifica Tokens";
-            this.BT_ClasificaTokens_7.UseVisualStyleBackColor = true;
-            // 
-            // TB_ProgramaTiny_7
-            // 
-            this.TB_ProgramaTiny_7.Location = new System.Drawing.Point(680, 118);
-            this.TB_ProgramaTiny_7.Multiline = true;
-            this.TB_ProgramaTiny_7.Name = "TB_ProgramaTiny_7";
-            this.TB_ProgramaTiny_7.Size = new System.Drawing.Size(358, 158);
-            this.TB_ProgramaTiny_7.TabIndex = 23;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(676, 81);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(234, 20);
-            this.label30.TabIndex = 22;
-            this.label30.Text = "Programa en lenguaje TINY:";
-            // 
-            // TB_Numero_7
-            // 
-            this.TB_Numero_7.Location = new System.Drawing.Point(796, 46);
-            this.TB_Numero_7.Name = "TB_Numero_7";
-            this.TB_Numero_7.Size = new System.Drawing.Size(100, 20);
-            this.TB_Numero_7.TabIndex = 21;
-            // 
-            // TB_Identificador_7
-            // 
-            this.TB_Identificador_7.Location = new System.Drawing.Point(795, 18);
-            this.TB_Identificador_7.Name = "TB_Identificador_7";
-            this.TB_Identificador_7.Size = new System.Drawing.Size(100, 20);
-            this.TB_Identificador_7.TabIndex = 20;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(716, 47);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(74, 20);
-            this.label31.TabIndex = 19;
-            this.label31.Text = "número:";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(676, 16);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(113, 20);
-            this.label32.TabIndex = 18;
-            this.label32.Text = "identificador:";
-            // 
-            // labelValidarLexema_7
-            // 
-            this.labelValidarLexema_7.AutoSize = true;
-            this.labelValidarLexema_7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelValidarLexema_7.Location = new System.Drawing.Point(316, 148);
-            this.labelValidarLexema_7.Name = "labelValidarLexema_7";
-            this.labelValidarLexema_7.Size = new System.Drawing.Size(0, 18);
-            this.labelValidarLexema_7.TabIndex = 17;
-            // 
-            // button39
-            // 
-            this.button39.Location = new System.Drawing.Point(468, 87);
-            this.button39.Name = "button39";
-            this.button39.Size = new System.Drawing.Size(158, 38);
-            this.button39.TabIndex = 16;
-            this.button39.Text = "Validar";
-            this.button39.UseVisualStyleBackColor = true;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(313, 16);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(54, 13);
-            this.label34.TabIndex = 15;
-            this.label34.Text = "Lexema:";
-            // 
-            // TB_Lexema_7
-            // 
-            this.TB_Lexema_7.Location = new System.Drawing.Point(316, 32);
-            this.TB_Lexema_7.Multiline = true;
-            this.TB_Lexema_7.Name = "TB_Lexema_7";
-            this.TB_Lexema_7.Size = new System.Drawing.Size(310, 49);
-            this.TB_Lexema_7.TabIndex = 14;
-            // 
-            // DGV_AFD_7
-            // 
-            this.DGV_AFD_7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_AFD_7.Location = new System.Drawing.Point(244, 272);
-            this.DGV_AFD_7.Name = "DGV_AFD_7";
-            this.DGV_AFD_7.RowHeadersWidth = 51;
-            this.DGV_AFD_7.Size = new System.Drawing.Size(221, 195);
-            this.DGV_AFD_7.TabIndex = 13;
-            // 
-            // BT_ConstruirAFD_7
-            // 
-            this.BT_ConstruirAFD_7.Location = new System.Drawing.Point(244, 232);
-            this.BT_ConstruirAFD_7.Name = "BT_ConstruirAFD_7";
-            this.BT_ConstruirAFD_7.Size = new System.Drawing.Size(176, 24);
-            this.BT_ConstruirAFD_7.TabIndex = 12;
-            this.BT_ConstruirAFD_7.Text = "Construir AFD";
-            this.BT_ConstruirAFD_7.UseVisualStyleBackColor = true;
-            // 
-            // DGV_AFN_7
-            // 
-            this.DGV_AFN_7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_AFN_7.Location = new System.Drawing.Point(3, 272);
-            this.DGV_AFN_7.Name = "DGV_AFN_7";
-            this.DGV_AFN_7.RowHeadersWidth = 51;
-            this.DGV_AFN_7.Size = new System.Drawing.Size(221, 195);
-            this.DGV_AFN_7.TabIndex = 11;
-            // 
-            // BT_ConstruirAFN_7
-            // 
-            this.BT_ConstruirAFN_7.Location = new System.Drawing.Point(3, 232);
-            this.BT_ConstruirAFN_7.Name = "BT_ConstruirAFN_7";
-            this.BT_ConstruirAFN_7.Size = new System.Drawing.Size(176, 24);
-            this.BT_ConstruirAFN_7.TabIndex = 10;
-            this.BT_ConstruirAFN_7.Text = "Construir AFN";
-            this.BT_ConstruirAFN_7.UseVisualStyleBackColor = true;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(6, 153);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(49, 13);
-            this.label35.TabIndex = 9;
-            this.label35.Text = "Posfija:";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(3, 16);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(109, 13);
-            this.label36.TabIndex = 8;
-            this.label36.Text = "Expresión regular:";
-            // 
-            // BT_LimpiarExpReg_7
-            // 
-            this.BT_LimpiarExpReg_7.Location = new System.Drawing.Point(201, 87);
-            this.BT_LimpiarExpReg_7.Name = "BT_LimpiarExpReg_7";
-            this.BT_LimpiarExpReg_7.Size = new System.Drawing.Size(109, 23);
-            this.BT_LimpiarExpReg_7.TabIndex = 7;
-            this.BT_LimpiarExpReg_7.Text = "Limpiar Texto";
-            this.BT_LimpiarExpReg_7.UseVisualStyleBackColor = true;
-            // 
-            // BT_SubirArchivoExpReg_7
-            // 
-            this.BT_SubirArchivoExpReg_7.Location = new System.Drawing.Point(0, 87);
-            this.BT_SubirArchivoExpReg_7.Name = "BT_SubirArchivoExpReg_7";
-            this.BT_SubirArchivoExpReg_7.Size = new System.Drawing.Size(109, 23);
-            this.BT_SubirArchivoExpReg_7.TabIndex = 6;
-            this.BT_SubirArchivoExpReg_7.Text = "Subir Archivo";
-            this.BT_SubirArchivoExpReg_7.UseVisualStyleBackColor = true;
-            // 
-            // TB_ExpresionRegular_7
-            // 
-            this.TB_ExpresionRegular_7.Location = new System.Drawing.Point(0, 32);
-            this.TB_ExpresionRegular_7.Multiline = true;
-            this.TB_ExpresionRegular_7.Name = "TB_ExpresionRegular_7";
-            this.TB_ExpresionRegular_7.Size = new System.Drawing.Size(310, 49);
-            this.TB_ExpresionRegular_7.TabIndex = 3;
-            // 
-            // BT_ConvertirPosfija_7
-            // 
-            this.BT_ConvertirPosfija_7.Location = new System.Drawing.Point(0, 116);
-            this.BT_ConvertirPosfija_7.Name = "BT_ConvertirPosfija_7";
-            this.BT_ConvertirPosfija_7.Size = new System.Drawing.Size(310, 34);
-            this.BT_ConvertirPosfija_7.TabIndex = 5;
-            this.BT_ConvertirPosfija_7.Text = "Convertir a posfija";
-            this.BT_ConvertirPosfija_7.UseVisualStyleBackColor = true;
-            // 
-            // TB_Posfija_7
-            // 
-            this.TB_Posfija_7.Location = new System.Drawing.Point(0, 169);
-            this.TB_Posfija_7.Multiline = true;
-            this.TB_Posfija_7.Name = "TB_Posfija_7";
-            this.TB_Posfija_7.Size = new System.Drawing.Size(310, 38);
-            this.TB_Posfija_7.TabIndex = 4;
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label29);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(602, 7);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(1145, 475);
+            this.groupBox7.TabIndex = 15;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Árbol de análisis sintáctico resultante";
+            // 
+            // BT_AnalisisLexicoSintactico
+            // 
+            this.BT_AnalisisLexicoSintactico.Location = new System.Drawing.Point(6, 40);
+            this.BT_AnalisisLexicoSintactico.Name = "BT_AnalisisLexicoSintactico";
+            this.BT_AnalisisLexicoSintactico.Size = new System.Drawing.Size(470, 39);
+            this.BT_AnalisisLexicoSintactico.TabIndex = 18;
+            this.BT_AnalisisLexicoSintactico.Text = "Análisis Léxico y Sintáctico del Programa en lenguaje TINY";
+            this.BT_AnalisisLexicoSintactico.UseVisualStyleBackColor = true;
+            this.BT_AnalisisLexicoSintactico.Click += new System.EventHandler(this.BT_AnalisisLexicoSintactico_Click);
+            // 
+            // TB_ErroresLexico
+            // 
+            this.TB_ErroresLexico.ForeColor = System.Drawing.Color.Red;
+            this.TB_ErroresLexico.Location = new System.Drawing.Point(7, 106);
+            this.TB_ErroresLexico.Multiline = true;
+            this.TB_ErroresLexico.Name = "TB_ErroresLexico";
+            this.TB_ErroresLexico.ReadOnly = true;
+            this.TB_ErroresLexico.Size = new System.Drawing.Size(469, 367);
+            this.TB_ErroresLexico.TabIndex = 19;
             // 
             // Form1
             // 
@@ -2094,17 +1558,10 @@
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Tokens_6)).EndInit();
             this.tabAvance7.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_TablaAnalisisSintactico_7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_ContenidoDeEstadosAFDCanonica_7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_AFDCanonica_7)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_Tokens_7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_AFD_7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_AFN_7)).EndInit();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2231,66 +1688,17 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TabPage tabAvance7;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.DataGridView DGV_ContenidoDeEstadosAFDCanonica_7;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.Button button25;
-        private System.Windows.Forms.Button button27;
-        private System.Windows.Forms.Button button28;
-        private System.Windows.Forms.DataGridView dataGridView8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.Button button29;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Button button30;
-        private System.Windows.Forms.DataGridView DGV_AFDCanonica_7;
-        private System.Windows.Forms.Button BT_ContruirColeccionLR0Canonica_7;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Button BT_ProgramaTinyClear_7;
-        private System.Windows.Forms.Button BT_SubirNumeroClear_7;
-        private System.Windows.Forms.Button BT_SubirIdentificadorClear_7;
-        private System.Windows.Forms.Button BT_SubirProgramaTiny_7;
-        private System.Windows.Forms.Button BT_SubirNumero_7;
-        private System.Windows.Forms.Button BT_SubirIdentificador_7;
-        private System.Windows.Forms.DataGridView DGV_Tokens_7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.Button BT_ClasificaTokens_7;
-        private System.Windows.Forms.TextBox TB_ProgramaTiny_7;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox TB_Numero_7;
-        private System.Windows.Forms.TextBox TB_Identificador_7;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label labelValidarLexema_7;
-        private System.Windows.Forms.Button button39;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox TB_Lexema_7;
-        private System.Windows.Forms.DataGridView DGV_AFD_7;
-        private System.Windows.Forms.Button BT_ConstruirAFD_7;
-        private System.Windows.Forms.DataGridView DGV_AFN_7;
-        private System.Windows.Forms.Button BT_ConstruirAFN_7;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Button BT_LimpiarExpReg_7;
-        private System.Windows.Forms.Button BT_SubirArchivoExpReg_7;
-        private System.Windows.Forms.TextBox TB_ExpresionRegular_7;
-        private System.Windows.Forms.Button BT_ConvertirPosfija_7;
-        private System.Windows.Forms.TextBox TB_Posfija_7;
-        private System.Windows.Forms.DataGridView DGV_TablaAnalisisSintactico_7;
         private System.Windows.Forms.RichTextBox TB_InfoEstadoLR0;
         private System.Windows.Forms.DataGridView DGV_irALR0;
         private System.Windows.Forms.DataGridView DGV_AccionLR0;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.TextBox TB_ErroresLexico;
+        private System.Windows.Forms.Button BT_AnalisisLexicoSintactico;
+        private System.Windows.Forms.Label labelValidarLexema_7;
         //>>>>>>> Forms-DEV
     }
 }

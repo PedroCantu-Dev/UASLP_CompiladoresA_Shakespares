@@ -35,11 +35,23 @@ namespace ProyectoCompiladores
             {
                 SimbolosGramaticales.Add(c);
             }
-
-
             init();
             Ir_A = new string[Estados.Count, NT.Count];
             Accion = new string[Estados.Count, T.Count + 1];
+
+            for(int i = 0; i < Estados.Count; i++)
+            {
+                for(int j = 0; j < NT.Count; j++)
+                {
+                    Ir_A[i, j] = "";
+                }
+                for(int z = 0; z < T.Count+1; z++)
+                {
+                    Accion[i, z] = "";
+                }
+            }
+
+            
         }
 
         public List<string> getAllTransiciones()
@@ -411,8 +423,49 @@ namespace ProyectoCompiladores
             return 0;
         }
 
+        public int GetCaracteresProduccion(int IndiceProduccion)
+        {
+            int Caracteres = -1;
+            int aux = 0;
+            foreach (KeyValuePair<string, string> EntradaD in G)
+            {
+                string[] ArregloCadenas = EntradaD.Value.Split('|');
+                foreach (string c in ArregloCadenas)
+                {
+                    aux++;
+
+                    // MessageBox.Show("Producción:\n " + EntradaD.Key + " ----> " + Aux);
+                    if (aux == IndiceProduccion)
+                    {
+                        string []CadenaProduccion = c.Split();
+                        return CadenaProduccion.Length;
+                    }
+                }
+            }
+            return Caracteres;
+        }
 
 
+        public string ObtenPadreProduccion(int IndiceProduccion)
+        {
+            string res = "";
+            int aux = 0;
+            foreach (KeyValuePair<string, string> EntradaD in G)
+            {
+                string[] ArregloCadenas = EntradaD.Value.Split('|');
+                foreach (string c in ArregloCadenas)
+                {
+                    aux++;
+
+                    // MessageBox.Show("Producción:\n " + EntradaD.Key + " ----> " + Aux);
+                    if (aux == IndiceProduccion)
+                    {
+                        return EntradaD.Key;
+                    }
+                }
+            }
+            return res;
+        }
 
 
 

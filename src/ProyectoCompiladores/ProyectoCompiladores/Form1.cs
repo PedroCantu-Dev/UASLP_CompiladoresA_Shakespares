@@ -22,6 +22,7 @@ namespace ProyectoCompiladores
             InitializeComponent();
         }
 
+        public List<ErrorLexico> ErroresLexicos;
         #region tab_PreparacionDelProyecto
         private void BT_kPrep_Click(object sender, EventArgs e)
         {
@@ -106,7 +107,7 @@ namespace ProyectoCompiladores
                 string CadenaAux = "";
                 string CadenaTextBox = "";
                 string RutaArchivo = VentanaCargaArchivo.FileName;
-                MessageBox.Show("Ruta Archivo :" + RutaArchivo);
+                //MessageBox.Show("Ruta Archivo :" + RutaArchivo);
                 StreamReader LectorArchivo = new StreamReader(RutaArchivo);
                 while ((CadenaAux = LectorArchivo.ReadLine()) != null)
                 {
@@ -1153,7 +1154,7 @@ namespace ProyectoCompiladores
             {
                 MessageBox.Show("Ocurrió una excepción\n" + E.Message);
             }
-           
+
         }
 
         public bool ListaContains(string Cadena, List<string> Lista)
@@ -1393,9 +1394,6 @@ namespace ProyectoCompiladores
                     DGV_Tokens_6.Rows.Clear();
                     string PosfijaNumero = ConversionPosfija(TB_Numero_6.Text);
                     string PosfijaIdentificador = ConversionPosfija(TB_Identificador_6.Text);
-
-
-
                     AFN AfnNumero = new AFN(PosfijaNumero);
                     AFN AfnIdentificador = new AFN(PosfijaIdentificador);
 
@@ -1421,14 +1419,13 @@ namespace ProyectoCompiladores
                      * Hasta aquí ya tenemos los AFN y AFD cargados!
                      **/
 
-                    List<String[]> tinyLines = new List<String[]>();
+                    List<string> tinyLines = new List<string>();
                     List<string> StringClasificadas = new List<string>();
                     int ContadorFila = 0;
                     for (int lineIndex = 0; lineIndex < TB_ProgramaTiny_6.Lines.Length; lineIndex++)
                     {
                         string Trimeada = TB_ProgramaTiny_6.Lines[lineIndex].Trim();
                         String[] lineArray = Trimeada.Split(' ');
-                        tinyLines.Add(lineArray);
                         foreach (string s in lineArray)
                         {
                             bool Nuevo = !ListaContains(s, StringClasificadas);
@@ -1440,6 +1437,8 @@ namespace ProyectoCompiladores
                                     StringClasificadas.Add(s);
                                     ContadorFila++;
                                 }
+                                tinyLines.Add(s);
+
                             }
                             else if (ListaContains(s, SimbolosEspeciales))
                             {
@@ -1449,6 +1448,7 @@ namespace ProyectoCompiladores
                                     StringClasificadas.Add(s);
                                     ContadorFila++;
                                 }
+                                tinyLines.Add(s);
                             }
                             else if (AFDNumero.ValidaLexema(s))
                             {
@@ -1458,6 +1458,7 @@ namespace ProyectoCompiladores
                                     StringClasificadas.Add(s);
                                     ContadorFila++;
                                 }
+                                tinyLines.Add("numero");
                             }
                             else if (AFDIdentificador.ValidaLexema(s))
                             {
@@ -1467,6 +1468,7 @@ namespace ProyectoCompiladores
                                     StringClasificadas.Add(s);
                                     ContadorFila++;
                                 }
+                                tinyLines.Add("identificador");
                             }
                             else if (s != "")
                             {
@@ -1482,6 +1484,13 @@ namespace ProyectoCompiladores
                             }
                         }
                     }
+                    tinyLines.Add("$");
+                    string CadenaAux = "";
+                    foreach (string s in tinyLines)
+                    {
+                        CadenaAux += s + " ";
+                    }
+                    MessageBox.Show(CadenaAux);
                 }
                 else
                 {
@@ -1493,10 +1502,8 @@ namespace ProyectoCompiladores
                 MessageBox.Show("Ocurrió una excepción\n" + E.Message);
             }
         }
-
-
-
         #endregion
+
 
         private void BT_ContruirColeccionLR0Canonica_6_Click(object sender, EventArgs e)
         {
@@ -1515,21 +1522,21 @@ namespace ProyectoCompiladores
             TB_InfoEstadoLR0.Text = "";
             List<string> todasLasTransiciones = AFDG.getAllTransiciones();
 
-            foreach (string  s in todasLasTransiciones)//agrega las columnas de transiciones 
+            foreach (string s in todasLasTransiciones)//agrega las columnas de transiciones 
             {
-                DGV_AFDCanonica_6.Columns.Add(s,s);
+                DGV_AFDCanonica_6.Columns.Add(s, s);
             }
 
             // se crea una tabla de analisis sintactico.
             //TABLA_ASLR0 tabla = new TABLA_ASLR0(G.terminales,G.NoTerminales, AFDG);
 
-            
+
 
             foreach (EstadoAFDL eAFDG in AFDG.Estados)
             {
                 //DGV_ContenidoDeEstadosAFDCanonica_6.Rows.Add(eAFDG.IndiceEstado+" : ("+eAFDG.ElementosEstado.Count+")",eAFDG.getEstadoString());
                 string EstadoString = eAFDG.getEstadoString();
-                TB_InfoEstadoLR0.Text += "Estado: " + eAFDG.IndiceEstado + "(" + eAFDG.ElementosEstado.Count +  ")\n" + "{\n";
+                TB_InfoEstadoLR0.Text += "Estado: " + eAFDG.IndiceEstado + "(" + eAFDG.ElementosEstado.Count + ")\n" + "{\n";
                 TB_InfoEstadoLR0.Text += EstadoString + "} \n";
                 List<string> listaDeElementosEnRow = new List<string>();
 
@@ -1537,7 +1544,7 @@ namespace ProyectoCompiladores
                 foreach (string s in todasLasTransiciones)
                 {
                     TransicionD transicionDAux = eAFDG.getTransicion(s);
-                    if (transicionDAux  == null)// si no existe la transicion
+                    if (transicionDAux == null)// si no existe la transicion
                     {
                         listaDeElementosEnRow.Add("ø");
                     }
@@ -1563,15 +1570,15 @@ namespace ProyectoCompiladores
             }
 
             List<string> Renglon = new List<string>();
-            for(int i = 0; i < AFDG.Estados.Count; i++)
+            for (int i = 0; i < AFDG.Estados.Count; i++)
             {
                 Renglon.Clear();
                 Renglon.Add(i.ToString());
-                for(int j = 0; j < AFDG.T.Count + 1; j++)
+                for (int j = 0; j < AFDG.T.Count + 1; j++)
                 {
-                    if (AFDG.Accion[i,j] != null)
+                    if (AFDG.Accion[i, j] != null)
                     {
-                        Renglon.Add(AFDG.Accion[i,j]);
+                        Renglon.Add(AFDG.Accion[i, j]);
                     }
                     else
                     {
@@ -1599,9 +1606,339 @@ namespace ProyectoCompiladores
             }
         }
 
-        private void BT_ContruirColeccionLR0Canonica_7_Click(object sender, EventArgs e)
-        {
 
+        private List<string> ClasificaTokens()
+        {
+            try
+            {
+                if (TB_Numero_6.Text != "" && TB_Identificador_6.Text != "" && TB_ProgramaTiny_6.Text != "")
+                {
+                    DGV_Tokens_6.Rows.Clear();
+                    string PosfijaNumero = ConversionPosfija(TB_Numero_6.Text);
+                    string PosfijaIdentificador = ConversionPosfija(TB_Identificador_6.Text);
+                    AFN AfnNumero = new AFN(PosfijaNumero);
+                    AFN AfnIdentificador = new AFN(PosfijaIdentificador);
+
+                    Operando AFNResultante = AfnNumero.algoritmoDeEvaluacion(PosfijaNumero);
+                    AfnNumero.estados = AFNResultante.EstadosOperando;
+                    AFNResultante = AfnIdentificador.algoritmoDeEvaluacion(PosfijaIdentificador);
+                    AfnIdentificador.estados = AFNResultante.EstadosOperando;
+
+
+                    AFD AFDNumero = new AFD(AfnNumero);
+                    AFDNumero.init();
+                    AFD AFDIdentificador = new AFD(AfnIdentificador);
+                    AFDIdentificador.init();
+
+                    List<int> ListaAceptacion = AfnNumero.RegresaFinales();
+                    AFDNumero.destados.ChecaFinal(ListaAceptacion);
+
+                    ListaAceptacion = AfnIdentificador.RegresaFinales();
+                    AFDIdentificador.destados.ChecaFinal(ListaAceptacion);
+
+                    /**
+                     * 
+                     * Hasta aquí ya tenemos los AFN y AFD cargados!
+                     **/
+
+                    List<string> tinyLines = new List<string>();
+                    List<string> StringClasificadas = new List<string>();
+                    int ContadorFila = 0;
+                    for (int lineIndex = 0; lineIndex < TB_ProgramaTiny_6.Lines.Length; lineIndex++)
+                    {
+                        string Trimeada = TB_ProgramaTiny_6.Lines[lineIndex].Trim();
+                        String[] lineArray = Trimeada.Split(' ');
+                        foreach (string s in lineArray)
+                        {
+                            bool Nuevo = !ListaContains(s, StringClasificadas);
+                            if (ListaContains(s, PalabrasReservadas))
+                            {
+                                if (Nuevo)
+                                {
+                                    DGV_Tokens_6.Rows.Add(s, s);
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                }
+                                tinyLines.Add(s);
+                            }
+                            else if (ListaContains(s, SimbolosEspeciales))
+                            {
+                                if (Nuevo)
+                                {
+                                    DGV_Tokens_6.Rows.Add(s, s);
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                }
+                                tinyLines.Add(s);
+
+                            }
+                            else if (AFDNumero.ValidaLexema(s))
+                            {
+                                if (Nuevo)
+                                {
+                                    DGV_Tokens_6.Rows.Add("número", s);
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                }
+                                tinyLines.Add("numero");
+
+                            }
+                            else if (AFDIdentificador.ValidaLexema(s))
+                            {
+                                if (Nuevo)
+                                {
+                                    DGV_Tokens_6.Rows.Add("ídentificador", s);
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                }
+                                tinyLines.Add("identificador");
+                            }
+                            else if (s != "")
+                            {
+                                if (Nuevo)
+                                {
+                                    DGV_Tokens_6.Rows.Add("Error Léxico", s);
+                                    DGV_Tokens_6.Rows[ContadorFila].Cells[0].Style.ForeColor = Color.Red;
+                                    DGV_Tokens_6.Rows[ContadorFila].Cells[1].Style.ForeColor = Color.Red;
+                                    StringClasificadas.Add(s);
+                                    ContadorFila++;
+                                    ErrorLexico NuevoError = new ErrorLexico(ContadorFila, s);
+                                    ErroresLexicos.Add(NuevoError);
+                                }
+                            }
+                        }
+                    }
+                    tinyLines.Add("$");
+                    return tinyLines;
+                    //string CadenaAux = "";
+                    //foreach (string s in tinyLines)
+                    //{
+                    //    CadenaAux += s + " ";
+                    //}
+                    //MessageBox.Show(CadenaAux);
+                }
+                else
+                {
+                    ErrorLexico NuevoError = new ErrorLexico(-1, "Necesita llenar los campos requeridos");
+                    ErroresLexicos.Add(NuevoError);
+                    MessageBox.Show("Por favor llene los campos requeridos");
+                }
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Ocurrió una excepción\n" + E.Message);
+            }
+            return null;
+        }
+
+        private AFDL CreaTablasLR0()
+        {
+            Gramatica G = new Gramatica();
+            AFDL AFDG = G.AFD;
+            //DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Clear();
+            //DGV_ContenidoDeEstadosAFDCanonica_6.Rows.Clear();
+            //DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Add("indice de estado", "indice de estado");
+            //DGV_ContenidoDeEstadosAFDCanonica_6.Columns.Add("contenido", "contenido");
+
+            DGV_AFDCanonica_6.Rows.Clear();
+            DGV_AFDCanonica_6.Columns.Clear();
+            DGV_AccionLR0.Columns.Clear();
+            DGV_irALR0.Columns.Clear();
+            DGV_AFDCanonica_6.Columns.Add("Estados", "Estados");
+            TB_InfoEstadoLR0.Text = "";
+            List<string> todasLasTransiciones = AFDG.getAllTransiciones();
+
+            foreach (string s in todasLasTransiciones)//agrega las columnas de transiciones 
+            {
+                DGV_AFDCanonica_6.Columns.Add(s, s);
+            }
+
+            // se crea una tabla de analisis sintactico.
+            //TABLA_ASLR0 tabla = new TABLA_ASLR0(G.terminales,G.NoTerminales, AFDG);
+
+
+
+            foreach (EstadoAFDL eAFDG in AFDG.Estados)
+            {
+                //DGV_ContenidoDeEstadosAFDCanonica_6.Rows.Add(eAFDG.IndiceEstado+" : ("+eAFDG.ElementosEstado.Count+")",eAFDG.getEstadoString());
+                string EstadoString = eAFDG.getEstadoString();
+                TB_InfoEstadoLR0.Text += "Estado: " + eAFDG.IndiceEstado + "(" + eAFDG.ElementosEstado.Count + ")\n" + "{\n";
+                TB_InfoEstadoLR0.Text += EstadoString + "} \n";
+                List<string> listaDeElementosEnRow = new List<string>();
+
+                listaDeElementosEnRow.Add("I" + eAFDG.IndiceEstado.ToString() + "(" + eAFDG.Transiciones.Count + ")");
+                foreach (string s in todasLasTransiciones)
+                {
+                    TransicionD transicionDAux = eAFDG.getTransicion(s);
+                    if (transicionDAux == null)// si no existe la transicion
+                    {
+                        listaDeElementosEnRow.Add("ø");
+                    }
+                    else//si existe la transixion con ese simbolo
+                    {
+                        listaDeElementosEnRow.Add(transicionDAux.indiceDest.ToString());
+                    }
+                }
+                DGV_AFDCanonica_6.Rows.Add(listaDeElementosEnRow.ToArray());
+            }
+
+            DGV_AccionLR0.Columns.Add("Estado", "Estado");
+            for (int i = 0; i < AFDG.T.Count; i++)
+            {
+                DGV_AccionLR0.Columns.Add(AFDG.T[i], AFDG.T[i]);
+            }
+            DGV_AccionLR0.Columns.Add("$", "$");
+
+
+            for (int i = 0; i < AFDG.NT.Count; i++)
+            {
+                DGV_irALR0.Columns.Add(AFDG.NT[i], AFDG.NT[i]);
+            }
+
+            List<string> Renglon = new List<string>();
+            for (int i = 0; i < AFDG.Estados.Count; i++)
+            {
+                Renglon.Clear();
+                Renglon.Add(i.ToString());
+                for (int j = 0; j < AFDG.T.Count + 1; j++)
+                {
+                    if (AFDG.Accion[i, j] != null)
+                    {
+                        Renglon.Add(AFDG.Accion[i, j]);
+                    }
+                    else
+                    {
+                        Renglon.Add("ø");
+                    }
+                }
+                DGV_AccionLR0.Rows.Add(Renglon.ToArray());
+            }
+
+            for (int i = 0; i < AFDG.Estados.Count; i++)
+            {
+                Renglon.Clear();
+                for (int j = 0; j < AFDG.NT.Count; j++)
+                {
+                    if (AFDG.Ir_A[i, j] != null)
+                    {
+                        Renglon.Add(AFDG.Ir_A[i, j]);
+                    }
+                    else
+                    {
+                        Renglon.Add("ø");
+                    }
+                }
+                DGV_irALR0.Rows.Add(Renglon.ToArray());
+            }
+            return AFDG;
+        }
+
+        private void BT_AnalisisLexicoSintactico_Click(object sender, EventArgs e)
+        {
+            ErroresLexicos = new List<ErrorLexico>();
+            List<string> CadenaPrograma = ClasificaTokens();
+            //MessageBox.Show(string.Join(Environment.NewLine,CadenaPrograma));
+            TB_ErroresLexico.ForeColor = Color.Red;
+            if (ErroresLexicos.Count > 0 || CadenaPrograma == null)
+            {
+                TB_ErroresLexico.AppendText("Ocurrieron: " + ErroresLexicos.Count + " errores léxicos");
+                TB_ErroresLexico.AppendText(Environment.NewLine);
+
+                foreach (ErrorLexico EL in ErroresLexicos)
+                {
+                    string Linea = "";
+                    if (EL.Linea == -1)
+                    {
+                        Linea = "Por favor llene los campos requeridos";
+                        TB_ErroresLexico.AppendText(Linea);
+                        TB_ErroresLexico.AppendText(Environment.NewLine);
+                        break;
+                    }
+                    Linea = "Linea: " + EL.Linea + "     Lexema: " + EL.Lexema + "     No se reconoce.";
+                    TB_ErroresLexico.AppendText(Linea);
+                    TB_ErroresLexico.AppendText(Environment.NewLine);
+                }
+            }
+            else
+            {
+                TB_ErroresLexico.AppendText("¡No ocurrió ningún error léxico!");
+                TB_ErroresLexico.AppendText(Environment.NewLine);
+                AFDL AFD = CreaTablasLR0();
+                AlgoritmoEvaluacionLR0(CadenaPrograma, AFD);
+
+            }
+            //if(IndexFila != -1)
+            //{
+
+            //}
+            //else
+            //{
+            //    TB_ErroresLexico.Text = "Ocurrió un error en la linea: " + IndexFila;
+            //}
+        }
+
+        public bool AlgoritmoEvaluacionLR0(List<string> Programa, AFDL AFD)
+        {
+            Stack<int> PilaEstados = new Stack<int>(); //Iniciamos la pila con estados
+            string[,] Accion = AFD.Accion;
+            string[,] Ir_A = AFD.Ir_A;
+            PilaEstados.Push(0);
+            int indexA = 0; //Index que determina que elemento estamos verificando.
+            while (true)
+            {
+                int s = PilaEstados.Peek();
+                string a = Programa[indexA];
+
+                int IndexElementoEvaluando = -1;
+                if (AFD.T.Contains(a))
+                {
+                    IndexElementoEvaluando = AFD.T.IndexOf(a);
+                }
+                if (AFD.NT.Contains(a))
+                {
+                    IndexElementoEvaluando = AFD.NT.IndexOf(a);
+                }
+                if(a == "$")
+                {
+                    IndexElementoEvaluando = AFD.T.Count;
+                }
+                if(IndexElementoEvaluando != -1)
+                {
+                    if (Accion[s, IndexElementoEvaluando].Contains("d")) { // En caso de que sea un desplazar.
+                        string EstadoDesplazar = Accion[s, IndexElementoEvaluando];
+                        int indexD = EstadoDesplazar.IndexOf("d");
+                        int NumeroElemento = int.Parse(EstadoDesplazar.Substring(indexD + 1).ToString());
+                        PilaEstados.Push(NumeroElemento);
+                        indexA++;
+                    }
+                    else if(Accion[s, IndexElementoEvaluando].Contains("r")) // En caso de que sea un reducir.
+                    {
+                        string Cadenaarreglo = Accion[s, IndexElementoEvaluando];
+                        int indexR = Cadenaarreglo.IndexOf("r");
+                        int NumeroElemento = int.Parse(Cadenaarreglo.Substring(indexR + 1).ToString());
+                        int NumeroCaracteres = AFD.GetCaracteresProduccion(NumeroElemento);
+
+                        for(int i = 0; i < NumeroCaracteres; i++)
+                        {
+                            PilaEstados.Pop();
+                        }
+                        int indexTope = PilaEstados.Peek();
+                        string Padre = AFD.ObtenPadreProduccion(NumeroElemento);
+                        PilaEstados.Push(int.Parse(Ir_A[indexTope, AFD.NT.IndexOf(Padre)]));
+                    }
+                    else if(Accion[s, IndexElementoEvaluando] == "ac") // En caso de que sea un estado de aceptación.
+                    {
+                        MessageBox.Show("El analisis se completó, no existe ningún error sintáctico");
+                        break;
+                    }
+                    else if(Accion[s,IndexElementoEvaluando] == "")
+                    {
+                        MessageBox.Show("Ocurrió un error sintáctico");
+                        break;
+                    }
+                }
+            }
+            return false;
         }
     }//Forms END
 }//namespace END

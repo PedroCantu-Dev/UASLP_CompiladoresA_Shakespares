@@ -74,8 +74,6 @@ namespace ProyectoCompiladores
             "opmult",
             "factor"
         };
-        
-        
         /*Dictionary<string, string> G = new Dictionary<string, string>
         {
             {"P", "a P a|b P b|c"}
@@ -136,10 +134,8 @@ namespace ProyectoCompiladores
 
         public void initGramatica()
         {
-
             AFD = new AFDL(G, terminales, NoTerminales,ProducciónAumentada);
             AFD.generaTablaDeAnalisisLR0(this.Siguientes);
-
             /*foreach (KeyValuePair<string, string> EntradaD in Gramática)
             {
                 string[] ArregloCadenas = EntradaD.Value.Split('|');
